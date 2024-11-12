@@ -1,0 +1,27 @@
+import 'package:elevate_ecommerce/core/common/bloc_observer.dart';
+import 'package:elevate_ecommerce/core/di/di.dart';
+import 'package:elevate_ecommerce/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce/core/routes/router.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  configureDependencies();
+  Bloc.observer = SimpleBlocObserver();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      title: 'Flower app',
+      onGenerateRoute: manageRoutes,
+      initialRoute: AppRoutes.home,
+    );
+  }
+}
