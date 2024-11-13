@@ -39,6 +39,7 @@ dependencies:
   retrofit: ^4.4.1
   get_it:
   flutter_bloc: ^8.1.6
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:
