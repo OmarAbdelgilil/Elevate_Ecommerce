@@ -24,7 +24,7 @@ class CustomtextField extends StatefulWidget {
 
 class _CustomtextFieldState extends State<CustomtextField> {
   bool hasError = false;
-  Color labelColor = Colors.grey;
+  Color labelColor = Colors.grey[850]!;
   String? _validate(String? value) {
     final error = widget.validator != null
         ? widget.validator!(value)
@@ -52,11 +52,11 @@ class _CustomtextFieldState extends State<CustomtextField> {
         focusedErrorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 2.0),
         ),
-        enabledBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey[850]!),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.grey),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.grey[850]!),
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         label: Text(
