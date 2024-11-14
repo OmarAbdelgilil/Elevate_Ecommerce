@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -39,14 +40,12 @@ class VerifyEmail extends StatelessWidget {
             SizedBox(
               height: 30.h,
             ),
-            TextFormField(
-              validator: emailValidator,
+            CustomtextField(
+              hint: 'Enter your email',
               controller: emailController,
-              decoration: InputDecoration(
-                  label: const Text('Email'),
-                  hintText: 'Enter your email',
-                  errorText:
-                      exception != null ? 'This Email is invalid ' : null),
+              validator: emailValidator,
+              lable: 'Email',
+              errorText: exception != null ? 'This Email is invalid ' : null,
             ),
             SizedBox(
               height: 50.h,
