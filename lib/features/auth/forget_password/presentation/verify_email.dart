@@ -1,5 +1,6 @@
+import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
-import 'package:elevate_ecommerce/features/auth/forget_password/presentation/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -50,11 +51,9 @@ class VerifyEmail extends StatelessWidget {
             SizedBox(
               height: 50.h,
             ),
-            AppButton(
-              text: const Text(
-                'Continune',
-                style: TextStyle(color: Colors.white),
-              ),
+            CustomButton(
+              text: 'Continune',
+              color: primaryColor,
               onPressed: () {
                 sendOtp(emailController.text);
               },

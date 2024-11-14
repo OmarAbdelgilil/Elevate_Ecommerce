@@ -1,4 +1,5 @@
-import 'package:elevate_ecommerce/features/auth/forget_password/presentation/app_button.dart';
+import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
+import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -44,37 +45,33 @@ class VerifyPassword extends StatelessWidget {
             SizedBox(
               height: 30.h,
             ),
-            TextFormField(
-              validator: passwordValidator,
+            CustomtextField(
+              hint: 'Enter your password',
+              lable: 'New password',
               controller: passwordController,
-              decoration: InputDecoration(
-                  label: const Text('New password'),
-                  hintText: 'Enter your password',
-                  errorText: exception != null ? 'Password is invalid ' : null),
+              validator: passwordValidator,
+              errorText: exception != null ? 'Password is invalid ' : null,
             ),
             SizedBox(
               height: 16.h,
             ),
-            TextFormField(
-              validator: confirmPasswordValidator,
+            CustomtextField(
+              hint: 'Confirm password',
+              lable: 'Confirm password',
               controller: confirmPasswordController,
-              decoration: const InputDecoration(
-                label: Text('Confirm password'),
-                hintText: 'Confirm password',
-              ),
+              validator: confirmPasswordValidator,
             ),
             SizedBox(
               height: 50.h,
             ),
-            AppButton(
-              text:
-                  const Text('Continue', style: TextStyle(color: Colors.white)),
+            CustomButton(
+              text: 'Confirm',
               onPressed: () {
                 if (passwordFormKey.currentState!.validate()) {
                   resetPassword(passwordController.text);
                 }
               },
-            )
+            ),
           ],
         ),
       ),
