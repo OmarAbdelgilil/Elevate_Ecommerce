@@ -1,6 +1,7 @@
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -28,7 +29,7 @@ class VerifyEmail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Forget password',
+              StringsManager.verifyEmailScreenTitle,
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
             ),
             SizedBox(
@@ -36,23 +37,24 @@ class VerifyEmail extends StatelessWidget {
             ),
             Text(
                 textAlign: TextAlign.center,
-                'Please enter your email associated to\nyour account',
+                StringsManager.verifyEmailScreenEmailGuide,
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp)),
             SizedBox(
               height: 30.h,
             ),
             CustomtextField(
-              hint: 'Enter your email',
+              hint: StringsManager.emailFieldHint,
               controller: emailController,
               validator: emailValidator,
-              lable: 'Email',
-              errorText: exception != null ? 'This Email is invalid ' : null,
+              lable: StringsManager.emailFieldLabel,
+              errorText:
+                  exception != null ? StringsManager.emailFieldError : null,
             ),
             SizedBox(
               height: 50.h,
             ),
             CustomButton(
-              text: 'Continune',
+              text: StringsManager.continueButtonText,
               color: primaryColor,
               onPressed: () {
                 sendOtp(emailController.text);

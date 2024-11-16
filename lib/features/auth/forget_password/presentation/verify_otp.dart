@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -26,7 +27,7 @@ class VerifyOtp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              'Email verification',
+              StringsManager.verifyOtpScreenTitle,
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
             ),
             const SizedBox(
@@ -34,7 +35,7 @@ class VerifyOtp extends StatelessWidget {
             ),
             Text(
                 textAlign: TextAlign.center,
-                'Please enter your code that send to your\nemail address',
+                StringsManager.verifyOtpScreenGuide,
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp)),
             SizedBox(
               height: 30.h,
@@ -87,7 +88,7 @@ class VerifyOtp extends StatelessWidget {
                       color: Colors.red,
                       size: 16.sp,
                     ),
-                    const Text('Invalid code',
+                    const Text(StringsManager.invalidOtpError,
                         style: TextStyle(
                           color: Colors.red,
                         ))
@@ -101,13 +102,13 @@ class VerifyOtp extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text("Didn't receive code?"),
+                const Text(StringsManager.didntrecieveCode),
                 TextButton(
                     onPressed: () {
                       sendOtp(emailController.text);
                     },
                     child: const Text(
-                      'Resend',
+                      StringsManager.resendButtonText,
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: primaryColor),

@@ -17,6 +17,26 @@ class StringsManager {
   static const lastName = "lastName";
   static const userName = "userName";
   static const phone = "phone";
+  static const verifyEmailScreenTitle = "Forget password";
+  static const verifyEmailScreenEmailGuide =
+      'Please enter your email associated to\nyour account';
+  static const continueButtonText = 'Continune';
+  static const verifyOtpScreenTitle = 'Email verification';
+  static const verifyOtpScreenGuide =
+      'Please enter your code that send to your\nemail address';
+  static const invalidOtpError = 'Invalid code';
+  static const didntrecieveCode = "Didn't receive code?";
+  static const resendButtonText = 'Resend';
+  static const resetPassScreenTitle = 'Reset password';
+  static const resetPassScreenGuide =
+      'Password must not be empty and must contain\n6 characters with upper case letter and one\nnumber at least ';
+  static const newPasswordLabel = 'New password';
+  static const passwordFieldError = 'Password is invalid ';
+  static const confirmPasswordHint = 'Confirm password';
+  static const confirmButtonText = 'Confirm';
+  static const emailFieldHint = 'Enter your email';
+  static const emailFieldLabel = 'Email';
+  static const emailFieldError = 'This Email is invalid ';
   static const forgetPassword = "forgetPassword";
   static const issuePasswordNotMatch = "Password not match";
   static const issueEmptyUsername = "Please enter username";

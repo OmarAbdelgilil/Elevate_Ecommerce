@@ -77,6 +77,7 @@ class ForegetPasswordViewmodel extends Cubit<ForgetPasswordState> {
     switch (result) {
       case Success<User?>():
         {
+          forgetPasswordValidator.disposeFields();
           emit(SuccessState(result.data));
         }
       case Fail<User?>():

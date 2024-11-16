@@ -22,6 +22,12 @@ class ForgetPasswordValidator {
   GlobalKey<FormState> get otpFormKey => _otpFormKey;
   GlobalKey<FormState> get passwordFormKey => _passwordFormKey;
 
+  void disposeFields() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+  }
+
   String? Function(String?) validate(ForgetPasswordValidTypes type) {
     switch (type) {
       case ForgetPasswordValidTypes.email:
