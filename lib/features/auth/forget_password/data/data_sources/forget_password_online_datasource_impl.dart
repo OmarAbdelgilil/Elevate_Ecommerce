@@ -14,7 +14,7 @@ import 'package:injectable/injectable.dart';
 @Injectable(as: ForgetPasswordOnlineDatasource)
 class ForgetPasswordOnlineDatasourceImpl
     implements ForgetPasswordOnlineDatasource {
-  ApiManager apiManager;
+  final ApiManager apiManager;
   ForgetPasswordOnlineDatasourceImpl(this.apiManager);
 
   @override
