@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -5,6 +6,6 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Placeholder(color: ColorManager.grey,);
   }
 }
