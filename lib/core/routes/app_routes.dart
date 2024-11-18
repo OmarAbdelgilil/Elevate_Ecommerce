@@ -1,4 +1,4 @@
 class AppRoutes {
-  static const home = "home";
-  static const forgetPassword = "forgetPassword";
+  static const mainLayOut = "mainLayOutRoute";
+  static const forgetPassword = "forgetPasswordRoute";
 }
