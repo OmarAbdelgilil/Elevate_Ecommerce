@@ -1,8 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
-import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart';
-import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart';
@@ -20,9 +18,6 @@ part 'api_manager.g.dart';
 abstract class ApiManager {
   @factoryMethod
   factory ApiManager(Dio dio) = _ApiManager;
-
-  @POST(ApiConstants.loginPath)
-  Future<LoginResponse> login(@Body() LoginRequest request);
 
   @POST(ApiConstants.forgotPasswordPath)
   Future<ForgotPasswordResponse> forgotPassword(

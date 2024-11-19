@@ -23,15 +23,6 @@ import '../../features/auth/data/data_sources/auth_online_datasource_impl.dart'
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
     as _i153;
 import '../../features/auth/domain/repositories/auth_repository.dart' as _i787;
-import '../../features/auth/login/data/contracts/login_online_datasource.dart'
-    as _i710;
-import '../../features/auth/login/data/data_sources/login_online_datasource_impl.dart'
-    as _i988;
-import '../../features/auth/login/data/repos/login_repo_impl.dart' as _i568;
-import '../../features/auth/login/domain/repos/login_repo.dart' as _i983;
-import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i334;
-import '../../features/auth/login/presentation/cubit/login_viewmodel.dart'
-    as _i126;
 import '../../features/auth/forget_password/data/contracts/forget_password_online_datasource.dart'
     as _i267;
 import '../../features/auth/forget_password/data/data_sources/forget_password_online_datasource_impl.dart'
@@ -67,8 +58,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i561.ApiManager>(() => _i561.ApiManager(gh<_i361.Dio>()));
     gh.factory<_i871.AuthOfflineDatasource>(
         () => _i601.AuthOfflineDatasourceImpl());
-    gh.factory<_i710.LoginOnlineDatasource>(
-        () => _i988.LoginOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i267.ForgetPasswordOnlineDatasource>(
         () => _i460.ForgetPasswordOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i974.ForgetPasswordRepository>(() =>
@@ -76,12 +65,6 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i267.ForgetPasswordOnlineDatasource>()));
     gh.factory<_i981.AuthOnlineDatasource>(
         () => _i849.AuthOnlineDatasourceImpl(gh<_i561.ApiManager>()));
-    gh.factory<_i983.LoginRepo>(
-        () => _i568.LoginRepoImpl(gh<_i710.LoginOnlineDatasource>()));
-    gh.factory<_i334.LoginUsecase>(
-        () => _i334.LoginUsecase(gh<_i983.LoginRepo>()));
-    gh.factory<_i126.LoginViewModel>(
-        () => _i126.LoginViewModel(gh<_i334.LoginUsecase>()));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
