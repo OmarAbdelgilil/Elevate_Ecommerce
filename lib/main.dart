@@ -27,7 +27,9 @@ class MyApp extends StatelessWidget {
        theme: ThemeData(primaryColorLight: primaryColor,),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
+
         initialRoute: AppRoutes.register,
+
       ),
     );
   }

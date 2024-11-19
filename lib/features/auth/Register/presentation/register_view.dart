@@ -8,6 +8,7 @@ import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/gender_widget.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_validator/register_validator_types_enum.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_viewModel.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -41,7 +42,7 @@ class RegisterScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => viewModel,
       child: Scaffold(
-        appBar: AppBar(leadingWidth: 300.w,leading: CustomAppBar(title: "Sign Up",onPressed: (){},),),
+        appBar: AppBar(leadingWidth: 300.w,leading: CustomAppBar(title:StringsManager.signUp,onPressed: (){},),),
         body: BlocListener<RegisterViewModel, RegisterScreenState>(
 
           listenWhen: (previous, current) {
@@ -86,7 +87,7 @@ class RegisterScreen extends StatelessWidget {
 
             if (state is SuccessState) {
               Navigator.pop(context);
-               Navigator.pushNamed(context, AppRoutes.home);
+               Navigator.pushNamed(context, AppRoutes.mainLayOut);
 
             }
           },
@@ -107,8 +108,8 @@ class RegisterScreen extends StatelessWidget {
                               child: CustomtextField(
                                   validator: registerValidator.validate(RegisterValidTypes.firstName),
                                   controller:registerValidator.firstNameController,
-                                  hint: "Enter first name"
-                                  , lable: "First Name"
+                                  hint: StringsManager.firstNameHint
+                                  , lable: StringsManager.firstNameFieldLabel
                               ),
                             ),
                             SizedBox(width: 20.w,),
@@ -116,8 +117,8 @@ class RegisterScreen extends StatelessWidget {
                               child: CustomtextField(
                                   validator: registerValidator.validate(RegisterValidTypes.lastName),
                                   controller:registerValidator.lastNameController,
-                                  hint: "Enter last name"
-                                  , lable: "Last Name"
+                                  hint: StringsManager.lastNameHint
+                                  , lable:StringsManager.lastNameFieldLabel
                               ),
                             ),
                           ],
@@ -127,18 +128,19 @@ class RegisterScreen extends StatelessWidget {
                         ,CustomtextField(
                           validator: registerValidator.validate(RegisterValidTypes.email),
                             controller:registerValidator.emailController,
-                            hint: "Enter your email"
-                        , lable: "Email"
+                            hint:StringsManager.emailFieldHint
+                        , lable: StringsManager.emailFieldLabel
                         ),
                         SizedBox(height: 25.h,),
                         Row(
                           children: [
                             Expanded(
                               child: CustomtextField(
+
                                   validator: registerValidator.validate(RegisterValidTypes.password),
                                   controller:registerValidator.passwordController,
-                                  hint: "Enter password"
-                                  , lable: "Password"
+                                  hint:StringsManager.passwordHint
+                                  , lable: StringsManager.passwordFieldLabel
                               ),
                             ),
                             SizedBox(width: 20.w,),
@@ -147,8 +149,8 @@ class RegisterScreen extends StatelessWidget {
                               child: CustomtextField(
                                   validator: registerValidator.validate(RegisterValidTypes.confirmPassword),
                                   controller:registerValidator.confirmPasswordController,
-                                  hint: "Confirm password"
-                                  , lable: "Confirm password"
+                                  hint: StringsManager.confirmPasswordHint
+                                  , lable:StringsManager.confirmPasswordHint
                               ),
                             ),
                           ],
@@ -157,8 +159,8 @@ class RegisterScreen extends StatelessWidget {
                         CustomtextField(
                             validator: registerValidator.validate(RegisterValidTypes.phone),
                             controller:registerValidator.phoneController,
-                            hint: "Enter phone number"
-                            , lable: "Phone"
+                            hint: StringsManager.phoneNumberHint
+                            , lable:StringsManager.phoneFieldLabel
                         ),
 
                         GenderWidget(
@@ -172,7 +174,7 @@ class RegisterScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text("Creating an account, you agree to our" ,
+                            Text(StringsManager.creatAccountText,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color: blackFontColor,
@@ -200,7 +202,7 @@ class RegisterScreen extends StatelessWidget {
                                 return const CircularProgressIndicator();
                               }
                               default:{
-                                return   CustomButton(text: "Sign up",color: areAllFieldsFilled
+                                return   CustomButton(text: StringsManager.signUp,color: areAllFieldsFilled
                             ?primaryColor
                                 : Colors.grey,
                             onPressed: areAllFieldsFilled
@@ -229,7 +231,7 @@ class RegisterScreen extends StatelessWidget {
                                 fontSize: 16.sp
                             ),)
                             ,InkWell(
-                              child: Text('  Login', style: TextStyle(
+                              child: Text('  ${StringsManager.login}', style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w400,
                                 color: primaryColor,
