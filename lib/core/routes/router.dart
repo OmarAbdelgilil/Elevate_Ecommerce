@@ -8,8 +8,8 @@ Route manageRoutes(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.home:
       return MaterialPageRoute(builder: (context) => const Home());
- /*   case AppRoutes.register:
-      return MaterialPageRoute(builder: (context) => RegisterScreen());*/
+    case AppRoutes.register:
+      return MaterialPageRoute(builder: (context) => RegisterScreen());
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }

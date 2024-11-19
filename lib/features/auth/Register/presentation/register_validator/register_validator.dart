@@ -18,8 +18,26 @@ class RegisterValidator {
   TextEditingController get phoneController => _phoneController;
   TextEditingController get passwordController => _passwordController;
   TextEditingController get confirmPasswordController => _confirmPasswordController;
-
   GlobalKey<FormState> get registerFormKey => _registerFormKey;
+
+  void attachListeners(VoidCallback onFieldsChanged) {
+    _firstNameController.addListener(onFieldsChanged);
+    _lastNameController.addListener(onFieldsChanged);
+    _emailController.addListener(onFieldsChanged);
+    _phoneController.addListener(onFieldsChanged);
+    _passwordController.addListener(onFieldsChanged);
+    _confirmPasswordController.addListener(onFieldsChanged);
+  }
+  void disposeFields() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    _phoneController.dispose();
+
+  }
+
   String? Function(String?) validate(RegisterValidTypes type) {
     switch (type) {
       case RegisterValidTypes.firstName:
@@ -102,10 +120,10 @@ class RegisterValidator {
   String? Function(String?) _validatePhone() {
     return (String? value) {
       if (value == null || value.isEmpty) {
-        return "Phone Number should not be empty";
+        return "Phone number should not be empty";
       }
-      if (!RegExp(r'^\d{11}$').hasMatch(value)) {
-        return "Phone Number must be exactly 11 digits";
+      if (!RegExp(r'^\+20\d{10}$').hasMatch(value)) {
+        return "Phone number must start with '+20' followed by exactly 10 digits";
       }
       return null;
     };

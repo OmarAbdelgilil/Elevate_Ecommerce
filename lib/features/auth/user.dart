@@ -24,4 +24,34 @@ class User {
         this.phone,
         this.isVerified,
         this.token});
+
+  factory User.fromJson(Map<String, dynamic> json) => User(
+    id: json['_id'] as String?,
+    username: json['username'] as String?,
+    firstName: json['firstName'] as String?,
+    lastName: json['lastName'] as String?,
+    email: json['email'] as String?,
+    gender: json['gender'] as String?,
+    role: json['role'] as String?,
+    password: json['password'] as String?,
+    rePassword: json['rePassword'] as String?,
+    phone: json['phone'] as String?,
+    isVerified: json['isverified'] as bool?,
+    token: json['token'] as String?,
+  );
+
+  Map<String, dynamic> toJson() => {
+    '_id': id,
+    'username': username,
+    'firstName': firstName,
+    'lastName': lastName,
+    'email': email,
+    'gender': gender,
+    'role': role,
+    'password': password,
+    'rePassword': rePassword,
+    'phone': phone,
+    'isverified': isVerified,
+    'token': token,
+  };
 }
