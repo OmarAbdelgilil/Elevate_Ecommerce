@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       child: const MaterialApp(
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.home,
+        initialRoute: AppRoutes.mainLayOut,
       ),
     );
   }
