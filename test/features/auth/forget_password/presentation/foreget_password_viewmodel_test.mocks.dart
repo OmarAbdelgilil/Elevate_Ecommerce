@@ -285,6 +285,15 @@ class MockForgetPasswordValidator extends _i1.Mock
       ) as _i2.GlobalKey<_i2.FormState>);
 
   @override
+  void disposeFields() => super.noSuchMethod(
+        Invocation.method(
+          #disposeFields,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
   String? Function(String?) validate(_i15.ForgetPasswordValidTypes? type) =>
       (super.noSuchMethod(
         Invocation.method(
