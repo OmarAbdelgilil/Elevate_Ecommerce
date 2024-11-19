@@ -44,4 +44,15 @@ class StringsManager {
   static const issueEmptyLastname = "Please enter lastname";
   static const issueEmptyPhoneNumber = "Please enter phone number";
   static const issueInvalidPhoneNumber = "Please Enter Valid phone number";
+
+
+
+
+  ///// mainLayOutScreen
+  static const homeTab = 'Home';
+  static const categoryTab = 'Category';
+  static const cardTab = 'Card';
+  static const profileTab = 'Profile';
+
+
 }
