@@ -10,10 +10,16 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: homeAppBar(),
-      body: const Padding(
-        padding: EdgeInsets.only(left: 16, top: 10),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16, top: 10),
         child: Column(
-          children: [Location(), CategoriesSection()],
+          children: [
+            const Location(),
+            const SizedBox(
+              height: 10,
+            ),
+            CategoriesSection()
+          ],
         ),
       ),
     );

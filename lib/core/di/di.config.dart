@@ -32,7 +32,7 @@ import '../../features/auth/forget_password/domain/repositories/forget_password_
 import '../../features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
     as _i32;
 import '../../features/auth/forget_password/presentation/foreget_password_viewmodel.dart'
-    as _i35;
+    as _i36;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
     as _i3;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
@@ -45,7 +45,7 @@ import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i26;
 import '../../features/auth/login/presentation/cubit/login_viewmodel.dart'
     as _i31;
 import '../../features/auth/login/presentation/login_validator/login_validator.dart'
-    as _i5;
+    as _i4;
 import '../../features/auth/Register/data/register_onlineDataSource.dart'
     as _i10;
 import '../../features/auth/Register/data/register_onlineDataSource_impl.dart'
@@ -55,7 +55,7 @@ import '../../features/auth/Register/data/register_repository_impl.dart'
 import '../../features/auth/Register/domain/register_repository.dart' as _i12;
 import '../../features/auth/Register/domain/register_useCase.dart' as _i29;
 import '../../features/auth/Register/presentation/register_validator/register_validator.dart'
-    as _i4;
+    as _i5;
 import '../../features/auth/Register/presentation/register_viewModel.dart'
     as _i30;
 import '../../features/home/data/contracts/remote_datasource.dart' as _i14;
@@ -64,8 +64,12 @@ import '../../features/home/data/data_sources/remote_datasource_impl.dart'
 import '../../features/home/data/repositories/home_repository_impl.dart'
     as _i28;
 import '../../features/home/domain/repositories/home_repository.dart' as _i27;
+import '../../features/home/domain/usecases/get_categories_usecase.dart'
+    as _i35;
+import '../../features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart'
+    as _i37;
 import '../network/api/api_manager.dart' as _i7;
-import '../network/api/network_module.dart' as _i36;
+import '../network/api/network_module.dart' as _i38;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -81,8 +85,8 @@ extension GetItInjectableX on _i1.GetIt {
     final dioModule = _$DioModule();
     gh.factory<_i3.ForgetPasswordValidator>(
         () => _i3.ForgetPasswordValidator());
-    gh.factory<_i4.RegisterValidator>(() => _i4.RegisterValidator());
-    gh.factory<_i5.LoginValidator>(() => _i5.LoginValidator());
+    gh.factory<_i4.LoginValidator>(() => _i4.LoginValidator());
+    gh.factory<_i5.RegisterValidator>(() => _i5.RegisterValidator());
     gh.lazySingleton<_i6.Dio>(() => dioModule.provideDio());
     gh.singleton<_i7.ApiManager>(() => _i7.ApiManager(gh<_i6.Dio>()));
     gh.factory<_i8.AuthOfflineDatasource>(
@@ -112,7 +116,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i29.RegisterUseCase(gh<_i12.RegisterRepository>()));
     gh.factory<_i30.RegisterViewModel>(() => _i30.RegisterViewModel(
           gh<_i29.RegisterUseCase>(),
-          gh<_i4.RegisterValidator>(),
+          gh<_i5.RegisterValidator>(),
         ));
     gh.factory<_i31.LoginViewModel>(
         () => _i31.LoginViewModel(gh<_i26.LoginUsecase>()));
@@ -122,13 +126,17 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i22.AuthOnlineDatasource>(),
           gh<_i8.AuthOfflineDatasource>(),
         ));
-    gh.factory<_i35.ForegetPasswordViewmodel>(
-        () => _i35.ForegetPasswordViewmodel(
+    gh.factory<_i35.GetCategoriesUsecase>(
+        () => _i35.GetCategoriesUsecase(gh<_i27.HomeRepository>()));
+    gh.factory<_i36.ForegetPasswordViewmodel>(
+        () => _i36.ForegetPasswordViewmodel(
               gh<_i32.ForgetPasswordUsecase>(),
               gh<_i3.ForgetPasswordValidator>(),
             ));
+    gh.factory<_i37.CategoriesViewmodel>(
+        () => _i37.CategoriesViewmodel(gh<_i35.GetCategoriesUsecase>()));
     return this;
   }
 }
 
-class _$DioModule extends _i36.DioModule {}
+class _$DioModule extends _i38.DioModule {}

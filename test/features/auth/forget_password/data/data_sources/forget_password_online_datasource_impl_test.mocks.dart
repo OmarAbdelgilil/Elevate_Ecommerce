@@ -26,6 +26,8 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
     as _i8;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
+    as _i14;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -171,4 +173,14 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i12.ResetPasswordResponse?>.value(),
       ) as _i7.Future<_i12.ResetPasswordResponse?>);
+
+  @override
+  _i7.Future<_i14.GetAllCategoriesResponse?> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i7.Future<_i14.GetAllCategoriesResponse?>.value(),
+      ) as _i7.Future<_i14.GetAllCategoriesResponse?>);
 }
