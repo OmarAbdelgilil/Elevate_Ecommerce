@@ -3,24 +3,28 @@
 // Do not manually edit this file.
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'dart:async' as _i6;
+import 'dart:async' as _i7;
 
-import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i5;
+import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i6;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
-    as _i8;
-import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
-    as _i11;
-import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart'
-    as _i9;
-import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart'
-    as _i3;
-import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart'
     as _i10;
-import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
+    as _i13;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart'
+    as _i11;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart'
     as _i4;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart'
+    as _i12;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
+    as _i5;
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart'
-    as _i7;
+    as _i9;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
+    as _i3;
+import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
+    as _i8;
+import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
@@ -37,8 +41,9 @@ import 'package:mockito/mockito.dart' as _i1;
 // ignore_for_file: camel_case_types
 // ignore_for_file: subtype_of_sealed_class
 
-class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
-  _FakeLoginResponse_0(
+class _FakeRegisterResponse_0 extends _i1.SmartFake
+    implements _i2.RegisterResponse {
+  _FakeRegisterResponse_0(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -47,9 +52,8 @@ class _FakeLoginResponse_0 extends _i1.SmartFake implements _i2.LoginResponse {
         );
 }
 
-class _FakeForgotPasswordResponse_1 extends _i1.SmartFake
-    implements _i3.ForgotPasswordResponse {
-  _FakeForgotPasswordResponse_1(
+class _FakeLoginResponse_1 extends _i1.SmartFake implements _i3.LoginResponse {
+  _FakeLoginResponse_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -58,9 +62,20 @@ class _FakeForgotPasswordResponse_1 extends _i1.SmartFake
         );
 }
 
-class _FakeVerifyPasswordResponse_2 extends _i1.SmartFake
-    implements _i4.VerifyPasswordResponse {
-  _FakeVerifyPasswordResponse_2(
+class _FakeForgotPasswordResponse_2 extends _i1.SmartFake
+    implements _i4.ForgotPasswordResponse {
+  _FakeForgotPasswordResponse_2(
+    Object parent,
+    Invocation parentInvocation,
+  ) : super(
+          parent,
+          parentInvocation,
+        );
+}
+
+class _FakeVerifyPasswordResponse_3 extends _i1.SmartFake
+    implements _i5.VerifyPasswordResponse {
+  _FakeVerifyPasswordResponse_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -72,71 +87,88 @@ class _FakeVerifyPasswordResponse_2 extends _i1.SmartFake
 /// A class which mocks [ApiManager].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockApiManager extends _i1.Mock implements _i5.ApiManager {
+class MockApiManager extends _i1.Mock implements _i6.ApiManager {
   MockApiManager() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i6.Future<_i2.LoginResponse> login(_i7.LoginRequest? request) =>
+  _i7.Future<_i2.RegisterResponse> register(_i8.RegisterRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #register,
+          [request],
+        ),
+        returnValue:
+            _i7.Future<_i2.RegisterResponse>.value(_FakeRegisterResponse_0(
+          this,
+          Invocation.method(
+            #register,
+            [request],
+          ),
+        )),
+      ) as _i7.Future<_i2.RegisterResponse>);
+
+  @override
+  _i7.Future<_i3.LoginResponse> login(_i9.LoginRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #login,
           [request],
         ),
-        returnValue: _i6.Future<_i2.LoginResponse>.value(_FakeLoginResponse_0(
+        returnValue: _i7.Future<_i3.LoginResponse>.value(_FakeLoginResponse_1(
           this,
           Invocation.method(
             #login,
             [request],
           ),
         )),
-      ) as _i6.Future<_i2.LoginResponse>);
+      ) as _i7.Future<_i3.LoginResponse>);
 
   @override
-  _i6.Future<_i3.ForgotPasswordResponse> forgotPassword(
-          _i8.ForgotPasswordRequest? request) =>
+  _i7.Future<_i4.ForgotPasswordResponse> forgotPassword(
+          _i10.ForgotPasswordRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #forgotPassword,
           [request],
         ),
-        returnValue: _i6.Future<_i3.ForgotPasswordResponse>.value(
-            _FakeForgotPasswordResponse_1(
+        returnValue: _i7.Future<_i4.ForgotPasswordResponse>.value(
+            _FakeForgotPasswordResponse_2(
           this,
           Invocation.method(
             #forgotPassword,
             [request],
           ),
         )),
-      ) as _i6.Future<_i3.ForgotPasswordResponse>);
+      ) as _i7.Future<_i4.ForgotPasswordResponse>);
 
   @override
-  _i6.Future<_i4.VerifyPasswordResponse> verifyResetPassword(
-          _i9.VerifyPasswordRequest? request) =>
+  _i7.Future<_i5.VerifyPasswordResponse> verifyResetPassword(
+          _i11.VerifyPasswordRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #verifyResetPassword,
           [request],
         ),
-        returnValue: _i6.Future<_i4.VerifyPasswordResponse>.value(
-            _FakeVerifyPasswordResponse_2(
+        returnValue: _i7.Future<_i5.VerifyPasswordResponse>.value(
+            _FakeVerifyPasswordResponse_3(
           this,
           Invocation.method(
             #verifyResetPassword,
             [request],
           ),
         )),
-      ) as _i6.Future<_i4.VerifyPasswordResponse>);
+      ) as _i7.Future<_i5.VerifyPasswordResponse>);
 
   @override
-  _i6.Future<_i10.ResetPasswordResponse?> resetPassword(
-          _i11.ResetPasswordRequest? request) =>
+  _i7.Future<_i12.ResetPasswordResponse?> resetPassword(
+          _i13.ResetPasswordRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #resetPassword,
           [request],
         ),
-        returnValue: _i6.Future<_i10.ResetPasswordResponse?>.value(),
-      ) as _i6.Future<_i10.ResetPasswordResponse?>);
+        returnValue: _i7.Future<_i12.ResetPasswordResponse?>.value(),
+      ) as _i7.Future<_i12.ResetPasswordResponse?>);
 }

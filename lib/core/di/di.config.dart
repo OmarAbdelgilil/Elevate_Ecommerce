@@ -8,52 +8,64 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i5;
+import 'package:dio/dio.dart' as _i6;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
-import '../../features/auth/data/contracts/auth_offline_datasource.dart' as _i7;
-import '../../features/auth/data/contracts/auth_online_datasource.dart' as _i17;
+import '../../features/auth/data/contracts/auth_offline_datasource.dart' as _i8;
+import '../../features/auth/data/contracts/auth_online_datasource.dart' as _i22;
 import '../../features/auth/data/data_sources/auth_offline_datasource_impl.dart'
-    as _i8;
+    as _i9;
 import '../../features/auth/data/data_sources/auth_online_datasource_impl.dart'
-    as _i18;
+    as _i23;
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
-    as _i27;
-import '../../features/auth/domain/repositories/auth_repository.dart' as _i26;
+    as _i34;
+import '../../features/auth/domain/repositories/auth_repository.dart' as _i33;
 import '../../features/auth/forget_password/data/contracts/forget_password_online_datasource.dart'
-    as _i13;
+    as _i18;
 import '../../features/auth/forget_password/data/data_sources/forget_password_online_datasource_impl.dart'
-    as _i14;
+    as _i19;
 import '../../features/auth/forget_password/data/repositories/forget_password_repository_impl.dart'
-    as _i16;
+    as _i21;
 import '../../features/auth/forget_password/domain/repositories/forget_password_repository.dart'
-    as _i15;
+    as _i20;
 import '../../features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
-    as _i25;
+    as _i32;
 import '../../features/auth/forget_password/presentation/foreget_password_viewmodel.dart'
-    as _i28;
+    as _i35;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
     as _i3;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
-    as _i11;
+    as _i16;
 import '../../features/auth/login/data/data_sources/login_online_datasource_impl.dart'
-    as _i12;
-import '../../features/auth/login/data/repos/login_repo_impl.dart' as _i20;
-import '../../features/auth/login/domain/repos/login_repo.dart' as _i19;
-import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i21;
+    as _i17;
+import '../../features/auth/login/data/repos/login_repo_impl.dart' as _i25;
+import '../../features/auth/login/domain/repos/login_repo.dart' as _i24;
+import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i26;
 import '../../features/auth/login/presentation/cubit/login_viewmodel.dart'
-    as _i24;
+    as _i31;
 import '../../features/auth/login/presentation/login_validator/login_validator.dart'
-    as _i4;
-import '../../features/home/data/contracts/remote_datasource.dart' as _i9;
-import '../../features/home/data/data_sources/remote_datasource_impl.dart'
+    as _i5;
+import '../../features/auth/Register/data/register_onlineDataSource.dart'
     as _i10;
+import '../../features/auth/Register/data/register_onlineDataSource_impl.dart'
+    as _i11;
+import '../../features/auth/Register/data/register_repository_impl.dart'
+    as _i13;
+import '../../features/auth/Register/domain/register_repository.dart' as _i12;
+import '../../features/auth/Register/domain/register_useCase.dart' as _i29;
+import '../../features/auth/Register/presentation/register_validator/register_validator.dart'
+    as _i4;
+import '../../features/auth/Register/presentation/register_viewModel.dart'
+    as _i30;
+import '../../features/home/data/contracts/remote_datasource.dart' as _i14;
+import '../../features/home/data/data_sources/remote_datasource_impl.dart'
+    as _i15;
 import '../../features/home/data/repositories/home_repository_impl.dart'
-    as _i23;
-import '../../features/home/domain/repositories/home_repository.dart' as _i22;
-import '../network/api/api_manager.dart' as _i6;
-import '../network/api/network_module.dart' as _i29;
+    as _i28;
+import '../../features/home/domain/repositories/home_repository.dart' as _i27;
+import '../network/api/api_manager.dart' as _i7;
+import '../network/api/network_module.dart' as _i36;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -69,43 +81,54 @@ extension GetItInjectableX on _i1.GetIt {
     final dioModule = _$DioModule();
     gh.factory<_i3.ForgetPasswordValidator>(
         () => _i3.ForgetPasswordValidator());
-    gh.factory<_i4.LoginValidator>(() => _i4.LoginValidator());
-    gh.lazySingleton<_i5.Dio>(() => dioModule.provideDio());
-    gh.singleton<_i6.ApiManager>(() => _i6.ApiManager(gh<_i5.Dio>()));
-    gh.factory<_i7.AuthOfflineDatasource>(
-        () => _i8.AuthOfflineDatasourceImpl());
-    gh.factory<_i9.RemoteDatasource>(
-        () => _i10.RemoteDatasourceImpl(gh<_i6.ApiManager>()));
-    gh.factory<_i11.LoginOnlineDatasource>(
-        () => _i12.LoginOnlineDatasourceImpl(gh<_i6.ApiManager>()));
-    gh.factory<_i13.ForgetPasswordOnlineDatasource>(
-        () => _i14.ForgetPasswordOnlineDatasourceImpl(gh<_i6.ApiManager>()));
-    gh.factory<_i15.ForgetPasswordRepository>(() =>
-        _i16.ForgetPasswordRepositoryImpl(
-            gh<_i13.ForgetPasswordOnlineDatasource>()));
-    gh.factory<_i17.AuthOnlineDatasource>(
-        () => _i18.AuthOnlineDatasourceImpl(gh<_i6.ApiManager>()));
-    gh.factory<_i19.LoginRepo>(
-        () => _i20.LoginRepoImpl(gh<_i11.LoginOnlineDatasource>()));
-    gh.factory<_i21.LoginUsecase>(
-        () => _i21.LoginUsecase(gh<_i19.LoginRepo>()));
-    gh.factory<_i22.HomeRepository>(
-        () => _i23.HomeRepositoryImpl(gh<_i9.RemoteDatasource>()));
-    gh.factory<_i24.LoginViewModel>(
-        () => _i24.LoginViewModel(gh<_i21.LoginUsecase>()));
-    gh.factory<_i25.ForgetPasswordUsecase>(
-        () => _i25.ForgetPasswordUsecase(gh<_i15.ForgetPasswordRepository>()));
-    gh.factory<_i26.AuthRepository>(() => _i27.AuthRepositoryImpl(
-          gh<_i17.AuthOnlineDatasource>(),
-          gh<_i7.AuthOfflineDatasource>(),
+    gh.factory<_i4.RegisterValidator>(() => _i4.RegisterValidator());
+    gh.factory<_i5.LoginValidator>(() => _i5.LoginValidator());
+    gh.lazySingleton<_i6.Dio>(() => dioModule.provideDio());
+    gh.singleton<_i7.ApiManager>(() => _i7.ApiManager(gh<_i6.Dio>()));
+    gh.factory<_i8.AuthOfflineDatasource>(
+        () => _i9.AuthOfflineDatasourceImpl());
+    gh.factory<_i10.RegisterOnlineDatasource>(
+        () => _i11.RegisterOnlineDatasourceImpl(gh<_i7.ApiManager>()));
+    gh.factory<_i12.RegisterRepository>(
+        () => _i13.RegisterRepositoryImpl(gh<_i10.RegisterOnlineDatasource>()));
+    gh.factory<_i14.RemoteDatasource>(
+        () => _i15.RemoteDatasourceImpl(gh<_i7.ApiManager>()));
+    gh.factory<_i16.LoginOnlineDatasource>(
+        () => _i17.LoginOnlineDatasourceImpl(gh<_i7.ApiManager>()));
+    gh.factory<_i18.ForgetPasswordOnlineDatasource>(
+        () => _i19.ForgetPasswordOnlineDatasourceImpl(gh<_i7.ApiManager>()));
+    gh.factory<_i20.ForgetPasswordRepository>(() =>
+        _i21.ForgetPasswordRepositoryImpl(
+            gh<_i18.ForgetPasswordOnlineDatasource>()));
+    gh.factory<_i22.AuthOnlineDatasource>(
+        () => _i23.AuthOnlineDatasourceImpl(gh<_i7.ApiManager>()));
+    gh.factory<_i24.LoginRepo>(
+        () => _i25.LoginRepoImpl(gh<_i16.LoginOnlineDatasource>()));
+    gh.factory<_i26.LoginUsecase>(
+        () => _i26.LoginUsecase(gh<_i24.LoginRepo>()));
+    gh.factory<_i27.HomeRepository>(
+        () => _i28.HomeRepositoryImpl(gh<_i14.RemoteDatasource>()));
+    gh.factory<_i29.RegisterUseCase>(
+        () => _i29.RegisterUseCase(gh<_i12.RegisterRepository>()));
+    gh.factory<_i30.RegisterViewModel>(() => _i30.RegisterViewModel(
+          gh<_i29.RegisterUseCase>(),
+          gh<_i4.RegisterValidator>(),
         ));
-    gh.factory<_i28.ForegetPasswordViewmodel>(
-        () => _i28.ForegetPasswordViewmodel(
-              gh<_i25.ForgetPasswordUsecase>(),
+    gh.factory<_i31.LoginViewModel>(
+        () => _i31.LoginViewModel(gh<_i26.LoginUsecase>()));
+    gh.factory<_i32.ForgetPasswordUsecase>(
+        () => _i32.ForgetPasswordUsecase(gh<_i20.ForgetPasswordRepository>()));
+    gh.factory<_i33.AuthRepository>(() => _i34.AuthRepositoryImpl(
+          gh<_i22.AuthOnlineDatasource>(),
+          gh<_i8.AuthOfflineDatasource>(),
+        ));
+    gh.factory<_i35.ForegetPasswordViewmodel>(
+        () => _i35.ForegetPasswordViewmodel(
+              gh<_i32.ForgetPasswordUsecase>(),
               gh<_i3.ForgetPasswordValidator>(),
             ));
     return this;
   }
 }
 
-class _$DioModule extends _i29.DioModule {}
+class _$DioModule extends _i36.DioModule {}
