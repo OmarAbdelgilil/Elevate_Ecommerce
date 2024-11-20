@@ -3,4 +3,5 @@ class AppRoutes {
   static const mainLayOut = "mainLayOutRoute";
   static const forgetPassword = "forgetPasswordRoute";
   static const register = "registerRoute";
+  static const login = "login";
 }

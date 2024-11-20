@@ -5,7 +5,7 @@ import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
-import 'package:elevate_ecommerce/features/auth/Register/presentation/gender_widget.dart';
+import 'package:elevate_ecommerce/features/auth/Register/presentation/view/gender_widget.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_validator/register_validator_types_enum.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_viewModel.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -86,8 +86,8 @@ class RegisterScreen extends StatelessWidget {
             }
 
             if (state is SuccessState) {
-              Navigator.pop(context);
-               Navigator.pushNamed(context, AppRoutes.mainLayOut);
+              Navigator.of(context) .pushNamedAndRemoveUntil(AppRoutes.mainLayOut, (Route route) => false);
+         
 
             }
           },
@@ -231,7 +231,8 @@ class RegisterScreen extends StatelessWidget {
                                 fontSize: 16.sp
                             ),)
                             ,InkWell(
-                              child: Text('  ${StringsManager.login}', style: TextStyle(
+                              onTap: ()=> Navigator.pushNamed(context, AppRoutes.login)
+                              ,child: Text('  ${StringsManager.login}', style: TextStyle(
                                 decoration: TextDecoration.underline,
                                 fontWeight: FontWeight.w400,
                                 color: primaryColor,
