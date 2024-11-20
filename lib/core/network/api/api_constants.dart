@@ -6,4 +6,5 @@ class ApiConstants {
   static const String resetPasswordPath = "/v1/auth/resetPassword";
   static const String registerPath = "/v1/auth/signup";
   static const String allCategoriesPath = "/v1/categories";
+  static const String homePagePath = "/v1/home";
 }

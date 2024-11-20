@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,6 +15,12 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<Categories?>> getAllCategories() async {
     final result = await _homeDatasource.getAllCategories();
+    return result;
+  }
+
+  @override
+  Future<Result<Home?>> getHomePage() async {
+    final result = await _homeDatasource.getHomePage();
     return result;
   }
 }

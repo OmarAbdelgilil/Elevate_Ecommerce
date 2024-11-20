@@ -13,6 +13,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -55,4 +56,7 @@ abstract class ApiManager {
 
   @GET(ApiConstants.allCategoriesPath)
   Future<GetAllCategoriesResponse?> getAllCategories();
+
+  @GET(ApiConstants.homePagePath)
+  Future<HomeResponse?> getHomePage();
 }
