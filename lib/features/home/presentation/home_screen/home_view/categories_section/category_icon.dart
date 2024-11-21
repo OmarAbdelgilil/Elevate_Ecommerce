@@ -1,6 +1,7 @@
 import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryIcon extends StatelessWidget {
   final CategoryModel category;
@@ -17,8 +18,8 @@ class CategoryIcon extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          height: 64,
-          width: 68,
+          height: 64.h,
+          width: 68.w,
           decoration: const BoxDecoration(
               color: ColorManager.lightPink,
               borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -34,11 +35,11 @@ class CategoryIcon extends StatelessWidget {
           height: 2,
         ),
         SizedBox(
-          width: 68,
+          width: 68.w,
           child: Center(
             child: Text(
               capitalizeFirstLetter(category.name!),
-              style: const TextStyle(fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400),
               overflow: TextOverflow.ellipsis,
             ),
           ),

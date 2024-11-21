@@ -10,10 +10,22 @@ class MainLayoutViewModel extends ChangeNotifier {
   int _selectedIndex = 0;
 
   final List<TabItem> _tabs = [
-    TabItem(icon: SVGAssets.homeTab, label: StringsManager.homeTab, screen: const HomeScreen()),
-    TabItem(icon: SVGAssets.categoryTab, label: StringsManager.categoryTab, screen: const CategoryScreen()),
-    TabItem(icon: SVGAssets.cardTab, label:StringsManager.cardTab, screen: const CardScreen()),
-    TabItem(icon: SVGAssets.personTab, label: StringsManager.profile, screen: const ProfileScreen()),
+    TabItem(
+        icon: SVGAssets.homeTab,
+        label: StringsManager.homeTab,
+        screen: HomeScreen()),
+    TabItem(
+        icon: SVGAssets.categoryTab,
+        label: StringsManager.categoryTab,
+        screen: const CategoryScreen()),
+    TabItem(
+        icon: SVGAssets.cardTab,
+        label: StringsManager.cardTab,
+        screen: const CardScreen()),
+    TabItem(
+        icon: SVGAssets.personTab,
+        label: StringsManager.profile,
+        screen: const ProfileScreen()),
   ];
 
   int get selectedIndex => _selectedIndex;
@@ -29,7 +41,6 @@ class MainLayoutViewModel extends ChangeNotifier {
 
   Widget get currentScreen => _tabs[_selectedIndex].screen;
 }
-
 
 class TabItem {
   final String icon;

@@ -32,7 +32,7 @@ import '../../features/auth/forget_password/domain/repositories/forget_password_
 import '../../features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
     as _i32;
 import '../../features/auth/forget_password/presentation/foreget_password_viewmodel.dart'
-    as _i36;
+    as _i37;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
     as _i3;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
@@ -66,10 +66,13 @@ import '../../features/home/data/repositories/home_repository_impl.dart'
 import '../../features/home/domain/repositories/home_repository.dart' as _i27;
 import '../../features/home/domain/usecases/get_categories_usecase.dart'
     as _i35;
+import '../../features/home/domain/usecases/get_homepage_usecase.dart' as _i36;
 import '../../features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart'
-    as _i37;
+    as _i39;
+import '../../features/home/presentation/home_screen/home_screen_view_models/home_screen_viewmodel.dart'
+    as _i38;
 import '../network/api/api_manager.dart' as _i7;
-import '../network/api/network_module.dart' as _i38;
+import '../network/api/network_module.dart' as _i40;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -128,15 +131,19 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i35.GetCategoriesUsecase>(
         () => _i35.GetCategoriesUsecase(gh<_i27.HomeRepository>()));
-    gh.factory<_i36.ForegetPasswordViewmodel>(
-        () => _i36.ForegetPasswordViewmodel(
+    gh.factory<_i36.GetHomepageUsecase>(
+        () => _i36.GetHomepageUsecase(gh<_i27.HomeRepository>()));
+    gh.factory<_i37.ForegetPasswordViewmodel>(
+        () => _i37.ForegetPasswordViewmodel(
               gh<_i32.ForgetPasswordUsecase>(),
               gh<_i3.ForgetPasswordValidator>(),
             ));
-    gh.factory<_i37.CategoriesViewmodel>(
-        () => _i37.CategoriesViewmodel(gh<_i35.GetCategoriesUsecase>()));
+    gh.factory<_i38.HomeScreenViewmodel>(
+        () => _i38.HomeScreenViewmodel(gh<_i36.GetHomepageUsecase>()));
+    gh.factory<_i39.CategoriesViewmodel>(
+        () => _i39.CategoriesViewmodel(gh<_i35.GetCategoriesUsecase>()));
     return this;
   }
 }
 
-class _$DioModule extends _i38.DioModule {}
+class _$DioModule extends _i40.DioModule {}

@@ -1,11 +1,12 @@
 import 'package:elevate_ecommerce/core/di/di.dart';
-import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart';
-import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/category_icon.dart';
+import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/categories_section/category_icon.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // ignore: must_be_immutable
 class CategoriesSection extends StatelessWidget {
@@ -19,8 +20,11 @@ class CategoriesSection extends StatelessWidget {
     return BlocProvider(
         create: (context) => viewModel,
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SectionHeader(title: 'Categories', onpressed: () {}),
+            SectionHeader(
+                title: StringsManager.categoriesSectionHeader,
+                onpressed: () {}),
             BlocBuilder<CategoriesViewmodel, CategoriesState>(
               builder: (BuildContext context, CategoriesState state) {
                 if (state is LoadingState) {
@@ -32,7 +36,7 @@ class CategoriesSection extends StatelessWidget {
                 }
                 if (state is SuccessState) {
                   return SizedBox(
-                    height: 200,
+                    height: 100.h,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemCount: state.categories!.length,
@@ -44,7 +48,8 @@ class CategoriesSection extends StatelessWidget {
                   );
                 }
                 if (state is ErrorState) {
-                  return Text(extractErrorMessage(state.exception));
+                  return const Center(
+                      child: Text(StringsManager.categoriesSectionError));
                 }
                 return const Placeholder();
               },

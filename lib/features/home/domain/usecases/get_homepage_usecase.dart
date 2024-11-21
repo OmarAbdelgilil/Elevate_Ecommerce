@@ -8,7 +8,7 @@ class GetHomepageUsecase {
   final HomeRepository _homeRepository;
   GetHomepageUsecase(this._homeRepository);
 
-  Future<Result<Home?>> getCategories() async {
+  Future<Result<Home?>> getHomePage() async {
     final result = await _homeRepository.getHomePage();
     return result;
   }

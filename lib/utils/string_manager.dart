@@ -1,6 +1,6 @@
 class StringsManager {
   static const login = "login";
-  static const signUp ="Sign up";
+  static const signUp = "Sign up";
   static const subject = "subject";
   static const profile = "profile";
   static const exams = "exams";
@@ -11,7 +11,8 @@ class StringsManager {
   static const issueEmptyEamil = "Email Should Not Be Empty";
   static const validateFirstNameType = "First Name must contain only letters";
   static const validateLastNameType = "Last Name must contain only letters";
-  static const validatePhoneNumber ="Phone number must start with '+20' followed by exactly 10 digits";
+  static const validatePhoneNumber =
+      "Phone number must start with '+20' followed by exactly 10 digits";
   static const issuePasswordPattern =
       "Password should have should have numbers & characters & special letters not less than 8 characters";
   static const hintEmail = "Enter Your Email";
@@ -59,14 +60,17 @@ class StringsManager {
   static const issueEmptyPhoneNumber = "Please enter phone number";
   static const issueInvalidPhoneNumber = "Please Enter Valid phone number";
 
-
-
-
   ///// mainLayOutScreen
   static const homeTab = 'Home';
   static const categoryTab = 'Category';
   static const cardTab = 'Card';
   static const profileTab = 'Profile';
 
-
+  //HOMEPAGE
+  static const bestSellerSectionHeader = 'Best seller';
+  static const bestSellerSectionError = "Error loading bestsellers";
+  static const categoriesSectionHeader = 'Categories';
+  static const categoriesSectionError = "Error loading categories";
+  static const occasionSectionHeader = 'Occasion';
+  static const occasionSectionError = 'Error loading occasions';
 }

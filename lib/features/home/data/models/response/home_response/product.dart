@@ -4,7 +4,7 @@ class Product {
   String? slug;
   String? description;
   String? imgCover;
-  List<String>? images;
+  List<dynamic>? images;
   int? price;
   int? priceAfterDiscount;
   int? quantity;
@@ -39,7 +39,7 @@ class Product {
         slug: json['slug'] as String?,
         description: json['description'] as String?,
         imgCover: json['imgCover'] as String?,
-        images: json['images'] as List<String>?,
+        images: json['images'],
         price: json['price'] as int?,
         priceAfterDiscount: json['priceAfterDiscount'] as int?,
         quantity: json['quantity'] as int?,
