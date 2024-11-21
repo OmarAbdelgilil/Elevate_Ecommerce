@@ -24,12 +24,12 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-       theme: ThemeData(primaryColorLight: primaryColor,),
+        theme: ThemeData(
+          primaryColorLight: primaryColor,
+        ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-
-        initialRoute: AppRoutes.register,
-
+        initialRoute: AppRoutes.mainLayOut,
       ),
     );
   }
