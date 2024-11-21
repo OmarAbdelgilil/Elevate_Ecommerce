@@ -22,6 +22,8 @@ import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_
     as _i7;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
     as _i2;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+    as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -139,4 +141,13 @@ class MockApiManager extends _i1.Mock implements _i5.ApiManager {
         ),
         returnValue: _i6.Future<_i10.ResetPasswordResponse?>.value(),
       ) as _i6.Future<_i10.ResetPasswordResponse?>);
+
+  @override
+  _i6.Future<_i12.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue: _i6.Future<_i12.ProductResponse?>.value(),
+      ) as _i6.Future<_i12.ProductResponse?>);
 }

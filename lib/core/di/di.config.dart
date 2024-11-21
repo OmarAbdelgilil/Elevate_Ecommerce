@@ -32,7 +32,7 @@ import '../../features/auth/forget_password/domain/repositories/forget_password_
 import '../../features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
     as _i25;
 import '../../features/auth/forget_password/presentation/foreget_password_viewmodel.dart'
-    as _i28;
+    as _i29;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
     as _i3;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
@@ -52,8 +52,12 @@ import '../../features/home/data/data_sources/remote_datasource_impl.dart'
 import '../../features/home/data/repositories/home_repository_impl.dart'
     as _i23;
 import '../../features/home/domain/repositories/home_repository.dart' as _i22;
+import '../../features/home/domain/usecase/get_all_products_usecase.dart'
+    as _i28;
+import '../../features/home/presentation/product_widget/product_view_model/product_view_model.dart'
+    as _i30;
 import '../network/api/api_manager.dart' as _i6;
-import '../network/api/network_module.dart' as _i29;
+import '../network/api/network_module.dart' as _i31;
 
 extension GetItInjectableX on _i1.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -99,13 +103,17 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i17.AuthOnlineDatasource>(),
           gh<_i7.AuthOfflineDatasource>(),
         ));
-    gh.factory<_i28.ForegetPasswordViewmodel>(
-        () => _i28.ForegetPasswordViewmodel(
+    gh.factory<_i28.GetAllProductsUseCase>(
+        () => _i28.GetAllProductsUseCase(gh<_i22.HomeRepository>()));
+    gh.factory<_i29.ForegetPasswordViewmodel>(
+        () => _i29.ForegetPasswordViewmodel(
               gh<_i25.ForgetPasswordUsecase>(),
               gh<_i3.ForgetPasswordValidator>(),
             ));
+    gh.factory<_i30.ProductViewModel>(
+        () => _i30.ProductViewModel(gh<_i28.GetAllProductsUseCase>()));
     return this;
   }
 }
 
-class _$DioModule extends _i29.DioModule {}
+class _$DioModule extends _i31.DioModule {}

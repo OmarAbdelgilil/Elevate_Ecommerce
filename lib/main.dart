@@ -17,14 +17,17 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(411, 890),
+    return const ScreenUtilInit(
+      designSize: Size(411, 890),
       minTextAdapt: true,
+
       splitScreenMode: true,
-      child: const MaterialApp(
+      child: MaterialApp(
+
         title: 'Flower app',
+
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.mainLayOut,
+        initialRoute: AppRoutes.productWidget,
       ),
     );
   }

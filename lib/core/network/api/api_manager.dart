@@ -12,6 +12,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
+
 part 'api_manager.g.dart';
 
 @singleton
@@ -35,4 +37,8 @@ abstract class ApiManager {
   @PUT(ApiConstants.resetPasswordPath)
   Future<ResetPasswordResponse?> resetPassword(
       @Body() ResetPasswordRequest request);
+
+
+  @GET(ApiConstants.getAllProductsPath)
+  Future<ProductResponse?> getAllProducts();
 }

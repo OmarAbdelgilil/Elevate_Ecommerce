@@ -4,4 +4,5 @@ class ApiConstants {
   static const String loginPath = "/v1/auth/signin";
   static const String verifyResetCodePath = "/v1/auth/verifyResetCode";
   static const String resetPasswordPath = "/v1/auth/resetPassword";
+  static const String getAllProductsPath = "/v1/products";
 }
