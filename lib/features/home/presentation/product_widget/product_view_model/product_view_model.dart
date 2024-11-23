@@ -9,15 +9,13 @@ import 'package:injectable/injectable.dart';
 import '../../../data/models/response/product_response/Products.dart';
 import '../../base/base_cubit.dart';
 @injectable
-class ProductViewModel extends BaseCubit
-    implements  ProductViewModelOutput {
+class ProductViewModel extends BaseCubit implements ProductViewModelOutput {
   static ProductViewModel get(BuildContext context) => BlocProvider.of(context);
 
   final GetAllProductsUseCase _getAllProductsUseCase;
+  List<Products> _productList = [];
 
   ProductViewModel(this._getAllProductsUseCase);
-
-  List<Products> _productList = [];
 
   @override
   void start() {
@@ -32,29 +30,28 @@ class ProductViewModel extends BaseCubit
       final response = result.data;
       if (response != null && response.products!.isNotEmpty) {
         _productList = response.products!;
-
         emit(ContentState());
       } else {
         emit(EmptyState(message: StringsManager.noProductsFound));
-
       }
-    }
-    else if (result is Fail) {
-      final failure = result.toString();
-      emit(
-        ErrorState(
-          failure.toString() ,
-
-        ),
-      );
+    } else if (result is Fail) {
+      emit(ErrorState(result.toString()));
     }
   }
 
   @override
   List<Products> get getProducts => _productList;
+
+
+  List<Products> getProductsByCategory(String categoryId) {
+    return _productList.where((product) => product.category == categoryId).toList();
+  }
+
+
+  List<Products> getProductsByOccasion(String occasionId) {
+    return _productList.where((product) => product.occasion == occasionId).toList();
+  }
 }
-
-
 
 abstract class ProductViewModelOutput {
   List<Products> get getProducts;

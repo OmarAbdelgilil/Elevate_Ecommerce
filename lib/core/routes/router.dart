@@ -14,8 +14,7 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
     case AppRoutes.forgetPassword:
       return MaterialPageRoute(builder: (context) => ForgetPasswordScreen());
-    case AppRoutes.productWidget:
-      return MaterialPageRoute(builder: (context) => ProductScreen());
+
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }

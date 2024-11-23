@@ -1,11 +1,12 @@
-import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_card.dart';
-import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view_model/product_view_model.dart';
-import 'package:elevate_ecommerce/utils/values_manager.dart';
 import 'package:flutter/material.dart';
-class ProductScreenBody extends StatelessWidget {
-  const ProductScreenBody({super.key, required this.viewModel});
+import '../../../../data/models/response/product_response/Products.dart';
+import 'product_card.dart';
+import 'package:elevate_ecommerce/utils/values_manager.dart';
 
-  final ProductViewModel viewModel;
+class ProductScreenBody extends StatelessWidget {
+  final List<Products> products;
+
+  const ProductScreenBody({Key? key, required this.products}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,24 +14,30 @@ class ProductScreenBody extends StatelessWidget {
 
     int columns = screenWidth > AppSize.s600 ? 3 : 2;
 
-    return GridView.builder(
+    return products.isEmpty
+        ? Center(child: Text('No products found'))
+        : GridView.builder(
+      padding: const EdgeInsets.all(8.0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: columns,
         crossAxisSpacing: 8.0,
         mainAxisSpacing: 8.0,
-        childAspectRatio: 16/25.5,
+        childAspectRatio: 16 / 25.5,
       ),
-      itemCount: viewModel.getProducts.length,
+      itemCount: products.length,
       itemBuilder: (context, index) {
-        final product = viewModel.getProducts[index];
-        String discountPercentage = calculateDiscountPercentage(product.price??0, product.priceAfterDiscount??0);
+        final product = products[index];
+        String discountPercentage = calculateDiscountPercentage(
+            product.price ?? 0, product.priceAfterDiscount ?? 0);
 
         return ProductGridItem(
-          productImage: product.images?[0] ?? '',
+          productImage: product.images?.isNotEmpty == true
+              ? product.images![0]
+              : '',
           title: product.title ?? '',
           description: product.description ?? '',
           price: product.price ?? 0.0,
-          priceAfterDiscount:product.priceAfterDiscount ?? 0.0 ,
+          priceAfterDiscount: product.priceAfterDiscount ?? 0.0,
           disCount: discountPercentage,
         );
       },
@@ -46,5 +53,4 @@ class ProductScreenBody extends StatelessWidget {
 
     return "${discount.toStringAsFixed(0)}%";
   }
-
 }
