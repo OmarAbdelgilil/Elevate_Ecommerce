@@ -1,6 +1,5 @@
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
-import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/cubit/login_viewmodel.dart';
@@ -55,9 +54,6 @@ class LoginViewBody extends StatelessWidget {
       key: loginValidator.loginFormKey,
       child: Column(
         children: [
-          const CustomAppBar(
-            title: 'Login',
-          ),
           const SizedBox(height: 24),
           CustomtextField(
             hint: 'Email',
@@ -77,8 +73,8 @@ class LoginViewBody extends StatelessWidget {
             children: [
               RememberMeCheckbox(),
               TextButton(
-
-                onPressed: ()=> Navigator.pushNamed(context, AppRoutes.forgetPassword),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.forgetPassword),
                 child: const Text(
                   'Forget password?',
                   style: TextStyle(
@@ -117,7 +113,8 @@ class LoginViewBody extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               TextButton(
-                  onPressed: ()=> Navigator.pushNamed(context, AppRoutes.register),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.register),
                 child: Text(
                   'Sign up',
                   style: TextStyle(
