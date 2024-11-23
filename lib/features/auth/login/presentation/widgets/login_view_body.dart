@@ -7,6 +7,7 @@ import 'package:elevate_ecommerce/features/auth/login/presentation/login_validat
 import 'package:elevate_ecommerce/features/auth/login/presentation/login_validator/login_validator_types.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/guest_button.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/remember_me_button.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -56,15 +57,15 @@ class LoginViewBody extends StatelessWidget {
         children: [
           const SizedBox(height: 24),
           CustomtextField(
-            hint: 'Email',
-            lable: 'Enter your email',
+            hint: StringsManager.emailFieldHint,
+            lable: StringsManager.emailFieldLabel,
             controller: loginValidator.emailController,
             validator: loginValidator.validate(LoginValidatorTypes.email),
           ),
           const SizedBox(height: 24),
           CustomtextField(
-            hint: 'Password',
-            lable: 'Enter your password',
+            hint: StringsManager.hintPassword,
+            lable: StringsManager.passwordFieldLabel,
             controller: loginValidator.passwordController,
             validator: loginValidator.validate(LoginValidatorTypes.password),
           ),
