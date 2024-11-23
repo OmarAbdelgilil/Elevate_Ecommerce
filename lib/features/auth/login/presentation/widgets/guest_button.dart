@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 
 class GuestButton extends StatelessWidget {
@@ -10,12 +11,14 @@ class GuestButton extends StatelessWidget {
     return SizedBox(
         width: double.infinity,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pushNamed(AppRoutes.mainLayOut);
+          },
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(vertical: 12),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            side: BorderSide(color: Colors.black, width: 1),
+            side: const BorderSide(color: Colors.black, width: 1),
           ),
           child: const Text(
             'Continue as guest',
