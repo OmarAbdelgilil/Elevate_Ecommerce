@@ -1,4 +1,8 @@
+import 'package:elevate_ecommerce/utils/assets_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
+import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import '../../../../data/models/response/product_response/Products.dart';
 import 'product_card.dart';
 import 'package:elevate_ecommerce/utils/values_manager.dart';
@@ -15,7 +19,12 @@ class ProductScreenBody extends StatelessWidget {
     int columns = screenWidth > AppSize.s600 ? 3 : 2;
 
     return products.isEmpty
-        ? Center(child: Text('No products found'))
+        ? Center(child: Column(
+          children: [
+    Lottie.asset(LottieAssets.noContent),
+            Text(StringsManager.noProductsFound,style: AppTextStyles.title(),),
+          ],
+        ))
         : GridView.builder(
       padding: const EdgeInsets.all(8.0),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
