@@ -1,5 +1,5 @@
 import 'package:elevate_ecommerce/core/di/di.dart';
-import 'package:elevate_ecommerce/core/network/api/api_error_handler.dart';
+import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/cubit/login_viewmodel.dart';
@@ -28,15 +28,7 @@ class LoginView extends StatelessWidget {
               }
               if (state is ErrorState) {
                 scaffoldMessengerKey.currentState?.clearSnackBars();
-                var message = (state.exception);
-                var snackBarText = 'Error';
-
-                if (message is NoInternetError) {
-                  snackBarText = "No internet connection";
-                }
-                if (message is DioHttpException) {
-                  snackBarText = "Wrong Email or Password";
-                }
+                var snackBarText = extractErrorMessage(state.exception);
                 final snackBar = SnackBar(
                   content: Text(snackBarText),
                   duration: const Duration(seconds: 2),

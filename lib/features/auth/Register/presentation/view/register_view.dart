@@ -8,6 +8,7 @@ import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/view/gender_widget.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_validator/register_validator_types_enum.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_viewModel.dart';
+import 'package:elevate_ecommerce/main.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,39 +46,29 @@ class RegisterScreen extends StatelessWidget {
                 current is SuccessState;
           },
           listener: (context, state) {
-            if (state is LoadingState) {
-              showDialog(
-                context: context,
-                barrierDismissible: false,
-                builder: (context) {
-                  return const AlertDialog(
-                    content: Row(
-                      children: [
-                        CircularProgressIndicator(),
-                        SizedBox(width: 16),
-                        Text("Loading...")
-                      ],
-                    ),
-                  );
-                },
-              );
-            }
+            // if (state is LoadingState) {
+            //   showDialog(
+            //     context: context,
+            //     barrierDismissible: false,
+            //     builder: (context) {
+            //       return const AlertDialog(
+            //         content: Row(
+            //           children: [
+            //             CircularProgressIndicator(),
+            //             SizedBox(width: 16),
+            //             Text("Loading...")
+            //           ],
+            //         ),
+            //       );
+            //     },
+            //   );
+            // }
 
             if (state is ErrorState) {
-              Navigator.pop(context);
               var message = extractErrorMessage(state.exception);
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    content: Row(
-                      children: [
-                        Expanded(child: Text(message)),
-                      ],
-                    ),
-                  );
-                },
-              );
+              scaffoldMessengerKey.currentState?.clearSnackBars();
+              scaffoldMessengerKey.currentState
+                  ?.showSnackBar(SnackBar(content: Text(message)));
             }
 
             if (state is SuccessState) {
