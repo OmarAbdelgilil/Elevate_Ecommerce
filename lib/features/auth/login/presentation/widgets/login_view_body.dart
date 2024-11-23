@@ -7,6 +7,7 @@ import 'package:elevate_ecommerce/features/auth/login/presentation/login_validat
 import 'package:elevate_ecommerce/features/auth/login/presentation/login_validator/login_validator_types.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/guest_button.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/remember_me_button.dart';
+import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,40 +19,14 @@ class LoginViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginViewModel, LoginState>(
-      builder: (context, state) {
-        if (state is LoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        if (state is SuccessState) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-                AppRoutes.mainLayOut, (Route route) => false);
-          });
-          return const SizedBox();
-        }
-        if (state is ErrorState) {
-          var message = (state.exception);
-          return Center(
-            child: Text(
-              'Error: $message',
-              style: const TextStyle(color: Colors.red, fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-          );
-        }
-
-        return buildLoginForm(context);
-      },
-    );
+    return buildLoginForm(context);
   }
 
   Widget buildLoginForm(BuildContext context) {
     return Form(
       key: loginValidator.loginFormKey,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 24),
           CustomtextField(
@@ -87,20 +62,30 @@ class LoginViewBody extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
-          CustomButton(
-            text: 'Login',
-            onPressed: () {
-              if (loginValidator.loginFormKey.currentState?.validate() ??
-                  false) {
-                context.read<LoginViewModel>().handleIntent(
-                      LoginIntent(
-                        loginValidator.emailController.text,
-                        loginValidator.passwordController.text,
-                      ),
-                    );
-              }
-            },
-          ),
+          BlocBuilder<LoginViewModel, LoginState>(builder: (context, state) {
+            if (state is LoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: ColorManager.primary,
+                ),
+              );
+            }
+            return CustomButton(
+              text: 'Login',
+              onPressed: () {
+                FocusScope.of(context).unfocus();
+                if (loginValidator.loginFormKey.currentState?.validate() ??
+                    false) {
+                  context.read<LoginViewModel>().handleIntent(
+                        LoginIntent(
+                          loginValidator.emailController.text,
+                          loginValidator.passwordController.text,
+                        ),
+                      );
+                }
+              },
+            );
+          }),
           const SizedBox(height: 16),
           GuestButton(),
           const SizedBox(height: 16),
