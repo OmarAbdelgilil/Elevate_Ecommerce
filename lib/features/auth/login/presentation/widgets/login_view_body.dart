@@ -27,10 +27,8 @@ class LoginViewBody extends StatelessWidget {
         }
         if (state is SuccessState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.pushReplacementNamed(
-              context,
-              AppRoutes.home,
-            );
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                AppRoutes.mainLayOut, (Route route) => false);
           });
           return const SizedBox();
         }

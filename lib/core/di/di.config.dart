@@ -45,7 +45,7 @@ import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i26;
 import '../../features/auth/login/presentation/cubit/login_viewmodel.dart'
     as _i31;
 import '../../features/auth/login/presentation/login_validator/login_validator.dart'
-    as _i5;
+    as _i4;
 import '../../features/auth/Register/data/register_onlineDataSource.dart'
     as _i10;
 import '../../features/auth/Register/data/register_onlineDataSource_impl.dart'
@@ -55,7 +55,7 @@ import '../../features/auth/Register/data/register_repository_impl.dart'
 import '../../features/auth/Register/domain/register_repository.dart' as _i12;
 import '../../features/auth/Register/domain/register_useCase.dart' as _i29;
 import '../../features/auth/Register/presentation/register_validator/register_validator.dart'
-    as _i4;
+    as _i5;
 import '../../features/auth/Register/presentation/register_viewModel.dart'
     as _i30;
 import '../../features/home/data/contracts/remote_datasource.dart' as _i14;
@@ -81,8 +81,8 @@ extension GetItInjectableX on _i1.GetIt {
     final dioModule = _$DioModule();
     gh.factory<_i3.ForgetPasswordValidator>(
         () => _i3.ForgetPasswordValidator());
-    gh.factory<_i4.RegisterValidator>(() => _i4.RegisterValidator());
-    gh.factory<_i5.LoginValidator>(() => _i5.LoginValidator());
+    gh.factory<_i4.LoginValidator>(() => _i4.LoginValidator());
+    gh.factory<_i5.RegisterValidator>(() => _i5.RegisterValidator());
     gh.lazySingleton<_i6.Dio>(() => dioModule.provideDio());
     gh.singleton<_i7.ApiManager>(() => _i7.ApiManager(gh<_i6.Dio>()));
     gh.factory<_i8.AuthOfflineDatasource>(
@@ -112,7 +112,7 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i29.RegisterUseCase(gh<_i12.RegisterRepository>()));
     gh.factory<_i30.RegisterViewModel>(() => _i30.RegisterViewModel(
           gh<_i29.RegisterUseCase>(),
-          gh<_i4.RegisterValidator>(),
+          gh<_i5.RegisterValidator>(),
         ));
     gh.factory<_i31.LoginViewModel>(
         () => _i31.LoginViewModel(gh<_i26.LoginUsecase>()));

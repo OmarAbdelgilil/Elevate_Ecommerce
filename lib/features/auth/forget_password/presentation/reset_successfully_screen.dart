@@ -1,5 +1,6 @@
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
@@ -28,7 +29,7 @@ class ResetSuccessfullyScreen extends StatelessWidget {
                 height: 5.h,
               ),
               Text(
-                "Password reset successfully!",
+                StringsManager.passwordResetSuccess,
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
               ),
             ],
