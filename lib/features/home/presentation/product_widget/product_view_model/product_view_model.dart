@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_usecase.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
@@ -8,7 +9,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../core/common/api_result.dart';
 import '../../../../../core/network/services/shared_preferences_service.dart';
 import '../../../../../utils/string_manager.dart';
+import '../../../data/models/response/best_seller_product_response/BestSeller.dart';
 import '../../../data/models/response/product_response/ProductResponse.dart';
+import '../../../domain/usecase/get_all_best_seller_products_usecase.dart';
 import '../../base/base_cubit.dart';
 import '../../base/base_states.dart';
 enum FilterType { all, category, occasion }
@@ -18,11 +21,13 @@ enum FilterType { all, category, occasion }
 @injectable
 class ProductViewModel extends BaseCubit {
   final GetAllProductsUseCase _getAllProductsUseCase;
+  final GetAllBestSellerProductsUseCase _getAllBestSellerProductsUseCase;
   final SharedPreferencesService _sharedPreferencesService;
 
   List<Products> _productList = [];
+  List<BestSeller> _bestSellerProductList = [];
 
-  ProductViewModel(this._getAllProductsUseCase, this._sharedPreferencesService);
+  ProductViewModel(this._getAllProductsUseCase, this._sharedPreferencesService, this._getAllBestSellerProductsUseCase);
 
   @override
   void start() => _fetchAllProducts();
@@ -62,6 +67,8 @@ class ProductViewModel extends BaseCubit {
     return _productList.where((product) => product.occasion == occasionId).toList();
   }
 
+
+
   List<Products> getProductsByFilter(String filterType, String id) {
     if (filterType == "all") {
       return _productList;
@@ -72,6 +79,36 @@ class ProductViewModel extends BaseCubit {
     }
     return [];
   }
+
+  Future<void> fetchBestSellerProducts() async {
+    emit(LoadingState());
+
+    final cachedData = await _sharedPreferencesService.getCachedBestSellerProducts();
+    if (cachedData != null) {
+      _bestSellerProductList = cachedData;
+      emit(ContentState());
+      return;
+    }
+
+    final result = await _getAllBestSellerProductsUseCase.getAllProducts();
+    if (result is Success<BestSellerProductResponse?>) {
+      final response = result.data;
+      if (response != null && response.bestSeller!.isNotEmpty) {
+        _bestSellerProductList = response.bestSeller!;
+
+        _sharedPreferencesService.cacheBestSellerProducts(_bestSellerProductList);
+
+        emit(ContentState());
+      } else {
+        emit(EmptyState(message: StringsManager.noProductsFound));
+      }
+    } else if (result is Fail) {
+      emit(ErrorState(result.toString()));
+    }
+  }
+
+  List<BestSeller> get bestSellerProducts => _bestSellerProductList;
+
 }
 
 

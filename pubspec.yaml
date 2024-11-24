@@ -59,7 +59,7 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints:
   injectable_generator:   
-  build_runner: 
+  build_runner: ^2.4.9 
   retrofit_generator: '>=8.0.0 <10.0.0'
   json_serializable:
 

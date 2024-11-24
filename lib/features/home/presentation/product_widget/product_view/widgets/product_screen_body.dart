@@ -40,9 +40,7 @@ class ProductScreenBody extends StatelessWidget {
             product.price ?? 0, product.priceAfterDiscount ?? 0);
 
         return ProductGridItem(
-          productImage: product.images?.isNotEmpty == true
-              ? product.images![0]
-              : '',
+          productImage: product.imgCover  ??'',
           title: product.title ?? '',
           description: product.description ?? '',
           price: product.price ?? 0.0,

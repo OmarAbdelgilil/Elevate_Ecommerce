@@ -12,7 +12,7 @@ class MainLayoutViewModel extends ChangeNotifier {
   final List<TabItem> _tabs = [
     TabItem(icon: SVGAssets.homeTab, label: StringsManager.homeTab, screen: const HomeScreen()),
     TabItem(icon: SVGAssets.categoryTab, label: StringsManager.categoryTab, screen: const CategoryScreen()),
-    TabItem(icon: SVGAssets.cardTab, label:StringsManager.cardTab, screen: const CardScreen()),
+    TabItem(icon: SVGAssets.cardTab, label:StringsManager.cardTab, screen:  CardScreen()),
     TabItem(icon: SVGAssets.personTab, label: StringsManager.profile, screen: const ProfileScreen()),
   ];
 

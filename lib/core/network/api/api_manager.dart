@@ -9,6 +9,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requ
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -41,4 +42,8 @@ abstract class ApiManager {
 
   @GET(ApiConstants.getAllProductsPath)
   Future<ProductResponse?> getAllProducts();
+
+
+  @GET(ApiConstants.getAllBestSellerProductsPath)
+  Future<BestSellerProductResponse?> getAllBestSellerProducts();
 }

@@ -33,7 +33,7 @@ import '../../features/auth/forget_password/domain/repositories/forget_password_
 import '../../features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
     as _i27;
 import '../../features/auth/forget_password/presentation/foreget_password_viewmodel.dart'
-    as _i31;
+    as _i33;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
     as _i4;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
@@ -53,12 +53,14 @@ import '../../features/home/data/data_sources/remote_datasource_impl.dart'
 import '../../features/home/data/repositories/home_repository_impl.dart'
     as _i25;
 import '../../features/home/domain/repositories/home_repository.dart' as _i24;
+import '../../features/home/domain/usecase/get_all_best_seller_products_usecase.dart'
+    as _i31;
 import '../../features/home/domain/usecase/get_all_products_usecase.dart'
     as _i30;
 import '../../features/home/presentation/product_widget/product_view_model/product_view_model.dart'
     as _i32;
 import '../network/api/api_manager.dart' as _i7;
-import '../network/api/network_module.dart' as _i33;
+import '../network/api/network_module.dart' as _i34;
 import '../network/services/shared_preferences_service.dart' as _i20;
 
 extension GetItInjectableX on _i1.GetIt {
@@ -114,19 +116,22 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i30.GetAllProductsUseCase>(
         () => _i30.GetAllProductsUseCase(gh<_i24.HomeRepository>()));
-    gh.factory<_i31.ForegetPasswordViewmodel>(
-        () => _i31.ForegetPasswordViewmodel(
-              gh<_i27.ForgetPasswordUsecase>(),
-              gh<_i4.ForgetPasswordValidator>(),
-            ));
+    gh.factory<_i31.GetAllBestSellerProductsUseCase>(
+        () => _i31.GetAllBestSellerProductsUseCase(gh<_i24.HomeRepository>()));
     gh.factory<_i32.ProductViewModel>(() => _i32.ProductViewModel(
           gh<_i30.GetAllProductsUseCase>(),
           gh<_i20.SharedPreferencesService>(),
+          gh<_i31.GetAllBestSellerProductsUseCase>(),
         ));
+    gh.factory<_i33.ForegetPasswordViewmodel>(
+        () => _i33.ForegetPasswordViewmodel(
+              gh<_i27.ForgetPasswordUsecase>(),
+              gh<_i4.ForgetPasswordValidator>(),
+            ));
     return this;
   }
 }
 
 class _$RegisterModule extends _i20.RegisterModule {}
 
-class _$DioModule extends _i33.DioModule {}
+class _$DioModule extends _i34.DioModule {}
