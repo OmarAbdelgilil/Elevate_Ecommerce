@@ -2,10 +2,11 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/register_useCase.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_validator/register_validator.dart';
-import 'package:elevate_ecommerce/features/auth/user.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+
 @injectable
 class RegisterViewModel extends Cubit<RegisterScreenState> {
   final RegisterUseCase registerUseCase;
@@ -19,12 +20,13 @@ class RegisterViewModel extends Cubit<RegisterScreenState> {
   final ValueNotifier<bool> fieldsFilledNotifier = ValueNotifier(false);
 
   void _onFieldsChanged() {
-    fieldsFilledNotifier.value = registerValidator.firstNameController.text.isNotEmpty &&
-        registerValidator.lastNameController.text.isNotEmpty &&
-        registerValidator.emailController.text.isNotEmpty &&
-        registerValidator.phoneController.text.isNotEmpty &&
-        registerValidator.passwordController.text.isNotEmpty &&
-        registerValidator.confirmPasswordController.text.isNotEmpty;
+    fieldsFilledNotifier.value =
+        registerValidator.firstNameController.text.isNotEmpty &&
+            registerValidator.lastNameController.text.isNotEmpty &&
+            registerValidator.emailController.text.isNotEmpty &&
+            registerValidator.phoneController.text.isNotEmpty &&
+            registerValidator.passwordController.text.isNotEmpty &&
+            registerValidator.confirmPasswordController.text.isNotEmpty;
   }
 
   void doIntent(RegisterScreenIntent intent) {
@@ -45,14 +47,13 @@ class RegisterViewModel extends Cubit<RegisterScreenState> {
       return;
     }
     var result = await registerUseCase.register(RegisterRequest(
-      email: registerValidator.emailController.text,
-      firstName: registerValidator.firstNameController.text,
-      lastName: registerValidator.lastNameController.text,
-      password: registerValidator.passwordController.text,
-      rePassword: registerValidator.confirmPasswordController.text,
-      phone: registerValidator.phoneController.text,
-      gender:intent.gender
-    ));
+        email: registerValidator.emailController.text,
+        firstName: registerValidator.firstNameController.text,
+        lastName: registerValidator.lastNameController.text,
+        password: registerValidator.passwordController.text,
+        rePassword: registerValidator.confirmPasswordController.text,
+        phone: registerValidator.phoneController.text,
+        gender: intent.gender));
 
     switch (result) {
       case Success<User?>():
@@ -64,22 +65,22 @@ class RegisterViewModel extends Cubit<RegisterScreenState> {
         emit(ErrorState(result.exception));
         break;
     }
-
   }
 
   void _checkfields() {
-    fieldsFilledNotifier.value = registerValidator.firstNameController.text.isNotEmpty &&
-        registerValidator.lastNameController.text.isNotEmpty &&
-        registerValidator.emailController.text.isNotEmpty &&
-        registerValidator.phoneController.text.isNotEmpty &&
-        registerValidator.passwordController.text.isNotEmpty &&
-        registerValidator.confirmPasswordController.text.isNotEmpty;
+    fieldsFilledNotifier.value =
+        registerValidator.firstNameController.text.isNotEmpty &&
+            registerValidator.lastNameController.text.isNotEmpty &&
+            registerValidator.emailController.text.isNotEmpty &&
+            registerValidator.phoneController.text.isNotEmpty &&
+            registerValidator.passwordController.text.isNotEmpty &&
+            registerValidator.confirmPasswordController.text.isNotEmpty;
   }
 }
 
+sealed class RegisterScreenIntent {}
 
-sealed class RegisterScreenIntent{}
-class RegisterIntent extends RegisterScreenIntent{
+class RegisterIntent extends RegisterScreenIntent {
   String firstName;
   String lastName;
   String email;
@@ -88,47 +89,24 @@ class RegisterIntent extends RegisterScreenIntent{
   String phone;
   String gender;
 
-
-  RegisterIntent(this.gender,this.firstName,this.lastName,this.email,this.password,this.rePassword,this.phone);
+  RegisterIntent(this.gender, this.firstName, this.lastName, this.email,
+      this.password, this.rePassword, this.phone);
 }
 
-class CheckfieldsInent extends RegisterScreenIntent{
+class CheckfieldsInent extends RegisterScreenIntent {}
 
-}
+sealed class RegisterScreenState {}
 
-sealed class RegisterScreenState{}
-class InitialState extends RegisterScreenState{}
-class LoadingState extends RegisterScreenState{}
+class InitialState extends RegisterScreenState {}
 
-class ErrorState extends RegisterScreenState{
+class LoadingState extends RegisterScreenState {}
+
+class ErrorState extends RegisterScreenState {
   Exception? exception;
   ErrorState(this.exception);
 }
-class SuccessState extends RegisterScreenState{
+
+class SuccessState extends RegisterScreenState {
   User? user;
   SuccessState(this.user);
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

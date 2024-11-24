@@ -7,6 +7,7 @@ import 'dart:async' as _i5;
 import 'dart:ui' as _i16;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i6;
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart' as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i8;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -17,8 +18,6 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
     as _i7;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
     as _i10;
-import 'package:elevate_ecommerce/features/auth/forget_password/domain/models/user.dart'
-    as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
