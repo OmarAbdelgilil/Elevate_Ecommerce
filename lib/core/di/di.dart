@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:injectable/injectable.dart';
 
+import '../network/services/shared_preferences_service.dart';
 import 'di.config.dart';
 
 final getIt = GetIt.instance;
