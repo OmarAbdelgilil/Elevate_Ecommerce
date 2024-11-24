@@ -16,7 +16,7 @@ class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
 
   final loginValidator = LoginValidator();
-
+  final ValueNotifier<bool> rememberMeNotifier = ValueNotifier(false);
   @override
   Widget build(BuildContext context) {
     return buildLoginForm(context);
@@ -37,6 +37,7 @@ class LoginViewBody extends StatelessWidget {
           ),
           const SizedBox(height: 24),
           CustomtextField(
+            obscureText: true,
             hint: StringsManager.hintPassword,
             lable: StringsManager.passwordFieldLabel,
             controller: loginValidator.passwordController,
@@ -45,7 +46,7 @@ class LoginViewBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              RememberMeCheckbox(),
+              RememberMeCheckbox(notifier: rememberMeNotifier),
               TextButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, AppRoutes.forgetPassword),
@@ -73,13 +74,16 @@ class LoginViewBody extends StatelessWidget {
             return CustomButton(
               text: 'Login',
               onPressed: () {
-                FocusScope.of(context).unfocus();
                 if (loginValidator.loginFormKey.currentState?.validate() ??
                     false) {
+                  final rememberMeState = rememberMeNotifier.value;
+                  print("Remember Me checkbox state: $rememberMeState");
+
                   context.read<LoginViewModel>().handleIntent(
                         LoginIntent(
-                          loginValidator.emailController.text,
-                          loginValidator.passwordController.text,
+                          email: loginValidator.emailController.text,
+                          password: loginValidator.passwordController.text,
+                          rememberMe: rememberMeState,
                         ),
                       );
                 }
