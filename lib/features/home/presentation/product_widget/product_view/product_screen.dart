@@ -29,8 +29,9 @@ class ProductScreen extends StatelessWidget {
             Builder(
               builder: (context) {
                 final viewModel = context.read<ProductViewModel>();
-                final filteredProducts =
-                viewModel.getProductsByFilter(filterType, id);
+                final filteredProducts = viewModel.getProductsByFilter(filterType, id);
+
+
 
                 return ProductScreenBody(products: filteredProducts);
               },
