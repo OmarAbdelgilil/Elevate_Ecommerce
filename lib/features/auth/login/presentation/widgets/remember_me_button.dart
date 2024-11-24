@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
 
-class RememberMeCheckbox extends StatefulWidget {
-  const RememberMeCheckbox({super.key});
+class RememberMeCheckbox extends StatelessWidget {
+  final ValueNotifier<bool> notifier;
 
-  @override
-  RememberMeCheckboxState createState() => RememberMeCheckboxState();
-}
-
-class RememberMeCheckboxState extends State<RememberMeCheckbox> {
-  bool isChecked = false;
+  const RememberMeCheckbox({super.key, required this.notifier});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(
-          value: isChecked,
-          onChanged: (bool? value) {
-            setState(() {
-              isChecked = value!;
-            });
+        ValueListenableBuilder<bool>(
+          valueListenable: notifier,
+          builder: (context, isChecked, _) {
+            return Checkbox(
+              value: isChecked,
+              onChanged: (bool? value) {
+                notifier.value = value ?? false;
+              },
+            );
           },
         ),
         const Text(

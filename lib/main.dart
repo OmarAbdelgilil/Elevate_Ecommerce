@@ -3,22 +3,31 @@ import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/routes/router.dart';
+import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
-  Bloc.observer = SimpleBlocObserver();
-  runApp(const MyApp());
+  final TokenStorage tokenStorage = TokenStorage();
+  final String? token = await tokenStorage.getToken();
+  print("Token retrieved: $token");
+
+  final String initialRoute =
+      token != null ? AppRoutes.mainLayOut : AppRoutes.login;
+
+  runApp(MyApp(initialRoute: initialRoute));
 }
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
     GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final String initialRoute;
+
+  const MyApp({super.key, required this.initialRoute});
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -33,7 +42,7 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.login,
+        initialRoute: initialRoute,
       ),
     );
   }

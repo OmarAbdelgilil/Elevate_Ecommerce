@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce/features/auth/login/domain/use_cases/login_usecase.dart';
+import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/common/api_result.dart';
 
@@ -10,7 +11,7 @@ class LoginViewModel extends Cubit<LoginState> {
   final LoginUsecase loginUsecase;
 
   LoginViewModel(this.loginUsecase) : super(InitialState());
-
+  final TokenStorage _tokenStorage = TokenStorage();
   void handleIntent(LoginScreenIntent intent) {
     switch (intent) {
       case LoginIntent _:
@@ -29,6 +30,10 @@ class LoginViewModel extends Cubit<LoginState> {
       final result = await loginUsecase.login(loginRequest);
 
       if (result is Success<LoginResponse>) {
+        if (intent.rememberMe) {
+          await _tokenStorage.saveToken(result.data!.token!);
+        }
+
         emit(SuccessState(result.data));
       } else if (result is Fail<LoginResponse>) {
         emit(ErrorState(result.exception));
@@ -47,7 +52,10 @@ sealed class LoginScreenIntent {}
 final class LoginIntent extends LoginScreenIntent {
   final String email;
   final String password;
-  LoginIntent(this.email, this.password);
+  final bool rememberMe;
+
+  LoginIntent(
+      {required this.email, required this.password, required this.rememberMe});
 }
 
 sealed class LoginState {}
