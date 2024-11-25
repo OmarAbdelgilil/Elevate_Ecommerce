@@ -75,7 +75,7 @@ class LoginViewBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              RememberMeCheckbox(),
+              const RememberMeCheckbox(),
               TextButton(
 
                 onPressed: ()=> Navigator.pushNamed(context, AppRoutes.forgetPassword),
@@ -107,7 +107,7 @@ class LoginViewBody extends StatelessWidget {
             },
           ),
           const SizedBox(height: 16),
-          GuestButton(),
+          const GuestButton(),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -118,7 +118,7 @@ class LoginViewBody extends StatelessWidget {
               ),
               TextButton(
                   onPressed: ()=> Navigator.pushNamed(context, AppRoutes.register),
-                child: Text(
+                child: const Text(
                   'Sign up',
                   style: TextStyle(
                     color: primaryColor,

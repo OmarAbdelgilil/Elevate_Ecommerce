@@ -12,11 +12,13 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
+import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
 
 part 'api_manager.g.dart';
 
@@ -52,4 +54,11 @@ abstract class ApiManager {
   @PUT(ApiConstants.resetPasswordPath)
   Future<ResetPasswordResponse?> resetPassword(
       @Body() ResetPasswordRequest request);
+
+
+  @GET(ApiConstants.getAllProductsPath)
+  Future<ProductResponse?> getAllProducts();
+
+  @GET("${ApiConstants.getProductDetailsPath}/{productId}")
+  Future<ProductDetailsResponse?> getProductDetails(@Path("productId") String productId);
 }

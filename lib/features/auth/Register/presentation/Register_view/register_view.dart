@@ -5,9 +5,9 @@ import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
-import 'package:elevate_ecommerce/features/auth/Register/presentation/view/gender_widget.dart';
+import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_view/gender_widget.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_validator/register_validator_types_enum.dart';
-import 'package:elevate_ecommerce/features/auth/Register/presentation/register_viewModel.dart';
+import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_viewModel/register_viewModel.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -55,7 +55,7 @@ class RegisterScreen extends StatelessWidget {
                 context: context,
                 barrierDismissible: false,
                 builder: (context) {
-                  return AlertDialog(
+                  return const AlertDialog(
                     content: Row(
                       children: [
                         CircularProgressIndicator(),

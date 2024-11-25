@@ -12,10 +12,10 @@ class GuestButton extends StatelessWidget {
         child: ElevatedButton(
           onPressed: () {},
           style: ElevatedButton.styleFrom(
-            padding: EdgeInsets.symmetric(vertical: 12),
+            padding: const EdgeInsets.symmetric(vertical: 12),
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
-            side: BorderSide(color: Colors.black, width: 1),
+            side: const BorderSide(color: Colors.black, width: 1),
           ),
           child: const Text(
             'Continue as guest',

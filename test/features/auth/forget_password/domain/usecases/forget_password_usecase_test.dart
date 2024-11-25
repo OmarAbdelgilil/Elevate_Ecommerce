@@ -99,8 +99,8 @@ void main() {
 
     test('resetPassword calls resetPassword on ForgetPasswordRepository',
         () async {
-      final email = 'test@example.com';
-      final newPassword = 'newPassword123';
+      const email = 'test@example.com';
+      const newPassword = 'newPassword123';
       final mockUser = User(
         username: 'testuser',
         firstName: 'Test',
