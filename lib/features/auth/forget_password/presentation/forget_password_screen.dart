@@ -1,7 +1,9 @@
 import 'package:elevate_ecommerce/core/di/di.dart';
+import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 //import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/foreget_password_viewmodel.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_validator/forget_password_validator_types_enum.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/presentation/reset_successfully_screen.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/verify_email.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/verify_otp.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/verify_password.dart';
@@ -34,12 +36,7 @@ class ForgetPasswordScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => viewModel,
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'Password',
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
-        ),
+        appBar: customAppBar(title: 'Password'),
         body: BlocBuilder<ForegetPasswordViewmodel, ForgetPasswordState>(
           builder: (context, state) {
             if (state is LoadingState) {
@@ -79,7 +76,9 @@ class ForgetPasswordScreen extends StatelessWidget {
               ));
             }
             if (state is SuccessState) {
-              //tbd Navigator.pushNamed(context, AppRoutes.login);
+              return ResetSuccessfullyScreen(
+                mainContext: context,
+              );
             }
             return Center(
                 child: VerifyEmail(

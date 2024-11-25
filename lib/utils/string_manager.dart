@@ -1,6 +1,6 @@
 class StringsManager {
   static const login = "login";
-  static const signUp ="Sign up";
+  static const signUp = "Sign up";
   static const subject = "subject";
   static const profile = "profile";
   static const exams = "exams";
@@ -11,7 +11,8 @@ class StringsManager {
   static const issueEmptyEamil = "Email Should Not Be Empty";
   static const validateFirstNameType = "First Name must contain only letters";
   static const validateLastNameType = "Last Name must contain only letters";
-  static const validatePhoneNumber ="Phone number must start with '+20' followed by exactly 10 digits";
+  static const validatePhoneNumber =
+      "Phone number must start with '+20' followed by exactly 10 digits";
   static const issuePasswordPattern =
       "Password should have should have numbers & characters & special letters not less than 8 characters";
   static const hintEmail = "Enter Your Email";
@@ -64,6 +65,7 @@ class StringsManager {
 
 
 
+  static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen
   static const homeTab = 'Home';

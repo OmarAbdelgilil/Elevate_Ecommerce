@@ -2,7 +2,7 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_viewModel/register_viewModel.dart';
-import 'package:elevate_ecommerce/features/auth/user.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';

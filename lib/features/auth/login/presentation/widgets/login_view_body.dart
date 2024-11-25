@@ -1,6 +1,5 @@
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
-import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/cubit/login_viewmodel.dart';
@@ -8,6 +7,8 @@ import 'package:elevate_ecommerce/features/auth/login/presentation/login_validat
 import 'package:elevate_ecommerce/features/auth/login/presentation/login_validator/login_validator_types.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/guest_button.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/remember_me_button.dart';
+import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,70 +16,40 @@ class LoginViewBody extends StatelessWidget {
   LoginViewBody({super.key});
 
   final loginValidator = LoginValidator();
-
+  final ValueNotifier<bool> rememberMeNotifier = ValueNotifier(false);
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LoginViewModel, LoginState>(
-      builder: (context, state) {
-        if (state is LoadingState) {
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        }
-        if (state is SuccessState) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            Navigator.pushReplacementNamed(
-              context,
-              AppRoutes.home,
-            );
-          });
-          return const SizedBox();
-        }
-        if (state is ErrorState) {
-          var message = (state.exception);
-          return Center(
-            child: Text(
-              'Error: $message',
-              style: const TextStyle(color: Colors.red, fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-          );
-        }
-
-        return buildLoginForm(context);
-      },
-    );
+    return buildLoginForm(context);
   }
 
   Widget buildLoginForm(BuildContext context) {
     return Form(
       key: loginValidator.loginFormKey,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          const CustomAppBar(
-            title: 'Login',
-          ),
           const SizedBox(height: 24),
           CustomtextField(
-            hint: 'Email',
-            lable: 'Enter your email',
+            hint: StringsManager.emailFieldHint,
+            lable: StringsManager.emailFieldLabel,
             controller: loginValidator.emailController,
             validator: loginValidator.validate(LoginValidatorTypes.email),
           ),
           const SizedBox(height: 24),
           CustomtextField(
-            hint: 'Password',
-            lable: 'Enter your password',
+            obscureText: true,
+            hint: StringsManager.hintPassword,
+            lable: StringsManager.passwordFieldLabel,
             controller: loginValidator.passwordController,
             validator: loginValidator.validate(LoginValidatorTypes.password),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const RememberMeCheckbox(),
+              RememberMeCheckbox(notifier: rememberMeNotifier),
               TextButton(
-
-                onPressed: ()=> Navigator.pushNamed(context, AppRoutes.forgetPassword),
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.forgetPassword),
                 child: const Text(
                   'Forget password?',
                   style: TextStyle(
@@ -92,22 +63,35 @@ class LoginViewBody extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
-          CustomButton(
-            text: 'Login',
-            onPressed: () {
-              if (loginValidator.loginFormKey.currentState?.validate() ??
-                  false) {
-                context.read<LoginViewModel>().handleIntent(
-                      LoginIntent(
-                        loginValidator.emailController.text,
-                        loginValidator.passwordController.text,
-                      ),
-                    );
-              }
-            },
-          ),
+          BlocBuilder<LoginViewModel, LoginState>(builder: (context, state) {
+            if (state is LoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(
+                  color: ColorManager.primary,
+                ),
+              );
+            }
+            return CustomButton(
+              text: 'Login',
+              onPressed: () {
+                if (loginValidator.loginFormKey.currentState?.validate() ??
+                    false) {
+                  final rememberMeState = rememberMeNotifier.value;
+                  print("Remember Me checkbox state: $rememberMeState");
+
+                  context.read<LoginViewModel>().handleIntent(
+                        LoginIntent(
+                          email: loginValidator.emailController.text,
+                          password: loginValidator.passwordController.text,
+                          rememberMe: rememberMeState,
+                        ),
+                      );
+                }
+              },
+            );
+          }),
           const SizedBox(height: 16),
-          const GuestButton(),
+          GuestButton(),
           const SizedBox(height: 16),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -117,8 +101,9 @@ class LoginViewBody extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               TextButton(
-                  onPressed: ()=> Navigator.pushNamed(context, AppRoutes.register),
-                child: const Text(
+                onPressed: () =>
+                    Navigator.pushNamed(context, AppRoutes.register),
+                child: Text(
                   'Sign up',
                   style: TextStyle(
                     color: primaryColor,

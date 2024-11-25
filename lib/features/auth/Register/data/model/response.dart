@@ -1,4 +1,4 @@
-import 'package:elevate_ecommerce/features/auth/user.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 
 class RegisterResponse {
   String? message;
@@ -9,7 +9,6 @@ class RegisterResponse {
   RegisterResponse({this.message, this.token, this.user, this.error});
 
   factory RegisterResponse.fromJson(Map<String, dynamic> json) {
-
     if (json.containsKey('error')) {
       return RegisterResponse(
         error: json['error'] as String?,
@@ -21,16 +20,14 @@ class RegisterResponse {
       user: json['user'] == null
           ? null
           : User.fromJson(json['user'] as Map<String, dynamic>),
-          error: json['error'] as String?,
+      error: json['error'] as String?,
     );
   }
 
   Map<String, dynamic> toJson() => {
-    'message': message,
-    'token': token,
-    'user': user?.toJson(),
-    'error': error,
-  };
+        'message': message,
+        'token': token,
+        'user': user?.toJson(),
+        'error': error,
+      };
 }
-
-

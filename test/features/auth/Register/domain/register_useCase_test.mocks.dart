@@ -6,11 +6,11 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart' as _i5;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i6;
 import 'package:elevate_ecommerce/features/auth/Register/domain/repository/register_repository.dart'
     as _i2;
-import 'package:elevate_ecommerce/features/auth/user.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i7;
 

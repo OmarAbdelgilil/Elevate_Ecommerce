@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/contracts/forget_password_online_datasource.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
@@ -6,7 +7,6 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requ
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/repositories/forget_password_repository_impl.dart';
-import 'package:elevate_ecommerce/features/auth/forget_password/domain/models/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

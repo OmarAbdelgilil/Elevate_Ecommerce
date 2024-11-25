@@ -7,13 +7,13 @@ import 'dart:async' as _i5;
 import 'dart:ui' as _i11;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i6;
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart' as _i7;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i8;
 import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator.dart'
     as _i10;
-import 'package:elevate_ecommerce/features/auth/user.dart' as _i7;
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/material.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;

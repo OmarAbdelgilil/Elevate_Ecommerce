@@ -1,4 +1,4 @@
-import 'package:elevate_ecommerce/features/auth/login/domain/entities/user.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 
 class UserDto {
   UserDto({
@@ -7,6 +7,8 @@ class UserDto {
     this.firstName,
     this.lastName,
     this.email,
+    this.gender,
+    this.role,
     this.phone,
     this.isVerified,
     this.token,
@@ -18,6 +20,10 @@ class UserDto {
     firstName = json['firstName'];
     lastName = json['lastName'];
     email = json['email'];
+    gender:
+    json['gender'];
+    role:
+    json['role'];
     phone = json['phone'];
     isVerified = json['isVerified'];
     token = json['token'];
@@ -27,6 +33,8 @@ class UserDto {
   String? firstName;
   String? lastName;
   String? email;
+  String? gender;
+  String? role;
   String? phone;
   bool? isVerified;
   String? token;
@@ -38,6 +46,8 @@ class UserDto {
     map['firstName'] = firstName;
     map['lastName'] = lastName;
     map['email'] = email;
+    map['gender'] = gender;
+    map['role'] = role;
     map['phone'] = phone;
     map['isVerified'] = isVerified;
     map['token'] = token;
@@ -51,6 +61,8 @@ class UserDto {
         firstName: firstName,
         lastName: lastName,
         email: email,
+        gender: gender,
+        role: role,
         phone: phone,
         isVerified: isVerified,
         token: token);

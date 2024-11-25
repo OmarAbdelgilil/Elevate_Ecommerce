@@ -2,7 +2,7 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/dataSource/register_onlineDataSource.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/repository_impl/register_repository_impl.dart';
-import 'package:elevate_ecommerce/features/auth/user.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
