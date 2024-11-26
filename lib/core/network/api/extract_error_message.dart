@@ -1,18 +1,17 @@
 import 'package:elevate_ecommerce/core/network/api/api_error_handler.dart';
 
-
-String extractErrorMessage(Exception? exception){
-  print(exception);
+String extractErrorMessage(Exception? exception) {
   var message = "something went wrong";
-  if(exception is NoInternetError){
+  if (exception is NoInternetError) {
     message = "please check internet connection";
-  }else if (exception is ServerError){
-    message = exception.serverMessage ??"something went wrong";
-  }else if(exception is DioHttpException){
-    if(exception.exception?.response?.statusCode == 409){
+  } else if (exception is ServerError) {
+    message = exception.serverMessage ?? "something went wrong";
+  } else if (exception is DioHttpException) {
+    if (exception.exception?.response?.statusCode == 409) {
       message = "user already exists";
     }
-    message = exception.exception?.message ?? "something went wrong";
+    message =
+        exception.exception?.response!.data['error'] ?? "something went wrong";
   }
   return message;
 }

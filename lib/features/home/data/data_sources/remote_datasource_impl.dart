@@ -5,8 +5,11 @@ import 'package:elevate_ecommerce/features/home/data/DTOs/categories_DTO.dart';
 import 'package:elevate_ecommerce/features/home/data/DTOs/home_dto.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../core/network/api/api_execution.dart';
 import '../contracts/remote_datasource.dart';
 
 @Injectable(as: RemoteDatasource)
@@ -36,6 +39,14 @@ class RemoteDatasourceImpl implements RemoteDatasource {
           occassions: occasions!,
           products: products!);
       return homeDto.toHome();
+    });
+  }
+
+  @override
+  Future<Result<ProductResponse?>> getAllProducts() {
+    return executeApi(() async {
+      var result = await apiManager.getAllProducts();
+      return result;
     });
   }
 }

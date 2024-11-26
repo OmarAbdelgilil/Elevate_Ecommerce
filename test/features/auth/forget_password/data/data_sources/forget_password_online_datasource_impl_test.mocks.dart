@@ -30,6 +30,10 @@ import 'package:elevate_ecommerce/features/home/data/models/response/get_all_cat
     as _i14;
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart'
     as _i15;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
+    as _i17;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+    as _i16;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -194,4 +198,24 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i15.HomeResponse?>.value(),
       ) as _i7.Future<_i15.HomeResponse?>);
+
+  @override
+  _i7.Future<_i16.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue: _i7.Future<_i16.ProductResponse?>.value(),
+      ) as _i7.Future<_i16.ProductResponse?>);
+
+  @override
+  _i7.Future<_i17.ProductDetailsResponse?> getProductDetails(
+          String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getProductDetails,
+          [productId],
+        ),
+        returnValue: _i7.Future<_i17.ProductDetailsResponse?>.value(),
+      ) as _i7.Future<_i17.ProductDetailsResponse?>);
 }

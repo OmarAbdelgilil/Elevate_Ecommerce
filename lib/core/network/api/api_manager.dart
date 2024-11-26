@@ -14,11 +14,13 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
 import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
+import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
 
 part 'api_manager.g.dart';
 
@@ -59,4 +61,11 @@ abstract class ApiManager {
 
   @GET(ApiConstants.homePagePath)
   Future<HomeResponse?> getHomePage();
+
+  @GET(ApiConstants.getAllProductsPath)
+  Future<ProductResponse?> getAllProducts();
+
+  @GET("${ApiConstants.getProductDetailsPath}/{productId}")
+  Future<ProductDetailsResponse?> getProductDetails(
+      @Path("productId") String productId);
 }

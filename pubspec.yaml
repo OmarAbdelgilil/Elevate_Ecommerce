@@ -41,9 +41,16 @@ dependencies:
   flutter_bloc:
   flutter_screenutil:
   mockito:
-  flutter_svg: ^2.0.10+1
+  flutter_svg:
+  pretty_dio_logger:
+  lottie:
+  cached_network_image:
+  google_fonts:
 
-  dio: any
+  dio:
+  bloc:
+  provider:
+  flutter_secure_storage:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -58,6 +65,7 @@ dev_dependencies:
   build_runner: 
   retrofit_generator: '>=8.0.0 <10.0.0'
   json_serializable:
+  smooth_page_indicator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

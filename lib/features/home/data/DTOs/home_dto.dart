@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/best_se
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/occasion.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/product.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 
 class HomeDto {
   List<Product> products;
@@ -17,12 +18,11 @@ class HomeDto {
   toHome() {
     return Home(
         bestSeller: bestSellers
-            .map((e) => BestSellerModel(
+            .map((e) => ProductsModel(
                 category: e.category,
                 description: e.description,
-                id2: e.id2,
                 id: e.id,
-                images: e.images,
+                images: e.images!.map((i) => i.toString()).toList(),
                 imgCover: e.imgCover,
                 occasion: e.occasion,
                 price: e.price,

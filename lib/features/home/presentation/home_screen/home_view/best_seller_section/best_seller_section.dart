@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/best_seller.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_section/best_seller_item.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
@@ -6,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BestSellerSection extends StatelessWidget {
-  final List<BestSellerModel>? bestsellerList;
+  final List<ProductsModel>? bestsellerList;
   final Exception? exception;
   final bool loading;
   const BestSellerSection(

@@ -59,6 +59,11 @@ class StringsManager {
   static const issueEmptyLastname = "Please enter lastname";
   static const issueEmptyPhoneNumber = "Please enter phone number";
   static const issueInvalidPhoneNumber = "Please Enter Valid phone number";
+  static const retryAgain = "Retry again";
+  static const noProductsFound = "No products found";
+  static const emptyContent = "Empty content";
+
+  static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen
   static const homeTab = 'Home';
@@ -73,4 +78,7 @@ class StringsManager {
   static const categoriesSectionError = "Error loading categories";
   static const occasionSectionHeader = 'Occasion';
   static const occasionSectionError = 'Error loading occasions';
+  // product widget
+  static const productPriceCurrency = 'EGP';
+  static const productButton = 'add to card';
 }

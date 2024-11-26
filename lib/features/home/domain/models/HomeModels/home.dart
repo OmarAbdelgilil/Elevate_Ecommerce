@@ -1,10 +1,11 @@
-import 'best_seller.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
+
 import 'occasion.dart';
 import 'product.dart';
 
 class Home {
   List<ProductModel>? products;
-  List<BestSellerModel>? bestSeller;
+  List<ProductsModel>? bestSeller;
   List<OccasionModel>? occasions;
 
   Home({
