@@ -59,6 +59,12 @@ class StringsManager {
   static const issueEmptyLastname = "Please enter lastname";
   static const issueEmptyPhoneNumber = "Please enter phone number";
   static const issueInvalidPhoneNumber = "Please Enter Valid phone number";
+  static const retryAgain = "Retry again";
+  static const noProductsFound = "No products found";
+  static const emptyContent = "Empty content";
+
+
+
   static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen
@@ -66,4 +72,11 @@ class StringsManager {
   static const categoryTab = 'Category';
   static const cardTab = 'Card';
   static const profileTab = 'Profile';
+
+  // product widget
+  static const productPriceCurrency = 'EGP';
+  static const productButton = 'add to card';
+
+
+
 }
