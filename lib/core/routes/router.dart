@@ -11,9 +11,13 @@ import 'package:flutter/material.dart';
 
 import '../../features/auth/login/presentation/views/login_view.dart';
 final dummyProduct = ProductsModel(
-  id: '1',
-  title: 'Test Product',
-  price: 100,
+    id: '1',
+    title: 'Test Product',
+    price: 100,
+    description: "llll",
+    images: ["kkkk","kkkkkk"],
+    quantity: 900,
+    priceAfterDiscount: 90
 
 );
 Route manageRoutes(RouteSettings settings) {
@@ -30,7 +34,7 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const ProductScreen());
 
     case AppRoutes.ProductDetails:
-       return MaterialPageRoute(builder: (context)=>  ProductDetailsScreen(productId: "673e2e1f1159920171828153",productDetails: dummyProduct,));
+       return MaterialPageRoute(builder: (context)=>  ProductDetailsScreen(productId: "673e2e1f1159920171828153",product: dummyProduct,));
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }

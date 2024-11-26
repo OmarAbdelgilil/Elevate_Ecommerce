@@ -13,6 +13,10 @@ final dummyProduct = ProductsModel(
   id: '1',
   title: 'Test Product',
   price: 100,
+  description: "llll",
+    images: ["kkkk","kkkkkk"],
+  quantity: 900,
+  priceAfterDiscount: 90
 
 );
 class MainLayoutViewModel extends ChangeNotifier {
@@ -21,7 +25,7 @@ class MainLayoutViewModel extends ChangeNotifier {
   final List<TabItem> _tabs = [
     TabItem(icon: SVGAssets.homeTab, label: StringsManager.homeTab, screen: const HomeScreen()),
     TabItem(icon: SVGAssets.categoryTab, label: StringsManager.categoryTab, screen: const CategoryScreen()),
-    TabItem(icon: SVGAssets.cardTab, label:StringsManager.cardTab, screen:  ProductDetailsScreen(productId:"673e2e1f1159920171828153",productDetails:dummyProduct,)),
+    TabItem(icon: SVGAssets.cardTab, label:StringsManager.cardTab, screen:  ProductDetailsScreen(productId:"673e2e1f1159920171828153",product:dummyProduct,)),
     TabItem(icon: SVGAssets.personTab, label: StringsManager.profile, screen: const ProfileScreen()),
   ];
 
