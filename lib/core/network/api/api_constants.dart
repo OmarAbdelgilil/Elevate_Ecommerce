@@ -10,4 +10,5 @@ class ApiConstants {
 
 
 
+  static const String getAllBestSellerProductsPath = "/v1/best-seller";
 }

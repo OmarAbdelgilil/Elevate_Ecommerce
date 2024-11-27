@@ -43,7 +43,9 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.ProductDetails,
+
+        initialRoute: AppRoutes.mainLayOut,
+
       ),
     );
   }

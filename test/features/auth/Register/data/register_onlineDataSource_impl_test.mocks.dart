@@ -26,8 +26,10 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
     as _i8;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i15;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
+    as _i16;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i14;
 import 'package:mockito/mockito.dart' as _i1;
@@ -186,13 +188,23 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
       ) as _i7.Future<_i14.ProductResponse?>);
 
   @override
-  _i7.Future<_i15.ProductDetailsResponse?> getProductDetails(
+  _i7.Future<_i15.BestSellerProductResponse?> getAllBestSellerProducts() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllBestSellerProducts,
+          [],
+        ),
+        returnValue: _i7.Future<_i15.BestSellerProductResponse?>.value(),
+      ) as _i7.Future<_i15.BestSellerProductResponse?>);
+
+  @override
+  _i7.Future<_i16.ProductDetailsResponse?> getProductDetails(
           String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProductDetails,
           [productId],
         ),
-        returnValue: _i7.Future<_i15.ProductDetailsResponse?>.value(),
-      ) as _i7.Future<_i15.ProductDetailsResponse?>);
+        returnValue: _i7.Future<_i16.ProductDetailsResponse?>.value(),
+      ) as _i7.Future<_i16.ProductDetailsResponse?>);
 }
