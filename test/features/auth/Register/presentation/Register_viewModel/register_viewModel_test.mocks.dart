@@ -347,6 +347,15 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
       ) as bool);
 
   @override
+  Set<_i2.FormFieldState<Object?>> validateGranularly() => (super.noSuchMethod(
+        Invocation.method(
+          #validateGranularly,
+          [],
+        ),
+        returnValue: <_i2.FormFieldState<Object?>>{},
+      ) as Set<_i2.FormFieldState<Object?>>);
+
+  @override
   void initState() => super.noSuchMethod(
         Invocation.method(
           #initState,
@@ -601,16 +610,6 @@ class MockTextEditingController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
-
-  @override
-  bool isSelectionWithinTextBounds(_i2.TextSelection? selection) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #isSelectionWithinTextBounds,
-          [selection],
-        ),
-        returnValue: false,
-      ) as bool);
 
   @override
   void addListener(_i11.VoidCallback? listener) => super.noSuchMethod(

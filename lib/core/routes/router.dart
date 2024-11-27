@@ -9,18 +9,16 @@ import 'package:elevate_ecommerce/features/home/presentation/product_details_scr
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/product_screen.dart';
 import 'package:flutter/material.dart';
 
-
 import '../../features/auth/login/presentation/views/login_view.dart';
+
 final dummyProduct = ProductsModel(
     id: '1',
     title: 'Test Product',
     price: 100,
     description: "llll",
-    images: ["kkkk","kkkkkk"],
+    images: ["kkkk", "kkkkkk"],
     quantity: 900,
-    priceAfterDiscount: 90
-
-);
+    priceAfterDiscount: 90);
 Route manageRoutes(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.login:
@@ -33,10 +31,14 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => ForgetPasswordScreen());
 
     case AppRoutes.ProductDetails:
-       return MaterialPageRoute(builder: (context)=>  ProductDetailsScreen(productId: "673e2e1f1159920171828153",product: dummyProduct,));
+      return MaterialPageRoute(
+          builder: (context) => ProductDetailsScreen(
+                productId: "673e2e1f1159920171828153",
+                product: dummyProduct,
+              ));
     case AppRoutes.bestSeller:
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
-       default:
+    default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }
 }

@@ -10,9 +10,8 @@ import '../../../data/models/response/product_response/ProductResponse.dart';
 import '../../../domain/usecase/get_all_best_sellet_products_usecase.dart';
 import '../../base/base_cubit.dart';
 import '../../base/base_states.dart';
+
 enum FilterType { all, category, occasion }
-
-
 
 @injectable
 class ProductViewModel extends BaseCubit {
@@ -23,7 +22,8 @@ class ProductViewModel extends BaseCubit {
   List<Products> _productList = [];
   List<BestSeller> _bestSellerProductList = [];
 
-  ProductViewModel(this._getAllProductsUseCase, this._sharedPreferencesService, this._getAllBestSellerProductsUseCase);
+  ProductViewModel(this._getAllProductsUseCase, this._sharedPreferencesService,
+      this._getAllBestSellerProductsUseCase);
 
   @override
   void start() => _fetchAllProducts();
@@ -56,14 +56,16 @@ class ProductViewModel extends BaseCubit {
   List<Products> get getProducts => _productList;
 
   List<Products> getProductsByCategory(String categoryId) {
-    return _productList.where((product) => product.category == categoryId).toList();
+    return _productList
+        .where((product) => product.category == categoryId)
+        .toList();
   }
 
   List<Products> getProductsByOccasion(String occasionId) {
-    return _productList.where((product) => product.occasion == occasionId).toList();
+    return _productList
+        .where((product) => product.occasion == occasionId)
+        .toList();
   }
-
-
 
   List<Products> getProductsByFilter(String filterType, String id) {
     if (filterType == "all") {
@@ -79,7 +81,8 @@ class ProductViewModel extends BaseCubit {
   Future<void> fetchBestSellerProducts() async {
     emit(LoadingState());
 
-    final cachedData = await _sharedPreferencesService.getCachedBestSellerProducts();
+    final cachedData =
+        await _sharedPreferencesService.getCachedBestSellerProducts();
     if (cachedData != null) {
       _bestSellerProductList = cachedData;
       emit(ContentState());
@@ -92,7 +95,8 @@ class ProductViewModel extends BaseCubit {
       if (response != null && response.bestSeller!.isNotEmpty) {
         _bestSellerProductList = response.bestSeller!;
 
-        _sharedPreferencesService.cacheBestSellerProducts(_bestSellerProductList);
+        _sharedPreferencesService
+            .cacheBestSellerProducts(_bestSellerProductList);
 
         emit(ContentState());
       } else {
@@ -104,7 +108,4 @@ class ProductViewModel extends BaseCubit {
   }
 
   List<BestSeller> get bestSellerProducts => _bestSellerProductList;
-
 }
-
-
