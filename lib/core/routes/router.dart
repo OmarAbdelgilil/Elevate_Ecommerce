@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce/core/routes/route_not_found.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_view/register_view.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
+import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_view.dart';
 import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/product_screen.dart';
@@ -33,7 +34,9 @@ Route manageRoutes(RouteSettings settings) {
 
     case AppRoutes.ProductDetails:
        return MaterialPageRoute(builder: (context)=>  ProductDetailsScreen(productId: "673e2e1f1159920171828153",product: dummyProduct,));
-    default:
+    case AppRoutes.bestSeller:
+      return MaterialPageRoute(builder: (context) => const bestSeller_screen());
+       default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }
 }
