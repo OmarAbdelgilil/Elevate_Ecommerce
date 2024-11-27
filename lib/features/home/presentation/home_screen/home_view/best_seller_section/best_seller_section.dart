@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_section/best_seller_item.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
@@ -17,7 +18,11 @@ class BestSellerSection extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SectionHeader(title: 'Best seller', onpressed: () {}),
+        SectionHeader(
+            title: 'Best seller',
+            onpressed: () {
+              Navigator.pushNamed(context, AppRoutes.bestSeller);
+            }),
         if (loading)
           const Center(
             child: CircularProgressIndicator(
