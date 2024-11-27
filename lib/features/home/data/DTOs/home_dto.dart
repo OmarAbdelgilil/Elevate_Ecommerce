@@ -1,7 +1,6 @@
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/best_seller.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/occasion.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/product.dart';
-import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/best_seller.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/occasion.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/product.dart';

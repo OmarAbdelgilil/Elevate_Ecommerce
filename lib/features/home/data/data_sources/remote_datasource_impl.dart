@@ -5,11 +5,8 @@ import 'package:elevate_ecommerce/features/home/data/DTOs/categories_DTO.dart';
 import 'package:elevate_ecommerce/features/home/data/DTOs/home_dto.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
-import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../core/network/api/api_execution.dart';
 import '../contracts/remote_datasource.dart';
 
 @Injectable(as: RemoteDatasource)

@@ -1,4 +1,3 @@
-import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/best_seller.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_section/best_seller_item.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
