@@ -11,5 +11,4 @@ class ApiConstants {
 
 
   static const String getAllBestSellerProductsPath = "/v1/best-seller";
-  static const String registerPath = "/v1/auth/signup";
 }
