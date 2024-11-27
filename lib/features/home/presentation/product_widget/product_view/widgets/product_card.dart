@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
@@ -72,37 +73,42 @@ class ProductGridItem extends StatelessWidget {
                       const SizedBox(height: AppSize.s5),
                       Padding(
                         padding: const EdgeInsets.only(right: AppPadding.p10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "${StringsManager.productPriceCurrency} $priceAfterDiscount",
-                              style: AppTextStyles.price(
-                                  color: ColorManager.black,
-                                  fontSize: AppSize.s14,
-                                  fontWeight: FontWeight.w500),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                            Text("$price",
-                                style: GoogleFonts.inter(
-                                  textStyle: const TextStyle(
-                                    color: ColorManager.darkGrey,
+                        child: FittedBox(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "${StringsManager.productPriceCurrency} $priceAfterDiscount",
+                                style: AppTextStyles.price(
+                                    color: ColorManager.black,
                                     fontSize: AppSize.s14,
-                                    fontWeight: FontWeight.w400,
-                                    decoration: TextDecoration.lineThrough,
-                                    decorationColor: ColorManager.darkGrey,
-                                    decorationThickness: 1,
-                                  ),
-                                )),
-                            Text(
-                              disCount,
-                              style: AppTextStyles.subtitle(
-                                  color: ColorManager.green),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            ),
-                          ],
+                                    fontWeight: FontWeight.w500),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                              const SizedBox(width: AppSize.s4,),
+                              Text("$price",
+                                  style: GoogleFonts.inter(
+                                    textStyle: const TextStyle(
+                                      color: ColorManager.darkGrey,
+                                      fontSize: AppSize.s14,
+                                      fontWeight: FontWeight.w400,
+                                      decoration: TextDecoration.lineThrough,
+                                      decorationColor: ColorManager.darkGrey,
+                                      decorationThickness: 1,
+                                    ),
+                                  )),
+                              const SizedBox(width: AppSize.s4,),
+
+                              Text(
+                                disCount,
+                                style: AppTextStyles.subtitle(
+                                    color: ColorManager.green),
+                                overflow: TextOverflow.ellipsis,
+                                maxLines: 1,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ],

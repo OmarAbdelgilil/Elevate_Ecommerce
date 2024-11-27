@@ -9,4 +9,5 @@ class ApiConstants {
   static const String allCategoriesPath = "/v1/categories";
   static const String homePagePath = "/v1/home";
   static const String getProductDetailsPath = "/v1/products";
+  static const String getAllBestSellerProductsPath = "/v1/best-seller";
 }

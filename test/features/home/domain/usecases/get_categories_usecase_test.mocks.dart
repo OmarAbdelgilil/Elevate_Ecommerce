@@ -6,6 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
+    as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i8;
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
@@ -87,4 +89,22 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i8.ProductResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>
+      getAllBestSellerProducts() => (super.noSuchMethod(
+            Invocation.method(
+              #getAllBestSellerProducts,
+              [],
+            ),
+            returnValue:
+                _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>.value(
+                    _i6.dummyValue<_i4.Result<_i9.BestSellerProductResponse?>>(
+              this,
+              Invocation.method(
+                #getAllBestSellerProducts,
+                [],
+              ),
+            )),
+          ) as _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>);
 }
