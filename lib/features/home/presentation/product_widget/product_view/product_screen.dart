@@ -1,3 +1,6 @@
+import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
+import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../core/di/di.dart';
@@ -42,3 +45,13 @@ class ProductScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+

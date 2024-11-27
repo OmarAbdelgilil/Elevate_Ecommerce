@@ -1,5 +1,7 @@
 
 
+import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
+
 class Products {
   Products({ this.id,
     this.title,
@@ -81,6 +83,27 @@ Products copyWith({  String? id,
   v: v ?? this.v,
 
 );
+
+
+  // Method to convert Products to ProductsModel
+  ProductsModel toModel() {
+    return ProductsModel(
+      id: this.id,
+      title: this.title,
+      description: this.description,
+      imgCover: this.imgCover,
+      images: this.images,
+      price: this.price,
+      priceAfterDiscount: this.priceAfterDiscount,
+      quantity: this.quantity,
+      category: this.category,
+      occasion: this.occasion,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      v: this.v,
+    );
+  }
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['_id'] = id;

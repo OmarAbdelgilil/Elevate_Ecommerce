@@ -47,8 +47,17 @@ dependencies:
   cached_network_image: ^3.4.0
   google_fonts: ^6.2.1
   shared_preferences: ^2.2.3
+  mockito:
+  flutter_svg:
+  pretty_dio_logger:
+  lottie:
+  cached_network_image:
+  google_fonts:
 
-  dio: any
+  dio:
+  bloc:
+  provider:
+  flutter_secure_storage:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -60,9 +69,10 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints:
   injectable_generator:   
-  build_runner: ^2.4.9 
+  build_runner: ^2.4.9
   retrofit_generator: '>=8.0.0 <10.0.0'
   json_serializable:
+  smooth_page_indicator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -77,7 +87,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-
+    - assets/images/
     - assets/lotties/
     - assets/svg/
 

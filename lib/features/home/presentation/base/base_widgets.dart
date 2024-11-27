@@ -85,14 +85,14 @@ class BaseWidgets {
 
     return Center(
       child: Padding(
-        padding:  EdgeInsets.all(AppPadding.p8),
+        padding:  const EdgeInsets.all(AppPadding.p8),
         child: SizedBox(
           width: width,
           height: height,
           child: ElevatedButton(
             style: buttonStyle ??
                 ElevatedButton.styleFrom(
-                  padding:  EdgeInsets.all(AppPadding.p8),
+                  padding:  const EdgeInsets.all(AppPadding.p8),
                 ),
             onPressed: () {
               if (displayType == DisplayType.popUpDialog) {
@@ -102,7 +102,7 @@ class BaseWidgets {
             },
             child: Text(
               title,
-              style: TextStyle(color: Colors.deepOrange),
+              style: const TextStyle(color: Colors.deepOrange),
             ),
           ),
         ),

@@ -36,7 +36,7 @@ class CardScreen extends StatelessWidget {
                   id: e.id,
                   title: e.title,
                   price: e.price,
-description: e.description,
+                  description: e.description,
                   imgCover: e.imgCover,
 
                 )).toList());
