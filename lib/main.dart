@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/bloc_observer.dart';
+import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/routes/router.dart';
@@ -17,17 +18,18 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const ScreenUtilInit(
-      designSize: Size(411, 890),
+    return ScreenUtilInit(
+      designSize: const Size(411, 890),
       minTextAdapt: true,
-
       splitScreenMode: true,
       child: MaterialApp(
-
+        debugShowCheckedModeBanner: false,
+       theme: ThemeData(primaryColorLight: primaryColor,),
         title: 'Flower app',
-
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.mainLayOut,
+
+        initialRoute: AppRoutes.register,
+
       ),
     );
   }

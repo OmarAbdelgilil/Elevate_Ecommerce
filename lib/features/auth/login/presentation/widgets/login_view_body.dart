@@ -77,7 +77,8 @@ class LoginViewBody extends StatelessWidget {
             children: [
               RememberMeCheckbox(),
               TextButton(
-                onPressed: () {},
+
+                onPressed: ()=> Navigator.pushNamed(context, AppRoutes.forgetPassword),
                 child: const Text(
                   'Forget password?',
                   style: TextStyle(
@@ -116,7 +117,7 @@ class LoginViewBody extends StatelessWidget {
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               TextButton(
-                onPressed: () {},
+                  onPressed: ()=> Navigator.pushNamed(context, AppRoutes.register),
                 child: Text(
                   'Sign up',
                   style: TextStyle(

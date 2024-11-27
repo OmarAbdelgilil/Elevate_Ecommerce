@@ -1,12 +1,17 @@
 class StringsManager {
   static const login = "login";
+  static const signUp ="Sign up";
   static const subject = "subject";
   static const profile = "profile";
   static const exams = "exams";
   static const browseBySubject = "Browse By Subject";
   static const issueValidEmail = "Please Enter Valid Email";
   static const issueEmptyPassword = "Password Should Not Be Empty";
+  static const issueEmptyPhone = "Phone Number Should Not Be Empty";
   static const issueEmptyEamil = "Email Should Not Be Empty";
+  static const validateFirstNameType = "First Name must contain only letters";
+  static const validateLastNameType = "Last Name must contain only letters";
+  static const validatePhoneNumber ="Phone number must start with '+20' followed by exactly 10 digits";
   static const issuePasswordPattern =
       "Password should have should have numbers & characters & special letters not less than 8 characters";
   static const hintEmail = "Enter Your Email";
@@ -33,9 +38,18 @@ class StringsManager {
   static const newPasswordLabel = 'New password';
   static const passwordFieldError = 'Password is invalid ';
   static const confirmPasswordHint = 'Confirm password';
+  static const firstNameHint = 'Enter First Name';
+  static const lastNameHint = 'Enter Last Name';
+  static const phoneNumberHint = 'Enter Phone Number';
+  static const passwordHint = 'Enter password';
   static const confirmButtonText = 'Confirm';
   static const emailFieldHint = 'Enter your email';
   static const emailFieldLabel = 'Email';
+  static const firstNameFieldLabel = 'First Name';
+  static const lastNameFieldLabel = 'Last Name';
+  static const creatAccountText = "Creating an account, you agree to our";
+  static const phoneFieldLabel = 'Phone Number';
+  static const passwordFieldLabel = 'Password';
   static const emailFieldError = 'This Email is invalid ';
   static const forgetPassword = "forgetPassword";
   static const issuePasswordNotMatch = "Password not match";
