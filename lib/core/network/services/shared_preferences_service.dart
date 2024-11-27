@@ -32,7 +32,9 @@ class SharedPreferencesService {
       final timestamp = DateTime.now().millisecondsSinceEpoch;
       await _prefs.setInt(_cacheTimestampKey, timestamp);
     } catch (e) {
-      print("Error caching products: $e");
+      if (kDebugMode) {
+        print("Error caching products: $e");
+      }
     }
   }
 
@@ -56,7 +58,9 @@ class SharedPreferencesService {
         return decodedData.map((e) => Products.fromJson(e)).toList();
       }
     } catch (e) {
-      print("Error retrieving cached products: $e");
+      if (kDebugMode) {
+        print("Error retrieving cached products: $e");
+      }
     }
     return null;
   }
@@ -82,7 +86,9 @@ class SharedPreferencesService {
       final timestamp = DateTime.now().millisecondsSinceEpoch;
       await _prefs.setInt(_cacheBestSellerTimestampKey, timestamp);
     } catch (e) {
-      print("Error caching best-seller products: $e");
+      if (kDebugMode) {
+        print("Error caching best-seller products: $e");
+      }
     }
   }
 
@@ -100,13 +106,16 @@ class SharedPreferencesService {
         return null;
       }
 
-      final cachedData = _prefs.getString(_cachedBestSellerKey);
+       final cachedData = _prefs.getString(_cachedBestSellerKey);
+
       if (cachedData != null) {
         final List<dynamic> decodedData = json.decode(cachedData);
         return decodedData.map((e) => BestSeller.fromJson(e)).toList();
       }
     } catch (e) {
-      print("Error retrieving cached best-seller products: $e");
+      if (kDebugMode) {
+        print("Error retrieving cached best-seller products: $e");
+      }
     }
     return null;
   }
@@ -116,7 +125,9 @@ class SharedPreferencesService {
       await _prefs.remove(_cachedBestSellerKey);
       await _prefs.remove(_cacheBestSellerTimestampKey);
     } catch (e) {
-      print("Error clearing best-seller cache: $e");
+      if (kDebugMode) {
+        print("Error clearing best-seller cache: $e");
+      }
     }
   }
 }

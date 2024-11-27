@@ -7,5 +7,5 @@ abstract class HomeRepository {
 
   Future<Result<ProductResponse?>> getAllProducts();
 
-  Future<Result<BestSellerProductResponse?>> getAllBestSellerProducts();
+  Future<Result<BestSellerProductResponse?>>getAllBestSellerProducts();
 }

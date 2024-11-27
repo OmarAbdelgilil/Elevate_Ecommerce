@@ -15,9 +15,9 @@ class RemoteDatasourceImpl implements RemoteDatasource {
 
 
   @override
-  Future<Result<ProductResponse?>> getAllProducts() {
+  Future<Result<ProductResponse?>> getAllProducts() async {
     return executeApi(() async {
-      var result = await apiManager.getAllProducts();
+      final result = await apiManager.getAllProducts();
       return result;
     });
   }

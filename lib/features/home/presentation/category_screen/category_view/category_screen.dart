@@ -3,7 +3,7 @@ import 'package:elevate_ecommerce/utils/color_manager.dart';
 import '../../product_widget/product_view/product_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({Key? key}) : super(key: key);
+  const CategoryScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +30,10 @@ class CategoryScreen extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            ProductScreen(filterType: "all", id: ""),
+            const ProductScreen(filterType: "all", id: ""),
             ...categories.map((category) {
               return ProductScreen(filterType: "category", id: category.id);
-            }).toList(),
+            }),
           ],
         ),
       ),

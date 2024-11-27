@@ -10,6 +10,7 @@ import '../contracts/remote_datasource.dart';
 class HomeRepositoryImpl implements HomeRepository {
   final RemoteDatasource _homeDatasource;
 
+
   HomeRepositoryImpl(this._homeDatasource);
 
   @override
