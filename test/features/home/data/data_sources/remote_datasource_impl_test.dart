@@ -1,21 +1,29 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
+import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart';
 import 'package:elevate_ecommerce/features/home/data/data_sources/remote_datasource_impl.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasion.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../repositories/home_repository_impl_test.mocks.dart';
 import 'remote_datasource_impl_test.mocks.dart';
 
-@GenerateMocks([ApiManager])
+@GenerateMocks([ApiManager, RemoteDatasource])
 void main() {
   late RemoteDatasourceImpl remoteDataSourceImpl;
   late MockApiManager mockApiManager;
+  late MockRemoteDatasource mockRemoteDatasource;
+
   final dummyProduct = [
     Products(
       id: '1',
@@ -23,6 +31,7 @@ void main() {
       price: 1,
     )
   ];
+
   final dummyBestProduct = [
     BestSeller(
       id: '1',
@@ -30,10 +39,41 @@ void main() {
       price: 1,
     )
   ];
+  final dummyCategories = Categories(categories: [
+    CategoryModel(
+      id: '1',
+      name: 'Category 1',
+      slug: 'category-1',
+      image: 'https://example.com/category1.png',
+    ),
+    CategoryModel(
+      id: '2',
+      name: 'Category 2',
+      slug: 'category-2',
+      image: 'https://example.com/category2.png',
+    ),
+  ]);
+
+  final dummyOccasions = Occasions(occasions: [
+    OccasionModel(
+      id: '1',
+      name: 'Occasion 1',
+      slug: 'occasion-1',
+      image: 'https://example.com/occasion1.png',
+    ),
+    OccasionModel(
+      id: '2',
+      name: 'Occasion 2',
+      slug: 'occasion-2',
+      image: 'https://example.com/occasion2.png',
+    ),
+  ]);
+
   final dummyResponse = ProductResponse(
     message: 'Success',
     products: dummyProduct,
   );
+
   final dummyBestSellerResponse = BestSellerProductResponse(
     message: 'Success',
     bestSeller: dummyBestProduct,
@@ -41,9 +81,15 @@ void main() {
 
   setUp(() {
     mockApiManager = MockApiManager();
+    mockRemoteDatasource = MockRemoteDatasource();
     remoteDataSourceImpl = RemoteDatasourceImpl(mockApiManager);
+
     provideDummy<Result<ProductResponse?>>(Fail(Exception()));
     provideDummy<Result<BestSellerProductResponse?>>(Fail(Exception()));
+    provideDummy<Result<ProductResponse?>>(Fail(Exception()));
+    provideDummy<Result<BestSellerProductResponse?>>(Fail(Exception()));
+    provideDummy<Result<Categories?>>(Fail(Exception()));
+    provideDummy<Result<Occasions?>>(Fail(Exception()));
   });
 
   group("when calls getAllProducts on remoteDataSourceImpl Tests", () {
@@ -73,7 +119,8 @@ void main() {
     });
   });
 
-  group("when calls getAllBestSellerProducts on remoteDataSourceImpl Tests", () {
+  group("when calls getAllBestSellerProducts on remoteDataSourceImpl Tests",
+      () {
     test('getAllBestSellerProducts returns Success', () async {
       when(mockApiManager.getAllBestSellerProducts())
           .thenAnswer((_) async => dummyBestSellerResponse);
@@ -100,4 +147,63 @@ void main() {
     });
   });
 
+  group('getAllCategories Tests', () {
+    test('getAllCategories returns Success', () async {
+      when(mockRemoteDatasource.getAllCategories())
+          .thenAnswer((_) async => Success(dummyCategories));
+
+      final result = await mockRemoteDatasource.getAllCategories();
+
+      expect(result, isA<Success<Categories?>>());
+      expect((result as Success).data, dummyCategories);
+
+      verify(mockRemoteDatasource.getAllCategories()).called(1);
+    });
+
+    test('getAllCategories returns Fail', () async {
+      final exception = Exception('Failed to fetch categories');
+
+      // Mock the method to throw the defined exception
+      when(mockRemoteDatasource.getAllCategories())
+          .thenAnswer((_) async => Fail(exception));
+
+      final result = await mockRemoteDatasource.getAllCategories();
+
+      // Assert that the result is of type Fail
+      expect(result, isA<Fail<Categories?>>());
+
+      // Assert that the exception matches the mocked exception
+      expect((result as Fail).exception, exception);
+
+      verify(mockRemoteDatasource.getAllCategories()).called(1);
+    });
+  });
+
+  group('getAllOccasions Tests', () {
+    test('getAllOccasions returns Success', () async {
+      when(mockRemoteDatasource.getAllOccasions())
+          .thenAnswer((_) async => Success(dummyOccasions));
+
+      final result = await mockRemoteDatasource.getAllOccasions();
+
+      expect(result, isA<Success<Occasions?>>());
+      expect((result as Success).data, dummyOccasions);
+
+      verify(mockRemoteDatasource.getAllOccasions()).called(1);
+    });
+
+    test('getAllOccasions returns Fail', () async {
+      final exception = Exception('Failed to fetch occasions');
+
+      when(mockRemoteDatasource.getAllOccasions())
+          .thenAnswer((_) async => Fail(exception));
+
+      final result = await mockRemoteDatasource.getAllOccasions();
+
+      expect(result, isA<Fail<Occasions?>>());
+      expect((result as Fail).exception, exception);
+
+      verify(mockRemoteDatasource.getAllOccasions()).called(1);
+    });
+  });
 }

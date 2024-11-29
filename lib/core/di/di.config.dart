@@ -81,8 +81,15 @@ import '../../features/home/domain/usecase/get_all_best_sellet_products_usecase.
     as _i953;
 import '../../features/home/domain/usecase/get_all_products_usecase.dart'
     as _i728;
+import '../../features/home/domain/usecase/get_categories_usecase.dart'
+    as _i493;
+import '../../features/home/domain/usecase/get_occations_usecase.dart' as _i741;
 import '../../features/home/domain/usecase/product_details_useCase.dart'
     as _i665;
+import '../../features/home/presentation/category_screen/categry_viewmodel.dart'
+    as _i303;
+import '../../features/home/presentation/occasions/occasions_viewmodel.dart'
+    as _i714;
 import '../../features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart'
     as _i177;
 import '../../features/home/presentation/product_widget/product_view_model/product_view_model.dart'
@@ -158,6 +165,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i953.GetAllBestSellerProductsUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i728.GetAllProductsUseCase>(
         () => _i728.GetAllProductsUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i493.GetCategoriesUsecase>(
+        () => _i493.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i741.GetOccasionsUsecase>(
+        () => _i741.GetOccasionsUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i177.ProductDetails_ViewModel>(() =>
         _i177.ProductDetails_ViewModel(gh<_i665.ProductDetailsUsecase>()));
     gh.factory<_i694.RegisterUseCase>(
@@ -176,6 +187,10 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i995.ForgetPasswordUsecase>(),
               gh<_i375.ForgetPasswordValidator>(),
             ));
+    gh.factory<_i303.CategoriesViewmodel>(
+        () => _i303.CategoriesViewmodel(gh<_i493.GetCategoriesUsecase>()));
+    gh.factory<_i714.OccasionsViewmodel>(
+        () => _i714.OccasionsViewmodel(gh<_i741.GetOccasionsUsecase>()));
     return this;
   }
 }

@@ -1,3 +1,5 @@
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+
 class AppRoutes {
   static const home = "home";
   static const mainLayOut = "mainLayOutRoute";
@@ -6,9 +8,8 @@ class AppRoutes {
   static const login = "login";
   static const productWidget = "productWidgetRoute";
   static const ProductDetails = "ProductDetails";
-  static const bestSeller ="bestSeller";
+  static const bestSeller = "bestSeller";
 
-
-
-
+  static const occasions = "occasions";
+  static const Categories = "categories";
 }
