@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,7 +17,8 @@ class CardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProductViewModel>(
-      create: (context) => getIt.get<ProductViewModel>()..fetchBestSellerProducts(),
+      create: (context) =>
+          getIt.get<ProductViewModel>()..fetchBestSellerProducts(),
       child: BlocConsumer<ProductViewModel, BaseState>(
         listener: (context, state) {
           baseListener(context, state);
@@ -30,16 +32,26 @@ class CardScreen extends StatelessWidget {
                 final viewModel = context.read<ProductViewModel>();
                 final filteredProducts = viewModel.bestSellerProducts;
 
-
-
-                return ProductScreenBody(products: filteredProducts.map((e) => Products(
-                  id: e.id,
-                  title: e.title,
-                  price: e.price,
-                  description: e.description,
-                  imgCover: e.imgCover,
-
-                )).toList());
+                return ProductScreenBody(
+                    products: filteredProducts
+                        .map(
+                          (e) => ProductsModel(
+                              category: e.category,
+                              createdAt: e.category,
+                              description: e.description,
+                              id: e.id,
+                              images: e.images,
+                              imgCover: e.imgCover,
+                              occasion: e.occasion,
+                              price: e.price,
+                              priceAfterDiscount: e.priceAfterDiscount,
+                              quantity: e.quantity,
+                              slug: e.slug,
+                              title: e.title,
+                              updatedAt: e.updatedAt,
+                              v: e.v),
+                        )
+                        .toList());
               },
             ),
           );

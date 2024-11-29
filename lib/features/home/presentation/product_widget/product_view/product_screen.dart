@@ -1,5 +1,6 @@
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_screen_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,9 +33,26 @@ class ProductScreen extends StatelessWidget {
             Builder(
               builder: (context) {
                 final viewModel = context.read<ProductViewModel>();
-                final filteredProducts = viewModel.getProductsByFilter(filterType, id);
-
-
+                final filteredProducts = viewModel
+                    .getProductsByFilter(filterType, id)
+                    .map(
+                      (e) => ProductsModel(
+                          category: e.category,
+                          createdAt: e.category,
+                          description: e.description,
+                          id: e.id,
+                          images: e.images,
+                          imgCover: e.imgCover,
+                          occasion: e.occasion,
+                          price: e.price,
+                          priceAfterDiscount: e.priceAfterDiscount,
+                          quantity: e.quantity,
+                          slug: e.slug,
+                          title: e.title,
+                          updatedAt: e.updatedAt,
+                          v: e.v),
+                    )
+                    .toList();
 
                 return ProductScreenBody(products: filteredProducts);
               },
@@ -45,13 +63,3 @@ class ProductScreen extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
