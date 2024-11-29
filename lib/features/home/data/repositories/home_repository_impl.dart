@@ -1,6 +1,8 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/repositories/home_repository.dart';
@@ -9,7 +11,6 @@ import '../contracts/remote_datasource.dart';
 @Injectable(as: HomeRepository)
 class HomeRepositoryImpl implements HomeRepository {
   final RemoteDatasource _homeDatasource;
-
 
   HomeRepositoryImpl(this._homeDatasource);
 
@@ -21,5 +22,17 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<BestSellerProductResponse?>> getAllBestSellerProducts() async {
     return await _homeDatasource.getAllBestSellerProducts();
+  }
+
+  @override
+  Future<Result<Categories?>> getAllCategories() async {
+    final result = await _homeDatasource.getAllCategories();
+    return result;
+  }
+
+  @override
+  Future<Result<Occasions?>> getAllOccasions() async {
+    final result = await _homeDatasource.getAllOccasions();
+    return result;
   }
 }

@@ -9,9 +9,9 @@ class ColorManager {
   static const Color lightPink = Color(0xffF9ECF0);
   static const Color green = Color(0xff0CB359);
 
-
   static const Color black = Color(0xff000000);
   static const Color white = Color(0xFFFFFFFF);
   static const Color error = Color(0xffe61f34);
   static const Color transparent = Colors.transparent;
+  static const Color lightGrey = Color(0xffA6A6A6);
 }

@@ -43,9 +43,7 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-
         initialRoute: AppRoutes.mainLayOut,
-
       ),
     );
   }
@@ -55,9 +53,9 @@ class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {
     final client = super.createHttpClient(context);
-    client.badCertificateCallback = (X509Certificate cert, String host, int port) => true; // bypass SSL verification
+    client.badCertificateCallback =
+        (X509Certificate cert, String host, int port) =>
+            true; // bypass SSL verification
     return client;
   }
 }
-
-

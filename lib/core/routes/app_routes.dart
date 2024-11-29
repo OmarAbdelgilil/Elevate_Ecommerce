@@ -6,10 +6,5 @@ class AppRoutes {
   static const login = "login";
   static const productWidget = "productWidgetRoute";
   static const ProductDetails = "ProductDetails";
-
-
-
-
-
-
+  static const occasions = "occasions";
 }

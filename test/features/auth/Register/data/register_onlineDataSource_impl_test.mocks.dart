@@ -6,6 +6,8 @@
 import 'dart:async' as _i7;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i6;
+import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart'
+    as _i19;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i10;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -28,6 +30,10 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dar
     as _i2;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i15;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
+    as _i17;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
+    as _i18;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
     as _i16;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
@@ -207,4 +213,33 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i16.ProductDetailsResponse?>.value(),
       ) as _i7.Future<_i16.ProductDetailsResponse?>);
+
+  @override
+  _i7.Future<_i17.GetAllCategoriesResponse?> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i7.Future<_i17.GetAllCategoriesResponse?>.value(),
+      ) as _i7.Future<_i17.GetAllCategoriesResponse?>);
+
+  @override
+  _i7.Future<_i18.GetAllOccasionsResponse?> getAllOccasions() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOccasions,
+          [],
+        ),
+        returnValue: _i7.Future<_i18.GetAllOccasionsResponse?>.value(),
+      ) as _i7.Future<_i18.GetAllOccasionsResponse?>);
+
+  @override
+  _i7.Future<_i19.UserDto?> getProfile(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #getProfile,
+          [token],
+        ),
+        returnValue: _i7.Future<_i19.UserDto?>.value(),
+      ) as _i7.Future<_i19.UserDto?>);
 }
