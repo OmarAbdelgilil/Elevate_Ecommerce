@@ -13,7 +13,9 @@ import 'package:elevate_ecommerce/features/home/presentation/category_screen/cat
 import 'package:flutter_svg/svg.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+  final String selectedCategoryId;
+
+  const CategoryScreen({super.key, required this.selectedCategoryId});
 
   @override
   Widget build(BuildContext context) {
@@ -26,8 +28,12 @@ class CategoryScreen extends StatelessWidget {
           builder: (context, state) {
             if (state is SuccessState) {
               final categories = state.categories!;
+              final selectedIndex = categories
+                  .indexWhere((category) => category.id == selectedCategoryId);
+
               return DefaultTabController(
                 length: categories.length + 1,
+                initialIndex: selectedIndex >= 0 ? selectedIndex + 1 : 0,
                 child: Column(
                   children: [
                     Padding(

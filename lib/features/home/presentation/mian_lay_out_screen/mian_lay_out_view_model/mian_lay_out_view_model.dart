@@ -28,7 +28,9 @@ class MainLayoutViewModel extends ChangeNotifier {
     TabItem(
         icon: SVGAssets.categoryTab,
         label: StringsManager.categoryTab,
-        screen: const CategoryScreen()),
+        screen: const CategoryScreen(
+          selectedCategoryId: '',
+        )),
     TabItem(
         icon: SVGAssets.cardTab,
         label: StringsManager.cardTab,

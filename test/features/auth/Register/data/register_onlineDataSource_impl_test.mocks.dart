@@ -6,8 +6,6 @@
 import 'dart:async' as _i7;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i6;
-import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart'
-    as _i19;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i10;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -233,13 +231,4 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i18.GetAllOccasionsResponse?>.value(),
       ) as _i7.Future<_i18.GetAllOccasionsResponse?>);
-
-  @override
-  _i7.Future<_i19.UserDto?> getProfile(String? token) => (super.noSuchMethod(
-        Invocation.method(
-          #getProfile,
-          [token],
-        ),
-        returnValue: _i7.Future<_i19.UserDto?>.value(),
-      ) as _i7.Future<_i19.UserDto?>);
 }
