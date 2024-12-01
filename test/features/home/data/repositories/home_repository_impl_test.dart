@@ -5,12 +5,19 @@ import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.da
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/occasion.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
+import 'package:elevate_ecommerce/features/home/data/repositories/home_repository_impl.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasion.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
+import '../data_sources/remote_datasource_impl_test.mocks.dart';
 import 'home_repository_impl_test.mocks.dart';
 
 @GenerateMocks([RemoteDatasource])
@@ -31,6 +38,17 @@ void main() {
       price: 1,
     )
   ];
+  final dummyCategories = Categories(categories: [
+    CategoryModel(
+        id: '1', name: 'Category 1', slug: 'cat-1', image: 'image1.png'),
+    CategoryModel(
+        id: '2', name: 'Category 2', slug: 'cat-2', image: 'image2.png'),
+  ]);
+  final dummyOccasions = Occasions(occasions: [
+    OccasionModel(id: '1', name: 'Occasion 1'),
+    OccasionModel(id: '2', name: 'Occasion 2'),
+  ]);
+
   final dummyResponse = ProductResponse(
     message: 'Success',
     products: dummyProduct,
@@ -45,6 +63,8 @@ void main() {
     homeRepository = HomeRepositoryImpl(mockHomeDatasource);
     provideDummy<Result<ProductResponse?>>(Fail(Exception()));
     provideDummy<Result<BestSellerProductResponse?>>(Fail(Exception()));
+    provideDummy<Result<Categories?>>(Fail(Exception()));
+    provideDummy<Result<Occasions?>>(Fail(Exception()));
   });
 
   group('HomeRepositoryImpl Tests', () {
@@ -155,6 +175,60 @@ void main() {
 
       expect(actual, failResult);
       verify(mockHomeDatasource.getAllBestSellerProducts()).called(1);
+    });
+  });
+
+  group("when calls getAllCategories on homeRepositoryImpl Tests", () {
+    test('getAllCategories returns Success', () async {
+      final successResult = Success(dummyCategories);
+
+      when(mockHomeDatasource.getAllCategories())
+          .thenAnswer((_) async => successResult);
+
+      final actual = await homeRepository.getAllCategories();
+
+      expect(actual, successResult);
+      verify(mockHomeDatasource.getAllCategories()).called(1);
+    });
+
+    test('getAllCategories returns Fail', () async {
+      final exception = Exception('Failed to fetch categories');
+      final failResult = Fail<Categories?>(exception);
+
+      when(mockHomeDatasource.getAllCategories())
+          .thenAnswer((_) async => failResult);
+
+      final actual = await homeRepository.getAllCategories();
+
+      expect(actual, failResult);
+      verify(mockHomeDatasource.getAllCategories()).called(1);
+    });
+  });
+
+  group("when calls getAllOccasions on homeRepositoryImpl Tests", () {
+    test('getAllOccasions returns Success', () async {
+      final successResult = Success(dummyOccasions);
+
+      when(mockHomeDatasource.getAllOccasions())
+          .thenAnswer((_) async => successResult);
+
+      final actual = await homeRepository.getAllOccasions();
+
+      expect(actual, successResult);
+      verify(mockHomeDatasource.getAllOccasions()).called(1);
+    });
+
+    test('getAllOccasions returns Fail', () async {
+      final exception = Exception('Failed to fetch occasions');
+      final failResult = Fail<Occasions?>(exception);
+
+      when(mockHomeDatasource.getAllOccasions())
+          .thenAnswer((_) async => failResult);
+
+      final actual = await homeRepository.getAllOccasions();
+
+      expect(actual, failResult);
+      verify(mockHomeDatasource.getAllOccasions()).called(1);
     });
   });
 }

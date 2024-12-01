@@ -14,6 +14,8 @@ import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart'
     as _i7;
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart'
+    as _i10;
 import 'package:elevate_ecommerce/features/home/domain/repositories/home_repository.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -107,4 +109,21 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
               ),
             )),
           ) as _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i10.Occasions?>> getAllOccasions() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOccasions,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i10.Occasions?>>.value(
+            _i6.dummyValue<_i4.Result<_i10.Occasions?>>(
+          this,
+          Invocation.method(
+            #getAllOccasions,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i10.Occasions?>>);
 }

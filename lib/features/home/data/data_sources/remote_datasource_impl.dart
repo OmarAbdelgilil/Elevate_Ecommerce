@@ -5,8 +5,10 @@ import 'package:elevate_ecommerce/features/home/data/DTOs/categories_DTO.dart';
 import 'package:elevate_ecommerce/features/home/data/DTOs/home_dto.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+import 'package:elevate_ecommerce/features/home/data/Dtos/occasions_dto.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:injectable/injectable.dart';
 import '../contracts/remote_datasource.dart';
 
@@ -53,6 +55,16 @@ class RemoteDatasourceImpl implements RemoteDatasource {
     return executeApi(() async {
       var result = await apiManager.getAllBestSellerProducts();
       return result;
+    });
+  }
+
+  @override
+  Future<Result<Occasions?>> getAllOccasions() {
+    return executeApi(() async {
+      var result = await apiManager.getAllOccasions();
+      var occasions = result?.occasions;
+      var ocaasionsDto = OccasionsDto(occations: occasions!);
+      return ocaasionsDto.toOccasions();
     });
   }
 }

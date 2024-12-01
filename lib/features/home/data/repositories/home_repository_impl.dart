@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.da
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../domain/repositories/home_repository.dart';
@@ -34,5 +35,11 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<BestSellerProductResponse?>> getAllBestSellerProducts() async {
     return await _homeDatasource.getAllBestSellerProducts();
+  }
+
+  @override
+  Future<Result<Occasions?>> getAllOccasions() async {
+    final result = await _homeDatasource.getAllOccasions();
+    return result;
   }
 }

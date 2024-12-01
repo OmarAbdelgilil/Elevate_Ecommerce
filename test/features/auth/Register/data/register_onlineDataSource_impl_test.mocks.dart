@@ -30,6 +30,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/best_seller
     as _i17;
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
     as _i14;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
+    as _i19;
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart'
     as _i15;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
@@ -230,4 +232,14 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i18.ProductDetailsResponse?>.value(),
       ) as _i7.Future<_i18.ProductDetailsResponse?>);
+
+  @override
+  _i7.Future<_i19.GetAllOccasionsResponse?> getAllOccasions() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOccasions,
+          [],
+        ),
+        returnValue: _i7.Future<_i19.GetAllOccasionsResponse?>.value(),
+      ) as _i7.Future<_i19.GetAllOccasionsResponse?>);
 }
