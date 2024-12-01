@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/di/di.dart';
+import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/categories_section/category_icon.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
@@ -24,7 +25,12 @@ class CategoriesSection extends StatelessWidget {
           children: [
             SectionHeader(
                 title: StringsManager.categoriesSectionHeader,
-                onpressed: () {}),
+                onpressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        CategoryScreen(selectedCategoryId: ''),
+                  ));
+                }),
             BlocBuilder<CategoriesViewmodel, CategoriesState>(
               builder: (BuildContext context, CategoriesState state) {
                 if (state is LoadingState) {

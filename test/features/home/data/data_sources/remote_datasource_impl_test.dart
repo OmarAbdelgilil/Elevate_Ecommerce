@@ -11,16 +11,13 @@ import 'package:elevate_ecommerce/features/home/data/models/response/best_seller
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
-import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasion.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../repositories/home_repository_impl_test.mocks.dart';
 import 'remote_datasource_impl_test.mocks.dart';
 
 @GenerateMocks([ApiManager, RemoteDatasource])
