@@ -1,4 +1,3 @@
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';

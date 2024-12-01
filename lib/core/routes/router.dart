@@ -6,7 +6,6 @@ import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_view.dart';
 import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
-import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/product_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/auth/login/presentation/views/login_view.dart';

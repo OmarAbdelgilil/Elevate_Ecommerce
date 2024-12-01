@@ -1,10 +1,8 @@
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/di/di.dart';
-import '../../../../../utils/color_manager.dart';
 import '../../base/base_states.dart';
 import '../../base/cubit_builder.dart';
 import '../../base/cubit_listener.dart';
