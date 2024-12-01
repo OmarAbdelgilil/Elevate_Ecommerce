@@ -1,6 +1,7 @@
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/occasion.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/occasions_section/occasion_item.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
+import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions_screen.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,12 @@ class OccasionSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SectionHeader(
-            title: StringsManager.occasionSectionHeader, onpressed: () {}),
+            title: StringsManager.occasionSectionHeader,
+            onpressed: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => OccasionsScreen(),
+              ));
+            }),
         if (loading)
           const Center(
             child: CircularProgressIndicator(

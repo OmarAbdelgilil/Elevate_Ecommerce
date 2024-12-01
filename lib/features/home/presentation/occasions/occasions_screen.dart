@@ -30,6 +30,7 @@ class OccasionsScreen extends StatelessWidget {
                         children: [
                           customAppBar(title: 'Occasions'),
                           TabBar(
+                            dividerHeight: 0,
                             isScrollable: true,
                             indicatorColor: ColorManager.primary,
                             labelColor: ColorManager.primary,
