@@ -5,7 +5,6 @@ import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../../../../data/models/response/product_response/Products.dart';
 import 'product_card.dart';
 import 'package:elevate_ecommerce/utils/values_manager.dart';
 

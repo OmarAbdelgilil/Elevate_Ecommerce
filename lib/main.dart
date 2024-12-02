@@ -1,17 +1,25 @@
 import 'dart:io';
 
+import 'package:elevate_ecommerce/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/routes/router.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
   configureDependencies();
+  Bloc.observer = SimpleBlocObserver();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   final TokenStorage tokenStorage = TokenStorage();
   final String? token = await tokenStorage.getToken();
   print("Token retrieved: $token");
@@ -43,7 +51,7 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-        initialRoute: AppRoutes.mainLayOut,
+        initialRoute: AppRoutes.login,
       ),
     );
   }

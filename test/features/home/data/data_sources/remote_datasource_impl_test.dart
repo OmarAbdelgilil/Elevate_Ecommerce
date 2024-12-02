@@ -2,25 +2,27 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart';
 import 'package:elevate_ecommerce/features/home/data/data_sources/remote_datasource_impl.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
-import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasion.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../repositories/home_repository_impl_test.mocks.dart';
 import 'remote_datasource_impl_test.mocks.dart';
 
 @GenerateMocks([ApiManager, RemoteDatasource])
 void main() {
-  late RemoteDatasourceImpl remoteDataSourceImpl;
+  late RemoteDatasourceImpl remoteDatasource;
   late MockApiManager mockApiManager;
   late MockRemoteDatasource mockRemoteDatasource;
 
@@ -81,8 +83,8 @@ void main() {
 
   setUp(() {
     mockApiManager = MockApiManager();
+    remoteDatasource = RemoteDatasourceImpl(mockApiManager);
     mockRemoteDatasource = MockRemoteDatasource();
-    remoteDataSourceImpl = RemoteDatasourceImpl(mockApiManager);
 
     provideDummy<Result<ProductResponse?>>(Fail(Exception()));
     provideDummy<Result<BestSellerProductResponse?>>(Fail(Exception()));
@@ -92,12 +94,63 @@ void main() {
     provideDummy<Result<Occasions?>>(Fail(Exception()));
   });
 
-  group("when calls getAllProducts on remoteDataSourceImpl Tests", () {
+  group('RemoteDatasourceImpl Tests', () {
+    test('getAllCategories success on ApiManager', () async {
+      final mockApiResponse = Categories();
+      provideDummy<Result<Categories?>>(Success(mockApiResponse));
+
+      when(mockApiManager.getAllCategories())
+          .thenAnswer((_) async => GetAllCategoriesResponse(categories: []));
+
+      final result = await remoteDatasource.getAllCategories();
+
+      expect(result, isA<Success<Categories?>>());
+      verify(mockApiManager.getAllCategories()).called(1);
+      verifyNoMoreInteractions(mockApiManager);
+    });
+
+    test('getAllCategories failure on ApiManager', () async {
+      provideDummy<Result<Categories?>>(Fail(Exception()));
+
+      when(mockApiManager.getAllCategories()).thenThrow(Exception());
+
+      final result = await remoteDatasource.getAllCategories();
+
+      expect(result, isA<Fail<Categories?>>());
+      verify(mockApiManager.getAllCategories()).called(1);
+      verifyNoMoreInteractions(mockApiManager);
+    });
+
+    test('getHomePage success on ApiManager', () async {
+      final mockApiResponse = Home();
+      provideDummy<Result<Home?>>(Success(mockApiResponse));
+
+      when(mockApiManager.getHomePage()).thenAnswer((_) async =>
+          HomeResponse(bestSeller: [], occasions: [], products: []));
+
+      final result = await remoteDatasource.getHomePage();
+
+      expect(result, isA<Success<Home?>>());
+      verify(mockApiManager.getHomePage()).called(1);
+      verifyNoMoreInteractions(mockApiManager);
+    });
+
+    test('getHomePage failure on ApiManager', () async {
+      provideDummy<Result<Home?>>(Fail(Exception()));
+
+      when(mockApiManager.getHomePage()).thenThrow(Exception());
+
+      final result = await remoteDatasource.getHomePage();
+
+      expect(result, isA<Fail<Home?>>());
+      verify(mockApiManager.getHomePage()).called(1);
+      verifyNoMoreInteractions(mockApiManager);
+    });
     test('getAllProducts returns Success', () async {
       when(mockApiManager.getAllProducts())
           .thenAnswer((_) async => dummyResponse);
 
-      final actual = await remoteDataSourceImpl.getAllProducts();
+      final actual = await remoteDatasource.getAllProducts();
 
       expect(actual, isA<Success<ProductResponse?>>());
       expect((actual as Success).data, dummyResponse);
@@ -110,7 +163,7 @@ void main() {
 
       when(mockApiManager.getAllProducts()).thenThrow(exception);
 
-      final actual = await remoteDataSourceImpl.getAllProducts();
+      final actual = await remoteDatasource.getAllProducts();
 
       expect(actual, isA<Fail<ProductResponse?>>());
       expect((actual as Fail).exception, exception);
@@ -125,7 +178,7 @@ void main() {
       when(mockApiManager.getAllBestSellerProducts())
           .thenAnswer((_) async => dummyBestSellerResponse);
 
-      final actual = await remoteDataSourceImpl.getAllBestSellerProducts();
+      final actual = await remoteDatasource.getAllBestSellerProducts();
 
       expect(actual, isA<Success<BestSellerProductResponse?>>());
       expect((actual as Success).data, dummyBestSellerResponse);
@@ -138,7 +191,7 @@ void main() {
 
       when(mockApiManager.getAllBestSellerProducts()).thenThrow(exception);
 
-      final actual = await remoteDataSourceImpl.getAllBestSellerProducts();
+      final actual = await remoteDatasource.getAllBestSellerProducts();
 
       expect(actual, isA<Fail<BestSellerProductResponse?>>());
       expect((actual as Fail).exception, exception);

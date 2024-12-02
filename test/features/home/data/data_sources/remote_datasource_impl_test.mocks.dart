@@ -5,7 +5,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i7;
 
-import 'package:elevate_ecommerce/core/common/api_result.dart' as _i20;
+import 'package:elevate_ecommerce/core/common/api_result.dart' as _i21;
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i6;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i10;
@@ -28,23 +28,27 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
 import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart'
-    as _i19;
+    as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
-    as _i15;
-import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
     as _i17;
-import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
-    as _i18;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
-    as _i16;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
     as _i14;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
+    as _i19;
+import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart'
+    as _i15;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
+    as _i18;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+    as _i16;
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i22;
+import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart'
+    as _i24;
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart'
-    as _i23;
+    as _i25;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i21;
+import 'package:mockito/src/dummies.dart' as _i23;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -191,130 +195,155 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
       ) as _i7.Future<_i12.ResetPasswordResponse?>);
 
   @override
-  _i7.Future<_i14.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+  _i7.Future<_i14.GetAllCategoriesResponse?> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i7.Future<_i14.GetAllCategoriesResponse?>.value(),
+      ) as _i7.Future<_i14.GetAllCategoriesResponse?>);
+
+  @override
+  _i7.Future<_i15.HomeResponse?> getHomePage() => (super.noSuchMethod(
+        Invocation.method(
+          #getHomePage,
+          [],
+        ),
+        returnValue: _i7.Future<_i15.HomeResponse?>.value(),
+      ) as _i7.Future<_i15.HomeResponse?>);
+
+  @override
+  _i7.Future<_i16.ProductResponse?> getAllProducts() => (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
-        returnValue: _i7.Future<_i14.ProductResponse?>.value(),
-      ) as _i7.Future<_i14.ProductResponse?>);
+        returnValue: _i7.Future<_i16.ProductResponse?>.value(),
+      ) as _i7.Future<_i16.ProductResponse?>);
 
   @override
-  _i7.Future<_i15.BestSellerProductResponse?> getAllBestSellerProducts() =>
+  _i7.Future<_i17.BestSellerProductResponse?> getAllBestSellerProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllBestSellerProducts,
           [],
         ),
-        returnValue: _i7.Future<_i15.BestSellerProductResponse?>.value(),
-      ) as _i7.Future<_i15.BestSellerProductResponse?>);
+        returnValue: _i7.Future<_i17.BestSellerProductResponse?>.value(),
+      ) as _i7.Future<_i17.BestSellerProductResponse?>);
 
   @override
-  _i7.Future<_i16.ProductDetailsResponse?> getProductDetails(
+  _i7.Future<_i18.ProductDetailsResponse?> getProductDetails(
           String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProductDetails,
           [productId],
         ),
-        returnValue: _i7.Future<_i16.ProductDetailsResponse?>.value(),
-      ) as _i7.Future<_i16.ProductDetailsResponse?>);
+        returnValue: _i7.Future<_i18.ProductDetailsResponse?>.value(),
+      ) as _i7.Future<_i18.ProductDetailsResponse?>);
 
   @override
-  _i7.Future<_i17.GetAllCategoriesResponse?> getAllCategories() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAllCategories,
-          [],
-        ),
-        returnValue: _i7.Future<_i17.GetAllCategoriesResponse?>.value(),
-      ) as _i7.Future<_i17.GetAllCategoriesResponse?>);
-
-  @override
-  _i7.Future<_i18.GetAllOccasionsResponse?> getAllOccasions() =>
+  _i7.Future<_i19.GetAllOccasionsResponse?> getAllOccasions() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllOccasions,
           [],
         ),
-        returnValue: _i7.Future<_i18.GetAllOccasionsResponse?>.value(),
-      ) as _i7.Future<_i18.GetAllOccasionsResponse?>);
+        returnValue: _i7.Future<_i19.GetAllOccasionsResponse?>.value(),
+      ) as _i7.Future<_i19.GetAllOccasionsResponse?>);
 }
 
 /// A class which mocks [RemoteDatasource].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRemoteDatasource extends _i1.Mock implements _i19.RemoteDatasource {
+class MockRemoteDatasource extends _i1.Mock implements _i20.RemoteDatasource {
   MockRemoteDatasource() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i7.Future<_i20.Result<_i14.ProductResponse?>> getAllProducts() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAllProducts,
-          [],
-        ),
-        returnValue: _i7.Future<_i20.Result<_i14.ProductResponse?>>.value(
-            _i21.dummyValue<_i20.Result<_i14.ProductResponse?>>(
-          this,
-          Invocation.method(
-            #getAllProducts,
-            [],
-          ),
-        )),
-      ) as _i7.Future<_i20.Result<_i14.ProductResponse?>>);
-
-  @override
-  _i7.Future<_i20.Result<_i15.BestSellerProductResponse?>>
-      getAllBestSellerProducts() => (super.noSuchMethod(
-            Invocation.method(
-              #getAllBestSellerProducts,
-              [],
-            ),
-            returnValue: _i7
-                .Future<_i20.Result<_i15.BestSellerProductResponse?>>.value(
-                _i21.dummyValue<_i20.Result<_i15.BestSellerProductResponse?>>(
-              this,
-              Invocation.method(
-                #getAllBestSellerProducts,
-                [],
-              ),
-            )),
-          ) as _i7.Future<_i20.Result<_i15.BestSellerProductResponse?>>);
-
-  @override
-  _i7.Future<_i20.Result<_i22.Categories?>> getAllCategories() =>
+  _i7.Future<_i21.Result<_i22.Categories?>> getAllCategories() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllCategories,
           [],
         ),
-        returnValue: _i7.Future<_i20.Result<_i22.Categories?>>.value(
-            _i21.dummyValue<_i20.Result<_i22.Categories?>>(
+        returnValue: _i7.Future<_i21.Result<_i22.Categories?>>.value(
+            _i23.dummyValue<_i21.Result<_i22.Categories?>>(
           this,
           Invocation.method(
             #getAllCategories,
             [],
           ),
         )),
-      ) as _i7.Future<_i20.Result<_i22.Categories?>>);
+      ) as _i7.Future<_i21.Result<_i22.Categories?>>);
 
   @override
-  _i7.Future<_i20.Result<_i23.Occasions?>> getAllOccasions() =>
+  _i7.Future<_i21.Result<_i24.Home?>> getHomePage() => (super.noSuchMethod(
+        Invocation.method(
+          #getHomePage,
+          [],
+        ),
+        returnValue: _i7.Future<_i21.Result<_i24.Home?>>.value(
+            _i23.dummyValue<_i21.Result<_i24.Home?>>(
+          this,
+          Invocation.method(
+            #getHomePage,
+            [],
+          ),
+        )),
+      ) as _i7.Future<_i21.Result<_i24.Home?>>);
+
+  @override
+  _i7.Future<_i21.Result<_i16.ProductResponse?>> getAllProducts() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllProducts,
+          [],
+        ),
+        returnValue: _i7.Future<_i21.Result<_i16.ProductResponse?>>.value(
+            _i23.dummyValue<_i21.Result<_i16.ProductResponse?>>(
+          this,
+          Invocation.method(
+            #getAllProducts,
+            [],
+          ),
+        )),
+      ) as _i7.Future<_i21.Result<_i16.ProductResponse?>>);
+
+  @override
+  _i7.Future<_i21.Result<_i17.BestSellerProductResponse?>>
+      getAllBestSellerProducts() => (super.noSuchMethod(
+            Invocation.method(
+              #getAllBestSellerProducts,
+              [],
+            ),
+            returnValue: _i7
+                .Future<_i21.Result<_i17.BestSellerProductResponse?>>.value(
+                _i23.dummyValue<_i21.Result<_i17.BestSellerProductResponse?>>(
+              this,
+              Invocation.method(
+                #getAllBestSellerProducts,
+                [],
+              ),
+            )),
+          ) as _i7.Future<_i21.Result<_i17.BestSellerProductResponse?>>);
+
+  @override
+  _i7.Future<_i21.Result<_i25.Occasions?>> getAllOccasions() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllOccasions,
           [],
         ),
-        returnValue: _i7.Future<_i20.Result<_i23.Occasions?>>.value(
-            _i21.dummyValue<_i20.Result<_i23.Occasions?>>(
+        returnValue: _i7.Future<_i21.Result<_i25.Occasions?>>.value(
+            _i23.dummyValue<_i21.Result<_i25.Occasions?>>(
           this,
           Invocation.method(
             #getAllOccasions,
             [],
           ),
         )),
-      ) as _i7.Future<_i20.Result<_i23.Occasions?>>);
+      ) as _i7.Future<_i21.Result<_i25.Occasions?>>);
 }

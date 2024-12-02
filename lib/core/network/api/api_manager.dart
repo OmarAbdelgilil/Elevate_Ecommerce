@@ -13,6 +13,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
@@ -59,6 +61,12 @@ abstract class ApiManager {
   Future<ResetPasswordResponse?> resetPassword(
       @Body() ResetPasswordRequest request);
 
+  @GET(ApiConstants.allCategoriesPath)
+  Future<GetAllCategoriesResponse?> getAllCategories();
+
+  @GET(ApiConstants.homePagePath)
+  Future<HomeResponse?> getHomePage();
+
   @GET(ApiConstants.getAllProductsPath)
   Future<ProductResponse?> getAllProducts();
 
@@ -68,8 +76,6 @@ abstract class ApiManager {
   @GET("${ApiConstants.getProductDetailsPath}/{productId}")
   Future<ProductDetailsResponse?> getProductDetails(
       @Path("productId") String productId);
-  @GET(ApiConstants.allCategoriesPath)
-  Future<GetAllCategoriesResponse?> getAllCategories();
   @GET(ApiConstants.allOccasionsPath)
   Future<GetAllOccasionsResponse?> getAllOccasions();
 }

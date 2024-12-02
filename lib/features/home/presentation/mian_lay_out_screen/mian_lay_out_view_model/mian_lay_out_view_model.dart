@@ -1,4 +1,3 @@
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
@@ -24,7 +23,7 @@ class MainLayoutViewModel extends ChangeNotifier {
     TabItem(
         icon: SVGAssets.homeTab,
         label: StringsManager.homeTab,
-        screen: const HomeScreen()),
+        screen: HomeScreen()),
     TabItem(
         icon: SVGAssets.categoryTab,
         label: StringsManager.categoryTab,

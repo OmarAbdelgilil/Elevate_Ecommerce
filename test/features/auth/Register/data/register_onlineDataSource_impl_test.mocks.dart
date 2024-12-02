@@ -27,15 +27,17 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
-    as _i15;
-import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
     as _i17;
-import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
-    as _i18;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
-    as _i16;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
     as _i14;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
+    as _i19;
+import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart'
+    as _i15;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
+    as _i18;
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+    as _i16;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -183,52 +185,61 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
       ) as _i7.Future<_i12.ResetPasswordResponse?>);
 
   @override
-  _i7.Future<_i14.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+  _i7.Future<_i14.GetAllCategoriesResponse?> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i7.Future<_i14.GetAllCategoriesResponse?>.value(),
+      ) as _i7.Future<_i14.GetAllCategoriesResponse?>);
+
+  @override
+  _i7.Future<_i15.HomeResponse?> getHomePage() => (super.noSuchMethod(
+        Invocation.method(
+          #getHomePage,
+          [],
+        ),
+        returnValue: _i7.Future<_i15.HomeResponse?>.value(),
+      ) as _i7.Future<_i15.HomeResponse?>);
+
+  @override
+  _i7.Future<_i16.ProductResponse?> getAllProducts() => (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
-        returnValue: _i7.Future<_i14.ProductResponse?>.value(),
-      ) as _i7.Future<_i14.ProductResponse?>);
+        returnValue: _i7.Future<_i16.ProductResponse?>.value(),
+      ) as _i7.Future<_i16.ProductResponse?>);
 
   @override
-  _i7.Future<_i15.BestSellerProductResponse?> getAllBestSellerProducts() =>
+  _i7.Future<_i17.BestSellerProductResponse?> getAllBestSellerProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllBestSellerProducts,
           [],
         ),
-        returnValue: _i7.Future<_i15.BestSellerProductResponse?>.value(),
-      ) as _i7.Future<_i15.BestSellerProductResponse?>);
+        returnValue: _i7.Future<_i17.BestSellerProductResponse?>.value(),
+      ) as _i7.Future<_i17.BestSellerProductResponse?>);
 
   @override
-  _i7.Future<_i16.ProductDetailsResponse?> getProductDetails(
+  _i7.Future<_i18.ProductDetailsResponse?> getProductDetails(
           String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProductDetails,
           [productId],
         ),
-        returnValue: _i7.Future<_i16.ProductDetailsResponse?>.value(),
-      ) as _i7.Future<_i16.ProductDetailsResponse?>);
+        returnValue: _i7.Future<_i18.ProductDetailsResponse?>.value(),
+      ) as _i7.Future<_i18.ProductDetailsResponse?>);
 
   @override
-  _i7.Future<_i17.GetAllCategoriesResponse?> getAllCategories() =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #getAllCategories,
-          [],
-        ),
-        returnValue: _i7.Future<_i17.GetAllCategoriesResponse?>.value(),
-      ) as _i7.Future<_i17.GetAllCategoriesResponse?>);
-
-  @override
-  _i7.Future<_i18.GetAllOccasionsResponse?> getAllOccasions() =>
+  _i7.Future<_i19.GetAllOccasionsResponse?> getAllOccasions() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllOccasions,
           [],
         ),
-        returnValue: _i7.Future<_i18.GetAllOccasionsResponse?>.value(),
-      ) as _i7.Future<_i18.GetAllOccasionsResponse?>);
+        returnValue: _i7.Future<_i19.GetAllOccasionsResponse?>.value(),
+      ) as _i7.Future<_i19.GetAllOccasionsResponse?>);
 }

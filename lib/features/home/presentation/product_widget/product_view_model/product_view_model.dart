@@ -81,13 +81,13 @@ class ProductViewModel extends BaseCubit {
   Future<void> fetchBestSellerProducts() async {
     emit(LoadingState());
 
-    final cachedData =
-        await _sharedPreferencesService.getCachedBestSellerProducts();
-    if (cachedData != null) {
-      _bestSellerProductList = cachedData;
-      emit(ContentState());
-      return;
-    }
+    // final cachedData =
+    //     await _sharedPreferencesService.getCachedBestSellerProducts();
+    // if (cachedData != null) {
+    //   _bestSellerProductList = cachedData;
+    //   emit(ContentState());
+    //   return;
+    // }
 
     final result = await _getAllBestSellerProductsUseCase.getAllProducts();
     if (result is Success<BestSellerProductResponse?>) {
