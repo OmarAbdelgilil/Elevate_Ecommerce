@@ -120,19 +120,9 @@ class _FakeDiagnosticsNode_5 extends _i1.SmartFake
       super.toString();
 }
 
-class _FakeTextSelection_6 extends _i1.SmartFake implements _i2.TextSelection {
-  _FakeTextSelection_6(
-    Object parent,
-    Invocation parentInvocation,
-  ) : super(
-          parent,
-          parentInvocation,
-        );
-}
-
-class _FakeTextEditingValue_7 extends _i1.SmartFake
+class _FakeTextEditingValue_6 extends _i1.SmartFake
     implements _i2.TextEditingValue {
-  _FakeTextEditingValue_7(
+  _FakeTextEditingValue_6(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -141,8 +131,8 @@ class _FakeTextEditingValue_7 extends _i1.SmartFake
         );
 }
 
-class _FakeTextSpan_8 extends _i1.SmartFake implements _i2.TextSpan {
-  _FakeTextSpan_8(
+class _FakeTextSpan_7 extends _i1.SmartFake implements _i2.TextSpan {
+  _FakeTextSpan_7(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -562,16 +552,7 @@ class MockTextEditingController extends _i1.Mock
       );
 
   @override
-  _i2.TextSelection get selection => (super.noSuchMethod(
-        Invocation.getter(#selection),
-        returnValue: _FakeTextSelection_6(
-          this,
-          Invocation.getter(#selection),
-        ),
-      ) as _i2.TextSelection);
-
-  @override
-  set selection(_i2.TextSelection? newSelection) => super.noSuchMethod(
+  set selection(dynamic newSelection) => super.noSuchMethod(
         Invocation.setter(
           #selection,
           newSelection,
@@ -582,7 +563,7 @@ class MockTextEditingController extends _i1.Mock
   @override
   _i2.TextEditingValue get value => (super.noSuchMethod(
         Invocation.getter(#value),
-        returnValue: _FakeTextEditingValue_7(
+        returnValue: _FakeTextEditingValue_6(
           this,
           Invocation.getter(#value),
         ),
@@ -610,7 +591,7 @@ class MockTextEditingController extends _i1.Mock
             #withComposing: withComposing,
           },
         ),
-        returnValue: _FakeTextSpan_8(
+        returnValue: _FakeTextSpan_7(
           this,
           Invocation.method(
             #buildTextSpan,

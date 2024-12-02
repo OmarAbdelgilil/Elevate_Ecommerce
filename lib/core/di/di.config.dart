@@ -96,8 +96,15 @@ import '../../features/home/domain/usecase/get_categories_usecase.dart'
 import '../../features/home/domain/usecase/get_occations_usecase.dart' as _i741;
 import '../../features/home/domain/usecase/product_details_useCase.dart'
     as _i665;
+import '../../features/home/domain/usecases/get_categories_usecase.dart'
+    as _i967;
+import '../../features/home/domain/usecases/get_homepage_usecase.dart' as _i17;
 import '../../features/home/presentation/category_screen/categry_viewmodel.dart'
     as _i303;
+import '../../features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart'
+    as _i859;
+import '../../features/home/presentation/home_screen/home_screen_view_models/home_screen_viewmodel.dart'
+    as _i208;
 import '../../features/home/presentation/occasions/occasions_viewmodel.dart'
     as _i714;
 import '../../features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart'
@@ -178,6 +185,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i953.GetAllBestSellerProductsUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i728.GetAllProductsUseCase>(
         () => _i728.GetAllProductsUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i967.GetCategoriesUsecase>(
+        () => _i967.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i17.GetHomepageUsecase>(
+        () => _i17.GetHomepageUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i493.GetCategoriesUsecase>(
         () => _i493.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i741.GetOccasionsUsecase>(
@@ -202,12 +213,17 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i995.ForgetPasswordUsecase>(),
               gh<_i375.ForgetPasswordValidator>(),
             ));
+    gh.factory<_i208.HomeScreenViewmodel>(
+        () => _i208.HomeScreenViewmodel(gh<_i17.GetHomepageUsecase>()));
+            ));
     gh.factory<_i661.LoginViewModel>(() => _i661.LoginViewModel(
           gh<_i334.LoginUsecase>(),
           gh<_i1013.GetLogedUserDataUsecase>(),
         ));
     gh.factory<_i303.CategoriesViewmodel>(
         () => _i303.CategoriesViewmodel(gh<_i493.GetCategoriesUsecase>()));
+    gh.factory<_i859.CategoriesViewmodel>(
+        () => _i859.CategoriesViewmodel(gh<_i967.GetCategoriesUsecase>()));
     gh.factory<_i714.OccasionsViewmodel>(
         () => _i714.OccasionsViewmodel(gh<_i741.GetOccasionsUsecase>()));
     return this;

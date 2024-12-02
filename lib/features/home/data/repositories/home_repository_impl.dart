@@ -1,7 +1,8 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
-import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,6 +16,18 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this._homeDatasource);
 
   @override
+  Future<Result<Categories?>> getAllCategories() async {
+    final result = await _homeDatasource.getAllCategories();
+    return result;
+  }
+
+  @override
+  Future<Result<Home?>> getHomePage() async {
+    final result = await _homeDatasource.getHomePage();
+    return result;
+  }
+
+  @override
   Future<Result<ProductResponse?>> getAllProducts() async {
     return await _homeDatasource.getAllProducts();
   }
@@ -22,12 +35,6 @@ class HomeRepositoryImpl implements HomeRepository {
   @override
   Future<Result<BestSellerProductResponse?>> getAllBestSellerProducts() async {
     return await _homeDatasource.getAllBestSellerProducts();
-  }
-
-  @override
-  Future<Result<Categories?>> getAllCategories() async {
-    final result = await _homeDatasource.getAllCategories();
-    return result;
   }
 
   @override

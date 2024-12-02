@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:elevate_ecommerce/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
@@ -9,18 +10,25 @@ import 'package:elevate_ecommerce/core/routes/router.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_model.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive/hive.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
 
   Hive.registerAdapter(UserModelAdapter());
   HttpOverrides.global = MyHttpOverrides();
   configureDependencies();
+  Bloc.observer = SimpleBlocObserver();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   final TokenStorage tokenStorage = TokenStorage();
   final String? token = await tokenStorage.getToken();
   print("Token retrieved: $token");
