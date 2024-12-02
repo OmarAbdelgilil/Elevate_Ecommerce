@@ -10,6 +10,10 @@ import 'package:elevate_ecommerce/features/home/data/models/response/best_seller
     as _i7;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i5;
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
+    as _i8;
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart'
+    as _i9;
 import 'package:elevate_ecommerce/features/home/domain/repositories/home_repository.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -70,4 +74,38 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
               ),
             )),
           ) as _i3.Future<_i4.Result<_i7.BestSellerProductResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.Categories?>> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.Categories?>>.value(
+            _i6.dummyValue<_i4.Result<_i8.Categories?>>(
+          this,
+          Invocation.method(
+            #getAllCategories,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.Categories?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i9.Occasions?>> getAllOccasions() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOccasions,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i9.Occasions?>>.value(
+            _i6.dummyValue<_i4.Result<_i9.Occasions?>>(
+          this,
+          Invocation.method(
+            #getAllOccasions,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i9.Occasions?>>);
 }

@@ -53,6 +53,9 @@ dependencies:
   bloc:
   provider:
   flutter_secure_storage:
+  hive: 
+  hive_flutter: 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -68,6 +71,7 @@ dev_dependencies:
   retrofit_generator:
   json_serializable:
   smooth_page_indicator:
+  hive_generator:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

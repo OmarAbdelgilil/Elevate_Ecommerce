@@ -38,6 +38,16 @@ import '../../features/auth/forget_password/presentation/foreget_password_viewmo
     as _i455;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
     as _i375;
+import '../../features/auth/logged_user_data/data/contracts/get_logged_user_data_online_datasource.dart'
+    as _i194;
+import '../../features/auth/logged_user_data/data/data_sources/get_logged_user_data_online_data_source_impl.dart'
+    as _i120;
+import '../../features/auth/logged_user_data/data/repos/get_logged_user_data_repo_impl.dart'
+    as _i626;
+import '../../features/auth/logged_user_data/domain/repos/get_logged_user_data_repo.dart'
+    as _i715;
+import '../../features/auth/logged_user_data/domain/use_cases/get_loged_user_data_usecase.dart'
+    as _i1013;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
     as _i710;
 import '../../features/auth/login/data/data_sources/login_online_datasource_impl.dart'
@@ -131,6 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i707.RegisterOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i92.RemoteDatasource>(
         () => _i87.RemoteDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i194.GetLoggedUserDataOnlineDatasource>(() =>
+        _i120.GetLoggedUserDataOnlineDataSourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i710.LoginOnlineDatasource>(
         () => _i988.LoginOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i267.ForgetPasswordOnlineDatasource>(
@@ -145,14 +157,15 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i14.ProductDetails_Onlinedatasource>()));
     gh.factory<_i983.LoginRepo>(
         () => _i568.LoginRepoImpl(gh<_i710.LoginOnlineDatasource>()));
+    gh.factory<_i715.GetLoggedUserDataRepo>(() =>
+        _i626.GetLoggedUserDataRepoImpl(
+            gh<_i194.GetLoggedUserDataOnlineDatasource>()));
     gh.factory<_i760.RegisterRepository>(() =>
         _i823.RegisterRepositoryImpl(gh<_i699.RegisterOnlineDatasource>()));
     gh.factory<_i334.LoginUsecase>(
         () => _i334.LoginUsecase(gh<_i983.LoginRepo>()));
     gh.factory<_i0.HomeRepository>(
         () => _i76.HomeRepositoryImpl(gh<_i92.RemoteDatasource>()));
-    gh.factory<_i661.LoginViewModel>(
-        () => _i661.LoginViewModel(gh<_i334.LoginUsecase>()));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
@@ -171,6 +184,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i741.GetOccasionsUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i177.ProductDetails_ViewModel>(() =>
         _i177.ProductDetails_ViewModel(gh<_i665.ProductDetailsUsecase>()));
+    gh.factory<_i1013.GetLogedUserDataUsecase>(() =>
+        _i1013.GetLogedUserDataUsecase(gh<_i715.GetLoggedUserDataRepo>()));
     gh.factory<_i694.RegisterUseCase>(
         () => _i694.RegisterUseCase(gh<_i760.RegisterRepository>()));
     gh.factory<_i61.RegisterViewModel>(() => _i61.RegisterViewModel(
@@ -187,6 +202,10 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i995.ForgetPasswordUsecase>(),
               gh<_i375.ForgetPasswordValidator>(),
             ));
+    gh.factory<_i661.LoginViewModel>(() => _i661.LoginViewModel(
+          gh<_i334.LoginUsecase>(),
+          gh<_i1013.GetLogedUserDataUsecase>(),
+        ));
     gh.factory<_i303.CategoriesViewmodel>(
         () => _i303.CategoriesViewmodel(gh<_i493.GetCategoriesUsecase>()));
     gh.factory<_i714.OccasionsViewmodel>(

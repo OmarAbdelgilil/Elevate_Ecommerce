@@ -18,6 +18,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
     as _i5;
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
+    as _i19;
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
@@ -231,4 +233,14 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i18.GetAllOccasionsResponse?>.value(),
       ) as _i7.Future<_i18.GetAllOccasionsResponse?>);
+
+  @override
+  _i7.Future<_i19.UserResponse?> getProfile(String? authorization) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getProfile,
+          [authorization],
+        ),
+        returnValue: _i7.Future<_i19.UserResponse?>.value(),
+      ) as _i7.Future<_i19.UserResponse?>);
 }
