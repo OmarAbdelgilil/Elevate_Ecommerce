@@ -10,7 +10,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OccasionsScreen extends StatelessWidget {
-  const OccasionsScreen({super.key});
+  final String selectedOccasionId;
+
+  const OccasionsScreen({super.key, required this.selectedOccasionId});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,8 +24,12 @@ class OccasionsScreen extends StatelessWidget {
           builder: (context, state) {
             if (state is SuccessOccasionsState) {
               final occasions = state.occasions!;
+              final selectedIndex = occasions
+                  .indexWhere((occasion) => occasion.id == selectedOccasionId);
+
               return DefaultTabController(
                 length: occasions.length + 1,
+                initialIndex: selectedIndex >= 0 ? selectedIndex + 1 : 0,
                 child: CustomScrollView(
                   slivers: [
                     SliverToBoxAdapter(
