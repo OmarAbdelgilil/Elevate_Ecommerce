@@ -19,6 +19,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
     as _i5;
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
+    as _i19;
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'

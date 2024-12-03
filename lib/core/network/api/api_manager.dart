@@ -15,6 +15,8 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
@@ -78,4 +80,7 @@ abstract class ApiManager {
       @Path("productId") String productId);
   @GET(ApiConstants.allOccasionsPath)
   Future<GetAllOccasionsResponse?> getAllOccasions();
+  @GET(ApiConstants.profilePath)
+  Future<UserResponse?> getProfile(
+      @Header('Authorization') String authorization);
 }
