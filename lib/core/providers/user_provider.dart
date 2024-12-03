@@ -2,7 +2,7 @@ import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/use
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 
-@singleton
+@injectable
 class UserProvider with ChangeNotifier {
   static final UserProvider _instance = UserProvider._internal();
   factory UserProvider() => _instance;

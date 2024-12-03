@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:elevate_ecommerce/core/cache/hive_service.dart';
 import 'package:elevate_ecommerce/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
@@ -8,6 +9,7 @@ import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/routes/router.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_model.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,6 +33,13 @@ Future<void> main() async {
   ]);
   final TokenStorage tokenStorage = TokenStorage();
   final String? token = await tokenStorage.getToken();
+  if (token != null) {
+    await TokenProvider().saveToken(token);
+    print("Token saved: ${TokenProvider().token}");
+    final userModel = await HiveService().getUser(token);
+    UserData userData = userModel!.toUserData();
+    UserProvider().setUserData(userData);
+  }
   print("Token retrieved: $token");
 
   final String initialRoute =

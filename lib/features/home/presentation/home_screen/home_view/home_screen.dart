@@ -9,6 +9,7 @@ import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_vi
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/home_app_bar.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/occasions_section/occasion_section.dart';
+import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -75,8 +76,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           ElevatedButton(
                               onPressed: () async {
-                                final tokenProvider = getIt<TokenProvider>();
-                                final token = tokenProvider.token;
+                                final token = TokenProvider().token;
                                 final HiveService hiveService = HiveService();
                                 try {
                                   final user =
@@ -93,6 +93,11 @@ class HomeScreen extends StatelessWidget {
                                 }
                               },
                               child: Text('data')),
+                          ElevatedButton(
+                              onPressed: () {
+                                print(TokenProvider().token);
+                              },
+                              child: Text('print token'))
                         ],
                       );
                     }

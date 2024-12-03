@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
 import 'package:hive/hive.dart';
 
 part 'user_model.g.dart'; // This will be generated automatically
@@ -87,5 +88,25 @@ class UserModel extends HiveObject {
       'wishlist': wishlist,
       'addresses': addresses,
     };
+  }
+}
+
+extension UserModelMapper on UserModel {
+  UserData toUserData() {
+    return UserData(
+      id: id,
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      gender: gender,
+      phone: phone,
+      photo: photo,
+      role: role,
+      createdAt: createdAt == null ? null : DateTime.parse(createdAt!),
+      passwordChangedAt:
+          passwordChangedAt == null ? null : DateTime.parse(passwordChangedAt!),
+      wishlist: wishlist,
+      addresses: addresses,
+    );
   }
 }

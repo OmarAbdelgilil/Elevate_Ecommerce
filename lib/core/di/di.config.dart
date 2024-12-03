@@ -134,12 +134,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => registerModule.prefs,
       preResolve: true,
     );
+    gh.factory<_i924.TokenProvider>(() => _i924.TokenProvider());
+    gh.factory<_i26.UserProvider>(() => _i26.UserProvider());
     gh.factory<_i375.ForgetPasswordValidator>(
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
-    gh.singleton<_i924.TokenProvider>(() => _i924.TokenProvider());
-    gh.singleton<_i26.UserProvider>(() => _i26.UserProvider());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i262.SharedPreferencesService>(
         () => _i262.SharedPreferencesService(gh<_i460.SharedPreferences>()));

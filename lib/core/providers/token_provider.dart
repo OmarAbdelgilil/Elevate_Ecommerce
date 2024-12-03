@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
-@singleton
+@injectable
 class TokenProvider with ChangeNotifier {
   static final TokenProvider _instance = TokenProvider._internal();
   factory TokenProvider() => _instance;
@@ -11,7 +11,7 @@ class TokenProvider with ChangeNotifier {
   String? _token;
   String? get token => _token;
 
-  void saveToken(String token) {
+  Future<void> saveToken(String token) async {
     _token = token;
     notifyListeners();
   }
