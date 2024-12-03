@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
+import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/cart_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -33,10 +34,7 @@ class MainLayoutViewModel extends ChangeNotifier {
     TabItem(
         icon: SVGAssets.cardTab,
         label: StringsManager.cardTab,
-        screen: ProductDetailsScreen(
-          productId: "673e2e1f1159920171828153",
-          product: dummyProduct,
-        )),
+        screen: CartScreen()),
     TabItem(
         icon: SVGAssets.personTab,
         label: StringsManager.profile,

@@ -69,7 +69,7 @@ class StringsManager {
   ///// mainLayOutScreen
   static const homeTab = 'Home';
   static const categoryTab = 'Category';
-  static const cardTab = 'Card';
+  static const cardTab = 'Cart';
   static const profileTab = 'Profile';
 
   //HOMEPAGE
@@ -81,7 +81,7 @@ class StringsManager {
   static const occasionSectionError = 'Error loading occasions';
   // product widget
   static const productPriceCurrency = 'EGP';
-  static const productButton = 'add to card';
+  static const productButton = 'add to cart';
 
   //cart
   static const String productAddedToCart =

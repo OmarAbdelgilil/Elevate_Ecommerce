@@ -6,7 +6,7 @@ class ProductDto {
   String? slug;
   String? description;
   String? imgCover;
-  List<String>? images;
+  List<dynamic>? images;
   int? price;
   int? priceAfterDiscount;
   int? quantity;

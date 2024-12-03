@@ -15,7 +15,7 @@ class CartItemDto {
         id: id,
         price: price,
         product: ProductDto(
-          id: id,
+          id: product!.id,
           title: product!.title,
           slug: product!.slug,
           description: product!.description,

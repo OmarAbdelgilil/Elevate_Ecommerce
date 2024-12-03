@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/features/Cart/domain/model/cart_item.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_model.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/add_product_to_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/get_cart_usecase.dart';
@@ -41,6 +42,14 @@ class CartViewmodel extends Cubit<CartState> {
     }
   }
 
+  int cartSubtotal(List<CartItemModel> list) {
+    int subtotal = 0;
+    for (var element in list) {
+      subtotal += element.price! * element.quantity!;
+    }
+    return subtotal;
+  }
+
   void _showSnackbar(String message) {
     final snackBar = SnackBar(
       content: Text(message),
@@ -61,18 +70,22 @@ class CartViewmodel extends Cubit<CartState> {
   }
 
   Future<void> _removeItem(String productId) async {
-    emit(CartLoadingState());
     final result = await _removeItemUsecase.removeItemFromCart(productId);
     switch (result) {
       case Success<bool?>():
-        emit(CartSuccessState());
+        final cart = await _getCartUsecase.getAllCart();
+        switch (cart) {
+          case Success<CartModel?>():
+            emit(CartSuccessState(cartData: cart.data));
+          case Fail<CartModel?>():
+            emit(CartErrorState(exception: cart.exception));
+        }
       case Fail<bool?>():
         emit(CartErrorState(exception: result.exception));
     }
   }
 
   Future<void> _updateQuantity(String productId, int quantity) async {
-    emit(CartLoadingState());
     final result = await _updateQuantityUsecase.updateCartProductQuantity(
         productId, quantity);
     switch (result) {
@@ -89,7 +102,13 @@ class CartViewmodel extends Cubit<CartState> {
         await _addProductToCartUsecase.addProductToCart(productId, quantity);
     switch (result) {
       case Success<bool?>():
-        emit(CartSuccessState());
+        final cart = await _getCartUsecase.getAllCart();
+        switch (cart) {
+          case Success<CartModel?>():
+            emit(CartSuccessState(cartData: cart.data));
+          case Fail<CartModel?>():
+            emit(CartErrorState(exception: cart.exception));
+        }
         _showSnackbar(StringsManager.productAddedToCart);
       case Fail<bool?>():
         emit(CartErrorState(exception: result.exception));
