@@ -11,14 +11,15 @@ class RegisterValidator {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
-  TextEditingController();
+      TextEditingController();
   final _registerFormKey = GlobalKey<FormState>();
   TextEditingController get firstNameController => _firstNameController;
   TextEditingController get lastNameController => _lastNameController;
   TextEditingController get emailController => _emailController;
   TextEditingController get phoneController => _phoneController;
   TextEditingController get passwordController => _passwordController;
-  TextEditingController get confirmPasswordController => _confirmPasswordController;
+  TextEditingController get confirmPasswordController =>
+      _confirmPasswordController;
   GlobalKey<FormState> get registerFormKey => _registerFormKey;
 
   void attachListeners(VoidCallback onFieldsChanged) {
@@ -29,6 +30,7 @@ class RegisterValidator {
     _passwordController.addListener(onFieldsChanged);
     _confirmPasswordController.addListener(onFieldsChanged);
   }
+
   void disposeFields() {
     _firstNameController.dispose();
     _lastNameController.dispose();
@@ -36,7 +38,6 @@ class RegisterValidator {
     _passwordController.dispose();
     _confirmPasswordController.dispose();
     _phoneController.dispose();
-
   }
 
   String? Function(String?) validate(RegisterValidTypes type) {
@@ -63,7 +64,7 @@ class RegisterValidator {
   String? Function(String?) _validateEmail() {
     return (String? value) {
       if (value != null && (value.isEmpty || !value.contains("@"))) {
-        return  StringsManager.issueEmptyEamil;
+        return StringsManager.issueEmptyEamil;
       }
       return null;
     };
@@ -129,5 +130,4 @@ class RegisterValidator {
       return null;
     };
   }
-
 }

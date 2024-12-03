@@ -9,22 +9,15 @@ class ProductButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return                 ElevatedButton(
-
+    return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: ColorManager.primary ,
-
+        backgroundColor: ColorManager.primary,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100.r),
         ),
-
-
-
       ),
-      onPressed: () {
-
-      },
-      child:text ,
+      onPressed: () {},
+      child: text,
     );
   }
 }

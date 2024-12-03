@@ -5,8 +5,9 @@ import 'BestSeller.dart';
 
 class BestSellerProductResponse {
   BestSellerProductResponse({
-      this.message, 
-      this.bestSeller,});
+    this.message,
+    this.bestSeller,
+  });
 
   BestSellerProductResponse.fromJson(dynamic json) {
     message = json['message'];
@@ -19,11 +20,14 @@ class BestSellerProductResponse {
   }
   String? message;
   List<BestSeller>? bestSeller;
-BestSellerProductResponse copyWith({  String? message,
-  List<BestSeller>? bestSeller,
-}) => BestSellerProductResponse(  message: message ?? this.message,
-  bestSeller: bestSeller ?? this.bestSeller,
-);
+  BestSellerProductResponse copyWith({
+    String? message,
+    List<BestSeller>? bestSeller,
+  }) =>
+      BestSellerProductResponse(
+        message: message ?? this.message,
+        bestSeller: bestSeller ?? this.bestSeller,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['message'] = message;
@@ -32,5 +36,4 @@ BestSellerProductResponse copyWith({  String? message,
     }
     return map;
   }
-
 }

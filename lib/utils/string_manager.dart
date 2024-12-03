@@ -1,6 +1,6 @@
 class StringsManager {
   static const login = "login";
-  static const bestSeller="Best seller";
+  static const bestSeller = "Best seller";
   static const signUp = "Sign up";
   static const subject = "subject";
   static const profile = "profile";

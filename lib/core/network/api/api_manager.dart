@@ -4,6 +4,9 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
 import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
@@ -78,4 +81,19 @@ abstract class ApiManager {
       @Path("productId") String productId);
   @GET(ApiConstants.allOccasionsPath)
   Future<GetAllOccasionsResponse?> getAllOccasions();
+
+  //cart endpoints
+  @GET(ApiConstants.cartPath)
+  Future<CartResponse?> getAllCart();
+
+  @POST(ApiConstants.cartPath)
+  Future<CartResponse?> addProductToCart(@Body() AddCartProductRequest req);
+
+  @PUT("${ApiConstants.cartPath}/{productId}")
+  Future<CartResponse?> updateCartProductQuantity(
+      @Path("productId") String productId,
+      @Body() UpdateCartProductQuantityRequest req);
+
+  @DELETE("${ApiConstants.cartPath}/{productId}")
+  Future<CartResponse?> removeItemFromCart(@Path("productId") String productId);
 }

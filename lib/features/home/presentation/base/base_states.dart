@@ -1,4 +1,3 @@
-
 enum DisplayType { fullScreen, popUpDialog }
 
 abstract class BaseState {
@@ -7,9 +6,11 @@ abstract class BaseState {
 }
 
 class InitialState extends BaseState {}
+
 class LoadingState extends BaseState {
   LoadingState({super.displayType});
 }
+
 class SuccessState extends BaseState {
   final String message;
   SuccessState(this.message);
@@ -30,10 +31,9 @@ class EmptyState extends BaseState {
 class ErrorState extends BaseState {
   final String errorMessage;
 
-
   ErrorState(
-      this.errorMessage,
-   ) ;
+    this.errorMessage,
+  );
 }
 
 class ContentState extends BaseState {}

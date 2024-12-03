@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 
 @injectable
-class RegisterUseCase{
+class RegisterUseCase {
   final RegisterRepository _registerRepository;
   RegisterUseCase(this._registerRepository);
 

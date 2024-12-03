@@ -25,7 +25,8 @@ class ProductDetailsScreen extends StatefulWidget {
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  final ProductDetails_ViewModel productDetailsViewModel = getIt<ProductDetails_ViewModel>();
+  final ProductDetails_ViewModel productDetailsViewModel =
+      getIt<ProductDetails_ViewModel>();
   final PageController _pageController = PageController();
   late ProductsModel productDetails;
 
@@ -33,7 +34,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   void initState() {
     super.initState();
     productDetails = widget.product;
-    productDetailsViewModel.doIntent(LoadProductDetailsIntent(widget.productId));
+    productDetailsViewModel
+        .doIntent(LoadProductDetailsIntent(widget.productId));
   }
 
   @override
@@ -48,7 +50,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             });
           } else if (state is ErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Failed to refresh product details: ${state.exception?.toString() ?? "Unknown error"}")),
+              SnackBar(
+                  content: Text(
+                      "Failed to refresh product details: ${state.exception?.toString() ?? "Unknown error"}")),
             );
           }
         },
@@ -60,15 +64,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: EdgeInsets.only(bottom: 25.h, left: 10.w),
-                title: Text(
-                  productDetails.title ?? '',
-                  style: AppTextStyles.title(
-                    fontSize: 21.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  )
-
-                ),
+                title: Text(productDetails.title ?? '',
+                    style: AppTextStyles.title(
+                      fontSize: 21.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    )),
                 background: Column(
                   children: [
                     Expanded(
@@ -116,7 +117,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   children: [
                     Text(
                       'EGP ${productDetails.priceAfterDiscount ?? productDetails.price}',
-                      style:  AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xff000000),
@@ -147,7 +148,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 15.h),
                     Text(
                       'Description',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
                         fontSize: 18.sp,
@@ -156,7 +157,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 5.h),
                     Text(
                       productDetails.description ?? '',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
@@ -165,7 +166,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 15.h),
                     Text(
                       'Bouquet includes',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
                         fontSize: 18.sp,
@@ -174,7 +175,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 5.h),
                     Text(
                       'Pink roses: 20\nWhite wrap',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
@@ -185,8 +186,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     // Add to cart button
                     CustomButton(
                       text: 'Add to cart',
-                      onPressed: () {
-                      },
+                      onPressed: () {},
                     ),
                     SizedBox(height: 40.h),
                   ],
@@ -199,9 +199,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
-
-
-
-
-
-

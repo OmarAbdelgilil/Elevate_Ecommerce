@@ -6,7 +6,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: ProductDetails_Onlinedatasource)
-class ProductDetails_Onlinedatasource_Impl implements ProductDetails_Onlinedatasource {
+class ProductDetails_Onlinedatasource_Impl
+    implements ProductDetails_Onlinedatasource {
   final ApiManager apiManager;
 
   ProductDetails_Onlinedatasource_Impl(this.apiManager);
@@ -19,4 +20,3 @@ class ProductDetails_Onlinedatasource_Impl implements ProductDetails_Onlinedatas
     });
   }
 }
-

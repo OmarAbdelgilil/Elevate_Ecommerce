@@ -6,6 +6,8 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(color: ColorManager.grey,);
+    return const Placeholder(
+      color: ColorManager.grey,
+    );
   }
 }

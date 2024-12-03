@@ -86,7 +86,9 @@ class ProductGridItem extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                               ),
-                              const SizedBox(width: AppSize.s4,),
+                              const SizedBox(
+                                width: AppSize.s4,
+                              ),
                               Text("$price",
                                   style: GoogleFonts.inter(
                                     textStyle: const TextStyle(
@@ -98,8 +100,9 @@ class ProductGridItem extends StatelessWidget {
                                       decorationThickness: 1,
                                     ),
                                   )),
-                              const SizedBox(width: AppSize.s4,),
-
+                              const SizedBox(
+                                width: AppSize.s4,
+                              ),
                               Text(
                                 disCount,
                                 style: AppTextStyles.subtitle(

@@ -3,6 +3,4 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
 
 abstract class ProductDetails_Onlinedatasource {
   Future<Result<ProductDetailsResponse?>> getProductDetails(String productId);
-
-
 }

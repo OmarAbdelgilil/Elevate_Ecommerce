@@ -1,9 +1,8 @@
-
-
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 
 class Products {
-  Products({ this.id,
+  Products({
+    this.id,
     this.title,
     this.slug,
     this.description,
@@ -17,8 +16,7 @@ class Products {
     this.createdAt,
     this.updatedAt,
     this.v,
-
-      });
+  });
 
   Products.fromJson(dynamic json) {
     id = json['_id'];
@@ -52,38 +50,38 @@ class Products {
   String? updatedAt;
   int? v;
 
-Products copyWith({  String? id,
-  String? title,
-  String? slug,
-  String? description,
-  String? imgCover,
-  List<String>? images,
-  int? price,
-  int? priceAfterDiscount,
-  int? quantity,
-  String? category,
-  String? occasion,
-  String? createdAt,
-  String? updatedAt,
-  int? v,
-
-}) => Products(  id: id ?? this.id,
-  title: title ?? this.title,
-  slug: slug ?? this.slug,
-  description: description ?? this.description,
-  imgCover: imgCover ?? this.imgCover,
-  images: images ?? this.images,
-  price: price ?? this.price,
-  priceAfterDiscount: priceAfterDiscount ?? this.priceAfterDiscount,
-  quantity: quantity ?? this.quantity,
-  category: category ?? this.category,
-  occasion: occasion ?? this.occasion,
-  createdAt: createdAt ?? this.createdAt,
-  updatedAt: updatedAt ?? this.updatedAt,
-  v: v ?? this.v,
-
-);
-
+  Products copyWith({
+    String? id,
+    String? title,
+    String? slug,
+    String? description,
+    String? imgCover,
+    List<String>? images,
+    int? price,
+    int? priceAfterDiscount,
+    int? quantity,
+    String? category,
+    String? occasion,
+    String? createdAt,
+    String? updatedAt,
+    int? v,
+  }) =>
+      Products(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        slug: slug ?? this.slug,
+        description: description ?? this.description,
+        imgCover: imgCover ?? this.imgCover,
+        images: images ?? this.images,
+        price: price ?? this.price,
+        priceAfterDiscount: priceAfterDiscount ?? this.priceAfterDiscount,
+        quantity: quantity ?? this.quantity,
+        category: category ?? this.category,
+        occasion: occasion ?? this.occasion,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+        v: v ?? this.v,
+      );
 
   // Method to convert Products to ProductsModel
   ProductsModel toModel() {
@@ -123,5 +121,4 @@ Products copyWith({  String? id,
     map['id'] = id;
     return map;
   }
-
 }

@@ -1,1 +1,8 @@
-enum RegisterValidTypes { firstName, lastName, email, password,confirmPassword,phone }
+enum RegisterValidTypes {
+  firstName,
+  lastName,
+  email,
+  password,
+  confirmPassword,
+  phone
+}
