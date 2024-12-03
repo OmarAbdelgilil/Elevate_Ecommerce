@@ -13,18 +13,12 @@ class CartOnlineDatasourceImpl implements CartOnlineDatasource {
   final ApiManager apiManager;
   CartOnlineDatasourceImpl(this.apiManager);
   @override
-  Future<Result<CartModel?>> addProductToCart(String productId, int quantity) {
+  Future<Result<bool?>> addProductToCart(String productId, int quantity) {
     return executeApi(
       () async {
-        final result = await apiManager.addProductToCart(
+        await apiManager.addProductToCart(
             AddCartProductRequest(product: productId, quantity: quantity));
-        return CartDto(
-                cartItems: result!.cart!.cartItems,
-                id: result.cart!.id,
-                totalPrice: result.cart!.totalPrice,
-                user: result.cart!.user,
-                numOfCartItems: result.numOfCartItems)
-            .toCartModel();
+        return true;
       },
     );
   }
@@ -46,17 +40,11 @@ class CartOnlineDatasourceImpl implements CartOnlineDatasource {
   }
 
   @override
-  Future<Result<CartModel?>> removeItemFromCart(String productId) {
+  Future<Result<bool?>> removeItemFromCart(String productId) {
     return executeApi(
       () async {
-        final result = await apiManager.removeItemFromCart(productId);
-        return CartDto(
-                cartItems: result!.cart!.cartItems,
-                id: result.cart!.id,
-                totalPrice: result.cart!.totalPrice,
-                user: result.cart!.user,
-                numOfCartItems: result.numOfCartItems)
-            .toCartModel();
+        await apiManager.removeItemFromCart(productId);
+        return false;
       },
     );
   }

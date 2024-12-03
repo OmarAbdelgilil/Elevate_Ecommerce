@@ -7,6 +7,7 @@ import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart';
 import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
@@ -89,7 +90,7 @@ abstract class ApiManager {
 
   @POST(ApiConstants.cartPath)
   @Extra({'requiresToken': true})
-  Future<CartResponse?> addProductToCart(@Body() AddCartProductRequest req);
+  Future<CartResponse2?> addProductToCart(@Body() AddCartProductRequest req);
 
   @PUT("${ApiConstants.cartPath}/{productId}")
   @Extra({'requiresToken': true})
@@ -99,5 +100,6 @@ abstract class ApiManager {
 
   @DELETE("${ApiConstants.cartPath}/{productId}")
   @Extra({'requiresToken': true})
-  Future<CartResponse?> removeItemFromCart(@Path("productId") String productId);
+  Future<CartResponse2?> removeItemFromCart(
+      @Path("productId") String productId);
 }

@@ -27,11 +27,13 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart'
-    as _i21;
-import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart'
     as _i22;
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart'
+    as _i23;
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart'
     as _i20;
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart'
+    as _i21;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i17;
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
@@ -259,20 +261,20 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
       ) as _i7.Future<_i20.CartResponse?>);
 
   @override
-  _i7.Future<_i20.CartResponse?> addProductToCart(
-          _i21.AddCartProductRequest? req) =>
+  _i7.Future<_i21.CartResponse2?> addProductToCart(
+          _i22.AddCartProductRequest? req) =>
       (super.noSuchMethod(
         Invocation.method(
           #addProductToCart,
           [req],
         ),
-        returnValue: _i7.Future<_i20.CartResponse?>.value(),
-      ) as _i7.Future<_i20.CartResponse?>);
+        returnValue: _i7.Future<_i21.CartResponse2?>.value(),
+      ) as _i7.Future<_i21.CartResponse2?>);
 
   @override
   _i7.Future<_i20.CartResponse?> updateCartProductQuantity(
     String? productId,
-    _i22.UpdateCartProductQuantityRequest? req,
+    _i23.UpdateCartProductQuantityRequest? req,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -286,12 +288,12 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
       ) as _i7.Future<_i20.CartResponse?>);
 
   @override
-  _i7.Future<_i20.CartResponse?> removeItemFromCart(String? productId) =>
+  _i7.Future<_i21.CartResponse2?> removeItemFromCart(String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #removeItemFromCart,
           [productId],
         ),
-        returnValue: _i7.Future<_i20.CartResponse?>.value(),
-      ) as _i7.Future<_i20.CartResponse?>);
+        returnValue: _i7.Future<_i21.CartResponse2?>.value(),
+      ) as _i7.Future<_i21.CartResponse2?>);
 }

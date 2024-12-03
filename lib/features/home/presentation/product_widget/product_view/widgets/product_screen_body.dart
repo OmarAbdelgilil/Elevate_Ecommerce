@@ -54,6 +54,7 @@ class ProductScreenBody extends StatelessWidget {
                       ));
                 },
                 child: ProductGridItem(
+                  id: product.id!,
                   productImage: product.imgCover ?? '',
                   title: product.title ?? '',
                   description: product.description ?? '',

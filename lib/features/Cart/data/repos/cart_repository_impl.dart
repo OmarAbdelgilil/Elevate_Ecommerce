@@ -9,8 +9,7 @@ class CartRepositoryImpl implements CartRepository {
   final CartOnlineDatasource _cartOnlineDatasource;
   CartRepositoryImpl(this._cartOnlineDatasource);
   @override
-  Future<Result<CartModel?>> addProductToCart(
-      String productId, int quantity) async {
+  Future<Result<bool?>> addProductToCart(String productId, int quantity) async {
     return await _cartOnlineDatasource.addProductToCart(productId, quantity);
   }
 
@@ -20,7 +19,7 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future<Result<CartModel?>> removeItemFromCart(String productId) async {
+  Future<Result<bool?>> removeItemFromCart(String productId) async {
     return await _cartOnlineDatasource.removeItemFromCart(productId);
   }
 

@@ -82,4 +82,8 @@ class StringsManager {
   // product widget
   static const productPriceCurrency = 'EGP';
   static const productButton = 'add to card';
+
+  //cart
+  static const String productAddedToCart =
+      "Product added to cart successfully!";
 }

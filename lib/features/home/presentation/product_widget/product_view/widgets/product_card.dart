@@ -18,6 +18,7 @@ class ProductGridItem extends StatelessWidget {
   final num price;
   final num priceAfterDiscount;
   final String disCount;
+  final String id;
 
   const ProductGridItem({
     super.key,
@@ -27,6 +28,7 @@ class ProductGridItem extends StatelessWidget {
     required this.price,
     required this.priceAfterDiscount,
     required this.disCount,
+    required this.id,
   });
 
   @override
@@ -119,20 +121,22 @@ class ProductGridItem extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSize.s5),
                 ProductButton(
+                    productId: id,
                     text: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SvgPicture.asset(
-                      SVGAssets.cardTab,
-                      colorFilter: const ColorFilter.mode(
-                          ColorManager.white, BlendMode.srcIn),
-                    ),
-                    Text(
-                      StringsManager.productButton,
-                      style: AppTextStyles.button(color: ColorManager.white),
-                    )
-                  ],
-                ))
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SvgPicture.asset(
+                          SVGAssets.cardTab,
+                          colorFilter: const ColorFilter.mode(
+                              ColorManager.white, BlendMode.srcIn),
+                        ),
+                        Text(
+                          StringsManager.productButton,
+                          style:
+                              AppTextStyles.button(color: ColorManager.white),
+                        )
+                      ],
+                    ))
               ],
             ),
           );

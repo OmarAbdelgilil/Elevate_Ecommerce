@@ -4,6 +4,9 @@ import 'package:elevate_ecommerce/features/Cart/domain/usecases/add_product_to_c
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/get_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/remove_item_from_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/update_cart_product_quantity_usecase.dart';
+import 'package:elevate_ecommerce/main.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -38,6 +41,14 @@ class CartViewmodel extends Cubit<CartState> {
     }
   }
 
+  void _showSnackbar(String message) {
+    final snackBar = SnackBar(
+      content: Text(message),
+      duration: const Duration(seconds: 3),
+    );
+    scaffoldMessengerKey.currentState?.showSnackBar(snackBar);
+  }
+
   Future<void> _getCart() async {
     emit(CartLoadingState());
     final result = await _getCartUsecase.getAllCart();
@@ -53,9 +64,9 @@ class CartViewmodel extends Cubit<CartState> {
     emit(CartLoadingState());
     final result = await _removeItemUsecase.removeItemFromCart(productId);
     switch (result) {
-      case Success<CartModel?>():
-        emit(CartSuccessState(cartData: result.data));
-      case Fail<CartModel?>():
+      case Success<bool?>():
+        emit(CartSuccessState());
+      case Fail<bool?>():
         emit(CartErrorState(exception: result.exception));
     }
   }
@@ -77,9 +88,10 @@ class CartViewmodel extends Cubit<CartState> {
     final result =
         await _addProductToCartUsecase.addProductToCart(productId, quantity);
     switch (result) {
-      case Success<CartModel?>():
-        emit(CartSuccessState(cartData: result.data));
-      case Fail<CartModel?>():
+      case Success<bool?>():
+        emit(CartSuccessState());
+        _showSnackbar(StringsManager.productAddedToCart);
+      case Fail<bool?>():
         emit(CartErrorState(exception: result.exception));
     }
   }

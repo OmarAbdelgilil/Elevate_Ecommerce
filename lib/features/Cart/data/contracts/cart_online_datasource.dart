@@ -3,8 +3,8 @@ import 'package:elevate_ecommerce/features/Cart/domain/model/cart_model.dart';
 
 abstract class CartOnlineDatasource {
   Future<Result<CartModel?>> getAllCart();
-  Future<Result<CartModel?>> addProductToCart(String productId, int quantity);
+  Future<Result<bool?>> addProductToCart(String productId, int quantity);
   Future<Result<CartModel?>> updateCartProductQuantity(
       String productId, int quantity);
-  Future<Result<CartModel?>> removeItemFromCart(String productId);
+  Future<Result<bool?>> removeItemFromCart(String productId);
 }

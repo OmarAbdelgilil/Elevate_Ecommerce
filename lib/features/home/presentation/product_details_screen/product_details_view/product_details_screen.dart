@@ -188,8 +188,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
 
                     // Add to cart button
                     BlocBuilder<CartViewmodel, CartState>(
+                      bloc: cartViewmodel,
                       builder: (context, state) {
-                        if (state is LoadingState) {
+                        if (state is CartLoadingState) {
                           return Center(
                             child: CircularProgressIndicator(
                               color: ColorManager.primary,
