@@ -25,11 +25,9 @@ import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 class DummyApiManager implements ApiManager {
   @override
   Future<UserResponse?> getProfile(String token) async {
-    // Dummy success response
     if (token == 'Bearer test_token') {
       return UserResponse(message: 'Success', user: null);
     }
-    // Dummy failure response
     throw Exception('Failed to fetch user data');
   }
 
@@ -96,24 +94,20 @@ void main() {
   late TokenProvider tokenProvider;
 
   setUpAll(() {
-    // Register TokenProvider in GetIt for testing
     getIt.registerSingleton<TokenProvider>(TokenProvider());
   });
 
   setUp(() {
-    dummyApiManager = DummyApiManager(); // Use the dummy implementation
-    tokenProvider = getIt<TokenProvider>(); // Retrieve the registered instance
-    dataSource = GetLoggedUserDataOnlineDataSourceImpl(
-        dummyApiManager); // Pass dummyApiManager
+    dummyApiManager = DummyApiManager();
+    tokenProvider = getIt<TokenProvider>();
+    dataSource = GetLoggedUserDataOnlineDataSourceImpl(dummyApiManager);
   });
 
   group('GetLoggedUserDataOnlineDataSourceImpl Tests with Dummy', () {
     test('getLoggedUserData returns UserResponse on success', () async {
-      // Arrange
       final token = 'test_token';
-      tokenProvider.saveToken(token); // Set a token in the provider
+      tokenProvider.saveToken(token);
 
-      // Act
       final result = await dataSource.getLoggedUserData();
 
       // Assert
@@ -122,14 +116,9 @@ void main() {
     });
 
     test('getLoggedUserData returns Fail on ApiManager failure', () async {
-      // Arrange
       final token = 'invalid_token';
-      tokenProvider.saveToken(token); // Set an invalid token in the provider
-
-      // Act
+      tokenProvider.saveToken(token);
       final result = await dataSource.getLoggedUserData();
-
-      // Assert
       expect(result, isA<Fail<UserResponse?>>());
       expect((result as Fail).exception.toString(),
           contains('Failed to fetch user data'));
