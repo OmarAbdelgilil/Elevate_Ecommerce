@@ -7,7 +7,7 @@ class ApiConstants {
   static const String getAllProductsPath = "/v1/products";
   static const String registerPath = "/v1/auth/signup";
   static const String getProductDetailsPath = "/v1/products";
-
+static const String updatePasswordPath="/v1/auth/change-password";
 
 
   static const String getAllBestSellerProductsPath = "/v1/best-seller";

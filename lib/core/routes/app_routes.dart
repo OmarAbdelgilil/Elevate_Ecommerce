@@ -7,6 +7,7 @@ class AppRoutes {
   static const productWidget = "productWidgetRoute";
   static const ProductDetails = "ProductDetails";
   static const bestSeller ="bestSeller";
+  static const ResetPassword="ResetPassword";
 
 
 

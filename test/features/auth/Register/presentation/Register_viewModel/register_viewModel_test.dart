@@ -89,7 +89,7 @@ void main() {
     );
 
     test(
-      'doIntent with RegisterIntent emits LoadingState, ResetPasswordState on Fail',
+      'doIntent with RegisterIntent emits LoadingState on Fail',
           () {
         when(mockFormState.validate()).thenReturn(true);
         when(mockTextEditingController.text).thenReturn("");
@@ -109,7 +109,7 @@ void main() {
     );
 
     test(
-      'doIntent with RegisterIntent emits LoadingState, ResetPasswordState when RegisterFormKey is invalid',
+      'doIntent with RegisterIntent emits LoadingState  when RegisterFormKey is invalid',
           () {
         when(mockFormState.validate()).thenReturn(false);
         expectLater(

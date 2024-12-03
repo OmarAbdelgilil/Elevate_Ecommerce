@@ -12,6 +12,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:injectable/injectable.dart';
@@ -42,6 +44,9 @@ abstract class ApiManager {
   Future<RegisterResponse> register(
       @Body() RegisterRequest request);
 
+  @PATCH(ApiConstants.updatePasswordPath)
+  Future<UpdatePasswordResponse> updatePassword(
+      @Body() UpdatePasswordRequest request);
   @POST(ApiConstants.loginPath)
   Future<LoginResponse> login(@Body() LoginRequest request);
 
