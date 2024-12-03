@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
+import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view_model.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart';
+import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,6 +29,7 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   final ProductDetails_ViewModel productDetailsViewModel =
       getIt<ProductDetails_ViewModel>();
+  final CartViewmodel cartViewmodel = getIt<CartViewmodel>();
   final PageController _pageController = PageController();
   late ProductsModel productDetails;
 
@@ -184,9 +187,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 35.h),
 
                     // Add to cart button
-                    CustomButton(
-                      text: 'Add to cart',
-                      onPressed: () {},
+                    BlocBuilder<CartViewmodel, CartState>(
+                      builder: (context, state) {
+                        if (state is LoadingState) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: ColorManager.primary,
+                            ),
+                          );
+                        }
+                        return CustomButton(
+                          text: 'Add to cart',
+                          onPressed: () {
+                            cartViewmodel.doIntent(AddProductIntent(
+                                productId: productDetails.id!, quantity: 1));
+                          },
+                        );
+                      },
                     ),
                     SizedBox(height: 40.h),
                   ],

@@ -31,8 +31,10 @@ abstract class DioModule {
     }
     dio.interceptors.add(InterceptorsWrapper(
       onRequest: (options, handler) {
-        options.headers['Authorization'] =
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjczNDlmZGQ4NWE1MzczNDI0NGQ1ZTJlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzMwOTA2MzB9.-Fl6bb5QcUKECnqjRvnSWWVd9gy3JfR3lwHDbmB8vUk';
+        if (options.extra['requiresToken'] == true) {
+          options.headers['Authorization'] =
+              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNjczNDlmZGQ4NWE1MzczNDI0NGQ1ZTJlIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MzMwOTA2MzB9.-Fl6bb5QcUKECnqjRvnSWWVd9gy3JfR3lwHDbmB8vUk';
+        }
       },
     ));
 

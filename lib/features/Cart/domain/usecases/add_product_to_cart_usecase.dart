@@ -4,11 +4,11 @@ import 'package:elevate_ecommerce/features/Cart/domain/repos/cart_repository.dar
 import 'package:injectable/injectable.dart';
 
 @injectable
-class UpdateProductQuantityUsecase {
+class AddProductToCartUsecase {
   final CartRepository _cartRepository;
-  UpdateProductQuantityUsecase(this._cartRepository);
-  Future<Result<CartModel?>> updateCartProductQuantity(
+  AddProductToCartUsecase(this._cartRepository);
+  Future<Result<CartModel?>> addProductToCart(
       String productId, int quantity) async {
-    return await _cartRepository.updateCartProductQuantity(productId, quantity);
+    return await _cartRepository.addProductToCart(productId, quantity);
   }
 }

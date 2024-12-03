@@ -84,16 +84,20 @@ abstract class ApiManager {
 
   //cart endpoints
   @GET(ApiConstants.cartPath)
+  @Extra({'requiresToken': true})
   Future<CartResponse?> getAllCart();
 
   @POST(ApiConstants.cartPath)
+  @Extra({'requiresToken': true})
   Future<CartResponse?> addProductToCart(@Body() AddCartProductRequest req);
 
   @PUT("${ApiConstants.cartPath}/{productId}")
+  @Extra({'requiresToken': true})
   Future<CartResponse?> updateCartProductQuantity(
       @Path("productId") String productId,
       @Body() UpdateCartProductQuantityRequest req);
 
   @DELETE("${ApiConstants.cartPath}/{productId}")
+  @Extra({'requiresToken': true})
   Future<CartResponse?> removeItemFromCart(@Path("productId") String productId);
 }

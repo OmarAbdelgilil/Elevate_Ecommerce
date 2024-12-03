@@ -63,6 +63,21 @@ import '../../features/auth/Register/presentation/Register_validator/register_va
     as _i877;
 import '../../features/auth/Register/presentation/Register_viewModel/register_viewModel.dart'
     as _i61;
+import '../../features/Cart/data/contracts/cart_online_datasource.dart'
+    as _i191;
+import '../../features/Cart/data/datasources/cart_online_datasource_impl.dart'
+    as _i145;
+import '../../features/Cart/data/repos/cart_repository_impl.dart' as _i855;
+import '../../features/Cart/domain/repos/cart_repository.dart' as _i547;
+import '../../features/Cart/domain/usecases/add_product_to_cart_usecase.dart'
+    as _i405;
+import '../../features/Cart/domain/usecases/get_cart_usecase.dart' as _i498;
+import '../../features/Cart/domain/usecases/remove_item_from_cart_usecase.dart'
+    as _i31;
+import '../../features/Cart/domain/usecases/update_cart_product_quantity_usecase.dart'
+    as _i463;
+import '../../features/Cart/presentation/viewmodel/cart_view_model.dart'
+    as _i929;
 import '../../features/home/data/contracts/product_details_onlineDataSource.dart'
     as _i14;
 import '../../features/home/data/contracts/remote_datasource.dart' as _i92;
@@ -134,6 +149,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i601.AuthOfflineDatasourceImpl());
     gh.factory<_i14.ProductDetails_Onlinedatasource>(() =>
         _i958.ProductDetails_Onlinedatasource_Impl(gh<_i561.ApiManager>()));
+    gh.factory<_i191.CartOnlineDatasource>(
+        () => _i145.CartOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i547.CartRepository>(
+        () => _i855.CartRepositoryImpl(gh<_i191.CartOnlineDatasource>()));
     gh.factory<_i699.RegisterOnlineDatasource>(
         () => _i707.RegisterOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i92.RemoteDatasource>(
@@ -158,10 +177,24 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i334.LoginUsecase(gh<_i983.LoginRepo>()));
     gh.factory<_i0.HomeRepository>(
         () => _i76.HomeRepositoryImpl(gh<_i92.RemoteDatasource>()));
+    gh.factory<_i405.AddProductToCartUsecase>(
+        () => _i405.AddProductToCartUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i498.GetCartUsecase>(
+        () => _i498.GetCartUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i31.RemoveItemFromCartUsecase>(
+        () => _i31.RemoveItemFromCartUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i463.UpdateCartProductQuantityUsecase>(() =>
+        _i463.UpdateCartProductQuantityUsecase(gh<_i547.CartRepository>()));
     gh.factory<_i661.LoginViewModel>(
         () => _i661.LoginViewModel(gh<_i334.LoginUsecase>()));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
+    gh.factory<_i929.CartViewmodel>(() => _i929.CartViewmodel(
+          gh<_i498.GetCartUsecase>(),
+          gh<_i31.RemoveItemFromCartUsecase>(),
+          gh<_i463.UpdateCartProductQuantityUsecase>(),
+          gh<_i405.AddProductToCartUsecase>(),
+        ));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
           gh<_i981.AuthOnlineDatasource>(),
           gh<_i871.AuthOfflineDatasource>(),
