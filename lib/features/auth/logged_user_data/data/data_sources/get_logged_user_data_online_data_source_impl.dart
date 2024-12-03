@@ -15,12 +15,10 @@ class GetLoggedUserDataOnlineDataSourceImpl
   GetLoggedUserDataOnlineDataSourceImpl(this.apiManager);
   @override
   Future<Result<UserResponse?>> getLoggedUserData() async {
-    final TokenStorage tokenStorage = TokenStorage();
     final tokenProvider = TokenProvider();
 
     return executeApi(() async {
-      final tokenFromStorage = await tokenStorage.getToken();
-      final token = tokenFromStorage ?? tokenProvider.token;
+      final token = tokenProvider.token;
       if (token != null) {
         var result = await apiManager.getProfile('Bearer $token');
         return result;

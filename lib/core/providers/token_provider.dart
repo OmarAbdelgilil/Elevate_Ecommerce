@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:injectable/injectable.dart';
 
+@singleton
 class TokenProvider with ChangeNotifier {
   static final TokenProvider _instance = TokenProvider._internal();
   factory TokenProvider() => _instance;

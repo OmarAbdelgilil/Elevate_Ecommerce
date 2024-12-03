@@ -40,6 +40,7 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => TokenProvider()),
       ],
       child: MyApp(initialRoute: initialRoute),
     ),

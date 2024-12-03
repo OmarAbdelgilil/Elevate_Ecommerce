@@ -114,6 +114,8 @@ import '../../features/home/presentation/product_widget/product_view_model/produ
 import '../network/api/api_manager.dart' as _i561;
 import '../network/api/network_module.dart' as _i138;
 import '../network/services/shared_preferences_service.dart' as _i262;
+import '../providers/token_provider.dart' as _i924;
+import '../providers/user_provider.dart' as _i26;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -136,6 +138,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
+    gh.singleton<_i924.TokenProvider>(() => _i924.TokenProvider());
+    gh.singleton<_i26.UserProvider>(() => _i26.UserProvider());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i262.SharedPreferencesService>(
         () => _i262.SharedPreferencesService(gh<_i460.SharedPreferences>()));
@@ -185,14 +189,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i953.GetAllBestSellerProductsUseCase(gh<_i0.HomeRepository>()));
     gh.factory<_i728.GetAllProductsUseCase>(
         () => _i728.GetAllProductsUseCase(gh<_i0.HomeRepository>()));
-    gh.factory<_i967.GetCategoriesUsecase>(
-        () => _i967.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
-    gh.factory<_i17.GetHomepageUsecase>(
-        () => _i17.GetHomepageUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i493.GetCategoriesUsecase>(
         () => _i493.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i741.GetOccasionsUsecase>(
         () => _i741.GetOccasionsUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i967.GetCategoriesUsecase>(
+        () => _i967.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i17.GetHomepageUsecase>(
+        () => _i17.GetHomepageUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i177.ProductDetails_ViewModel>(() =>
         _i177.ProductDetails_ViewModel(gh<_i665.ProductDetailsUsecase>()));
     gh.factory<_i1013.GetLogedUserDataUsecase>(() =>
@@ -213,13 +217,12 @@ extension GetItInjectableX on _i174.GetIt {
               gh<_i995.ForgetPasswordUsecase>(),
               gh<_i375.ForgetPasswordValidator>(),
             ));
-    gh.factory<_i208.HomeScreenViewmodel>(
-        () => _i208.HomeScreenViewmodel(gh<_i17.GetHomepageUsecase>()));
-            ));
     gh.factory<_i661.LoginViewModel>(() => _i661.LoginViewModel(
           gh<_i334.LoginUsecase>(),
           gh<_i1013.GetLogedUserDataUsecase>(),
         ));
+    gh.factory<_i208.HomeScreenViewmodel>(
+        () => _i208.HomeScreenViewmodel(gh<_i17.GetHomepageUsecase>()));
     gh.factory<_i303.CategoriesViewmodel>(
         () => _i303.CategoriesViewmodel(gh<_i493.GetCategoriesUsecase>()));
     gh.factory<_i859.CategoriesViewmodel>(

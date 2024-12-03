@@ -1,13 +1,21 @@
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
 import 'package:flutter/foundation.dart';
+import 'package:injectable/injectable.dart';
 
+@singleton
 class UserProvider with ChangeNotifier {
+  static final UserProvider _instance = UserProvider._internal();
+  factory UserProvider() => _instance;
+
+  UserProvider._internal();
+
   UserData? _userData;
 
   UserData? get userData => _userData;
 
-  void setUserData(UserData data) {
+  Future<void> setUserData(UserData data) async {
     _userData = data;
+    print('Setting user data: ${data.toJson()}');
     notifyListeners();
   }
 
