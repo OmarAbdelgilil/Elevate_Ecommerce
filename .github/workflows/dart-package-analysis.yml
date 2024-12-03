@@ -1,0 +1,14 @@
+name: Example workflow
+on: [push, pull_request]
+
+jobs:
+  package-analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2 # required to check out the repository
+
+      - uses: axel-op/dart-package-analyzer@v3
+        with:
+          githubToken: ${{ secrets.GITHUB_TOKEN }} # required token for authentication
+          relativePath: packages/mypackage/  # optional path to a specific Dart package
