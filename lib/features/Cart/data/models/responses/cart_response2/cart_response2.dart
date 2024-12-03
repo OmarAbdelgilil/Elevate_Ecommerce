@@ -3,7 +3,7 @@ import 'cart.dart';
 class CartResponse2 {
   String? message;
   int? numOfCartItems;
-  Cart? cart;
+  Cart2? cart;
 
   CartResponse2({this.message, this.numOfCartItems, this.cart});
 
@@ -12,7 +12,7 @@ class CartResponse2 {
         numOfCartItems: json['numOfCartItems'] as int?,
         cart: json['cart'] == null
             ? null
-            : Cart.fromJson(json['cart'] as Map<String, dynamic>),
+            : Cart2.fromJson(json['cart'] as Map<String, dynamic>),
       );
 
   Map<String, dynamic> toJson() => {

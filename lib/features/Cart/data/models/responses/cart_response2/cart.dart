@@ -1,6 +1,6 @@
 import 'cart_item.dart';
 
-class Cart {
+class Cart2 {
   String? id;
   String? user;
   List<CartItem>? cartItems;
@@ -9,7 +9,7 @@ class Cart {
   DateTime? updatedAt;
   int? v;
 
-  Cart({
+  Cart2({
     this.id,
     this.user,
     this.cartItems,
@@ -19,7 +19,7 @@ class Cart {
     this.v,
   });
 
-  factory Cart.fromJson(Map<String, dynamic> json) => Cart(
+  factory Cart2.fromJson(Map<String, dynamic> json) => Cart2(
         id: json['_id'] as String?,
         user: json['user'] as String?,
         cartItems: (json['cartItems'] as List<dynamic>?)
