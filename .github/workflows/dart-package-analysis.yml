@@ -11,4 +11,3 @@ jobs:
       - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }} # required token for authentication
-          relativePath: packages/mypackage/  # optional path to a specific Dart package
