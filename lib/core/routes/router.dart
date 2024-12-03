@@ -36,7 +36,10 @@ Route manageRoutes(RouteSettings settings) {
     case AppRoutes.forgetPassword:
       return MaterialPageRoute(builder: (context) => ForgetPasswordScreen());
     case AppRoutes.occasions:
-      return MaterialPageRoute(builder: (context) => const OccasionsScreen());
+      return MaterialPageRoute(
+          builder: (context) => const OccasionsScreen(
+                selectedOccasionId: '',
+              ));
 
     case AppRoutes.ProductDetails:
       return MaterialPageRoute(
