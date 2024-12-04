@@ -50,7 +50,7 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
 
     switch (result) {
       case Success<User?>():
-        updatePasswordValidator.disposeFields();
+
         emit(SuccessState(result.data));
         break;
       case Fail<User?>():

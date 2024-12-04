@@ -29,17 +29,17 @@ class LoginViewBody extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           const SizedBox(height: 24),
-          CustomtextField(
+          CustomTextField(
             hint: StringsManager.emailFieldHint,
-            lable: StringsManager.emailFieldLabel,
+            label: StringsManager.emailFieldLabel,
             controller: loginValidator.emailController,
             validator: loginValidator.validate(LoginValidatorTypes.email),
           ),
           const SizedBox(height: 24),
-          CustomtextField(
+          CustomTextField(
             obscureText: true,
             hint: StringsManager.hintPassword,
-            lable: StringsManager.passwordFieldLabel,
+            label: StringsManager.passwordFieldLabel,
             controller: loginValidator.passwordController,
             validator: loginValidator.validate(LoginValidatorTypes.password),
           ),

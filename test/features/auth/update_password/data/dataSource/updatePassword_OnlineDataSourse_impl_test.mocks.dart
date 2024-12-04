@@ -4,14 +4,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:ui' as _i24;
+import 'dart:ui' as _i25;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i7;
-import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i23;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i24;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
     as _i15;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart'
+    as _i23;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart'
     as _i13;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart'
@@ -297,12 +299,23 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i22.UserResponse?>.value(),
       ) as _i8.Future<_i22.UserResponse?>);
+
+  @override
+  _i8.Future<_i22.UserResponse?> updateProfileData(
+          _i23.UpdateProfileRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateProfileData,
+          [request],
+        ),
+        returnValue: _i8.Future<_i22.UserResponse?>.value(),
+      ) as _i8.Future<_i22.UserResponse?>);
 }
 
 /// A class which mocks [TokenProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTokenProvider extends _i1.Mock implements _i23.TokenProvider {
+class MockTokenProvider extends _i1.Mock implements _i24.TokenProvider {
   MockTokenProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -333,7 +346,7 @@ class MockTokenProvider extends _i1.Mock implements _i23.TokenProvider {
       );
 
   @override
-  void addListener(_i24.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i25.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -342,7 +355,7 @@ class MockTokenProvider extends _i1.Mock implements _i23.TokenProvider {
       );
 
   @override
-  void removeListener(_i24.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i25.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

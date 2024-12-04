@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: manageRoutes,
 
 
-        initialRoute: AppRoutes.ResetPassword,
+        initialRoute: AppRoutes.login,
 
       ),
     );

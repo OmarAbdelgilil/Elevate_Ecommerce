@@ -1,38 +1,39 @@
 import 'package:flutter/material.dart';
 
-class CustomTextField extends StatefulWidget {
+class ResetPasswordButton extends StatefulWidget {
   final String hint;
   final Function(String)? onChange;
   final TextEditingController controller;
-  final bool obscureText; // Controls initial text visibility
-  final bool? readOnly; // Controls initial text visibility
+  final bool obscureText;
+  final bool? readOnly;
   final String label;
   final String? Function(String?)? validator;
   final String? errorText;
-
-  const CustomTextField({
+void Function()? onTap;Widget? suffixIcon;
+   ResetPasswordButton({
     super.key,
     required this.hint,
     this.onChange,
-    this.obscureText = false, // Default is false (text visible)
+    this.obscureText = false,
     this.validator,
+    this.onTap,
     required this.label,
+     this.suffixIcon,
     required this.controller,
     this.errorText, this.readOnly,
   });
 
   @override
-  State<CustomTextField> createState() => _CustomTextFieldState();
+  State<ResetPasswordButton> createState() => _ResetPasswordButtonState();
 }
 
-class _CustomTextFieldState extends State<CustomTextField> {
+class _ResetPasswordButtonState extends State<ResetPasswordButton> {
   late bool _obscureText; // Controls the text visibility dynamically
   Color labelColor = Colors.grey[850]!;
 
   @override
   void initState() {
     super.initState();
-    // Initialize _obscureText with the value of widget.obscureText
     _obscureText = widget.obscureText;
   }
 
@@ -50,13 +51,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      obscureText: _obscureText, // Use _obscureText to toggle visibility
+    return TextFormField(onTap:widget.onTap ,
+      obscureText: _obscureText,
+      // obscuringCharacter:'⭐️' ,
       validator: _validate,
       readOnly: widget.readOnly??false,
       onChanged: widget.onChange,
       controller: widget.controller,
       decoration: InputDecoration(
+
         errorText: widget.errorText,
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 2.0),
@@ -77,19 +80,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
         ),
         hintText: widget.hint,
         hintStyle: const TextStyle(color: Colors.grey),
-        suffixIcon: widget.obscureText
-            ? IconButton(
-                icon: Icon(
-                  _obscureText ? Icons.visibility_off : Icons.visibility,
-                  color: Colors.grey[850],
-                ),
-                onPressed: () {
-                  setState(() {
-                    _obscureText = !_obscureText; // Toggle text visibility
-                  });
-                },
-              )
-            : null, // No icon if obscureText is false
+        suffixIcon:Padding(
+          padding: const EdgeInsets.all(10),
+          child: widget.suffixIcon,
+        ),
+        // No icon if obscureText is false
       ),
     );
   }

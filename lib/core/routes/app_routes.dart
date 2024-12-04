@@ -13,5 +13,6 @@ class AppRoutes {
   static const ResetPassword="ResetPassword";
 
   static const occasions = "occasions";
+  static const editProfile = "editProfile";
   static const Categories = "categories";
 }
