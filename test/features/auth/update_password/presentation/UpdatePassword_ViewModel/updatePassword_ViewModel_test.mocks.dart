@@ -4,18 +4,22 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i5;
-import 'dart:ui' as _i11;
+import 'dart:ui' as _i13;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i6;
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart' as _i7;
+import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart'
+    as _i11;
+import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart'
+    as _i10;
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart'
     as _i8;
 import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_useCase.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/Update_password_validator/update_password_types_enum.dart'
-    as _i12;
+    as _i14;
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/Update_password_validator/update_password_validator.dart'
-    as _i10;
+    as _i12;
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/material.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -175,11 +179,36 @@ class MockUpdatePasswordUseCase extends _i1.Mock
       ) as _i5.Future<_i6.Result<_i7.User?>>);
 }
 
+/// A class which mocks [LogoutUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockLogoutUsecase extends _i1.Mock implements _i10.LogoutUsecase {
+  MockLogoutUsecase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i5.Future<_i6.Result<_i11.Logout?>> logout() => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [],
+        ),
+        returnValue: _i5.Future<_i6.Result<_i11.Logout?>>.value(
+            _i9.dummyValue<_i6.Result<_i11.Logout?>>(
+          this,
+          Invocation.method(
+            #logout,
+            [],
+          ),
+        )),
+      ) as _i5.Future<_i6.Result<_i11.Logout?>>);
+}
+
 /// A class which mocks [UpdatePasswordValidator].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockUpdatePasswordValidator extends _i1.Mock
-    implements _i10.UpdatePasswordValidator {
+    implements _i12.UpdatePasswordValidator {
   MockUpdatePasswordValidator() {
     _i1.throwOnMissingStub(this);
   }
@@ -223,7 +252,7 @@ class MockUpdatePasswordValidator extends _i1.Mock
       ) as _i2.GlobalKey<_i2.FormState>);
 
   @override
-  void attachListeners(_i11.VoidCallback? onFieldsChanged) =>
+  void attachListeners(_i13.VoidCallback? onFieldsChanged) =>
       super.noSuchMethod(
         Invocation.method(
           #attachListeners,
@@ -242,7 +271,7 @@ class MockUpdatePasswordValidator extends _i1.Mock
       );
 
   @override
-  String? Function(String?) validate(_i12.UpdatePasswordValidTypes? type) =>
+  String? Function(String?) validate(_i14.UpdatePasswordValidTypes? type) =>
       (super.noSuchMethod(
         Invocation.method(
           #validate,
@@ -363,7 +392,7 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
       );
 
   @override
-  void setState(_i11.VoidCallback? fn) => super.noSuchMethod(
+  void setState(_i13.VoidCallback? fn) => super.noSuchMethod(
         Invocation.method(
           #setState,
           [fn],
@@ -592,7 +621,7 @@ class MockTextEditingController extends _i1.Mock
       );
 
   @override
-  void addListener(_i11.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i13.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -601,7 +630,7 @@ class MockTextEditingController extends _i1.Mock
       );
 
   @override
-  void removeListener(_i11.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i13.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

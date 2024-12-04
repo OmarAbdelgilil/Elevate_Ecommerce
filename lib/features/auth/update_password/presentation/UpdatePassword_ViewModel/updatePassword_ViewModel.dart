@@ -1,9 +1,14 @@
 
+import 'package:elevate_ecommerce/core/cache/hive_service.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/core/providers/token_provider.dart';
+import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
+import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_useCase.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/Update_password_validator/update_password_validator.dart';
+import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -12,8 +17,9 @@ import 'package:injectable/injectable.dart';
 class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
   final UpdatePasswordUseCase updatePasswordUseCase;
   final UpdatePasswordValidator updatePasswordValidator;
+  final LogoutUsecase logoutUsecase ;
 
-  UpdatePasswordViewModel(this.updatePasswordUseCase, this.updatePasswordValidator)
+  UpdatePasswordViewModel(this.updatePasswordUseCase, this.updatePasswordValidator,this.logoutUsecase)
       : super(InitialState()) {
     updatePasswordValidator.attachListeners(_onFieldsChanged);
   }
@@ -50,6 +56,13 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
 
     switch (result) {
       case Success<User?>():
+       TokenProvider().saveToken(result.data!.token!);
+       await logoutUsecase.logout();
+        final token =TokenProvider().token;
+        HiveService().clearUser(token!);
+        UserProvider().clearUserData();
+        TokenProvider().clearToken();
+        TokenStorage().deleteToken();
 
         emit(SuccessState(result.data));
         break;

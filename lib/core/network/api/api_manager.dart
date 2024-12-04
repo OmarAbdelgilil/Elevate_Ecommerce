@@ -13,6 +13,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
+import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
@@ -112,4 +113,6 @@ abstract class ApiManager {
   @PUT(ApiConstants.editProfilePath)
   Future<UserResponse?> updateProfileData(@Body() UpdateProfileRequest request);
 
+  @GET(ApiConstants.logoutPath)
+  Future<Logout?> logout(@Header('Authorization') String authorization);
 }

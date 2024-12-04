@@ -60,44 +60,44 @@ class HomeScreen extends StatelessWidget {
                           OccasionSection(
                             occasionList: state.homeData!.occasions,
                           ),
-                          ElevatedButton(
-                            onPressed: () {
-                              final userProvider = getIt<UserProvider>();
+                          // ElevatedButton(
+                          //   onPressed: () {
+                          //     final userProvider = getIt<UserProvider>();
 
-                              final userData = userProvider.userData;
+                          //     final userData = userProvider.userData;
 
-                              if (userData != null) {
-                                print('User Data: ${userData.toJson()}');
-                              } else {
-                                print('No user data available.');
-                              }
-                            },
-                            child: Text('Print User Data'),
-                          ),
-                          ElevatedButton(
-                              onPressed: () async {
-                                final token = TokenProvider().token;
-                                final HiveService hiveService = HiveService();
-                                try {
-                                  final user =
-                                      await hiveService.getUser(token!);
-                                  if (user != null) {
-                                    print('Cached user data: ${user.toJson()}');
-                                  } else {
-                                    print(
-                                        'No user data found in Hive. Ensure keys and box names match.');
-                                  }
-                                } catch (e) {
-                                  print(
-                                      'Error retrieving user data from Hive: $e');
-                                }
-                              },
-                              child: Text('data')),
-                          ElevatedButton(
-                              onPressed: () {
-                                print(TokenProvider().token);
-                              },
-                              child: Text('print token'))
+                          //     if (userData != null) {
+                          //       print('User Data: ${userData.toJson()}');
+                          //     } else {
+                          //       print('No user data available.');
+                          //     }
+                          //   },
+                          //   child: Text('Print User Data'),
+                          // ),
+                          // ElevatedButton(
+                          //     onPressed: () async {
+                          //       final token = TokenProvider().token;
+                          //       final HiveService hiveService = HiveService();
+                          //       try {
+                          //         final user =
+                          //             await hiveService.getUser(token!);
+                          //         if (user != null) {
+                          //           print('Cached user data: ${user.toJson()}');
+                          //         } else {
+                          //           print(
+                          //               'No user data found in Hive. Ensure keys and box names match.');
+                          //         }
+                          //       } catch (e) {
+                          //         print(
+                          //             'Error retrieving user data from Hive: $e');
+                          //       }
+                          //     },
+                          //     child: Text('data')),
+                          // ElevatedButton(
+                          //     onPressed: () {
+                          //       print(TokenProvider().token);
+                          //     },
+                          //     child: Text('print token'))
                         ],
                       );
                     }
