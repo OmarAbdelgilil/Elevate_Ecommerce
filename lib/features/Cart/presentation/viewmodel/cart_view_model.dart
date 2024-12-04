@@ -65,7 +65,6 @@ class CartViewmodel extends Cubit<CartState> {
     emit(CartLoadingState());
     if (_tokenProvider.token == null) {
       emit(CartNotLoggedState());
-      return;
     }
     final result = await _getCartUsecase.getAllCart();
     switch (result) {
@@ -105,11 +104,6 @@ class CartViewmodel extends Cubit<CartState> {
 
   Future<void> _addProduct(String productId, int quantity) async {
     emit(CartLoadingState());
-    if (_tokenProvider.token == null) {
-      emit(CartNotLoggedState());
-      _showSnackbar(StringsManager.productNotAddedLogin);
-      return;
-    }
     final result =
         await _addProductToCartUsecase.addProductToCart(productId, quantity);
     switch (result) {

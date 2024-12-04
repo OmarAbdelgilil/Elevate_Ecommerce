@@ -53,56 +53,60 @@ class CartScreen extends StatelessWidget {
                         child: Text(extractErrorMessage(state.exception)),
                       )
                     : state is CartSuccessState
-                        ? Column(
-                            children: [
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                child: Column(
-                                  children: [
-                                    Location(),
-                                    Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 20),
-                                      child: SizedBox(
-                                        height: 400.sp,
-                                        width: double.infinity,
-                                        child: ListView.builder(
-                                          itemCount:
-                                              state.cartData!.cartItems!.length,
-                                          itemBuilder: (context, index) {
-                                            return CartItemCard(
-                                                viewModel: viewModel,
-                                                product: state.cartData!
-                                                    .cartItems![index]);
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              PaymentDetailsSection(
-                                  subtotal: viewModel
-                                      .cartSubtotal(state.cartData!.cartItems!),
-                                  total: state.cartData!.totalPrice! + 10),
-                              SizedBox(
-                                height: 40,
-                              ),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 16),
-                                child: CustomButton(
-                                  onPressed: () {},
-                                  text: StringsManager.checkoutButtonText,
-                                  radius: 20,
-                                ),
+                        ? state.cartData!.cartItems!.isEmpty
+                            ? Center(
+                                child: Text('Cart is Empty'),
                               )
-                            ],
-                          )
+                            : Column(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: Column(
+                                      children: [
+                                        Location(),
+                                        Padding(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 20),
+                                          child: SizedBox(
+                                            height: 400.sp,
+                                            width: double.infinity,
+                                            child: ListView.builder(
+                                              itemCount: state
+                                                  .cartData!.cartItems!.length,
+                                              itemBuilder: (context, index) {
+                                                return CartItemCard(
+                                                    viewModel: viewModel,
+                                                    product: state.cartData!
+                                                        .cartItems![index]);
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  PaymentDetailsSection(
+                                      subtotal: viewModel.cartSubtotal(
+                                          state.cartData!.cartItems!),
+                                      total: state.cartData!.totalPrice! + 10),
+                                  SizedBox(
+                                    height: 40,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 16),
+                                    child: CustomButton(
+                                      onPressed: () {},
+                                      text: StringsManager.checkoutButtonText,
+                                      radius: 20,
+                                    ),
+                                  )
+                                ],
+                              )
                         : state is CartNotLoggedState
                             ? Center(
                                 child: Padding(
