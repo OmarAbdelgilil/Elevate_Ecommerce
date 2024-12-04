@@ -113,7 +113,7 @@ import '../../features/home/presentation/product_widget/product_view_model/produ
     as _i1061;
 import '../network/api/api_manager.dart' as _i561;
 import '../network/api/network_module.dart' as _i138;
-import '../network/services/shared_preferences_service.dart' as _i262;
+import '../cache/shared_preferences_service.dart' as _i262;
 import '../providers/token_provider.dart' as _i924;
 import '../providers/user_provider.dart' as _i26;
 

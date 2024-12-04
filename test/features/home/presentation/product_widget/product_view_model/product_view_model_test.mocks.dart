@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
-import 'package:elevate_ecommerce/core/network/services/shared_preferences_service.dart'
+import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart'
     as _i11;

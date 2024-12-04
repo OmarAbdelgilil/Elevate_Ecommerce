@@ -45,6 +45,7 @@ abstract class ApiManager {
     };
     return _ApiManager(dio);
   }
+
   @POST(ApiConstants.registerPath)
   Future<RegisterResponse> register(@Body() RegisterRequest request);
 
