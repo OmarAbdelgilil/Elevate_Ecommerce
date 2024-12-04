@@ -59,6 +59,14 @@ import '../../features/auth/login/presentation/cubit/login_viewmodel.dart'
     as _i661;
 import '../../features/auth/login/presentation/login_validator/login_validator.dart'
     as _i67;
+import '../../features/auth/logout/data/contracts/logout_online_datasource.dart'
+    as _i731;
+import '../../features/auth/logout/data/data_sources/logout_online_datasource_impl.dart'
+    as _i518;
+import '../../features/auth/logout/data/repos/logout_repo_impl.dart' as _i256;
+import '../../features/auth/logout/domain/repos/logout_repo.dart' as _i371;
+import '../../features/auth/logout/domain/use_cases/logout_usecase.dart'
+    as _i459;
 import '../../features/auth/Register/data/dataSource/register_onlineDataSource.dart'
     as _i699;
 import '../../features/auth/Register/data/dataSource/register_onlineDataSource_impl.dart'
@@ -148,6 +156,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i601.AuthOfflineDatasourceImpl());
     gh.factory<_i14.ProductDetails_Onlinedatasource>(() =>
         _i958.ProductDetails_Onlinedatasource_Impl(gh<_i561.ApiManager>()));
+    gh.factory<_i731.LogoutOnlineDatasource>(
+        () => _i518.LogoutOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i699.RegisterOnlineDatasource>(
         () => _i707.RegisterOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i92.RemoteDatasource>(
@@ -156,6 +166,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i120.GetLoggedUserDataOnlineDataSourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i710.LoginOnlineDatasource>(
         () => _i988.LoginOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i371.LogoutRepo>(
+        () => _i256.LogoutRpoImpl(gh<_i731.LogoutOnlineDatasource>()));
     gh.factory<_i267.ForgetPasswordOnlineDatasource>(
         () => _i460.ForgetPasswordOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i974.ForgetPasswordRepository>(() =>
@@ -179,6 +191,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i76.HomeRepositoryImpl(gh<_i92.RemoteDatasource>()));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
+    gh.factory<_i459.LogoutUsecase>(
+        () => _i459.LogoutUsecase(gh<_i371.LogoutRepo>()));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
           gh<_i981.AuthOnlineDatasource>(),
           gh<_i871.AuthOfflineDatasource>(),

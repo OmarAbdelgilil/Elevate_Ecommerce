@@ -9,10 +9,10 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requ
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
-import 'package:elevate_ecommerce/features/auth/logged_user_data/data/data_sources/get_logged_user_data_online_data_source_impl.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart';
+import 'package:elevate_ecommerce/features/auth/logout/data/data_sources/logout_online_datasource_impl.dart';
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
@@ -25,11 +25,11 @@ import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 
 class DummyApiManager implements ApiManager {
   @override
-  Future<UserResponse?> getProfile(String token) async {
+  Future<Logout?> logout(String token) async {
     if (token == 'Bearer test_token') {
-      return UserResponse(message: 'Success', user: null);
+      return Logout(message: 'Success');
     }
-    throw Exception('Failed to fetch user data');
+    throw Exception('failed to logout');
   }
 
   @override
@@ -89,14 +89,14 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<Logout?> logout(String authorization) {
-    // TODO: implement logout
+  Future<UserResponse?> getProfile(String authorization) {
+    // TODO: implement getProfile
     throw UnimplementedError();
   }
 }
 
 void main() {
-  late GetLoggedUserDataOnlineDataSourceImpl dataSource;
+  late LogoutOnlineDatasourceImpl dataSource;
   late DummyApiManager dummyApiManager;
   late TokenProvider tokenProvider;
 
@@ -107,7 +107,7 @@ void main() {
   setUp(() {
     dummyApiManager = DummyApiManager();
     tokenProvider = getIt<TokenProvider>();
-    dataSource = GetLoggedUserDataOnlineDataSourceImpl(dummyApiManager);
+    dataSource = LogoutOnlineDatasourceImpl(dummyApiManager);
   });
 
   group('GetLoggedUserDataOnlineDataSourceImpl Tests with Dummy', () {
@@ -115,20 +115,11 @@ void main() {
       final token = 'test_token';
       tokenProvider.saveToken(token);
 
-      final result = await dataSource.getLoggedUserData();
+      final result = await dataSource.logout();
 
       // Assert
-      expect(result, isA<Success<UserResponse?>>());
+      expect(result, isA<Success<Logout?>>());
       expect((result as Success).data?.message, 'Success');
-    });
-
-    test('getLoggedUserData returns Fail on ApiManager failure', () async {
-      final token = 'invalid_token';
-      tokenProvider.saveToken(token);
-      final result = await dataSource.getLoggedUserData();
-      expect(result, isA<Fail<UserResponse?>>());
-      expect((result as Fail).exception.toString(),
-          contains('Failed to fetch user data'));
     });
   });
 }
