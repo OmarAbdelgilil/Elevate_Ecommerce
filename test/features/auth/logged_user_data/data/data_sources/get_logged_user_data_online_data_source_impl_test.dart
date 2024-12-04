@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart';
@@ -91,6 +92,12 @@ class DummyApiManager implements ApiManager {
   @override
   Future<Logout?> logout(String authorization) {
     // TODO: implement logout
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserResponse?> updateProfileData(UpdateProfileRequest request) {
+    // TODO: implement updateProfileData
     throw UnimplementedError();
   }
 }

@@ -1,8 +1,4 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
-import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
-import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
-import 'package:elevate_ecommerce/features/auth/logged_user_data/domain/use_cases/get_loged_user_data_usecase.dart';
-import 'package:elevate_ecommerce/features/auth/logged_user_data/domain/repos/get_logged_user_data_repo.dart';
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/auth/logout/domain/repos/logout_repo.dart';
 import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart';
@@ -30,8 +26,8 @@ void main() {
     );
   });
 
-  group('getLogedUserData', () {
-    test('returns user data when repository call is successful', () async {
+  group('logout the user and remove data and token', () {
+    test('logout the user and remove data and token', () async {
       when(mockGetLoggedUserDataRepo.logout())
           .thenAnswer((_) async => Success<Logout?>(userResponse));
 

@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart';
@@ -93,6 +94,12 @@ class DummyApiManager implements ApiManager {
     // TODO: implement getProfile
     throw UnimplementedError();
   }
+
+  @override
+  Future<UserResponse?> updateProfileData(UpdateProfileRequest request) {
+    // TODO: implement updateProfileData
+    throw UnimplementedError();
+  }
 }
 
 void main() {
@@ -110,8 +117,8 @@ void main() {
     dataSource = LogoutOnlineDatasourceImpl(dummyApiManager);
   });
 
-  group('GetLoggedUserDataOnlineDataSourceImpl Tests with Dummy', () {
-    test('getLoggedUserData returns UserResponse on success', () async {
+  group('logout the user and remove data and token', () {
+    test('logout the user and remove data and token', () async {
       final token = 'test_token';
       tokenProvider.saveToken(token);
 

@@ -8,205 +8,162 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:dio/dio.dart' as _i10;
-import 'package:get_it/get_it.dart' as _i1;
-import 'package:injectable/injectable.dart' as _i2;
-import 'package:shared_preferences/shared_preferences.dart' as _i3;
+import 'package:dio/dio.dart' as _i361;
+import 'package:get_it/get_it.dart' as _i174;
+import 'package:injectable/injectable.dart' as _i526;
+import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../features/auth/data/contracts/auth_offline_datasource.dart'
-    as _i12;
-import '../../features/auth/data/contracts/auth_online_datasource.dart' as _i28;
+    as _i871;
+import '../../features/auth/data/contracts/auth_online_datasource.dart'
+    as _i981;
 import '../../features/auth/data/data_sources/auth_offline_datasource_impl.dart'
-    as _i13;
+    as _i601;
 import '../../features/auth/data/data_sources/auth_online_datasource_impl.dart'
-    as _i29;
+    as _i849;
 import '../../features/auth/data/repositories/auth_repository_impl.dart'
-    as _i44;
-import '../../features/auth/domain/repositories/auth_repository.dart' as _i43;
+    as _i153;
+import '../../features/auth/domain/repositories/auth_repository.dart' as _i787;
 import '../../features/auth/forget_password/data/contracts/forget_password_online_datasource.dart'
-    as _i24;
+    as _i267;
 import '../../features/auth/forget_password/data/data_sources/forget_password_online_datasource_impl.dart'
-    as _i25;
+    as _i460;
 import '../../features/auth/forget_password/data/repositories/forget_password_repository_impl.dart'
-    as _i27;
+    as _i584;
 import '../../features/auth/forget_password/domain/repositories/forget_password_repository.dart'
-    as _i26;
+    as _i974;
 import '../../features/auth/forget_password/domain/usecases/forget_password_usecase.dart'
-    as _i42;
+    as _i995;
 import '../../features/auth/forget_password/presentation/foreget_password_viewmodel.dart'
-    as _i57;
+    as _i455;
 import '../../features/auth/forget_password/presentation/forget_password_validator/forget_password_validator.dart'
-    as _i4;
+    as _i375;
 import '../../features/auth/logged_user_data/data/contracts/get_logged_user_data_online_datasource.dart'
-    as _i20;
+    as _i194;
 import '../../features/auth/logged_user_data/data/data_sources/get_logged_user_data_online_data_source_impl.dart'
-    as _i21;
+    as _i120;
 import '../../features/auth/logged_user_data/data/repos/get_logged_user_data_repo_impl.dart'
-    as _i36;
+    as _i626;
 import '../../features/auth/logged_user_data/domain/repos/get_logged_user_data_repo.dart'
-    as _i35;
+    as _i715;
 import '../../features/auth/logged_user_data/domain/use_cases/get_loged_user_data_usecase.dart'
-    as _i54;
+    as _i1013;
 import '../../features/auth/login/data/contracts/login_online_datasource.dart'
-    as _i22;
+    as _i710;
 import '../../features/auth/login/data/data_sources/login_online_datasource_impl.dart'
-    as _i23;
-import '../../features/auth/login/data/repos/login_repo_impl.dart' as _i34;
-import '../../features/auth/login/domain/repos/login_repo.dart' as _i33;
-import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i39;
+    as _i988;
+import '../../features/auth/login/data/repos/login_repo_impl.dart' as _i568;
+import '../../features/auth/login/domain/repos/login_repo.dart' as _i983;
+import '../../features/auth/login/domain/use_cases/login_usecase.dart' as _i334;
 import '../../features/auth/login/presentation/cubit/login_viewmodel.dart'
-    as _i58;
+    as _i661;
 import '../../features/auth/login/presentation/login_validator/login_validator.dart'
-    as _i5;
     as _i67;
 import '../../features/auth/logout/data/contracts/logout_online_datasource.dart'
     as _i731;
 import '../../features/auth/logout/data/data_sources/logout_online_datasource_impl.dart'
     as _i518;
-import '../../features/auth/logout/data/repos/logout_repo_impl.dart' as _i256;
+import '../../features/auth/logout/data/repos/logout_repo_impl.dart' as _i977;
 import '../../features/auth/logout/domain/repos/logout_repo.dart' as _i371;
 import '../../features/auth/logout/domain/use_cases/logout_usecase.dart'
     as _i459;
 import '../../features/auth/Register/data/dataSource/register_onlineDataSource.dart'
-    as _i16;
+    as _i699;
 import '../../features/auth/Register/data/dataSource/register_onlineDataSource_impl.dart'
-    as _i17;
+    as _i707;
 import '../../features/auth/Register/data/repository_impl/register_repository_impl.dart'
-    as _i38;
+    as _i823;
 import '../../features/auth/Register/domain/repository/register_repository.dart'
-    as _i37;
+    as _i760;
 import '../../features/auth/Register/domain/useCases/register_useCase.dart'
-    as _i55;
+    as _i694;
 import '../../features/auth/Register/presentation/Register_validator/register_validator.dart'
-    as _i6;
+    as _i877;
 import '../../features/auth/Register/presentation/Register_viewModel/register_viewModel.dart'
-    as _i56;
+    as _i61;
 import '../../features/home/data/contracts/product_details_onlineDataSource.dart'
     as _i14;
-import '../../features/home/data/contracts/remote_datasource.dart' as _i18;
+import '../../features/home/data/contracts/remote_datasource.dart' as _i92;
 import '../../features/home/data/data_sources/product_details_onlineDataSource_impl.dart'
-    as _i15;
+    as _i958;
 import '../../features/home/data/data_sources/remote_datasource_impl.dart'
-    as _i19;
+    as _i87;
 import '../../features/home/data/repositories/home_repository_impl.dart'
-    as _i41;
+    as _i76;
 import '../../features/home/data/repositories/product_details_repo_impl.dart'
-    as _i32;
-import '../../features/home/domain/repositories/home_repository.dart' as _i40;
+    as _i629;
+import '../../features/home/domain/repositories/home_repository.dart' as _i0;
 import '../../features/home/domain/repositories/product_details_repository.dart'
-    as _i31;
+    as _i321;
 import '../../features/home/domain/usecase/get_all_best_sellet_products_usecase.dart'
-    as _i47;
+    as _i953;
 import '../../features/home/domain/usecase/get_all_products_usecase.dart'
-    as _i48;
-import '../../features/home/domain/usecase/get_categories_usecase.dart' as _i49;
-import '../../features/home/domain/usecase/get_occations_usecase.dart' as _i50;
+    as _i728;
+import '../../features/home/domain/usecase/get_categories_usecase.dart'
+    as _i493;
+import '../../features/home/domain/usecase/get_occations_usecase.dart' as _i741;
 import '../../features/home/domain/usecase/product_details_useCase.dart'
-    as _i46;
+    as _i665;
 import '../../features/home/domain/usecase/update_user_data_usecase.dart'
-    as _i45;
+    as _i840;
 import '../../features/home/domain/usecases/get_categories_usecase.dart'
-    as _i51;
-import '../../features/home/domain/usecases/get_homepage_usecase.dart' as _i52;
+    as _i967;
+import '../../features/home/domain/usecases/get_homepage_usecase.dart' as _i17;
 import '../../features/home/presentation/category_screen/categry_viewmodel.dart'
-    as _i61;
+    as _i303;
 import '../../features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart'
-    as _i62;
+    as _i859;
 import '../../features/home/presentation/home_screen/home_screen_view_models/home_screen_viewmodel.dart'
-    as _i59;
+    as _i208;
 import '../../features/home/presentation/occasions/occasions_viewmodel.dart'
-    as _i64;
+    as _i714;
 import '../../features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart'
-    as _i53;
+    as _i177;
 import '../../features/home/presentation/product_widget/product_view_model/product_view_model.dart'
-    as _i60;
+    as _i1061;
 import '../../features/home/presentation/profile_edit_screen/profile_edit_view/profile_edit_validators.dart'
-    as _i7;
+    as _i923;
 import '../../features/home/presentation/profile_edit_screen/profile_edit_view_model/profile_edit_view_model.dart'
-    as _i63;
-import '../cache/shared_preferences_service.dart' as _i30;
-import '../network/api/api_manager.dart' as _i11;
-import '../network/api/network_module.dart' as _i65;
-import '../providers/token_provider.dart' as _i8;
-import '../providers/user_provider.dart' as _i9;
+    as _i87;
+import '../../features/home/presentation/profile_screen/profile_view_model/profile_view_model.dart'
+    as _i243;
+import '../cache/shared_preferences_service.dart' as _i94;
+import '../network/api/api_manager.dart' as _i561;
+import '../network/api/network_module.dart' as _i138;
+import '../providers/token_provider.dart' as _i924;
+import '../providers/user_provider.dart' as _i26;
 
-extension GetItInjectableX on _i1.GetIt {
+extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
-  Future<_i1.GetIt> init({
+  Future<_i174.GetIt> init({
     String? environment,
-    _i2.EnvironmentFilter? environmentFilter,
+    _i526.EnvironmentFilter? environmentFilter,
   }) async {
-    final gh = _i2.GetItHelper(
+    final gh = _i526.GetItHelper(
       this,
       environment,
       environmentFilter,
     );
     final registerModule = _$RegisterModule();
     final dioModule = _$DioModule();
-    await gh.factoryAsync<_i3.SharedPreferences>(
+    await gh.factoryAsync<_i460.SharedPreferences>(
       () => registerModule.prefs,
       preResolve: true,
     );
-    gh.factory<_i4.ForgetPasswordValidator>(
-        () => _i4.ForgetPasswordValidator());
-    gh.factory<_i5.LoginValidator>(() => _i5.LoginValidator());
-    gh.factory<_i6.RegisterValidator>(() => _i6.RegisterValidator());
-    gh.factory<_i7.EditProfileValidator>(() => _i7.EditProfileValidator());
-    gh.singleton<_i8.TokenProvider>(() => _i8.TokenProvider());
-    gh.singleton<_i9.UserProvider>(() => _i9.UserProvider());
-    gh.lazySingleton<_i10.Dio>(() => dioModule.provideDio());
-    gh.singleton<_i11.ApiManager>(() => _i11.ApiManager(
-          gh<_i10.Dio>(),
-          gh<_i8.TokenProvider>(),
-        ));
-    gh.factory<_i12.AuthOfflineDatasource>(
-        () => _i13.AuthOfflineDatasourceImpl());
-    gh.factory<_i14.ProductDetails_Onlinedatasource>(
-        () => _i15.ProductDetails_Onlinedatasource_Impl(gh<_i11.ApiManager>()));
-    gh.factory<_i16.RegisterOnlineDatasource>(
-        () => _i17.RegisterOnlineDatasourceImpl(gh<_i11.ApiManager>()));
-    gh.factory<_i18.RemoteDatasource>(
-        () => _i19.RemoteDatasourceImpl(gh<_i11.ApiManager>()));
-    gh.factory<_i20.GetLoggedUserDataOnlineDatasource>(() =>
-        _i21.GetLoggedUserDataOnlineDataSourceImpl(gh<_i11.ApiManager>()));
-    gh.factory<_i22.LoginOnlineDatasource>(
-        () => _i23.LoginOnlineDatasourceImpl(gh<_i11.ApiManager>()));
-    gh.factory<_i24.ForgetPasswordOnlineDatasource>(
-        () => _i25.ForgetPasswordOnlineDatasourceImpl(gh<_i11.ApiManager>()));
-    gh.factory<_i26.ForgetPasswordRepository>(() =>
-        _i27.ForgetPasswordRepositoryImpl(
-            gh<_i24.ForgetPasswordOnlineDatasource>()));
-    gh.factory<_i28.AuthOnlineDatasource>(
-        () => _i29.AuthOnlineDatasourceImpl(gh<_i11.ApiManager>()));
-    gh.singleton<_i30.SharedPreferencesService>(
-        () => _i30.SharedPreferencesService(gh<_i3.SharedPreferences>()));
-    gh.factory<_i31.ProductDetailsRepository>(() => _i32.ProductDetailsRepoImpl(
-        gh<_i14.ProductDetails_Onlinedatasource>()));
-    gh.factory<_i33.LoginRepo>(
-        () => _i34.LoginRepoImpl(gh<_i22.LoginOnlineDatasource>()));
-    gh.factory<_i35.GetLoggedUserDataRepo>(() => _i36.GetLoggedUserDataRepoImpl(
-        gh<_i20.GetLoggedUserDataOnlineDatasource>()));
-    gh.factory<_i37.RegisterRepository>(
-        () => _i38.RegisterRepositoryImpl(gh<_i16.RegisterOnlineDatasource>()));
-    gh.factory<_i39.LoginUsecase>(
-        () => _i39.LoginUsecase(gh<_i33.LoginRepo>()));
-    gh.factory<_i40.HomeRepository>(
-        () => _i41.HomeRepositoryImpl(gh<_i18.RemoteDatasource>()));
-    gh.factory<_i42.ForgetPasswordUsecase>(
-        () => _i42.ForgetPasswordUsecase(gh<_i26.ForgetPasswordRepository>()));
-    gh.factory<_i43.AuthRepository>(() => _i44.AuthRepositoryImpl(
-          gh<_i28.AuthOnlineDatasource>(),
-          gh<_i12.AuthOfflineDatasource>(),
     gh.factory<_i924.TokenProvider>(() => _i924.TokenProvider());
     gh.factory<_i26.UserProvider>(() => _i26.UserProvider());
     gh.factory<_i375.ForgetPasswordValidator>(
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
+    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
-    gh.singleton<_i262.SharedPreferencesService>(
-        () => _i262.SharedPreferencesService(gh<_i460.SharedPreferences>()));
-    gh.singleton<_i561.ApiManager>(() => _i561.ApiManager(gh<_i361.Dio>()));
+    gh.singleton<_i94.SharedPreferencesService>(
+        () => _i94.SharedPreferencesService(gh<_i460.SharedPreferences>()));
+    gh.singleton<_i561.ApiManager>(() => _i561.ApiManager(
+          gh<_i361.Dio>(),
+          gh<_i924.TokenProvider>(),
+        ));
     gh.factory<_i871.AuthOfflineDatasource>(
         () => _i601.AuthOfflineDatasourceImpl());
     gh.factory<_i14.ProductDetails_Onlinedatasource>(() =>
@@ -219,10 +176,10 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i87.RemoteDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i194.GetLoggedUserDataOnlineDatasource>(() =>
         _i120.GetLoggedUserDataOnlineDataSourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i371.LogoutRepo>(
+        () => _i977.LogoutRpoImpl(gh<_i731.LogoutOnlineDatasource>()));
     gh.factory<_i710.LoginOnlineDatasource>(
         () => _i988.LoginOnlineDatasourceImpl(gh<_i561.ApiManager>()));
-    gh.factory<_i371.LogoutRepo>(
-        () => _i256.LogoutRpoImpl(gh<_i731.LogoutOnlineDatasource>()));
     gh.factory<_i267.ForgetPasswordOnlineDatasource>(
         () => _i460.ForgetPasswordOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i974.ForgetPasswordRepository>(() =>
@@ -252,60 +209,62 @@ extension GetItInjectableX on _i1.GetIt {
           gh<_i981.AuthOnlineDatasource>(),
           gh<_i871.AuthOfflineDatasource>(),
         ));
-    gh.factory<_i45.UpdateUserDataUseCase>(
-        () => _i45.UpdateUserDataUseCase(gh<_i40.HomeRepository>()));
-    gh.factory<_i46.ProductDetailsUsecase>(
-        () => _i46.ProductDetailsUsecase(gh<_i31.ProductDetailsRepository>()));
-    gh.factory<_i47.GetAllBestSellerProductsUseCase>(
-        () => _i47.GetAllBestSellerProductsUseCase(gh<_i40.HomeRepository>()));
-    gh.factory<_i48.GetAllProductsUseCase>(
-        () => _i48.GetAllProductsUseCase(gh<_i40.HomeRepository>()));
-    gh.factory<_i49.GetCategoriesUsecase>(
-        () => _i49.GetCategoriesUsecase(gh<_i40.HomeRepository>()));
-    gh.factory<_i50.GetOccasionsUsecase>(
-        () => _i50.GetOccasionsUsecase(gh<_i40.HomeRepository>()));
-    gh.factory<_i51.GetCategoriesUsecase>(
-        () => _i51.GetCategoriesUsecase(gh<_i40.HomeRepository>()));
-    gh.factory<_i52.GetHomepageUsecase>(
-        () => _i52.GetHomepageUsecase(gh<_i40.HomeRepository>()));
-    gh.factory<_i53.ProductDetails_ViewModel>(
-        () => _i53.ProductDetails_ViewModel(gh<_i46.ProductDetailsUsecase>()));
-    gh.factory<_i54.GetLogedUserDataUsecase>(
-        () => _i54.GetLogedUserDataUsecase(gh<_i35.GetLoggedUserDataRepo>()));
-    gh.factory<_i55.RegisterUseCase>(
-        () => _i55.RegisterUseCase(gh<_i37.RegisterRepository>()));
-    gh.factory<_i56.RegisterViewModel>(() => _i56.RegisterViewModel(
-          gh<_i55.RegisterUseCase>(),
-          gh<_i6.RegisterValidator>(),
+    gh.factory<_i840.UpdateUserDataUseCase>(
+        () => _i840.UpdateUserDataUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i665.ProductDetailsUsecase>(() =>
+        _i665.ProductDetailsUsecase(gh<_i321.ProductDetailsRepository>()));
+    gh.factory<_i953.GetAllBestSellerProductsUseCase>(
+        () => _i953.GetAllBestSellerProductsUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i728.GetAllProductsUseCase>(
+        () => _i728.GetAllProductsUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i493.GetCategoriesUsecase>(
+        () => _i493.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i741.GetOccasionsUsecase>(
+        () => _i741.GetOccasionsUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i967.GetCategoriesUsecase>(
+        () => _i967.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i17.GetHomepageUsecase>(
+        () => _i17.GetHomepageUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i177.ProductDetails_ViewModel>(() =>
+        _i177.ProductDetails_ViewModel(gh<_i665.ProductDetailsUsecase>()));
+    gh.factory<_i1013.GetLogedUserDataUsecase>(() =>
+        _i1013.GetLogedUserDataUsecase(gh<_i715.GetLoggedUserDataRepo>()));
+    gh.factory<_i694.RegisterUseCase>(
+        () => _i694.RegisterUseCase(gh<_i760.RegisterRepository>()));
+    gh.factory<_i61.RegisterViewModel>(() => _i61.RegisterViewModel(
+          gh<_i694.RegisterUseCase>(),
+          gh<_i877.RegisterValidator>(),
         ));
-    gh.factory<_i57.ForegetPasswordViewmodel>(
-        () => _i57.ForegetPasswordViewmodel(
-              gh<_i42.ForgetPasswordUsecase>(),
-              gh<_i4.ForgetPasswordValidator>(),
+    gh.factory<_i243.ProfileViewModel>(
+        () => _i243.ProfileViewModel(gh<_i459.LogoutUsecase>()));
+    gh.factory<_i455.ForegetPasswordViewmodel>(
+        () => _i455.ForegetPasswordViewmodel(
+              gh<_i995.ForgetPasswordUsecase>(),
+              gh<_i375.ForgetPasswordValidator>(),
             ));
-    gh.factory<_i58.LoginViewModel>(() => _i58.LoginViewModel(
-          gh<_i39.LoginUsecase>(),
-          gh<_i54.GetLogedUserDataUsecase>(),
+    gh.factory<_i661.LoginViewModel>(() => _i661.LoginViewModel(
+          gh<_i334.LoginUsecase>(),
+          gh<_i1013.GetLogedUserDataUsecase>(),
         ));
-    gh.factory<_i59.HomeScreenViewmodel>(
-        () => _i59.HomeScreenViewmodel(gh<_i52.GetHomepageUsecase>()));
-    gh.factory<_i60.ProductViewModel>(() => _i60.ProductViewModel(
-          gh<_i48.GetAllProductsUseCase>(),
-          gh<_i30.SharedPreferencesService>(),
-          gh<_i47.GetAllBestSellerProductsUseCase>(),
+    gh.factory<_i208.HomeScreenViewmodel>(
+        () => _i208.HomeScreenViewmodel(gh<_i17.GetHomepageUsecase>()));
+    gh.factory<_i1061.ProductViewModel>(() => _i1061.ProductViewModel(
+          gh<_i728.GetAllProductsUseCase>(),
+          gh<_i94.SharedPreferencesService>(),
+          gh<_i953.GetAllBestSellerProductsUseCase>(),
         ));
-    gh.factory<_i61.CategoriesViewmodel>(
-        () => _i61.CategoriesViewmodel(gh<_i49.GetCategoriesUsecase>()));
-    gh.factory<_i62.CategoriesViewmodel>(
-        () => _i62.CategoriesViewmodel(gh<_i51.GetCategoriesUsecase>()));
-    gh.factory<_i63.EditProfileScreenViewModel>(() =>
-        _i63.EditProfileScreenViewModel(gh<_i45.UpdateUserDataUseCase>()));
-    gh.factory<_i64.OccasionsViewmodel>(
-        () => _i64.OccasionsViewmodel(gh<_i50.GetOccasionsUsecase>()));
+    gh.factory<_i303.CategoriesViewmodel>(
+        () => _i303.CategoriesViewmodel(gh<_i493.GetCategoriesUsecase>()));
+    gh.factory<_i859.CategoriesViewmodel>(
+        () => _i859.CategoriesViewmodel(gh<_i967.GetCategoriesUsecase>()));
+    gh.factory<_i87.EditProfileScreenViewModel>(() =>
+        _i87.EditProfileScreenViewModel(gh<_i840.UpdateUserDataUseCase>()));
+    gh.factory<_i714.OccasionsViewmodel>(
+        () => _i714.OccasionsViewmodel(gh<_i741.GetOccasionsUsecase>()));
     return this;
   }
 }
 
-class _$RegisterModule extends _i30.RegisterModule {}
+class _$RegisterModule extends _i94.RegisterModule {}
 
-class _$DioModule extends _i65.DioModule {}
+class _$DioModule extends _i138.DioModule {}

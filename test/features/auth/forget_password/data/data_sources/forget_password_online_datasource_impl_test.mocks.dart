@@ -27,7 +27,7 @@ import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
     as _i3;
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart'
-    as _i21;
+    as _i22;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i8;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
@@ -269,4 +269,13 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
         ),
         returnValue: _i7.Future<_i20.UserResponse?>.value(),
       ) as _i7.Future<_i20.UserResponse?>);
+
+  @override
+  _i7.Future<_i22.Logout?> logout(String? authorization) => (super.noSuchMethod(
+        Invocation.method(
+          #logout,
+          [authorization],
+        ),
+        returnValue: _i7.Future<_i22.Logout?>.value(),
+      ) as _i7.Future<_i22.Logout?>);
 }

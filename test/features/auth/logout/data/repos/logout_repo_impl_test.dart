@@ -26,9 +26,8 @@ void main() {
     );
   });
 
-  group('getLoggedUserData', () {
-    test('returns user data when the call to datasource is successful',
-        () async {
+  group('logout the user and remove data and token', () {
+    test('logout the user and remove data and token', () async {
       when<Future<Result<Logout?>>>(
         mockDatasource.logout(),
       ).thenAnswer((_) async => Success<Logout?>(logoutResponse));
