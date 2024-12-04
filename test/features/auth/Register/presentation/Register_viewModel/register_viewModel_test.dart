@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_viewModel/register_viewModel.dart';
@@ -69,35 +70,59 @@ void main() {
     });
 
     test(
-      'doIntent with RegisterIntent emits LoadingState, SuccessState on Success',
-          () {
+      'doIntent with RegisterIntent emits LoadingState and SuccessState on success',
+          () async {
+
         when(mockFormState.validate()).thenReturn(true);
-        when(mockTextEditingController.text).thenReturn("");
-        provideDummy<Result<User?>>(Success<User?>(User()));
-        when(mockTextEditingController.text)
-            .thenAnswer((_) => 'test@example.com');
+
+
+        when(mockTextEditingController.text).thenAnswer((_) => 'test@example.com');
+        provideDummy<Result<RegisterResponse?>>(
+            Success<RegisterResponse?>(RegisterResponse()));
+
+
         when(mockRegisterUseCase.register(any))
-            .thenAnswer((_) async => Success<User?>(User()));
+            .thenAnswer((_) async => Success<RegisterResponse?>(
+          RegisterResponse(
+            token: "dummyToken",
+            user: User(
+              id: "1",
+              firstName: "Farida",
+              lastName: "Tarek",
+              email: "faridaelamret73@gmail.com",
+            ),
+          ),
+        ));
+
 
         expectLater(
           viewmodel.stream,
-          emitsInOrder([isA<LoadingState>(), isA<SuccessState>()]),
+          emitsInOrder([
+            isA<LoadingState>(),
+            isA<SuccessState>().having(
+                    (state) => state.user?.email, 'user email', 'faridaelamret73@gmail.com'),
+          ]),
         );
 
-        viewmodel.doIntent(RegisterIntent("female","Farida","Tarek","faridaelamret73@gmail.com","Farida987#","Farida987#","+201001319285"));
+        viewmodel.doIntent(RegisterIntent(
+
+          "female","Farida","Tarek","faridaelamret73@gmail.com","Farida987#", "Farida987#","+201001319285",
+
+        ));
       },
     );
 
+
     test(
-      'doIntent with RegisterIntent emits LoadingState, ResetPasswordState on Fail',
+      'doIntent with RegisterIntent emits LoadingState on Fail',
           () {
         when(mockFormState.validate()).thenReturn(true);
         when(mockTextEditingController.text).thenReturn("");
-        provideDummy<Result<User?>>(Fail<User?>(Exception()));
+        provideDummy<Result<RegisterResponse?>>(Fail<RegisterResponse?>(Exception()));
         when(mockTextEditingController.text)
             .thenAnswer((_) => 'test@example.com');
         when(mockRegisterUseCase.register(any))
-            .thenAnswer((_) async => Fail<User?>(Exception()));
+            .thenAnswer((_) async => Fail<RegisterResponse?>(Exception()));
 
         expectLater(
           viewmodel.stream,
@@ -109,7 +134,7 @@ void main() {
     );
 
     test(
-      'doIntent with RegisterIntent emits LoadingState, ResetPasswordState when RegisterFormKey is invalid',
+      'doIntent with RegisterIntent emits LoadingState  when RegisterFormKey is invalid',
           () {
         when(mockFormState.validate()).thenReturn(false);
         expectLater(

@@ -81,6 +81,20 @@ import '../../features/auth/Register/presentation/Register_validator/register_va
     as _i877;
 import '../../features/auth/Register/presentation/Register_viewModel/register_viewModel.dart'
     as _i61;
+import '../../features/auth/update_password/data/dataSource/updatePassword_OnlineDatasource.dart'
+    as _i154;
+import '../../features/auth/update_password/data/dataSource/updatePassword_OnlineDataSourse_impl.dart'
+    as _i1034;
+import '../../features/auth/update_password/data/repository_impl/updatePassword_repository_impl.dart'
+    as _i411;
+import '../../features/auth/update_password/domain/repository/update_password_repository.dart'
+    as _i923;
+import '../../features/auth/update_password/domain/useCases/update_password_useCase.dart'
+    as _i355;
+import '../../features/auth/update_password/presentation/Update_password_validator/update_password_validator.dart'
+    as _i826;
+import '../../features/auth/update_password/presentation/UpdatePassword_ViewModel/updatePassword_ViewModel.dart'
+    as _i833;
 import '../../features/home/data/contracts/product_details_onlineDataSource.dart'
     as _i14;
 import '../../features/home/data/contracts/remote_datasource.dart' as _i92;
@@ -156,6 +170,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
+    gh.factory<_i826.UpdatePasswordValidator>(
+        () => _i826.UpdatePasswordValidator());
     gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i94.SharedPreferencesService>(
@@ -166,8 +182,16 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i871.AuthOfflineDatasource>(
         () => _i601.AuthOfflineDatasourceImpl());
+    gh.factory<_i154.UpdatePasswordOnlineDatasource>(
+        () => _i1034.UpdatePasswordOnlineDatasourceImpl(
+              gh<_i561.ApiManager>(),
+              gh<_i924.TokenProvider>(),
+            ));
     gh.factory<_i14.ProductDetails_Onlinedatasource>(() =>
         _i958.ProductDetails_Onlinedatasource_Impl(gh<_i561.ApiManager>()));
+    gh.factory<_i923.UpdatePasswordRepository>(() =>
+        _i411.UpdatePasswordRepositoryImpl(
+            gh<_i154.UpdatePasswordOnlineDatasource>()));
     gh.factory<_i731.LogoutOnlineDatasource>(
         () => _i518.LogoutOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i699.RegisterOnlineDatasource>(
@@ -190,6 +214,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i321.ProductDetailsRepository>(() =>
         _i629.ProductDetailsRepoImpl(
             gh<_i14.ProductDetails_Onlinedatasource>()));
+    gh.factory<_i355.UpdatePasswordUseCase>(() =>
+        _i355.UpdatePasswordUseCase(gh<_i923.UpdatePasswordRepository>()));
     gh.factory<_i983.LoginRepo>(
         () => _i568.LoginRepoImpl(gh<_i710.LoginOnlineDatasource>()));
     gh.factory<_i715.GetLoggedUserDataRepo>(() =>
@@ -205,6 +231,12 @@ extension GetItInjectableX on _i174.GetIt {
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
     gh.factory<_i459.LogoutUsecase>(
         () => _i459.LogoutUsecase(gh<_i371.LogoutRepo>()));
+    gh.factory<_i833.UpdatePasswordViewModel>(
+        () => _i833.UpdatePasswordViewModel(
+              gh<_i355.UpdatePasswordUseCase>(),
+              gh<_i826.UpdatePasswordValidator>(),
+              gh<_i459.LogoutUsecase>(),
+            ));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
           gh<_i981.AuthOnlineDatasource>(),
           gh<_i871.AuthOfflineDatasource>(),

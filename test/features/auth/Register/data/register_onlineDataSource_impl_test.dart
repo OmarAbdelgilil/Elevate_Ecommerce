@@ -27,7 +27,7 @@ void main() {
 
       final actual = await registerOnlineDatasourceImpl.register(request);
 
-      expect(actual, isA<Success<User?>>());
+      expect(actual, isA<Success<RegisterResponse?>>());
       verify(mockApiManager.register(request)).called(1);
       verifyNoMoreInteractions(mockApiManager);
     });
@@ -41,7 +41,7 @@ void main() {
 
       final actual = await registerOnlineDatasourceImpl.register(request);
 
-      expect(actual, isA<Fail<User?>>());
+      expect(actual, isA<Fail<RegisterResponse?>>());
       verify(mockApiManager.register(request)).called(1);
       verifyNoMoreInteractions(mockApiManager);
     });

@@ -1,3 +1,5 @@
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
+
 class User {
   String? id;
   String? username;
@@ -54,4 +56,23 @@ class User {
     'isverified': isVerified,
     'token': token,
   };
-}
+
+
+  UserData mapUserToUserData(User user) {
+    return UserData(
+      id: user.id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      email: user.email,
+      gender: user.gender,
+      phone: user.phone,
+      role: user.role,
+      // Optional: Adding default or null values for properties not present in the User model
+      wishlist: [],
+      photo: null,
+      createdAt: null,
+      passwordChangedAt: null,
+      addresses: [],
+    );
+  }
+  }
