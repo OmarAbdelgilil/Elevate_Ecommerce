@@ -2,8 +2,8 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../../features/home/data/models/response/best_seller_product_response/BestSeller.dart';
-import '../../../features/home/data/models/response/product_response/Products.dart';
+import '../../features/home/data/models/response/best_seller_product_response/BestSeller.dart';
+import '../../features/home/data/models/response/product_response/Products.dart';
 @module
 abstract class RegisterModule {
   @preResolve

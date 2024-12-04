@@ -11,5 +11,6 @@ class AppRoutes {
   static const bestSeller = "bestSeller";
 
   static const occasions = "occasions";
+  static const editProfile = "editProfile";
   static const Categories = "categories";
 }

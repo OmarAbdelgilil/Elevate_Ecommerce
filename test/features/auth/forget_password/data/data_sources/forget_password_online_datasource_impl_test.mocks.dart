@@ -10,6 +10,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requ
     as _i10;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
     as _i13;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart'
+    as _i21;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart'
     as _i11;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart'
@@ -258,11 +260,13 @@ class MockApiManager extends _i1.Mock implements _i6.ApiManager {
       ) as _i7.Future<_i20.UserResponse?>);
 
   @override
-  _i7.Future<_i21.Logout?> logout(String? authorization) => (super.noSuchMethod(
+  _i7.Future<_i20.UserResponse?> updateProfileData(
+          _i21.UpdateProfileRequest? request) =>
+      (super.noSuchMethod(
         Invocation.method(
-          #logout,
-          [authorization],
+          #updateProfileData,
+          [request],
         ),
-        returnValue: _i7.Future<_i21.Logout?>.value(),
-      ) as _i7.Future<_i21.Logout?>);
+        returnValue: _i7.Future<_i20.UserResponse?>.value(),
+      ) as _i7.Future<_i20.UserResponse?>);
 }

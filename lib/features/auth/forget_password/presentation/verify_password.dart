@@ -46,9 +46,9 @@ class VerifyPassword extends StatelessWidget {
             SizedBox(
               height: 30.h,
             ),
-            CustomtextField(
+            CustomTextField(
               hint: StringsManager.hintPassword,
-              lable: StringsManager.newPasswordLabel,
+              label: StringsManager.newPasswordLabel,
               controller: passwordController,
               validator: passwordValidator,
               errorText:
@@ -57,9 +57,9 @@ class VerifyPassword extends StatelessWidget {
             SizedBox(
               height: 16.h,
             ),
-            CustomtextField(
+            CustomTextField(
               hint: StringsManager.confirmPasswordHint,
-              lable: StringsManager.confirmPasswordHint,
+              label: StringsManager.confirmPasswordHint,
               controller: confirmPasswordController,
               validator: confirmPasswordValidator,
             ),

@@ -6,6 +6,10 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart'
+    as _i12;
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
+    as _i11;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
@@ -126,4 +130,22 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i10.Occasions?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i11.UserResponse?>> upDateUserProfile(
+          _i12.UpdateProfileRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #upDateUserProfile,
+          [request],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i11.UserResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i11.UserResponse?>>(
+          this,
+          Invocation.method(
+            #upDateUserProfile,
+            [request],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i11.UserResponse?>>);
 }

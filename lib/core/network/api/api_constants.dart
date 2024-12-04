@@ -14,5 +14,8 @@ class ApiConstants {
   static const String getAllBestSellerProductsPath = "/v1/best-seller";
 
   static const String profilePath = "/v1/auth/profile-data";
+  static const String editProfilePath = "/v1/auth/editProfile";
+  static const String profileImageDefault =
+      "https://flower.elevateegy.com/uploads/default-profile.png";
   static const String logoutPath = "/v1/auth/logout";
 }
