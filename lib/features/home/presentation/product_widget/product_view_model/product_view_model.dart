@@ -3,7 +3,7 @@ import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:injectable/injectable.dart';
 import '../../../../../core/common/api_result.dart';
-import '../../../../../core/network/services/shared_preferences_service.dart';
+import '../../../../../core/cache/shared_preferences_service.dart';
 import '../../../../../utils/string_manager.dart';
 import '../../../data/models/response/best_seller_product_response/BestSeller.dart';
 import '../../../data/models/response/product_response/ProductResponse.dart';

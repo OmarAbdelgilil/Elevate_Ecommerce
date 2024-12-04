@@ -1,30 +1,31 @@
 import 'package:flutter/material.dart';
 
-class CustomtextField extends StatefulWidget {
+class CustomTextField extends StatefulWidget {
   final String hint;
   final Function(String)? onChange;
   final TextEditingController controller;
   final bool obscureText; // Controls initial text visibility
-  final String lable;
+  final bool? readOnly; // Controls initial text visibility
+  final String label;
   final String? Function(String?)? validator;
   final String? errorText;
 
-  const CustomtextField({
+  const CustomTextField({
     super.key,
     required this.hint,
     this.onChange,
     this.obscureText = false, // Default is false (text visible)
     this.validator,
-    required this.lable,
+    required this.label,
     required this.controller,
-    this.errorText,
+    this.errorText, this.readOnly,
   });
 
   @override
-  State<CustomtextField> createState() => _CustomtextFieldState();
+  State<CustomTextField> createState() => _CustomTextFieldState();
 }
 
-class _CustomtextFieldState extends State<CustomtextField> {
+class _CustomTextFieldState extends State<CustomTextField> {
   late bool _obscureText; // Controls the text visibility dynamically
   Color labelColor = Colors.grey[850]!;
 
@@ -52,6 +53,7 @@ class _CustomtextFieldState extends State<CustomtextField> {
     return TextFormField(
       obscureText: _obscureText, // Use _obscureText to toggle visibility
       validator: _validate,
+      readOnly: widget.readOnly??false,
       onChanged: widget.onChange,
       controller: widget.controller,
       decoration: InputDecoration(
@@ -70,7 +72,7 @@ class _CustomtextFieldState extends State<CustomtextField> {
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         label: Text(
-          widget.lable,
+          widget.label,
           style: TextStyle(color: labelColor),
         ),
         hintText: widget.hint,

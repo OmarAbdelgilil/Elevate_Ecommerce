@@ -38,7 +38,7 @@ class MainLayoutViewModel extends ChangeNotifier {
     TabItem(
         icon: SVGAssets.personTab,
         label: StringsManager.profile,
-        screen: const ProfileScreen()),
+        screen:  ProfileScreen()),
   ];
 
   int get selectedIndex => _selectedIndex;

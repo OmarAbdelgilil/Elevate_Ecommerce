@@ -1,4 +1,10 @@
 import 'package:bloc/bloc.dart';
+import 'package:elevate_ecommerce/core/cache/hive_service.dart';
+import 'package:elevate_ecommerce/core/providers/token_provider.dart';
+import 'package:elevate_ecommerce/core/providers/user_provider.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_model.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/domain/use_cases/get_loged_user_data_usecase.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce/features/auth/login/domain/use_cases/login_usecase.dart';
@@ -9,10 +15,14 @@ import '../../../../../core/common/api_result.dart';
 @injectable
 class LoginViewModel extends Cubit<LoginState> {
   final LoginUsecase loginUsecase;
+  final GetLogedUserDataUsecase getLogedUserDataUsecase;
 
-  LoginViewModel(this.loginUsecase) : super(InitialState());
+  LoginViewModel(this.loginUsecase, this.getLogedUserDataUsecase)
+      : super(InitialState());
+
   final TokenStorage _tokenStorage = TokenStorage();
-  void handleIntent(LoginScreenIntent intent) {
+
+  Future<void> handleIntent(LoginScreenIntent intent) async {
     switch (intent) {
       case LoginIntent _:
         _handleLogin(intent);
@@ -30,10 +40,48 @@ class LoginViewModel extends Cubit<LoginState> {
       final result = await loginUsecase.login(loginRequest);
 
       if (result is Success<LoginResponse>) {
-        if (intent.rememberMe) {
+        if (intent.rememberMe == true) {
           await _tokenStorage.saveToken(result.data!.token!);
-        }
+          final cashedToken = await _tokenStorage.getToken();
+          TokenProvider().saveToken(cashedToken!);
+          final userDataResult =
+              await getLogedUserDataUsecase.getLogedUserData();
+          if (userDataResult is Success<UserResponse?> &&
+              userDataResult.data != null) {
+            final userData = userDataResult.data!.user!;
+            final userJson = userData.toJson();
+            print('Raw user JSON: $userJson');
+            final userModel = UserModel.fromJson(userJson);
+            print('Mapped UserModel: ${userModel.toJson()}');
+            final hiveService = HiveService();
+            final token = result.data!.token!;
+            await hiveService.saveUser(token, userModel);
+            final cachedUser = await hiveService.getUser(token);
 
+            UserProvider().setUserData(userData);
+
+            print('user added to provider');
+
+            print('Cached user for token $token: ${cachedUser?.toJson()}');
+          } else {
+            print('Failed to fetch user data or user data is null');
+          }
+        } else if (intent.rememberMe == false) {
+          TokenProvider().saveToken(result.data!.token!);
+          print('Token saved: ${TokenProvider().token}');
+          final userDataResult =
+              await getLogedUserDataUsecase.getLogedUserData();
+          if (userDataResult is Success<UserResponse?> &&
+              userDataResult.data != null) {
+            final userData = userDataResult.data!.user!;
+
+            await UserProvider().setUserData(userData);
+            var userDatatest = UserProvider().userData;
+            print(
+                'User data saved in provider test : ${userDatatest?.toJson()}');
+            print('User data saved in provider: ${userData.toJson()}');
+          }
+        }
         emit(SuccessState(result.data));
       } else if (result is Fail<LoginResponse>) {
         emit(ErrorState(result.exception));
