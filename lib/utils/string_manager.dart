@@ -82,4 +82,23 @@ class StringsManager {
   // product widget
   static const productPriceCurrency = 'EGP';
   static const productButton = 'add to card';
+
+
+  static const myOrder = 'My Orders';
+  static const savedAddress = 'Saved address';
+  static const guest = 'Guest';
+  static const guestEmail = 'Guest@gmail.com';
+  static const notification = 'Notification';
+  static const language = 'Language';
+  static const english = 'English';
+  static const selectedLanguage = 'Selected Language';
+  static const arabic = 'العربية';
+
+  static const conditions = 'Terms & conditions';
+  static const aboutUs = 'About us';
+  static const logout = 'Logout';
+  static const upDate = 'Update';
+  static const editProfile = 'Edit Profile';
+  static const change = 'Change';
+
 }

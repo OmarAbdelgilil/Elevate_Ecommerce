@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/reset_password_response.dart';
@@ -13,6 +14,7 @@ import 'package:elevate_ecommerce/features/auth/logged_user_data/data/data_sourc
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart';
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart';
+import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
@@ -84,6 +86,18 @@ class DummyApiManager implements ApiManager {
   @override
   Future<VerifyPasswordResponse> verifyResetPassword(
       VerifyPasswordRequest request) {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Logout?> logout(String authorization) {
+    // TODO: implement logout
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<UserResponse?> updateProfileData(UpdateProfileRequest request) {
+    // TODO: implement updateProfileData
     throw UnimplementedError();
   }
 }

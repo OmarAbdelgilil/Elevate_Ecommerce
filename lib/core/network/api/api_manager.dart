@@ -13,6 +13,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
+import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
@@ -24,10 +25,12 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 
+import '../../../features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
 
 import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
+import '../../providers/token_provider.dart';
 
 part 'api_manager.g.dart';
 
@@ -36,13 +39,28 @@ part 'api_manager.g.dart';
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class ApiManager {
   @factoryMethod
-  factory ApiManager(Dio dio) {
+  factory ApiManager(Dio dio, TokenProvider tokenProvider) {
+    dio.interceptors.add(InterceptorsWrapper(
+      onRequest: (options, handler) {
+        final token = tokenProvider.token;
+        if (token != null) {
+          options.headers['Authorization'] = 'Bearer $token';
+        }
+        return handler.next(options);
+      },
+      onError: (DioError e, handler) {
+        // Optionally handle errors globally
+        return handler.next(e);
+      },
+    ));
+
     (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
       return client;
     };
+
     return _ApiManager(dio);
   }
   @POST(ApiConstants.registerPath)
@@ -83,4 +101,10 @@ abstract class ApiManager {
   @GET(ApiConstants.profilePath)
   Future<UserResponse?> getProfile(
       @Header('Authorization') String authorization);
+
+  @PUT(ApiConstants.editProfilePath)
+  Future<UserResponse?> updateProfileData(@Body() UpdateProfileRequest request);
+
+  @GET(ApiConstants.logoutPath)
+  Future<Logout?> logout(@Header('Authorization') String authorization);
 }

@@ -13,6 +13,13 @@ class SVGAssets {
   static const String personTab = "${_basePath}person_tab.svg";
   static const String homeScreenLogo = "${_basePath}logo.svg";
   static const String filterIcon = "${_basePath}filter_icon.svg";
+  static const String notificationIcon = "${_basePath}notification.svg";
+  static const String penIcon = "${_basePath}pen.svg";
+  static const String locationIcon = "${_basePath}location.svg";
+  static const String transactionIcon = "${_basePath}Transaction-order (交易清单).svg";
+  static const String logoutIcon = "${_basePath}logout_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.svg";
+  static const String languageIcon = "${_basePath}language.svg";
+
 }
 
 class LottieAssets {

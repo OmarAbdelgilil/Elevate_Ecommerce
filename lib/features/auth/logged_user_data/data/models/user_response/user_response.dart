@@ -1,3 +1,4 @@
+import '../../../../domain/model/user.dart';
 import 'user.dart';
 
 class UserResponse {
@@ -17,4 +18,15 @@ class UserResponse {
         'message': message,
         'user': user?.toJson(),
       };
+
+  User toDomain() {
+    return User(
+      id: user?.id,
+      firstName: user?.firstName,
+      lastName: user?.lastName,
+      email: user?.email,
+      phone: user?.phone,
+      gender: user?.gender,
+    );
+  }
 }

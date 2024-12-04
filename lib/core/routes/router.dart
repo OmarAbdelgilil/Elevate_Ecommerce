@@ -11,6 +11,7 @@ import 'package:elevate_ecommerce/features/home/presentation/product_details_scr
 import 'package:flutter/material.dart';
 
 import '../../features/auth/login/presentation/views/login_view.dart';
+import '../../features/home/presentation/profile_edit_screen/profile_edit_view/profile_edit_screen.dart';
 
 final dummyProduct = ProductsModel(
     id: '1',
@@ -31,6 +32,8 @@ Route manageRoutes(RouteSettings settings) {
               ));
     case AppRoutes.mainLayOut:
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
+    case AppRoutes.editProfile:
+      return MaterialPageRoute(builder: (context) =>  ProfileEditScreen());
     case AppRoutes.register:
       return MaterialPageRoute(builder: (context) => const RegisterScreen());
     case AppRoutes.forgetPassword:

@@ -1,5 +1,10 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/user_response.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart';
 import 'package:elevate_ecommerce/features/home/data/data_sources/remote_datasource_impl.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
@@ -41,6 +46,11 @@ void main() {
       price: 1,
     )
   ];
+  final dummyUser = UserData(
+    id: '123',
+    email: 'daly@gmail.com',
+    firstName: 'abdalla'
+  );
   final dummyCategories = Categories(categories: [
     CategoryModel(
       id: '1',
@@ -80,6 +90,10 @@ void main() {
     message: 'Success',
     bestSeller: dummyBestProduct,
   );
+  final dummyUserResponse = UserResponse(
+    message: 'Success',
+    user: dummyUser
+  );
 
   setUp(() {
     mockApiManager = MockApiManager();
@@ -92,6 +106,8 @@ void main() {
     provideDummy<Result<BestSellerProductResponse?>>(Fail(Exception()));
     provideDummy<Result<Categories?>>(Fail(Exception()));
     provideDummy<Result<Occasions?>>(Fail(Exception()));
+    provideDummy<Result<UserResponse?>>(Fail(Exception()));
+
   });
 
   group('RemoteDatasourceImpl Tests', () {
@@ -257,6 +273,36 @@ void main() {
       expect((result as Fail).exception, exception);
 
       verify(mockRemoteDatasource.getAllOccasions()).called(1);
+    });
+  });
+  final request = UpdateProfileRequest(firstName: 'abdalla', lastName: 'eldaly', email: 'daly@gmail.com', phone: '+201012951616');
+
+
+  group('update user data Tests', () {
+    test('update user data Tests returns Success', () async {
+      when(mockRemoteDatasource.upDateUserProfile(request))
+          .thenAnswer((_) async => Success(dummyUserResponse));
+
+      final result = await mockRemoteDatasource.upDateUserProfile(request);
+
+      expect(result, isA<Success<UserResponse?>>());
+      expect((result as Success).data, dummyUserResponse);
+
+      verify(mockRemoteDatasource.upDateUserProfile(request)).called(1);
+    });
+
+    test('update user returns Fail', () async {
+      final exception = Exception('Failed to  update user');
+
+      when(mockRemoteDatasource.upDateUserProfile(request))
+          .thenAnswer((_) async => Fail(exception));
+
+      final result = await mockRemoteDatasource.upDateUserProfile(request);
+
+      expect(result, isA<Fail<UserResponse?>>());
+      expect((result as Fail).exception, exception);
+
+      verify(mockRemoteDatasource.upDateUserProfile(request)).called(1);
     });
   });
 }
