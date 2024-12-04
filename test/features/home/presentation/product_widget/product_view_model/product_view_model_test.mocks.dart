@@ -5,9 +5,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
 
-import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
 import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart'
     as _i9;
+import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart'
     as _i11;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'

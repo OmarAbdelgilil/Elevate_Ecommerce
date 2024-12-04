@@ -97,5 +97,8 @@ class StringsManager {
   static const conditions = 'Terms & conditions';
   static const aboutUs = 'About us';
   static const logout = 'Logout';
+  static const upDate = 'Update';
+  static const editProfile = 'Edit Profile';
+  static const change = 'Change';
 
 }

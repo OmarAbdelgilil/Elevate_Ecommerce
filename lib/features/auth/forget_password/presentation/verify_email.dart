@@ -42,11 +42,11 @@ class VerifyEmail extends StatelessWidget {
             SizedBox(
               height: 30.h,
             ),
-            CustomtextField(
+            CustomTextField(
               hint: StringsManager.emailFieldHint,
               controller: emailController,
               validator: emailValidator,
-              lable: StringsManager.emailFieldLabel,
+              label: StringsManager.emailFieldLabel,
               errorText:
                   exception != null ? StringsManager.emailFieldError : null,
             ),

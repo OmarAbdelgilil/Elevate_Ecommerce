@@ -38,7 +38,7 @@ class UserProvider with ChangeNotifier {
         role: updatedFields['role'] ?? _userData!.role,
         createdAt: updatedFields['createdAt'] ?? _userData!.createdAt,
         passwordChangedAt:
-            updatedFields['passwordChangedAt'] ?? _userData!.passwordChangedAt,
+        updatedFields['passwordChangedAt'] ?? _userData!.passwordChangedAt,
         addresses: updatedFields['addresses'] ?? _userData!.addresses,
       );
       notifyListeners();

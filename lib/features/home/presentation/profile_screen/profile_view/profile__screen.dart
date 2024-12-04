@@ -7,6 +7,7 @@ import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:elevate_ecommerce/utils/values_manager.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -30,9 +31,7 @@ class ProfileScreen extends StatelessWidget {
                 horizontal: AppPadding.p10, vertical: AppPadding.p10),
             child: Column(
               children: [
-                SizedBox(
-                  height: AppSize.s40.h,
-                ),
+                SizedBox(height: AppSize.s40.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -52,7 +51,9 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        userProvider.userData?.photo == ApiConstants.profileImageDefault?Navigator.pushNamed(context, AppRoutes.editProfile):null;
+                        userProvider.userData?.photo == ApiConstants.profileImageDefault
+                            ? Navigator.pushNamed(context, AppRoutes.editProfile)
+                            : null;
                       },
                       child: Center(
                         child: SizedBox(
@@ -61,24 +62,22 @@ class ProfileScreen extends StatelessWidget {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(100),
                             child: CachedNetworkImage(
-                              imageUrl: userProvider.userData?.photo == ApiConstants.profileImageDefault
-                                  ? ''
-                                  : userProvider.userData?.photo ?? '',
+                              imageUrl: _getValidImageUrl(userProvider.userData?.photo ?? ''),
                               fit: BoxFit.cover,
-                              progressIndicatorBuilder: (context, url, downloadProgress) => Center(
-                                child: CircularProgressIndicator(
-                                  value: downloadProgress.progress,
-                                  color: ColorManager.white,
-                                  strokeWidth: AppSize.s1,
-                                  strokeCap: StrokeCap.round,
-                                ),
-                              ),
+                              progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                  Center(
+                                    child: CircularProgressIndicator(
+                                      value: downloadProgress.progress,
+                                      color: ColorManager.white,
+                                      strokeWidth: AppSize.s1,
+                                      strokeCap: StrokeCap.round,
+                                    ),
+                                  ),
                               errorWidget: (context, url, error) => Container(
                                 padding: const EdgeInsets.all(4),
                                 decoration: BoxDecoration(
                                     shape: BoxShape.circle,
-                                    border: Border.all(color: ColorManager.grey)
-                                ),
+                                    border: Border.all(color: ColorManager.grey)),
                                 child: const Icon(
                                   Icons.person,
                                   size: 50,
@@ -90,9 +89,7 @@ class ProfileScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: AppSize.s10.h,
-                    ),
+                    SizedBox(height: AppSize.s10.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -114,9 +111,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: AppSize.s40.h,
-                ),
+                SizedBox(height: AppSize.s40.h),
                 _profileSection(
                     SvgPicture.asset(
                       SVGAssets.transactionIcon,
@@ -125,8 +120,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     StringsManager.myOrder,
                         () {},
-                    null
-                ),
+                    null),
                 _profileSection(
                     SvgPicture.asset(
                       SVGAssets.locationIcon,
@@ -135,11 +129,8 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     StringsManager.savedAddress,
                         () {},
-                    null
-                ),
-                const Divider(
-                  color: ColorManager.grey,
-                ),
+                    null),
+                const Divider(color: ColorManager.grey),
                 _profileSection(
                   Switch(
                     value: profileViewModel.isNotificationEnabled,
@@ -150,12 +141,9 @@ class ProfileScreen extends StatelessWidget {
                   ),
                   StringsManager.notification,
                       () {},
-
                   null,
                 ),
-                SizedBox(
-                  height: AppSize.s15.h,
-                ),
+                SizedBox(height: AppSize.s15.h),
                 Row(
                   children: [
                     SvgPicture.asset(
@@ -170,32 +158,23 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () => _showLanguageModal(context, profileViewModel), // Show the modal
+                      onTap: () => _showLanguageModal(context, profileViewModel),
                       child: Text(
-                        profileViewModel.selectedLanguage, // Display selected language
-                        style: AppTextStyles.title(color: ColorManager.primary, fontWeight: FontWeight.w400, fontSize: 15),
+                        profileViewModel.selectedLanguage,
+                        style: AppTextStyles.title(
+                            color: ColorManager.primary,
+                            fontWeight: FontWeight.w400,
+                            fontSize: 15),
                       ),
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: AppSize.s10.h,
-                ),
+                SizedBox(height: AppSize.s10.h),
                 _profileSection(
-                    null,
-                    StringsManager.conditions,
-                        () {},
-                    null
-                ),
+                    null, StringsManager.conditions, () {}, null),
                 _profileSection(
-                    null,
-                    StringsManager.aboutUs,
-                        () {},
-                    null
-                ),
-                const Divider(
-                  color: ColorManager.grey,
-                ),
+                    null, StringsManager.aboutUs, () {}, null),
+                const Divider(color: ColorManager.grey),
                 _profileSection(
                   SvgPicture.asset(
                     SVGAssets.logoutIcon,
@@ -203,8 +182,7 @@ class ProfileScreen extends StatelessWidget {
                     height: 25.h,
                   ),
                   StringsManager.logout,
-                      () {
-                      },
+                      () {},
                   SvgPicture.asset(
                     SVGAssets.logoutIcon,
                     width: 40.w,
@@ -219,6 +197,15 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+
+  String _getValidImageUrl(String? photo) {
+    if (photo == null || photo.isEmpty || photo == ApiConstants.profileImageDefault) {
+      return 'https://via.placeholder.com/150';
+    }
+    return photo;
+  }
+}
+
 
   Widget _profileSection(
       Widget? icon, String sectionName, void Function()? onPressed, Widget? logOut) {
@@ -313,4 +300,4 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-}
+

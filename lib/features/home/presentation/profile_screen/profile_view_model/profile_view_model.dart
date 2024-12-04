@@ -1,9 +1,10 @@
 import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../../core/network/api/api_constants.dart';
+
 class ProfileViewModel extends ChangeNotifier {
 
-  late final SharedPreferencesService _sharedPreferencesService;
   bool _isNotificationEnabled = false;
   String _selectedLanguage = 'English';
 
@@ -20,4 +21,7 @@ class ProfileViewModel extends ChangeNotifier {
     _selectedLanguage = language;
     notifyListeners();
   }
+
+
+
 }

@@ -89,74 +89,74 @@ class RegisterScreen extends StatelessWidget {
                         Row(
                           children: [
                             Expanded(
-                              child: CustomtextField(
+                              child: CustomTextField(
                                   validator: registerValidator
                                       .validate(RegisterValidTypes.firstName),
                                   controller:
                                       registerValidator.firstNameController,
                                   hint: StringsManager.firstNameHint,
-                                  lable: StringsManager.firstNameFieldLabel),
+                                  label: StringsManager.firstNameFieldLabel),
                             ),
                             SizedBox(
                               width: 20.w,
                             ),
                             Expanded(
-                              child: CustomtextField(
+                              child: CustomTextField(
                                   validator: registerValidator
                                       .validate(RegisterValidTypes.lastName),
                                   controller:
                                       registerValidator.lastNameController,
                                   hint: StringsManager.lastNameHint,
-                                  lable: StringsManager.lastNameFieldLabel),
+                                  label: StringsManager.lastNameFieldLabel),
                             ),
                           ],
                         ),
                         SizedBox(
                           height: 25.h,
                         ),
-                        CustomtextField(
+                        CustomTextField(
                             validator: registerValidator
                                 .validate(RegisterValidTypes.email),
                             controller: registerValidator.emailController,
                             hint: StringsManager.emailFieldHint,
-                            lable: StringsManager.emailFieldLabel),
+                            label: StringsManager.emailFieldLabel),
                         SizedBox(
                           height: 25.h,
                         ),
                         Row(
                           children: [
                             Expanded(
-                              child: CustomtextField(
+                              child: CustomTextField(
                                   validator: registerValidator
                                       .validate(RegisterValidTypes.password),
                                   controller:
                                       registerValidator.passwordController,
                                   hint: StringsManager.passwordHint,
-                                  lable: StringsManager.passwordFieldLabel),
+                                  label: StringsManager.passwordFieldLabel),
                             ),
                             SizedBox(
                               width: 20.w,
                             ),
                             Expanded(
-                              child: CustomtextField(
+                              child: CustomTextField(
                                   validator: registerValidator.validate(
                                       RegisterValidTypes.confirmPassword),
                                   controller: registerValidator
                                       .confirmPasswordController,
                                   hint: StringsManager.confirmPasswordHint,
-                                  lable: StringsManager.confirmPasswordHint),
+                                  label: StringsManager.confirmPasswordHint),
                             ),
                           ],
                         ),
                         SizedBox(
                           height: 25.h,
                         ),
-                        CustomtextField(
+                        CustomTextField(
                             validator: registerValidator
                                 .validate(RegisterValidTypes.phone),
                             controller: registerValidator.phoneController,
                             hint: StringsManager.phoneNumberHint,
-                            lable: StringsManager.phoneFieldLabel),
+                            label: StringsManager.phoneFieldLabel),
                         GenderWidget(
                           initialGender: 'male',
                           onGenderChanged: (selectedGender) {

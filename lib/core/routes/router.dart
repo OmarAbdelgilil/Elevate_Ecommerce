@@ -33,7 +33,7 @@ Route manageRoutes(RouteSettings settings) {
     case AppRoutes.mainLayOut:
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
     case AppRoutes.editProfile:
-      return MaterialPageRoute(builder: (context) => const ProfileEditScreen());
+      return MaterialPageRoute(builder: (context) =>  ProfileEditScreen());
     case AppRoutes.register:
       return MaterialPageRoute(builder: (context) => const RegisterScreen());
     case AppRoutes.forgetPassword:
