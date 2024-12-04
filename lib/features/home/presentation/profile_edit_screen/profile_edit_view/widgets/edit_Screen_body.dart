@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_edit_screen/profile_edit_view/widgets/reset_password_button.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_edit_screen/profile_edit_view_model/profile_edit_view_model.dart';
 import 'package:flutter/foundation.dart';
@@ -75,7 +76,10 @@ class EditScreenBody extends StatelessWidget {
               hint: StringsManager.phoneFieldLabel,
               label: StringsManager.passwordFieldLabel,
               controller: validator.passwordController,
-
+                    onTap: (){
+                      Navigator.of(context).pushNamed(
+                          AppRoutes.ResetPassword);
+                    },
               obscureText: true,
               readOnly: true,
               suffixIcon: Text(StringsManager.change, style: AppTextStyles.title(color: ColorManager.primary)),

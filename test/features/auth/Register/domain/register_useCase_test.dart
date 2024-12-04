@@ -1,5 +1,6 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
+import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/repository/register_repository.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
@@ -15,8 +16,8 @@ void main() {
       'when call invoke it should call RegisterRepository.register with correct parameter',
       () async {
     // Arrange
-    var mockedResult = Success<User?>(User());
-    provideDummy<Result<User?>>(mockedResult);
+    var mockedResult = Success<RegisterResponse?>(RegisterResponse());
+    provideDummy<Result<RegisterResponse?>>(mockedResult);
     var registerRepo = MockRegisterRepository();
     var registerUseCase = RegisterUseCase(registerRepo);
     final request = RegisterRequest();

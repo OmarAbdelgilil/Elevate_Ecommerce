@@ -1,6 +1,7 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/dataSource/register_onlineDataSource.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
+import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/repository_impl/register_repository_impl.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -15,8 +16,8 @@ void main() {
 
     test('test register Success on registerOnlineDataSource ', () async {
       // Arrange
-      var mockedResult = Success<User?>(User());
-      provideDummy<Result<User?>>(mockedResult);
+      var mockedResult = Success<RegisterResponse?>(RegisterResponse());
+      provideDummy<Result<RegisterResponse?>>(mockedResult);
       var registerOnlineDataSource =MockRegisterOnlineDatasource();
       var registerRepoImpl =RegisterRepositoryImpl(registerOnlineDataSource);
       final request = RegisterRequest();
@@ -30,8 +31,8 @@ void main() {
 
     test('test register Fail on registerOnlineDataSource ', () async {
       // Arrange
-      var failmockedResult =Fail<User?>(Exception());
-      provideDummy<Result<User?>>(Fail(Exception()));
+      var failmockedResult =Fail<RegisterResponse?>(Exception());
+      provideDummy<Result<RegisterResponse?>>(Fail(Exception()));
       var registerOnlineDataSource =MockRegisterOnlineDatasource();
       var registerRepoImpl =RegisterRepositoryImpl(registerOnlineDataSource);
       final request = RegisterRequest();

@@ -19,6 +19,8 @@ import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart';
 import 'package:elevate_ecommerce/features/auth/logout/data/data_sources/logout_online_datasource_impl.dart';
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
@@ -106,6 +108,13 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
+  Future<UpdatePasswordResponse> updatePassword(
+      UpdatePasswordRequest request, String authorization) {
+    // TODO: implement updatePassword
+    throw UnimplementedError();
+  }
+
+  @override
   Future<CartResponse2?> addProductToCart(AddCartProductRequest req) {
     // TODO: implement addProductToCart
     throw UnimplementedError();
@@ -158,4 +167,11 @@ void main() {
       expect((result as Success).data?.message, 'Success');
     });
   });
+}
+
+@override
+Future<UpdatePasswordResponse> updatePassword(
+    UpdatePasswordRequest request, String authorization) {
+  // TODO: implement updatePassword
+  throw UnimplementedError();
 }

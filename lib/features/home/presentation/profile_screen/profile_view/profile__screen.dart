@@ -101,7 +101,14 @@ class ProfileScreen extends StatelessWidget {
                           style: AppTextStyles.title(),
                         ),
                         SizedBox(width: AppSize.s8.w),
-                        SvgPicture.asset(SVGAssets.penIcon),
+                        InkWell(
+                            onTap: userProvider.userData?.firstName != null
+                                ? () {
+                              Navigator.of(context).pushNamed(
+                                  AppRoutes.editProfile);
+                            }
+                                : null,
+                            child: SvgPicture.asset(SVGAssets.penIcon)),
                       ],
                     ),
                     Text(

@@ -8,6 +8,8 @@ class AppRoutes {
   static const ProductDetails = "ProductDetails";
   static const bestSeller = "bestSeller";
 
+  static const ResetPassword="ResetPassword";
+
   static const occasions = "occasions";
   static const editProfile = "editProfile";
   static const Categories = "categories";
