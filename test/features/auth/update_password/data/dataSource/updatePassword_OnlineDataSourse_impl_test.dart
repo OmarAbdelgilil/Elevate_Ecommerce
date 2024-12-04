@@ -21,17 +21,17 @@ void main() {
       var mockApiManager = MockApiManager();
       var mockTokenProvider = MockTokenProvider();
 
-      // Set up mock TokenProvider to return a valid token
+
       when(mockTokenProvider.token).thenReturn("gwdytdvwqjhkws");
 
-      // Inject mocks into the implementation
+
       var updatePasswordOnlineDatasourceImpl = UpdatePasswordOnlineDatasourceImpl(
         mockApiManager,
         mockTokenProvider,
       );
 
       final request = UpdatePasswordRequest();
-      final response = UpdatePasswordResponse(); // Mocked response setup
+      final response = UpdatePasswordResponse();
       when(mockApiManager.updatePassword(any, any)).thenAnswer((_) async => response);
 
       final actual = await updatePasswordOnlineDatasourceImpl.updatePassword(request);
