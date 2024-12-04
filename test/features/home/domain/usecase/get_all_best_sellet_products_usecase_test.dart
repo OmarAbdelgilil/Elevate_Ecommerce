@@ -1,71 +1,75 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
-import 'package:elevate_ecommerce/features/home/domain/repositories/home_repository.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
+
+
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_best_sellet_products_usecase.dart';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/annotations.dart';
+
 import 'package:mockito/mockito.dart';
 
 import 'get_all_best_sellet_products_usecase_test.mocks.dart';
 
 
 
-@GenerateMocks([HomeRepository])
 void main() {
   late GetAllBestSellerProductsUseCase getAllBestSellerProductUseCase;
   late MockHomeRepository mockHomeRepository;
-  final dummyProduct = [Products(
-    id: '1',
-    title: 'Test Product',
-    price: 1,
-  )];
-  final dummyResponse = ProductResponse(
+
+  final dummyProduct = [
+    BestSeller(
+      id: '1',
+      title: 'Test Product',
+      price: 1,
+    )
+  ];
+
+  final dummyResponse = BestSellerProductResponse(
     message: 'Success',
-    products: dummyProduct,
+    bestSeller: dummyProduct,
   );
+
   setUp(() {
     mockHomeRepository = MockHomeRepository();
     getAllBestSellerProductUseCase = GetAllBestSellerProductsUseCase(mockHomeRepository);
 
 
-    provideDummy<Result<ProductResponse?>>(Fail(Exception()));
+    provideDummy<Result<BestSellerProductResponse?>>(
+      Fail(Exception("Dummy value")),
+    );
   });
 
-  group('when calls getAllProducts on HomeRepository Tests', () {
-    test('getAllProducts returns Success ', () async {
-
-
-
+  group('GetAllBestSellerProductsUseCase Tests', () {
+    test('returns Success when repository call is successful', () async {
       final successResult = Success(dummyResponse);
 
 
-      when(mockHomeRepository.getAllProducts())
+      when(mockHomeRepository.getAllBestSellerProducts())
           .thenAnswer((_) async => successResult);
 
 
       final actual = await getAllBestSellerProductUseCase.getAllProducts();
 
-
       expect(actual, successResult);
-      verify(mockHomeRepository.getAllProducts()).called(1);
+      verify(mockHomeRepository.getAllBestSellerProducts()).called(1);
     });
 
-    test('getAllProducts returns Fail when repository fails', () async {
+    test('returns Fail when repository call fails', () async {
+      final exception = Exception('Failed to fetch products');
+      final failResult = Fail<BestSellerProductResponse?>(exception);
 
-      final exception = Exception('Failed to get details');
-      final failResult = Fail<ProductResponse?>(exception);
 
-
-      when(mockHomeRepository.getAllProducts())
+      when(mockHomeRepository.getAllBestSellerProducts())
           .thenAnswer((_) async => failResult);
+
 
       final actual = await getAllBestSellerProductUseCase.getAllProducts();
 
 
       expect(actual, failResult);
-      verify(mockHomeRepository.getAllProducts()).called(1);
+      verify(mockHomeRepository.getAllBestSellerProducts()).called(1);
     });
   });
 }
+

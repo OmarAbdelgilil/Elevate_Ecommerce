@@ -1,5 +1,6 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
+import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/dataSource/updatePassword_OnlineDataSourse_impl.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
@@ -11,42 +12,53 @@ import 'package:mockito/mockito.dart';
 import 'updatePassword_OnlineDataSourse_impl_test.mocks.dart';
 
 
-@GenerateMocks([ApiManager])
+@GenerateMocks([ApiManager,TokenProvider])
 void main() {
   group(
-      "when call RegisterDataSourceImpl.register it should call register function from ApiManager ", () {
-    test('register success on ApiManager', () async {
+      "when call UpdatePasswordDataSourceImpl.updatePassword it should call updatePassword function from ApiManager ", () {
+
+    test('updatePassword success on ApiManager', () async {
       var mockApiManager = MockApiManager();
+      var mockTokenProvider = MockTokenProvider();
+
+      // Set up mock TokenProvider to return a valid token
+      when(mockTokenProvider.token).thenReturn("gwdytdvwqjhkws");
+
+      // Inject mocks into the implementation
       var updatePasswordOnlineDatasourceImpl = UpdatePasswordOnlineDatasourceImpl(
-          mockApiManager);
+        mockApiManager,
+        mockTokenProvider,
+      );
 
       final request = UpdatePasswordRequest();
-      final response = UpdatePasswordResponse();
+      final response = UpdatePasswordResponse(); // Mocked response setup
+      when(mockApiManager.updatePassword(any, any)).thenAnswer((_) async => response);
 
-      when(mockApiManager.updatePassword(any)).thenAnswer((
-          _) async => response);
-
-      final actual = await updatePasswordOnlineDatasourceImpl.updatePassword(
-          request);
-
+      final actual = await updatePasswordOnlineDatasourceImpl.updatePassword(request);
 
       expect(actual, isA<Success<User?>>());
-      verify(mockApiManager.updatePassword(request)).called(1);
+      verify(mockApiManager.updatePassword(request, 'Bearer gwdytdvwqjhkws')).called(1);
       verifyNoMoreInteractions(mockApiManager);
     });
 
-    test('register faild on ApiManager', () async {
+    test('updatePassword failed on ApiManager', () async {
       var mockApiManager = MockApiManager();
-      var updatePasswordOnlineDatasourceImpl = UpdatePasswordOnlineDatasourceImpl(
-          mockApiManager);
-      final request = UpdatePasswordRequest();
-      when(mockApiManager.updatePassword(any)).thenThrow(Exception());
+      var mockTokenProvider = MockTokenProvider();
 
-      final actual = await updatePasswordOnlineDatasourceImpl.updatePassword(
-          request);
+      when(mockTokenProvider.token).thenReturn("gwdytdvwqjhkws");
+
+      var updatePasswordOnlineDatasourceImpl = UpdatePasswordOnlineDatasourceImpl(
+        mockApiManager,
+        mockTokenProvider,
+      );
+
+      final request = UpdatePasswordRequest();
+      when(mockApiManager.updatePassword(any, any)).thenThrow(Exception());
+
+      final actual = await updatePasswordOnlineDatasourceImpl.updatePassword(request);
 
       expect(actual, isA<Fail<User?>>());
-      verify(mockApiManager.updatePassword(request)).called(1);
+      verify(mockApiManager.updatePassword(request, 'Bearer gwdytdvwqjhkws')).called(1);
       verifyNoMoreInteractions(mockApiManager);
     });
   });

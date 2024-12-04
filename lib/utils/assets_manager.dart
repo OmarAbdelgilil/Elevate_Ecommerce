@@ -11,6 +11,8 @@ class SVGAssets {
   static const String cardTab = "${_basePath}card_tab.svg";
   static const String categoryTab = "${_basePath}category_tab.svg";
   static const String personTab = "${_basePath}person_tab.svg";
+  static const String homeScreenLogo = "${_basePath}logo.svg";
+  static const String filterIcon = "${_basePath}filter_icon.svg";
 }
 
 class LottieAssets {

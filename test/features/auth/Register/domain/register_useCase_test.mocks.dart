@@ -6,9 +6,10 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
-import 'package:elevate_ecommerce/features/auth/domain/model/user.dart' as _i5;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i6;
+import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
+    as _i5;
 import 'package:elevate_ecommerce/features/auth/Register/domain/repository/register_repository.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -37,19 +38,20 @@ class MockRegisterRepository extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.User?>> register(_i6.RegisterRequest? request) =>
+  _i3.Future<_i4.Result<_i5.RegisterResponse?>> register(
+          _i6.RegisterRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #register,
           [request],
         ),
-        returnValue: _i3.Future<_i4.Result<_i5.User?>>.value(
-            _i7.dummyValue<_i4.Result<_i5.User?>>(
+        returnValue: _i3.Future<_i4.Result<_i5.RegisterResponse?>>.value(
+            _i7.dummyValue<_i4.Result<_i5.RegisterResponse?>>(
           this,
           Invocation.method(
             #register,
             [request],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i5.User?>>);
+      ) as _i3.Future<_i4.Result<_i5.RegisterResponse?>>);
 }

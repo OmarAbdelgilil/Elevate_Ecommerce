@@ -4,8 +4,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
+import 'dart:ui' as _i24;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i7;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i23;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -18,6 +20,8 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
     as _i14;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
     as _i6;
+import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
+    as _i22;
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart'
     as _i11;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
@@ -31,11 +35,17 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart'
     as _i3;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
+    as _i19;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
+    as _i16;
+import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart'
+    as _i21;
+import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart'
     as _i17;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
-    as _i18;
+    as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
-    as _i16;
+    as _i18;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -132,18 +142,26 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
 
   @override
   _i8.Future<_i3.UpdatePasswordResponse> updatePassword(
-          _i10.UpdatePasswordRequest? request) =>
+    _i10.UpdatePasswordRequest? request,
+    String? authorization,
+  ) =>
       (super.noSuchMethod(
         Invocation.method(
           #updatePassword,
-          [request],
+          [
+            request,
+            authorization,
+          ],
         ),
         returnValue: _i8.Future<_i3.UpdatePasswordResponse>.value(
             _FakeUpdatePasswordResponse_1(
           this,
           Invocation.method(
             #updatePassword,
-            [request],
+            [
+              request,
+              authorization,
+            ],
           ),
         )),
       ) as _i8.Future<_i3.UpdatePasswordResponse>);
@@ -212,32 +230,141 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i14.ResetPasswordResponse?>);
 
   @override
-  _i8.Future<_i16.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+  _i8.Future<_i16.GetAllCategoriesResponse?> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i8.Future<_i16.GetAllCategoriesResponse?>.value(),
+      ) as _i8.Future<_i16.GetAllCategoriesResponse?>);
+
+  @override
+  _i8.Future<_i17.HomeResponse?> getHomePage() => (super.noSuchMethod(
+        Invocation.method(
+          #getHomePage,
+          [],
+        ),
+        returnValue: _i8.Future<_i17.HomeResponse?>.value(),
+      ) as _i8.Future<_i17.HomeResponse?>);
+
+  @override
+  _i8.Future<_i18.ProductResponse?> getAllProducts() => (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
-        returnValue: _i8.Future<_i16.ProductResponse?>.value(),
-      ) as _i8.Future<_i16.ProductResponse?>);
+        returnValue: _i8.Future<_i18.ProductResponse?>.value(),
+      ) as _i8.Future<_i18.ProductResponse?>);
 
   @override
-  _i8.Future<_i17.BestSellerProductResponse?> getAllBestSellerProducts() =>
+  _i8.Future<_i19.BestSellerProductResponse?> getAllBestSellerProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllBestSellerProducts,
           [],
         ),
-        returnValue: _i8.Future<_i17.BestSellerProductResponse?>.value(),
-      ) as _i8.Future<_i17.BestSellerProductResponse?>);
+        returnValue: _i8.Future<_i19.BestSellerProductResponse?>.value(),
+      ) as _i8.Future<_i19.BestSellerProductResponse?>);
 
   @override
-  _i8.Future<_i18.ProductDetailsResponse?> getProductDetails(
+  _i8.Future<_i20.ProductDetailsResponse?> getProductDetails(
           String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProductDetails,
           [productId],
         ),
-        returnValue: _i8.Future<_i18.ProductDetailsResponse?>.value(),
-      ) as _i8.Future<_i18.ProductDetailsResponse?>);
+        returnValue: _i8.Future<_i20.ProductDetailsResponse?>.value(),
+      ) as _i8.Future<_i20.ProductDetailsResponse?>);
+
+  @override
+  _i8.Future<_i21.GetAllOccasionsResponse?> getAllOccasions() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOccasions,
+          [],
+        ),
+        returnValue: _i8.Future<_i21.GetAllOccasionsResponse?>.value(),
+      ) as _i8.Future<_i21.GetAllOccasionsResponse?>);
+
+  @override
+  _i8.Future<_i22.UserResponse?> getProfile(String? authorization) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getProfile,
+          [authorization],
+        ),
+        returnValue: _i8.Future<_i22.UserResponse?>.value(),
+      ) as _i8.Future<_i22.UserResponse?>);
+}
+
+/// A class which mocks [TokenProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTokenProvider extends _i1.Mock implements _i23.TokenProvider {
+  MockTokenProvider() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  bool get hasListeners => (super.noSuchMethod(
+        Invocation.getter(#hasListeners),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  _i8.Future<void> saveToken(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #saveToken,
+          [token],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
+
+  @override
+  void clearToken() => super.noSuchMethod(
+        Invocation.method(
+          #clearToken,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addListener(_i24.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListener(_i24.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void dispose() => super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

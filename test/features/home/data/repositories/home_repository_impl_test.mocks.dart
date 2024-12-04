@@ -9,9 +9,15 @@ import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
 import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart'
     as _i2;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
-    as _i7;
+    as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+    as _i8;
+import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i5;
+import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart'
+    as _i7;
+import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart'
+    as _i10;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 
@@ -37,37 +43,87 @@ class MockRemoteDatasource extends _i1.Mock implements _i2.RemoteDatasource {
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.ProductResponse?>> getAllProducts() =>
+  _i3.Future<_i4.Result<_i5.Categories?>> getAllCategories() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllCategories,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i5.Categories?>>.value(
+            _i6.dummyValue<_i4.Result<_i5.Categories?>>(
+          this,
+          Invocation.method(
+            #getAllCategories,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i5.Categories?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i7.Home?>> getHomePage() => (super.noSuchMethod(
+        Invocation.method(
+          #getHomePage,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i7.Home?>>.value(
+            _i6.dummyValue<_i4.Result<_i7.Home?>>(
+          this,
+          Invocation.method(
+            #getHomePage,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i7.Home?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.ProductResponse?>> getAllProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
-        returnValue: _i3.Future<_i4.Result<_i5.ProductResponse?>>.value(
-            _i6.dummyValue<_i4.Result<_i5.ProductResponse?>>(
+        returnValue: _i3.Future<_i4.Result<_i8.ProductResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i8.ProductResponse?>>(
           this,
           Invocation.method(
             #getAllProducts,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i5.ProductResponse?>>);
+      ) as _i3.Future<_i4.Result<_i8.ProductResponse?>>);
 
   @override
-  _i3.Future<_i4.Result<_i7.BestSellerProductResponse?>>
+  _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>
       getAllBestSellerProducts() => (super.noSuchMethod(
             Invocation.method(
               #getAllBestSellerProducts,
               [],
             ),
             returnValue:
-                _i3.Future<_i4.Result<_i7.BestSellerProductResponse?>>.value(
-                    _i6.dummyValue<_i4.Result<_i7.BestSellerProductResponse?>>(
+                _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>.value(
+                    _i6.dummyValue<_i4.Result<_i9.BestSellerProductResponse?>>(
               this,
               Invocation.method(
                 #getAllBestSellerProducts,
                 [],
               ),
             )),
-          ) as _i3.Future<_i4.Result<_i7.BestSellerProductResponse?>>);
+          ) as _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i10.Occasions?>> getAllOccasions() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getAllOccasions,
+          [],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i10.Occasions?>>.value(
+            _i6.dummyValue<_i4.Result<_i10.Occasions?>>(
+          this,
+          Invocation.method(
+            #getAllOccasions,
+            [],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i10.Occasions?>>);
 }

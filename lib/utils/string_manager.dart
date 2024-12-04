@@ -69,8 +69,6 @@ class StringsManager {
   static const noProductsFound = "No products found";
   static const emptyContent = "Empty content";
 
-
-
   static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen
@@ -79,10 +77,14 @@ class StringsManager {
   static const cardTab = 'Card';
   static const profileTab = 'Profile';
 
+  //HOMEPAGE
+  static const bestSellerSectionHeader = 'Best seller';
+  static const bestSellerSectionError = "Error loading bestsellers";
+  static const categoriesSectionHeader = 'Categories';
+  static const categoriesSectionError = "Error loading categories";
+  static const occasionSectionHeader = 'Occasion';
+  static const occasionSectionError = 'Error loading occasions';
   // product widget
   static const productPriceCurrency = 'EGP';
   static const productButton = 'add to card';
-
-
-
 }

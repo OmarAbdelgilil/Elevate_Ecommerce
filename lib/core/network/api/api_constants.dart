@@ -6,9 +6,14 @@ class ApiConstants {
   static const String resetPasswordPath = "/v1/auth/resetPassword";
   static const String getAllProductsPath = "/v1/products";
   static const String registerPath = "/v1/auth/signup";
+  static const String allCategoriesPath = "/v1/categories";
+  static const String homePagePath = "/v1/home";
   static const String getProductDetailsPath = "/v1/products";
+  static const String allOccasionsPath = "/v1/occasions";
 static const String updatePasswordPath="/v1/auth/change-password";
 
 
   static const String getAllBestSellerProductsPath = "/v1/best-seller";
+
+  static const String profilePath = "/v1/auth/profile-data";
 }
