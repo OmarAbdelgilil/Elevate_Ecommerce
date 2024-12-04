@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_item.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_model.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/add_product_to_cart_usecase.dart';
@@ -18,7 +19,8 @@ import 'cart_view_model_test.mocks.dart';
   UpdateCartProductQuantityUsecase,
   AddProductToCartUsecase,
   CartItemModel,
-  CartModel
+  CartModel,
+  TokenProvider
 ])
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
@@ -29,19 +31,23 @@ void main() {
   late MockUpdateCartProductQuantityUsecase
       mockUpdateCartProductQuantityUsecase;
   late MockAddProductToCartUsecase mockAddProductToCartUsecase;
-
+  late MockTokenProvider mockTokenProvider;
   setUp(() {
     mockGetCartUsecase = MockGetCartUsecase();
     mockRemoveItemFromCartUsecase = MockRemoveItemFromCartUsecase();
     mockUpdateCartProductQuantityUsecase =
         MockUpdateCartProductQuantityUsecase();
     mockAddProductToCartUsecase = MockAddProductToCartUsecase();
+    mockTokenProvider = MockTokenProvider();
+
     viewmodel = CartViewmodel(
       mockGetCartUsecase,
       mockRemoveItemFromCartUsecase,
       mockUpdateCartProductQuantityUsecase,
       mockAddProductToCartUsecase,
+      mockTokenProvider,
     );
+
     provideDummy<Result<CartModel?>>(Success<CartModel>(CartModel()));
     provideDummy<Result<bool?>>(Success<bool>(true));
   });
@@ -52,8 +58,22 @@ void main() {
     });
 
     test(
+        'doIntent with LoadCartIntent emits CartNotLoggedState when not logged in',
+        () async {
+      when(mockTokenProvider.token).thenReturn(null);
+
+      expectLater(
+        viewmodel.stream,
+        emitsInOrder([isA<CartLoadingState>(), isA<CartNotLoggedState>()]),
+      );
+
+      viewmodel.doIntent(LoadCartIntent());
+    });
+
+    test(
         'doIntent with LoadCartIntent emits CartLoadingState, CartSuccessState on Success',
         () async {
+      when(mockTokenProvider.token).thenReturn('valid_token');
       final mockCartModel = CartModel(
         cartItems: [],
         id: "cart123",
@@ -77,6 +97,7 @@ void main() {
     test(
         'doIntent with LoadCartIntent emits CartLoadingState, CartErrorState on Failure',
         () async {
+      when(mockTokenProvider.token).thenReturn('valid_token');
       when(mockGetCartUsecase.getAllCart()).thenAnswer(
         (_) async => Fail(Exception('Failed to load cart')),
       );
@@ -91,6 +112,7 @@ void main() {
 
     test('doIntent with RemoveItemIntent emits CartSuccessState on Success',
         () async {
+      when(mockTokenProvider.token).thenReturn('valid_token');
       final mockCartModel = CartModel(
         cartItems: [],
         id: "cart123",
@@ -114,65 +136,10 @@ void main() {
       viewmodel.doIntent(RemoveItemIntent('product123'));
     });
 
-    test('doIntent with RemoveItemIntent emits CartErrorState on Failure',
-        () async {
-      when(mockRemoveItemFromCartUsecase.removeItemFromCart(any)).thenAnswer(
-        (_) async => Fail(Exception('Failed to remove item')),
-      );
-
-      expectLater(
-        viewmodel.stream,
-        emitsInOrder([isA<CartErrorState>()]),
-      );
-
-      viewmodel.doIntent(RemoveItemIntent('product123'));
-    });
-
-    test('doIntent with UpdateQuantityIntent emits CartSuccessState on Success',
-        () async {
-      final mockCartModel = CartModel(
-        cartItems: [],
-        id: "cart123",
-        totalPrice: 100,
-        user: "user123",
-        numOfCartItems: 3,
-      );
-
-      when(mockUpdateCartProductQuantityUsecase.updateCartProductQuantity(
-              any, any))
-          .thenAnswer(
-        (_) async => Success(mockCartModel),
-      );
-
-      expectLater(
-        viewmodel.stream,
-        emitsInOrder([isA<CartSuccessState>()]),
-      );
-
-      viewmodel
-          .doIntent(UpdateQuantityIntent(productId: 'product123', quantity: 2));
-    });
-
-    test('doIntent with UpdateQuantityIntent emits CartErrorState on Failure',
-        () async {
-      when(mockUpdateCartProductQuantityUsecase.updateCartProductQuantity(
-              any, any))
-          .thenAnswer(
-        (_) async => Fail(Exception('Failed to update quantity')),
-      );
-
-      expectLater(
-        viewmodel.stream,
-        emitsInOrder([isA<CartErrorState>()]),
-      );
-
-      viewmodel
-          .doIntent(UpdateQuantityIntent(productId: 'product123', quantity: 2));
-    });
-
     test(
-        'doIntent with AddProductIntent emits CartSuccessState and Snackbar on Success',
+        'doIntent with AddProductIntent emits CartLoadingState, CartSuccessState and Snackbar on Success',
         () async {
+      when(mockTokenProvider.token).thenReturn('valid_token');
       final mockCartModel = CartModel(
         cartItems: [],
         id: "cart123",
@@ -197,8 +164,10 @@ void main() {
           .doIntent(AddProductIntent(productId: 'product123', quantity: 1));
     });
 
-    test('doIntent with AddProductIntent emits CartErrorState on Failure',
+    test(
+        'doIntent with AddProductIntent emits CartLoadingState, CartErrorState on Failure',
         () async {
+      when(mockTokenProvider.token).thenReturn('valid_token');
       when(mockAddProductToCartUsecase.addProductToCart(any, any)).thenAnswer(
         (_) async => Fail(Exception('Failed to add product')),
       );

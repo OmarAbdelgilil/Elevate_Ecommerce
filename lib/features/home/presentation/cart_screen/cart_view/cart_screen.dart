@@ -1,11 +1,13 @@
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
+import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/cart_item_card.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/payment_details_section.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,13 +27,13 @@ class CartScreen extends StatelessWidget {
               title: Row(
                 children: [
                   Text(
-                    'Cart ',
+                    StringsManager.cartTitle,
                     style:
                         TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
                   ),
                   if (state is CartSuccessState)
                     Text(
-                      '(${state.cartData!.numOfCartItems} items)',
+                      '(${state.cartData!.numOfCartItems} ${StringsManager.items})',
                       style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w500,
@@ -95,13 +97,26 @@ class CartScreen extends StatelessWidget {
                                     const EdgeInsets.symmetric(horizontal: 16),
                                 child: CustomButton(
                                   onPressed: () {},
-                                  text: 'Checkout',
+                                  text: StringsManager.checkoutButtonText,
                                   radius: 20,
                                 ),
                               )
                             ],
                           )
-                        : Placeholder(),
+                        : state is CartNotLoggedState
+                            ? Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: CustomButton(
+                                    text: StringsManager.loginButton,
+                                    onPressed: () {
+                                      Navigator.pushNamed(
+                                          context, AppRoutes.login);
+                                    },
+                                  ),
+                                ),
+                              )
+                            : Placeholder(),
           );
         },
       ),

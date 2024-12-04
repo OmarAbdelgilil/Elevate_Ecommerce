@@ -1,7 +1,6 @@
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/cart_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
-import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/home_screen.dart';
@@ -38,7 +37,7 @@ class MainLayoutViewModel extends ChangeNotifier {
     TabItem(
         icon: SVGAssets.personTab,
         label: StringsManager.profile,
-        screen:  ProfileScreen()),
+        screen: ProfileScreen()),
   ];
 
   int get selectedIndex => _selectedIndex;

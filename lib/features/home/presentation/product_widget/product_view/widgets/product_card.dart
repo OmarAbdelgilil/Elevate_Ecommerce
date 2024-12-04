@@ -1,5 +1,4 @@
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';

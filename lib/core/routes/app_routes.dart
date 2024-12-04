@@ -1,5 +1,3 @@
-import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
-
 class AppRoutes {
   static const home = "home";
   static const mainLayOut = "mainLayOutRoute";

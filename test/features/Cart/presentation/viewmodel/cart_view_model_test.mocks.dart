@@ -4,8 +4,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i3;
+import 'dart:ui' as _i13;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i12;
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_item.dart'
     as _i10;
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_model.dart'
@@ -263,6 +265,76 @@ class MockCartModel extends _i1.Mock implements _i5.CartModel {
         Invocation.setter(
           #totalPrice,
           _totalPrice,
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [TokenProvider].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTokenProvider extends _i1.Mock implements _i12.TokenProvider {
+  MockTokenProvider() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  bool get hasListeners => (super.noSuchMethod(
+        Invocation.getter(#hasListeners),
+        returnValue: false,
+      ) as bool);
+
+  @override
+  _i3.Future<void> saveToken(String? token) => (super.noSuchMethod(
+        Invocation.method(
+          #saveToken,
+          [token],
+        ),
+        returnValue: _i3.Future<void>.value(),
+        returnValueForMissingStub: _i3.Future<void>.value(),
+      ) as _i3.Future<void>);
+
+  @override
+  void clearToken() => super.noSuchMethod(
+        Invocation.method(
+          #clearToken,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void addListener(_i13.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void removeListener(_i13.VoidCallback? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void dispose() => super.noSuchMethod(
+        Invocation.method(
+          #dispose,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
+          [],
         ),
         returnValueForMissingStub: null,
       );

@@ -1,4 +1,5 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
+import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_item.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_model.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/add_product_to_cart_usecase.dart';
@@ -17,13 +18,15 @@ class CartViewmodel extends Cubit<CartState> {
   final RemoveItemFromCartUsecase _removeItemUsecase;
   final UpdateCartProductQuantityUsecase _updateQuantityUsecase;
   final AddProductToCartUsecase _addProductToCartUsecase;
+  final TokenProvider _tokenProvider;
 
   CartViewmodel(
-    this._getCartUsecase,
-    this._removeItemUsecase,
-    this._updateQuantityUsecase,
-    this._addProductToCartUsecase,
-  ) : super(CartInitialState());
+      this._getCartUsecase,
+      this._removeItemUsecase,
+      this._updateQuantityUsecase,
+      this._addProductToCartUsecase,
+      this._tokenProvider)
+      : super(CartInitialState());
 
   void doIntent(CartIntent intent) {
     switch (intent) {
@@ -60,6 +63,10 @@ class CartViewmodel extends Cubit<CartState> {
 
   Future<void> _getCart() async {
     emit(CartLoadingState());
+    if (_tokenProvider.token == null) {
+      emit(CartNotLoggedState());
+      return;
+    }
     final result = await _getCartUsecase.getAllCart();
     switch (result) {
       case Success<CartModel?>():
@@ -98,6 +105,11 @@ class CartViewmodel extends Cubit<CartState> {
 
   Future<void> _addProduct(String productId, int quantity) async {
     emit(CartLoadingState());
+    if (_tokenProvider.token == null) {
+      emit(CartNotLoggedState());
+      _showSnackbar(StringsManager.productNotAddedLogin);
+      return;
+    }
     final result =
         await _addProductToCartUsecase.addProductToCart(productId, quantity);
     switch (result) {
@@ -140,6 +152,8 @@ class AddProductIntent extends CartIntent {
 sealed class CartState {}
 
 class CartInitialState extends CartState {}
+
+class CartNotLoggedState extends CartState {}
 
 class CartLoadingState extends CartState {}
 

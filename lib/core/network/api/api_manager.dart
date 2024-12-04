@@ -49,7 +49,7 @@ abstract class ApiManager {
         }
         return handler.next(options);
       },
-      onError: (DioError e, handler) {
+      onError: (DioException e, handler) {
         // Optionally handle errors globally
         return handler.next(e);
       },

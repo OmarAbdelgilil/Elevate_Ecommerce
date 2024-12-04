@@ -86,19 +86,19 @@ class Products {
   // Method to convert Products to ProductsModel
   ProductsModel toModel() {
     return ProductsModel(
-      id: this.id,
-      title: this.title,
-      description: this.description,
-      imgCover: this.imgCover,
-      images: this.images,
-      price: this.price,
-      priceAfterDiscount: this.priceAfterDiscount,
-      quantity: this.quantity,
-      category: this.category,
-      occasion: this.occasion,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
-      v: this.v,
+      id: id,
+      title: title,
+      description: description,
+      imgCover: imgCover,
+      images: images,
+      price: price,
+      priceAfterDiscount: priceAfterDiscount,
+      quantity: quantity,
+      category: category,
+      occasion: occasion,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      v: v,
     );
   }
 

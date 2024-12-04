@@ -1,3 +1,4 @@
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +19,7 @@ class PaymentDetailsSection extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Sub Total',
+                    StringsManager.subTotal,
                     style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
@@ -40,7 +41,7 @@ class PaymentDetailsSection extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    'Delivery Fee',
+                    StringsManager.deliveryFee,
                     style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
@@ -66,7 +67,7 @@ class PaymentDetailsSection extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                'Total',
+                StringsManager.total,
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w500,

@@ -1,10 +1,10 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
+import 'package:elevate_ecommerce/features/home/domain/usecase/product_details_useCase.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../domain/usecase/product_details_useCase.dart';
 
 @injectable
 class ProductDetails_ViewModel extends Cubit<ProductDetailsState> {

@@ -1,7 +1,6 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_execution.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
-import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import 'package:elevate_ecommerce/features/home/data/DTOs/categories_DTO.dart';
 import 'package:elevate_ecommerce/features/home/data/DTOs/home_dto.dart';
@@ -12,7 +11,6 @@ import 'package:elevate_ecommerce/features/home/data/models/response/best_seller
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 import 'package:injectable/injectable.dart';
-import '../../../auth/data/DTOs/user_dto.dart';
 import '../../../auth/logged_user_data/data/models/user_response/user_response.dart';
 import '../contracts/remote_datasource.dart';
 
@@ -73,11 +71,11 @@ class RemoteDatasourceImpl implements RemoteDatasource {
   }
 
   @override
-  Future<Result<UserResponse?>> upDateUserProfile(UpdateProfileRequest request) {
+  Future<Result<UserResponse?>> upDateUserProfile(
+      UpdateProfileRequest request) {
     return executeApi(() async {
       var result = await apiManager.updateProfileData(request);
       return result;
     });
   }
-
 }

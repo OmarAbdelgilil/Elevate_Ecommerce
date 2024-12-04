@@ -86,6 +86,15 @@ class StringsManager {
   //cart
   static const String productAddedToCart =
       "Product added to cart successfully!";
+  static const String productNotAddedLogin =
+      "Cannot add Product to cart please Login";
+  static const String cartTitle = 'Cart ';
+  static const String items = 'items';
+  static const String checkoutButtonText = 'Checkout';
+  static const String loginButton = 'Login to view your cart';
+  static const String subTotal = 'Sub Total';
+  static const String deliveryFee = 'Delivery Fee';
+  static const String total = 'Total';
 
   static const myOrder = 'My Orders';
   static const savedAddress = 'Saved address';
