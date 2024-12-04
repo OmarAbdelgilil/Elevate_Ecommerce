@@ -6,16 +6,16 @@ import 'package:elevate_ecommerce/features/auth/Register/domain/repository/regis
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as:RegisterRepository)
+@Injectable(as: RegisterRepository)
 class RegisterRepositoryImpl implements RegisterRepository {
   final RegisterOnlineDatasource _registerOnlineDatasource;
 
-
-  RegisterRepositoryImpl(this._registerOnlineDatasource,);
+  RegisterRepositoryImpl(
+    this._registerOnlineDatasource,
+  );
 
   @override
-  Future<Result<RegisterResponse?>> register(RegisterRequest request) async{
+  Future<Result<RegisterResponse?>> register(RegisterRequest request) async {
     return await _registerOnlineDatasource.register(request);
-
   }
 }

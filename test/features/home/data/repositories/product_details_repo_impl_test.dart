@@ -9,12 +9,10 @@ import 'package:mockito/mockito.dart';
 
 import 'product_details_repo_impl_test.mocks.dart';
 
-
-
 @GenerateMocks([ProductDetails_Onlinedatasource])
 void main() {
   late ProductDetailsRepoImpl productDetailsRepoImpl;
-  late MockProductDetails_Onlinedatasource mockProductDetails_Onlinedatasource;
+  late MockProductDetails_Onlinedatasource mockproductdetailsOnlinedatasource;
   final dummyProduct = Products(
     id: '1',
     title: 'Test Product',
@@ -25,46 +23,41 @@ void main() {
     product: dummyProduct,
   );
   setUp(() {
-    mockProductDetails_Onlinedatasource = MockProductDetails_Onlinedatasource();
+    mockproductdetailsOnlinedatasource = MockProductDetails_Onlinedatasource();
     productDetailsRepoImpl =
-        ProductDetailsRepoImpl(mockProductDetails_Onlinedatasource);
+        ProductDetailsRepoImpl(mockproductdetailsOnlinedatasource);
     provideDummy<Result<ProductDetailsResponse?>>(Fail(Exception()));
   });
 
+  group("when calls getProductDetails on ProductDetails_Onlinedatasource Tests",
+      () {
+    test('getProductDetails returns Success ', () async {
+      final successResult = Success(dummyResponse);
 
-group("when calls getProductDetails on ProductDetails_Onlinedatasource Tests", (){
+      when(mockproductdetailsOnlinedatasource.getProductDetails(any))
+          .thenAnswer((_) async => successResult);
 
-  test('getProductDetails returns Success ', () async {
-    final successResult = Success(dummyResponse);
+      final actual =
+          await productDetailsRepoImpl.getProductDetails('productId');
 
+      expect(actual, successResult);
+      verify(mockproductdetailsOnlinedatasource.getProductDetails('productId'))
+          .called(1);
+    });
 
-    when(mockProductDetails_Onlinedatasource.getProductDetails(any))
-        .thenAnswer((_) async => successResult);
+    test('getProductDetails returns Fail', () async {
+      final exception = Exception('Failed to get details');
+      final failResult = Fail<ProductDetailsResponse?>(exception);
 
+      when(mockproductdetailsOnlinedatasource.getProductDetails(any))
+          .thenAnswer((_) async => failResult);
 
-    final actual = await productDetailsRepoImpl.getProductDetails('productId');
+      final actual =
+          await productDetailsRepoImpl.getProductDetails('productId');
 
-
-    expect(actual, successResult);
-    verify(mockProductDetails_Onlinedatasource.getProductDetails('productId'))
-        .called(1);
+      expect(actual, failResult);
+      verify(mockproductdetailsOnlinedatasource.getProductDetails('productId'))
+          .called(1);
+    });
   });
-
-  test('getProductDetails returns Fail', () async {
-
-    final exception = Exception('Failed to get details');
-    final failResult = Fail<ProductDetailsResponse?>(exception);
-
-
-    when(mockProductDetails_Onlinedatasource.getProductDetails(any))
-        .thenAnswer((_) async => failResult);
-
-    final actual = await productDetailsRepoImpl.getProductDetails('productId');
-
-    expect(actual, failResult);
-    verify(mockProductDetails_Onlinedatasource.getProductDetails('productId')).called(1);
-  });
-});
-
-
 }

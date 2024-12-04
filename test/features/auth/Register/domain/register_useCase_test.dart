@@ -8,12 +8,13 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'register_useCase_test.mocks.dart';
+import 'register_usecase_test.mocks.dart';
 
 @GenerateMocks([RegisterRepository])
 void main() {
-
-  test('when call invoke it should call RegisterRepository.register with correct parameter', () async {
+  test(
+      'when call invoke it should call RegisterRepository.register with correct parameter',
+      () async {
     // Arrange
     var mockedResult = Success<RegisterResponse?>(RegisterResponse());
     provideDummy<Result<RegisterResponse?>>(mockedResult);
@@ -21,13 +22,12 @@ void main() {
     var registerUseCase = RegisterUseCase(registerRepo);
     final request = RegisterRequest();
 
-   when(registerRepo.register(any)).thenAnswer((_)async=>mockedResult);
+    when(registerRepo.register(any)).thenAnswer((_) async => mockedResult);
     // Act
-   var actual= await registerUseCase.register(request);
+    var actual = await registerUseCase.register(request);
 
     // Assert
     expect(actual, mockedResult);
     verify(registerRepo.register(request)).called(1);
   });
 }
-

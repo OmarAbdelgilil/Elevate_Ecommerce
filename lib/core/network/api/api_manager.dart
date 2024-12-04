@@ -4,7 +4,10 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
 import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
-import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart';
@@ -16,12 +19,10 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dar
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
-import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:injectable/injectable.dart';
@@ -50,7 +51,7 @@ abstract class ApiManager {
         }
         return handler.next(options);
       },
-      onError: (DioError e, handler) {
+      onError: (DioException e, handler) {
         // Optionally handle errors globally
         return handler.next(e);
       },
@@ -106,6 +107,26 @@ abstract class ApiManager {
       @Path("productId") String productId);
   @GET(ApiConstants.allOccasionsPath)
   Future<GetAllOccasionsResponse?> getAllOccasions();
+
+  //cart endpoints
+  @GET(ApiConstants.cartPath)
+  @Extra({'requiresToken': true})
+  Future<CartResponse?> getAllCart();
+
+  @POST(ApiConstants.cartPath)
+  @Extra({'requiresToken': true})
+  Future<CartResponse2?> addProductToCart(@Body() AddCartProductRequest req);
+
+  @PUT("${ApiConstants.cartPath}/{productId}")
+  @Extra({'requiresToken': true})
+  Future<CartResponse?> updateCartProductQuantity(
+      @Path("productId") String productId,
+      @Body() UpdateCartProductQuantityRequest req);
+
+  @DELETE("${ApiConstants.cartPath}/{productId}")
+  @Extra({'requiresToken': true})
+  Future<CartResponse2?> removeItemFromCart(
+      @Path("productId") String productId);
   @GET(ApiConstants.profilePath)
   Future<UserResponse?> getProfile(
       @Header('Authorization') String authorization);

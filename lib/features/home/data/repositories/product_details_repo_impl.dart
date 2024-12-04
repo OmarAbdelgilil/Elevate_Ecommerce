@@ -11,8 +11,8 @@ class ProductDetailsRepoImpl implements ProductDetailsRepository {
   ProductDetailsRepoImpl(this._productDetailsOnlinedatasource);
 
   @override
-  Future<Result<ProductDetailsResponse?>> getProductDetails(String productId) async {
+  Future<Result<ProductDetailsResponse?>> getProductDetails(
+      String productId) async {
     return await _productDetailsOnlinedatasource.getProductDetails(productId);
   }
 }
-

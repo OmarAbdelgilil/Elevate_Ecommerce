@@ -1,8 +1,6 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
-import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
-import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/user_response.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart';
@@ -46,11 +44,8 @@ void main() {
       price: 1,
     )
   ];
-  final dummyUser = UserData(
-    id: '123',
-    email: 'daly@gmail.com',
-    firstName: 'abdalla'
-  );
+  final dummyUser =
+      UserData(id: '123', email: 'daly@gmail.com', firstName: 'abdalla');
   final dummyCategories = Categories(categories: [
     CategoryModel(
       id: '1',
@@ -90,10 +85,7 @@ void main() {
     message: 'Success',
     bestSeller: dummyBestProduct,
   );
-  final dummyUserResponse = UserResponse(
-    message: 'Success',
-    user: dummyUser
-  );
+  final dummyUserResponse = UserResponse(message: 'Success', user: dummyUser);
 
   setUp(() {
     mockApiManager = MockApiManager();
@@ -107,7 +99,6 @@ void main() {
     provideDummy<Result<Categories?>>(Fail(Exception()));
     provideDummy<Result<Occasions?>>(Fail(Exception()));
     provideDummy<Result<UserResponse?>>(Fail(Exception()));
-
   });
 
   group('RemoteDatasourceImpl Tests', () {
@@ -275,8 +266,11 @@ void main() {
       verify(mockRemoteDatasource.getAllOccasions()).called(1);
     });
   });
-  final request = UpdateProfileRequest(firstName: 'abdalla', lastName: 'eldaly', email: 'daly@gmail.com', phone: '+201012951616');
-
+  final request = UpdateProfileRequest(
+      firstName: 'abdalla',
+      lastName: 'eldaly',
+      email: 'daly@gmail.com',
+      phone: '+201012951616');
 
   group('update user data Tests', () {
     test('update user data Tests returns Success', () async {

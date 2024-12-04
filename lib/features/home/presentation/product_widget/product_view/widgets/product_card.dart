@@ -1,5 +1,4 @@
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_button.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
@@ -18,6 +17,7 @@ class ProductGridItem extends StatelessWidget {
   final num price;
   final num priceAfterDiscount;
   final String disCount;
+  final String id;
 
   const ProductGridItem({
     super.key,
@@ -27,6 +27,7 @@ class ProductGridItem extends StatelessWidget {
     required this.price,
     required this.priceAfterDiscount,
     required this.disCount,
+    required this.id,
   });
 
   @override
@@ -86,7 +87,9 @@ class ProductGridItem extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
                               ),
-                              const SizedBox(width: AppSize.s4,),
+                              const SizedBox(
+                                width: AppSize.s4,
+                              ),
                               Text("$price",
                                   style: GoogleFonts.inter(
                                     textStyle: const TextStyle(
@@ -98,8 +101,9 @@ class ProductGridItem extends StatelessWidget {
                                       decorationThickness: 1,
                                     ),
                                   )),
-                              const SizedBox(width: AppSize.s4,),
-
+                              const SizedBox(
+                                width: AppSize.s4,
+                              ),
                               Text(
                                 disCount,
                                 style: AppTextStyles.subtitle(
@@ -116,20 +120,22 @@ class ProductGridItem extends StatelessWidget {
                 ),
                 const SizedBox(height: AppSize.s5),
                 ProductButton(
+                    productId: id,
                     text: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    SvgPicture.asset(
-                      SVGAssets.cardTab,
-                      colorFilter: const ColorFilter.mode(
-                          ColorManager.white, BlendMode.srcIn),
-                    ),
-                    Text(
-                      StringsManager.productButton,
-                      style: AppTextStyles.button(color: ColorManager.white),
-                    )
-                  ],
-                ))
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SvgPicture.asset(
+                          SVGAssets.cardTab,
+                          colorFilter: const ColorFilter.mode(
+                              ColorManager.white, BlendMode.srcIn),
+                        ),
+                        Text(
+                          StringsManager.productButton,
+                          style:
+                              AppTextStyles.button(color: ColorManager.white),
+                        )
+                      ],
+                    ))
               ],
             ),
           );

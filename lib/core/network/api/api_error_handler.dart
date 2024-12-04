@@ -1,5 +1,6 @@
 // ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
+
 class ServerError implements Exception {
   final String? serverMessage;
   final int? statusCode;

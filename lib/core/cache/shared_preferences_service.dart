@@ -1,9 +1,10 @@
 import 'dart:convert';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../../features/home/data/models/response/best_seller_product_response/BestSeller.dart';
-import '../../features/home/data/models/response/product_response/Products.dart';
+
 @module
 abstract class RegisterModule {
   @preResolve
@@ -16,7 +17,8 @@ class SharedPreferencesService {
   static const String _cacheTimestampKey = 'cache_timestamp';
 
   static const String _cachedBestSellerKey = 'cached_best_sellers';
-  static const String _cacheBestSellerTimestampKey = 'cache_best_seller_timestamp';
+  static const String _cacheBestSellerTimestampKey =
+      'cache_best_seller_timestamp';
 
   static const Duration _cacheExpirationDuration = Duration(hours: 1);
 
@@ -26,7 +28,8 @@ class SharedPreferencesService {
 
   Future<void> cacheProducts(List<Products> products) async {
     try {
-      final productsJson = json.encode(products.map((product) => product.toJson()).toList());
+      final productsJson =
+          json.encode(products.map((product) => product.toJson()).toList());
       await _prefs.setString(_cachedProductsKey, productsJson);
 
       final timestamp = DateTime.now().millisecondsSinceEpoch;
@@ -76,11 +79,10 @@ class SharedPreferencesService {
     }
   }
 
-
-
   Future<void> cacheBestSellerProducts(List<BestSeller> bestSellers) async {
     try {
-      final bestSellersJson = json.encode(bestSellers.map((item) => item.toJson()).toList());
+      final bestSellersJson =
+          json.encode(bestSellers.map((item) => item.toJson()).toList());
       await _prefs.setString(_cachedBestSellerKey, bestSellersJson);
 
       final timestamp = DateTime.now().millisecondsSinceEpoch;
@@ -106,7 +108,7 @@ class SharedPreferencesService {
         return null;
       }
 
-       final cachedData = _prefs.getString(_cachedBestSellerKey);
+      final cachedData = _prefs.getString(_cachedBestSellerKey);
 
       if (cachedData != null) {
         final List<dynamic> decodedData = json.decode(cachedData);

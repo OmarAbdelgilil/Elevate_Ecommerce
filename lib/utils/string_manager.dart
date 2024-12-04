@@ -1,6 +1,6 @@
 class StringsManager {
   static const login = "login";
-  static const bestSeller="Best seller";
+  static const bestSeller = "Best seller";
   static const signUp = "Sign up";
   static const Reset_password="Reset password";
   static const update ="update";
@@ -74,7 +74,7 @@ class StringsManager {
   ///// mainLayOutScreen
   static const homeTab = 'Home';
   static const categoryTab = 'Category';
-  static const cardTab = 'Card';
+  static const cardTab = 'Cart';
   static const profileTab = 'Profile';
 
   //HOMEPAGE
@@ -86,8 +86,20 @@ class StringsManager {
   static const occasionSectionError = 'Error loading occasions';
   // product widget
   static const productPriceCurrency = 'EGP';
-  static const productButton = 'add to card';
+  static const productButton = 'add to cart';
 
+  //cart
+  static const String productAddedToCart =
+      "Product added to cart successfully!";
+  static const String productNotAddedLogin =
+      "Cannot add Product to cart please Login";
+  static const String cartTitle = 'Cart ';
+  static const String items = 'items';
+  static const String checkoutButtonText = 'Checkout';
+  static const String loginButton = 'Login to view your cart';
+  static const String subTotal = 'Sub Total';
+  static const String deliveryFee = 'Delivery Fee';
+  static const String total = 'Total';
 
   static const myOrder = 'My Orders';
   static const savedAddress = 'Saved address';
@@ -105,5 +117,4 @@ class StringsManager {
   static const upDate = 'Update';
   static const editProfile = 'Edit Profile';
   static const change = 'Change';
-
 }

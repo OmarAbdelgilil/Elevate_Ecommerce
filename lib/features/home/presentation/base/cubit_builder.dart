@@ -11,22 +11,20 @@ Widget baseBuilder(BuildContext context, BaseState state, Widget child) {
   if (state is LoadingState) {
     return BaseWidgets.buildItemsColumn([
       BaseWidgets.buildAnimatedImage(LottieAssets.loading),
-    ]);  } else if (state is SuccessState) {
+    ]);
+  } else if (state is SuccessState) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(state.message)),
       );
     });
-  }
-
-  else if (state is EmptyState) {
+  } else if (state is EmptyState) {
     return BaseWidgets.buildItemsColumn([
       BaseWidgets.buildAnimatedImage(LottieAssets.noContent, false),
       BaseWidgets.buildMessage(
         context,
         state.message ?? StringsManager.emptyContent,
         ColorManager.black,
-
       ),
       BaseWidgets.buildButton(
         displayType: state.displayType,
@@ -35,9 +33,7 @@ Widget baseBuilder(BuildContext context, BaseState state, Widget child) {
         title: StringsManager.retryAgain,
       ),
     ]);
-  }
-
-  else if (state is ErrorState) {
+  } else if (state is ErrorState) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(state.errorMessage)),

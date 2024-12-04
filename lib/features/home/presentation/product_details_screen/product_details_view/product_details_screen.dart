@@ -2,8 +2,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
+import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view_model.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart';
+import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,15 +19,17 @@ class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({
     required this.productId,
     required this.product,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
-  final ProductDetails_ViewModel productDetailsViewModel = getIt<ProductDetails_ViewModel>();
+  final ProductDetails_ViewModel productDetailsViewModel =
+      getIt<ProductDetails_ViewModel>();
+  final CartViewmodel cartViewmodel = getIt<CartViewmodel>();
   final PageController _pageController = PageController();
   late ProductsModel productDetails;
 
@@ -33,7 +37,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   void initState() {
     super.initState();
     productDetails = widget.product;
-    productDetailsViewModel.doIntent(LoadProductDetailsIntent(widget.productId));
+    productDetailsViewModel
+        .doIntent(LoadProductDetailsIntent(widget.productId));
   }
 
   @override
@@ -48,7 +53,9 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             });
           } else if (state is ErrorState) {
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text("Failed to refresh product details: ${state.exception?.toString() ?? "Unknown error"}")),
+              SnackBar(
+                  content: Text(
+                      "Failed to refresh product details: ${state.exception?.toString() ?? "Unknown error"}")),
             );
           }
         },
@@ -60,15 +67,12 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               pinned: true,
               flexibleSpace: FlexibleSpaceBar(
                 titlePadding: EdgeInsets.only(bottom: 25.h, left: 10.w),
-                title: Text(
-                  productDetails.title ?? '',
-                  style: AppTextStyles.title(
-                    fontSize: 21.sp,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  )
-
-                ),
+                title: Text(productDetails.title ?? '',
+                    style: AppTextStyles.title(
+                      fontSize: 21.sp,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    )),
                 background: Column(
                   children: [
                     Expanded(
@@ -116,7 +120,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   children: [
                     Text(
                       'EGP ${productDetails.priceAfterDiscount ?? productDetails.price}',
-                      style:  AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,
                         color: const Color(0xff000000),
@@ -147,7 +151,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 15.h),
                     Text(
                       'Description',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
                         fontSize: 18.sp,
@@ -156,7 +160,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 5.h),
                     Text(
                       productDetails.description ?? '',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
@@ -165,7 +169,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 15.h),
                     Text(
                       'Bouquet includes',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
                         fontSize: 18.sp,
@@ -174,7 +178,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 5.h),
                     Text(
                       'Pink roses: 20\nWhite wrap',
-                      style:   AppTextStyles.subtitle(
+                      style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w400,
                         fontSize: 16.sp,
@@ -183,9 +187,23 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     SizedBox(height: 35.h),
 
                     // Add to cart button
-                    CustomButton(
-                      text: 'Add to cart',
-                      onPressed: () {
+                    BlocBuilder<CartViewmodel, CartState>(
+                      bloc: cartViewmodel,
+                      builder: (context, state) {
+                        if (state is CartLoadingState) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: ColorManager.primary,
+                            ),
+                          );
+                        }
+                        return CustomButton(
+                          text: 'Add to cart',
+                          onPressed: () {
+                            cartViewmodel.doIntent(AddProductIntent(
+                                productId: productDetails.id!, quantity: 1));
+                          },
+                        );
                       },
                     ),
                     SizedBox(height: 40.h),
@@ -199,9 +217,3 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 }
-
-
-
-
-
-

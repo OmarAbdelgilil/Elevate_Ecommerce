@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../../../../utils/assets_manager.dart';
 import '../../../../utils/string_manager.dart';
 import 'base_states.dart';
@@ -19,10 +18,7 @@ void baseListener(BuildContext context, BaseState state) {
     BaseWidgets.showPopUpDialog(context, [
       BaseWidgets.buildAnimatedImage(LottieAssets.loading),
     ]);
-  }
-
-  else if (state is ErrorState) {
-
+  } else if (state is ErrorState) {
     BaseWidgets.showPopUpDialog(
       context,
       [
@@ -37,5 +33,4 @@ void baseListener(BuildContext context, BaseState state) {
       ],
     );
   }
-
 }

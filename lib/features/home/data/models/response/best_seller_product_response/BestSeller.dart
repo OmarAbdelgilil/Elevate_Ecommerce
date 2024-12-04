@@ -1,20 +1,20 @@
 class BestSeller {
   BestSeller({
-      this.id, 
-      this.title, 
-      this.slug, 
-      this.description, 
-      this.imgCover, 
-      this.images, 
-      this.price, 
-      this.priceAfterDiscount, 
-      this.quantity, 
-      this.category, 
-      this.occasion, 
-      this.createdAt, 
-      this.updatedAt, 
-      this.v, 
-      });
+    this.id,
+    this.title,
+    this.slug,
+    this.description,
+    this.imgCover,
+    this.images,
+    this.price,
+    this.priceAfterDiscount,
+    this.quantity,
+    this.category,
+    this.occasion,
+    this.createdAt,
+    this.updatedAt,
+    this.v,
+  });
 
   BestSeller.fromJson(dynamic json) {
     id = json['_id'];
@@ -47,35 +47,38 @@ class BestSeller {
   String? createdAt;
   String? updatedAt;
   int? v;
-BestSeller copyWith({  String? id,
-  String? title,
-  String? slug,
-  String? description,
-  String? imgCover,
-  List<String>? images,
-  int? price,
-  int? priceAfterDiscount,
-  int? quantity,
-  String? category,
-  String? occasion,
-  String? createdAt,
-  String? updatedAt,
-  int? v,
-}) => BestSeller(  id: id ?? this.id,
-  title: title ?? this.title,
-  slug: slug ?? this.slug,
-  description: description ?? this.description,
-  imgCover: imgCover ?? this.imgCover,
-  images: images ?? this.images,
-  price: price ?? this.price,
-  priceAfterDiscount: priceAfterDiscount ?? this.priceAfterDiscount,
-  quantity: quantity ?? this.quantity,
-  category: category ?? this.category,
-  occasion: occasion ?? this.occasion,
-  createdAt: createdAt ?? this.createdAt,
-  updatedAt: updatedAt ?? this.updatedAt,
-  v: v ?? this.v,
-);
+  BestSeller copyWith({
+    String? id,
+    String? title,
+    String? slug,
+    String? description,
+    String? imgCover,
+    List<String>? images,
+    int? price,
+    int? priceAfterDiscount,
+    int? quantity,
+    String? category,
+    String? occasion,
+    String? createdAt,
+    String? updatedAt,
+    int? v,
+  }) =>
+      BestSeller(
+        id: id ?? this.id,
+        title: title ?? this.title,
+        slug: slug ?? this.slug,
+        description: description ?? this.description,
+        imgCover: imgCover ?? this.imgCover,
+        images: images ?? this.images,
+        price: price ?? this.price,
+        priceAfterDiscount: priceAfterDiscount ?? this.priceAfterDiscount,
+        quantity: quantity ?? this.quantity,
+        category: category ?? this.category,
+        occasion: occasion ?? this.occasion,
+        createdAt: createdAt ?? this.createdAt,
+        updatedAt: updatedAt ?? this.updatedAt,
+        v: v ?? this.v,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['_id'] = id;
@@ -94,5 +97,4 @@ BestSeller copyWith({  String? id,
     map['__v'] = v;
     return map;
   }
-
 }

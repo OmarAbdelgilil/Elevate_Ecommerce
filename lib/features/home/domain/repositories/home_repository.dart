@@ -5,7 +5,6 @@ import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart';
 
-import '../../../auth/domain/model/user.dart';
 import '../../../auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import '../../../auth/logged_user_data/data/models/user_response/user_response.dart';
 

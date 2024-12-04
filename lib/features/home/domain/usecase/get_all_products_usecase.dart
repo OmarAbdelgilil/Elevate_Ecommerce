@@ -13,6 +13,4 @@ class GetAllProductsUseCase {
   Future<Result<ProductResponse?>> getAllProducts() async {
     return await _homeRepository.getAllProducts();
   }
-
-
 }

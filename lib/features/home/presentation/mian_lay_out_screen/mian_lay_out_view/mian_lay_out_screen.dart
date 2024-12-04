@@ -5,7 +5,6 @@ import '../../../../../utils/color_manager.dart';
 import '../../../../../utils/values_manager.dart';
 import '../mian_lay_out_view_model/mian_lay_out_view_model.dart';
 
-
 class MainLayOutScreen extends StatelessWidget {
   const MainLayOutScreen({super.key});
 
@@ -45,8 +44,10 @@ class _MainBottomNavigationBar extends StatelessWidget {
         return BottomNavigationBarItem(
           icon: SvgPicture.asset(
             tabs[index].icon,
-            colorFilter:selectedIndex == index ? const ColorFilter.mode(ColorManager.primary , BlendMode.srcIn):const ColorFilter.mode(ColorManager.grey , BlendMode.srcIn), // Apply the color filter
-
+            colorFilter: selectedIndex == index
+                ? const ColorFilter.mode(ColorManager.primary, BlendMode.srcIn)
+                : const ColorFilter.mode(ColorManager.grey,
+                    BlendMode.srcIn), // Apply the color filter
 
             width: AppSize.s28,
           ),
