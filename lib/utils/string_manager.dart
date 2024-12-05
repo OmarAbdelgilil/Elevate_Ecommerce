@@ -72,7 +72,11 @@ class StringsManager {
   static const retryAgain = "Retry again";
   static const noProductsFound = "No products found";
   static const emptyContent = "Empty content";
-
+  static const gender = "Gender";
+  static const male = "Male";
+  static const female = "Female";
+  static const termscondition = "Terms&Conditions";
+  static const alreadyHaveAccount = "Already have an account?";
   static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen

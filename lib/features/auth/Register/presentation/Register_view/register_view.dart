@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
@@ -38,7 +39,7 @@ class RegisterScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => viewModel,
       child: Scaffold(
-        appBar: customAppBar(title: StringsManager.signUp),
+        appBar: customAppBar(title: StringsManager.signUp.tr()),
         body: BlocListener<RegisterViewModel, RegisterScreenState>(
           listenWhen: (previous, current) {
             return current is LoadingState ||
@@ -94,8 +95,9 @@ class RegisterScreen extends StatelessWidget {
                                       .validate(RegisterValidTypes.firstName),
                                   controller:
                                       registerValidator.firstNameController,
-                                  hint: StringsManager.firstNameHint,
-                                  label: StringsManager.firstNameFieldLabel),
+                                  hint: StringsManager.firstNameHint.tr(),
+                                  label:
+                                      StringsManager.firstNameFieldLabel.tr()),
                             ),
                             SizedBox(
                               width: 20.w,
@@ -106,8 +108,9 @@ class RegisterScreen extends StatelessWidget {
                                       .validate(RegisterValidTypes.lastName),
                                   controller:
                                       registerValidator.lastNameController,
-                                  hint: StringsManager.lastNameHint,
-                                  label: StringsManager.lastNameFieldLabel),
+                                  hint: StringsManager.lastNameHint.tr(),
+                                  label:
+                                      StringsManager.lastNameFieldLabel.tr()),
                             ),
                           ],
                         ),
@@ -118,8 +121,8 @@ class RegisterScreen extends StatelessWidget {
                             validator: registerValidator
                                 .validate(RegisterValidTypes.email),
                             controller: registerValidator.emailController,
-                            hint: StringsManager.emailFieldHint,
-                            label: StringsManager.emailFieldLabel),
+                            hint: StringsManager.emailFieldHint.tr(),
+                            label: StringsManager.emailFieldLabel.tr()),
                         SizedBox(
                           height: 25.h,
                         ),
@@ -131,8 +134,9 @@ class RegisterScreen extends StatelessWidget {
                                       .validate(RegisterValidTypes.password),
                                   controller:
                                       registerValidator.passwordController,
-                                  hint: StringsManager.passwordHint,
-                                  label: StringsManager.passwordFieldLabel),
+                                  hint: StringsManager.passwordHint.tr(),
+                                  label:
+                                      StringsManager.passwordFieldLabel.tr()),
                             ),
                             SizedBox(
                               width: 20.w,
@@ -143,8 +147,9 @@ class RegisterScreen extends StatelessWidget {
                                       RegisterValidTypes.confirmPassword),
                                   controller: registerValidator
                                       .confirmPasswordController,
-                                  hint: StringsManager.confirmPasswordHint,
-                                  label: StringsManager.confirmPasswordHint),
+                                  hint: StringsManager.confirmPasswordHint.tr(),
+                                  label:
+                                      StringsManager.confirmPasswordHint.tr()),
                             ),
                           ],
                         ),
@@ -155,8 +160,8 @@ class RegisterScreen extends StatelessWidget {
                             validator: registerValidator
                                 .validate(RegisterValidTypes.phone),
                             controller: registerValidator.phoneController,
-                            hint: StringsManager.phoneNumberHint,
-                            label: StringsManager.phoneFieldLabel),
+                            hint: StringsManager.phoneNumberHint.tr(),
+                            label: StringsManager.phoneFieldLabel.tr()),
                         GenderWidget(
                           initialGender: 'male',
                           onGenderChanged: (selectedGender) {
@@ -168,7 +173,7 @@ class RegisterScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Text(
-                              StringsManager.creatAccountText,
+                              StringsManager.creatAccountText.tr(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color: blackFontColor,
@@ -176,7 +181,7 @@ class RegisterScreen extends StatelessWidget {
                             ),
                             InkWell(
                               child: Text(
-                                'Terms&Conditions',
+                                StringsManager.termscondition.tr(),
                                 style: TextStyle(
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w600,
@@ -201,7 +206,7 @@ class RegisterScreen extends StatelessWidget {
                               default:
                                 {
                                   return CustomButton(
-                                    text: StringsManager.signUp,
+                                    text: StringsManager.signUp.tr(),
                                     color: areAllFieldsFilled
                                         ? primaryColor
                                         : Colors.grey,
@@ -225,7 +230,7 @@ class RegisterScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              "Already have an account?",
+                              StringsManager.alreadyHaveAccount.tr(),
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color: blackFontColor,
@@ -235,7 +240,7 @@ class RegisterScreen extends StatelessWidget {
                               onTap: () =>
                                   Navigator.pushNamed(context, AppRoutes.login),
                               child: Text(
-                                '  ${StringsManager.login}',
+                                '  ${StringsManager.login.tr()}',
                                 style: TextStyle(
                                   decoration: TextDecoration.underline,
                                   fontWeight: FontWeight.w400,

@@ -115,5 +115,15 @@
     "Reset password": "اعادة تعيين كلمة المرور",
 "New password": "كلمة المرور الجديدة",
 "Confirm password": "تاكيد كلمة المرور",
-"Password must not be empty and must contain\n6 characters with upper case letter and one\nnumber at least ":"كلمة المرور يجب ان لا تكون فارغة ويجب ان تحتوي على 6 حروف مع حرف كبير واحد على الاقل"
+"Password must not be empty and must contain\n6 characters with upper case letter and one\nnumber at least ":"كلمة المرور يجب ان لا تكون فارغة ويجب ان تحتوي على 6 حروف مع حرف كبير واحد على الاقل",
+"Enter password": "ادخل كلمة المرور",
+"Terms&Conditions": "الشروط والأحكام",
+"Gender": "النوع",
+"Female": "انثى",
+"Male": "ذكر",
+"Already have an account?": "هل لديك حساب؟",
+"update": "تحديث"
+
+
+
 }
