@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_validator/forget_password_validator_types_enum.dart';
+import 'package:elevate_ecommerce/features/auth/login/presentation/views/login_view.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -47,7 +49,7 @@ class ForgetPasswordValidator {
   String? Function(String?) _validateEmail() {
     return (String? value) {
       if (value != null && (value.isEmpty || !value.contains("@"))) {
-        return StringsManager.issueValidEmail;
+        return StringsManager.issueValidEmail.tr();
       }
       return null;
     };
@@ -58,9 +60,9 @@ class ForgetPasswordValidator {
       final RegExp passwordRegExp = RegExp(
           r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyPassword;
+        return StringsManager.issueEmptyPassword.tr();
       } else if (!passwordRegExp.hasMatch(value)) {
-        return StringsManager.issuePasswordPattern;
+        return StringsManager.issuePasswordPattern.tr();
       }
       return null;
     };
@@ -69,10 +71,10 @@ class ForgetPasswordValidator {
   String? Function(String?) _validateConfirmPassword() {
     return (String? value) {
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyPassword;
+        return StringsManager.issueEmptyPassword.tr();
       }
       if (_passwordController.text != value) {
-        return StringsManager.issuePasswordNotMatch;
+        return StringsManager.issuePasswordNotMatch.tr();
       }
       return null;
     };

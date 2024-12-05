@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class VerifyOtp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              StringsManager.verifyOtpScreenTitle,
+              StringsManager.verifyOtpScreenTitle.tr(),
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
             ),
             const SizedBox(
@@ -35,7 +36,7 @@ class VerifyOtp extends StatelessWidget {
             ),
             Text(
                 textAlign: TextAlign.center,
-                StringsManager.verifyOtpScreenGuide,
+                StringsManager.verifyOtpScreenGuide.tr(),
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp)),
             SizedBox(
               height: 30.h,
@@ -88,7 +89,7 @@ class VerifyOtp extends StatelessWidget {
                       color: Colors.red,
                       size: 16.sp,
                     ),
-                    const Text(StringsManager.invalidOtpError,
+                    Text(StringsManager.invalidOtpError.tr(),
                         style: TextStyle(
                           color: Colors.red,
                         ))
@@ -102,13 +103,13 @@ class VerifyOtp extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text(StringsManager.didntrecieveCode),
+                Text(StringsManager.didntrecieveCode.tr()),
                 TextButton(
                     onPressed: () {
                       sendOtp(emailController.text);
                     },
-                    child: const Text(
-                      StringsManager.resendButtonText,
+                    child: Text(
+                      StringsManager.resendButtonText.tr(),
                       style: TextStyle(
                           decoration: TextDecoration.underline,
                           color: primaryColor),
