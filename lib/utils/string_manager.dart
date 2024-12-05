@@ -2,10 +2,14 @@ class StringsManager {
   static const login = "login";
   static const bestSeller = "Best seller";
   static const signUp = "Sign up";
-  static const Reset_password="Reset password";
-  static const update ="update";
+  static const Reset_password = "Reset password";
+  static const update = "update";
   static const subject = "subject";
   static const profile = "profile";
+  static const forgetpassword = "Forget password?";
+  static const donthaveaccount = "Don\'t have an account?";
+  static const rememberme = "Remember me";
+  static const continueAsguest = "Continue as guest";
   static const exams = "exams";
   static const browseBySubject = "Browse By Subject";
   static const issueValidEmail = "Please Enter Valid Email";
