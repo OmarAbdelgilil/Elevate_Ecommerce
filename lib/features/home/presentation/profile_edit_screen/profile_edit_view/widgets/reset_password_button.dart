@@ -9,8 +9,9 @@ class ResetPasswordButton extends StatefulWidget {
   final String label;
   final String? Function(String?)? validator;
   final String? errorText;
-void Function()? onTap;Widget? suffixIcon;
-   ResetPasswordButton({
+  void Function()? onTap;
+  Widget? suffixIcon;
+  ResetPasswordButton({
     super.key,
     required this.hint,
     this.onChange,
@@ -18,9 +19,10 @@ void Function()? onTap;Widget? suffixIcon;
     this.validator,
     this.onTap,
     required this.label,
-     this.suffixIcon,
+    this.suffixIcon,
     required this.controller,
-    this.errorText, this.readOnly,
+    this.errorText,
+    this.readOnly,
   });
 
   @override
@@ -51,15 +53,15 @@ class _ResetPasswordButtonState extends State<ResetPasswordButton> {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(onTap:widget.onTap ,
+    return TextFormField(
+      onTap: widget.onTap,
       obscureText: _obscureText,
       // obscuringCharacter:'⭐️' ,
       validator: _validate,
-      readOnly: widget.readOnly??false,
+      readOnly: widget.readOnly ?? false,
       onChanged: widget.onChange,
       controller: widget.controller,
       decoration: InputDecoration(
-
         errorText: widget.errorText,
         errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 2.0),
@@ -80,7 +82,7 @@ class _ResetPasswordButtonState extends State<ResetPasswordButton> {
         ),
         hintText: widget.hint,
         hintStyle: const TextStyle(color: Colors.grey),
-        suffixIcon:Padding(
+        suffixIcon: Padding(
           padding: const EdgeInsets.all(10),
           child: widget.suffixIcon,
         ),
