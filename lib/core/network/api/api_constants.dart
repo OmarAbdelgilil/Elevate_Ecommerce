@@ -20,5 +20,5 @@ static const String updatePasswordPath="/v1/auth/change-password";
       "https://flower.elevateegy.com/uploads/default-profile.png";
   static const String logoutPath = "/v1/auth/logout";
   static const String getAddressesPath ="/v1/addresses";
-  static const String removeAddressPath ="v1/addresses";
+  static const String removeAddressPath ="//v1/addresses";
 }

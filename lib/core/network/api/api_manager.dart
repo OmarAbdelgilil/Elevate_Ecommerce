@@ -53,7 +53,7 @@ abstract class ApiManager {
         return handler.next(options);
       },
       onError: (DioException e, handler) {
-        // Optionally handle errors globally
+
         return handler.next(e);
       },
     ));
@@ -145,7 +145,7 @@ abstract class ApiManager {
 
   @DELETE("${ApiConstants.removeAddressPath}/{productId}")
   @Extra({'requiresToken': true})
-  Future<AddressResponse?> removeAddress(
+  Future<AddressResponse?>removeAddress(
       @Path("productId") String productId);
 
 }

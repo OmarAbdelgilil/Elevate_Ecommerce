@@ -138,7 +138,10 @@ class ProfileScreen extends StatelessWidget {
                       height: 25.h,
                     ),
                     StringsManager.savedAddress,
-                    () {},
+                    () {
+                      Navigator.of(context).pushNamed(
+                          AppRoutes.Address);
+                    },
                     null),
                 const Divider(color: ColorManager.grey),
                 _profileSection(

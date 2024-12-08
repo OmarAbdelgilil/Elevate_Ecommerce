@@ -156,6 +156,20 @@ import '../../features/home/presentation/profile_edit_screen/profile_edit_view_m
     as _i87;
 import '../../features/home/presentation/profile_screen/profile_view_model/profile_view_model.dart'
     as _i243;
+import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse.dart'
+    as _i272;
+import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse_impl.dart'
+    as _i147;
+import '../../features/user_addresses/savedAddresses/data/repositoryImpl/address_repositoryImpl.dart'
+    as _i776;
+import '../../features/user_addresses/savedAddresses/domain/repository/addresses_repository.dart'
+    as _i474;
+import '../../features/user_addresses/savedAddresses/domain/usecase/getAddresses_usecase.dart'
+    as _i13;
+import '../../features/user_addresses/savedAddresses/domain/usecase/removeAddress_usecase.dart'
+    as _i639;
+import '../../features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart'
+    as _i653;
 import '../cache/shared_preferences_service.dart' as _i94;
 import '../network/api/api_manager.dart' as _i561;
 import '../network/api/network_module.dart' as _i138;
@@ -185,9 +199,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
-    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.factory<_i826.UpdatePasswordValidator>(
         () => _i826.UpdatePasswordValidator());
+    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i94.SharedPreferencesService>(
         () => _i94.SharedPreferencesService(gh<_i460.SharedPreferences>()));
@@ -215,6 +229,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i518.LogoutOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i699.RegisterOnlineDatasource>(
         () => _i707.RegisterOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i272.AddressOnlineDatasource>(
+        () => _i147.AddressOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i92.RemoteDatasource>(
         () => _i87.RemoteDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i194.GetLoggedUserDataOnlineDatasource>(() =>
@@ -230,6 +246,8 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i267.ForgetPasswordOnlineDatasource>()));
     gh.factory<_i981.AuthOnlineDatasource>(
         () => _i849.AuthOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i474.AddressesRepository>(() =>
+        _i776.AddressesRepositoryImpl(gh<_i272.AddressOnlineDatasource>()));
     gh.factory<_i321.ProductDetailsRepository>(() =>
         _i629.ProductDetailsRepoImpl(
             gh<_i14.ProductDetails_Onlinedatasource>()));
@@ -246,6 +264,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i334.LoginUsecase(gh<_i983.LoginRepo>()));
     gh.factory<_i0.HomeRepository>(
         () => _i76.HomeRepositoryImpl(gh<_i92.RemoteDatasource>()));
+    gh.factory<_i13.GetAddressesUsecase>(
+        () => _i13.GetAddressesUsecase(gh<_i474.AddressesRepository>()));
+    gh.factory<_i639.RemoveAddressUsecase>(
+        () => _i639.RemoveAddressUsecase(gh<_i474.AddressesRepository>()));
     gh.factory<_i405.AddProductToCartUsecase>(
         () => _i405.AddProductToCartUsecase(gh<_i547.CartRepository>()));
     gh.factory<_i498.GetCartUsecase>(
@@ -277,6 +299,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i840.UpdateUserDataUseCase>(
         () => _i840.UpdateUserDataUseCase(gh<_i0.HomeRepository>()));
+    gh.factory<_i653.AddressViewModel>(() => _i653.AddressViewModel(
+          gh<_i13.GetAddressesUsecase>(),
+          gh<_i639.RemoveAddressUsecase>(),
+        ));
     gh.factory<_i665.ProductDetailsUsecase>(() =>
         _i665.ProductDetailsUsecase(gh<_i321.ProductDetailsRepository>()));
     gh.factory<_i953.GetAllBestSellerProductsUseCase>(
