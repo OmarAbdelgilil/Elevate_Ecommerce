@@ -9,6 +9,7 @@ import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_vi
 import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
+import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/savedAddresses_view/testtt.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/auth/login/presentation/views/login_view.dart';
@@ -57,6 +58,8 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
     case AppRoutes.ResetPassword:
       return MaterialPageRoute(builder: (context)=>  UpdatePasswordView());
+    case AppRoutes.tessstt:
+      return MaterialPageRoute(builder: (context)=>  tessstt());
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }
