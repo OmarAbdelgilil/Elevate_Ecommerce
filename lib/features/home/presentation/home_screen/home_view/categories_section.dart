@@ -1,6 +1,5 @@
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
-import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/categry_viewmodel.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/category_icon.dart';

@@ -4,16 +4,16 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:ui' as _i26;
+import 'dart:ui' as _i30;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i7;
-import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i25;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i29;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
     as _i15;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart'
-    as _i23;
+    as _i27;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart'
     as _i13;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart'
@@ -23,13 +23,13 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
     as _i6;
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
-    as _i22;
+    as _i26;
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart'
     as _i11;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart'
-    as _i24;
+    as _i28;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
@@ -38,6 +38,14 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
     as _i10;
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart'
     as _i3;
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart'
+    as _i24;
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart'
+    as _i25;
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart'
+    as _i22;
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart'
+    as _i23;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i19;
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
@@ -293,40 +301,86 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i21.GetAllOccasionsResponse?>);
 
   @override
-  _i8.Future<_i22.UserResponse?> getProfile(String? authorization) =>
+  _i8.Future<_i22.CartResponse?> getAllCart() => (super.noSuchMethod(
+        Invocation.method(
+          #getAllCart,
+          [],
+        ),
+        returnValue: _i8.Future<_i22.CartResponse?>.value(),
+      ) as _i8.Future<_i22.CartResponse?>);
+
+  @override
+  _i8.Future<_i23.CartResponse2?> addProductToCart(
+          _i24.AddCartProductRequest? req) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #addProductToCart,
+          [req],
+        ),
+        returnValue: _i8.Future<_i23.CartResponse2?>.value(),
+      ) as _i8.Future<_i23.CartResponse2?>);
+
+  @override
+  _i8.Future<_i22.CartResponse?> updateCartProductQuantity(
+    String? productId,
+    _i25.UpdateCartProductQuantityRequest? req,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateCartProductQuantity,
+          [
+            productId,
+            req,
+          ],
+        ),
+        returnValue: _i8.Future<_i22.CartResponse?>.value(),
+      ) as _i8.Future<_i22.CartResponse?>);
+
+  @override
+  _i8.Future<_i23.CartResponse2?> removeItemFromCart(String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeItemFromCart,
+          [productId],
+        ),
+        returnValue: _i8.Future<_i23.CartResponse2?>.value(),
+      ) as _i8.Future<_i23.CartResponse2?>);
+
+  @override
+  _i8.Future<_i26.UserResponse?> getProfile(String? authorization) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProfile,
           [authorization],
         ),
-        returnValue: _i8.Future<_i22.UserResponse?>.value(),
-      ) as _i8.Future<_i22.UserResponse?>);
+        returnValue: _i8.Future<_i26.UserResponse?>.value(),
+      ) as _i8.Future<_i26.UserResponse?>);
 
   @override
-  _i8.Future<_i22.UserResponse?> updateProfileData(
-          _i23.UpdateProfileRequest? request) =>
+  _i8.Future<_i26.UserResponse?> updateProfileData(
+          _i27.UpdateProfileRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateProfileData,
           [request],
         ),
-        returnValue: _i8.Future<_i22.UserResponse?>.value(),
-      ) as _i8.Future<_i22.UserResponse?>);
+        returnValue: _i8.Future<_i26.UserResponse?>.value(),
+      ) as _i8.Future<_i26.UserResponse?>);
 
   @override
-  _i8.Future<_i24.Logout?> logout(String? authorization) => (super.noSuchMethod(
+  _i8.Future<_i28.Logout?> logout(String? authorization) => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [authorization],
         ),
-        returnValue: _i8.Future<_i24.Logout?>.value(),
-      ) as _i8.Future<_i24.Logout?>);
+        returnValue: _i8.Future<_i28.Logout?>.value(),
+      ) as _i8.Future<_i28.Logout?>);
 }
 
 /// A class which mocks [TokenProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTokenProvider extends _i1.Mock implements _i25.TokenProvider {
+class MockTokenProvider extends _i1.Mock implements _i29.TokenProvider {
   MockTokenProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -357,7 +411,7 @@ class MockTokenProvider extends _i1.Mock implements _i25.TokenProvider {
       );
 
   @override
-  void addListener(_i26.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i30.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -366,7 +420,7 @@ class MockTokenProvider extends _i1.Mock implements _i25.TokenProvider {
       );
 
   @override
-  void removeListener(_i26.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i30.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

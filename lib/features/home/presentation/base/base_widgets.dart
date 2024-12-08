@@ -35,7 +35,9 @@ class BaseWidgets {
       children: children,
     );
   }
-  static Widget buildMessage(BuildContext context, String message, [Color? textColor, double? fontSize]) {
+
+  static Widget buildMessage(BuildContext context, String message,
+      [Color? textColor, double? fontSize]) {
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -51,9 +53,8 @@ class BaseWidgets {
     );
   }
 
-
-
-  static void showPopUpDialog(BuildContext context, List<Widget> children, {List<Widget>? actions}) {
+  static void showPopUpDialog(BuildContext context, List<Widget> children,
+      {List<Widget>? actions}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -85,14 +86,14 @@ class BaseWidgets {
 
     return Center(
       child: Padding(
-        padding:  const EdgeInsets.all(AppPadding.p8),
+        padding: const EdgeInsets.all(AppPadding.p8),
         child: SizedBox(
           width: width,
           height: height,
           child: ElevatedButton(
             style: buttonStyle ??
                 ElevatedButton.styleFrom(
-                  padding:  const EdgeInsets.all(AppPadding.p8),
+                  padding: const EdgeInsets.all(AppPadding.p8),
                 ),
             onPressed: () {
               if (displayType == DisplayType.popUpDialog) {

@@ -22,6 +22,3 @@ class RegisterOnlineDatasourceImpl implements RegisterOnlineDatasource {
     });
   }
 }
-
-
-

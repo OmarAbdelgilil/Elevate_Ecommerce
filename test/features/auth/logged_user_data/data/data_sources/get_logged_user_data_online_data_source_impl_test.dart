@@ -1,6 +1,10 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
@@ -104,8 +108,34 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<UpdatePasswordResponse> updatePassword(UpdatePasswordRequest request, String authorization) {
+  Future<UpdatePasswordResponse> updatePassword(
+      UpdatePasswordRequest request, String authorization) {
     // TODO: implement updatePassword
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CartResponse2?> addProductToCart(AddCartProductRequest req) {
+    // TODO: implement addProductToCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CartResponse?> getAllCart() {
+    // TODO: implement getAllCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CartResponse2?> removeItemFromCart(String productId) {
+    // TODO: implement removeItemFromCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CartResponse?> updateCartProductQuantity(
+      String productId, UpdateCartProductQuantityRequest req) {
+    // TODO: implement updateCartProductQuantity
     throw UnimplementedError();
   }
 }

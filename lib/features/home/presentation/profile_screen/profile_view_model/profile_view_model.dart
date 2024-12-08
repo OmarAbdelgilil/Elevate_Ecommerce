@@ -1,15 +1,12 @@
 import 'package:elevate_ecommerce/core/cache/hive_service.dart';
-import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/core/providers/user_provider.dart';
-import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import '../../../../../core/network/api/api_constants.dart';
 
 @injectable
 class ProfileViewModel extends ChangeNotifier {

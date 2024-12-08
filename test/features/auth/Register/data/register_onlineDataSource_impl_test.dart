@@ -8,7 +8,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import '../../forget_password/data/data_sources/forget_password_online_datasource_impl_test.mocks.dart';
+import 'register_onlineDataSource_impl_test.mocks.dart';
 
 @GenerateMocks([ApiManager])
 void main() {

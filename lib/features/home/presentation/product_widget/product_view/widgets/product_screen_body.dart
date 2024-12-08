@@ -11,7 +11,7 @@ import 'package:elevate_ecommerce/utils/values_manager.dart';
 class ProductScreenBody extends StatelessWidget {
   final List<ProductsModel> products;
 
-  const ProductScreenBody({Key? key, required this.products}) : super(key: key);
+  const ProductScreenBody({super.key, required this.products});
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +54,7 @@ class ProductScreenBody extends StatelessWidget {
                       ));
                 },
                 child: ProductGridItem(
+                  id: product.id!,
                   productImage: product.imgCover ?? '',
                   title: product.title ?? '',
                   description: product.description ?? '',

@@ -29,6 +29,4 @@ class RegisterRequest {
     print("RegisterRequest Payload: $map");
     return map;
   }
-
 }
-

@@ -1,11 +1,10 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
+import 'package:elevate_ecommerce/features/home/domain/usecase/product_details_useCase.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-
-
-import '../../../domain/usecase/product_details_useCase.dart';
 
 @injectable
 class ProductDetails_ViewModel extends Cubit<ProductDetailsState> {
@@ -25,7 +24,6 @@ class ProductDetails_ViewModel extends Cubit<ProductDetailsState> {
     final result = await _productDetailsUsecase.getProductDetails(productId);
 
     if (result is Success<ProductDetailsResponse?>) {
-
       if (result.data?.product != null) {
         final productDetails = result.data!.product!.toModel();
         emit(SuccessState(productDetails: productDetails));
@@ -36,8 +34,6 @@ class ProductDetails_ViewModel extends Cubit<ProductDetailsState> {
       emit(ErrorState(exception: result.exception));
     }
   }
-
-
 }
 
 sealed class ProductDetailsIntent {}
@@ -58,7 +54,6 @@ class SuccessState extends ProductDetailsState {
 
   SuccessState({required this.productDetails});
 }
-
 
 class ErrorState extends ProductDetailsState {
   final Exception? exception;

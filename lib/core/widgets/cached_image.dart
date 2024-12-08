@@ -28,7 +28,6 @@ class CachedImage extends StatelessWidget {
     }
 
     return CachedNetworkImage(
-
       imageUrl: imageUrl!,
       width: width ?? double.infinity,
       height: height ?? double.infinity,

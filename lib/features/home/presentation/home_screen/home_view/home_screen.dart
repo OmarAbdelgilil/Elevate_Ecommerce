@@ -1,18 +1,12 @@
-import 'package:elevate_ecommerce/core/cache/hive_service.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
-import 'package:elevate_ecommerce/core/providers/token_provider.dart';
-import 'package:elevate_ecommerce/core/providers/token_provider.dart';
-import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_screen_view_models/home_screen_viewmodel.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_section/best_seller_section.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/categories_section/categories_section.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/home_app_bar.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/occasions_section/occasion_section.dart';
-import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {

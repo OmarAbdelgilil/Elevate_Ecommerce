@@ -35,16 +35,13 @@ void main() {
   });
 
   group('ProductDetails_ViewModel test', () {
-
     test('initial state is InitialState', () {
       expect(viewmodel.state, isA<InitialState>());
     });
 
-
-
     test(
       'doIntent with LoadProductDetailsIntent emits LoadingState, SuccessState on Success',
-          () async {
+      () async {
         final successResult = Success(dummyResponse);
 
         when(mockProductDetailsUsecase.getProductDetails(any))
@@ -62,7 +59,6 @@ void main() {
       },
     );
 
-
     test(
       'doIntent with LoadProductDetailsIntent emits LoadingState, ErrorState on Fail',
       () async {
@@ -75,10 +71,7 @@ void main() {
 
         expectLater(
           viewmodel.stream,
-          emitsInOrder([
-            isA<LoadingState>(),
-            isA<ErrorState>()
-          ]),
+          emitsInOrder([isA<LoadingState>(), isA<ErrorState>()]),
         );
 
         viewmodel.doIntent(LoadProductDetailsIntent("00000"));

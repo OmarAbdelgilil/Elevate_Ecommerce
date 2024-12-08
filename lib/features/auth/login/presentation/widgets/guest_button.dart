@@ -12,7 +12,8 @@ class GuestButton extends StatelessWidget {
         width: double.infinity,
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pushNamed(AppRoutes.mainLayOut);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+                AppRoutes.mainLayOut, (Route route) => false);
           },
           style: ElevatedButton.styleFrom(
             padding: const EdgeInsets.symmetric(vertical: 12),

@@ -16,7 +16,6 @@ class ProductsModel {
     this.v,
   });
 
-
   String? id;
   String? title;
   String? slug;
@@ -31,6 +30,4 @@ class ProductsModel {
   String? createdAt;
   String? updatedAt;
   int? v;
-
-
 }

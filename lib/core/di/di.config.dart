@@ -95,6 +95,21 @@ import '../../features/auth/update_password/presentation/Update_password_validat
     as _i826;
 import '../../features/auth/update_password/presentation/UpdatePassword_ViewModel/updatePassword_ViewModel.dart'
     as _i833;
+import '../../features/Cart/data/contracts/cart_online_datasource.dart'
+    as _i191;
+import '../../features/Cart/data/datasources/cart_online_datasource_impl.dart'
+    as _i145;
+import '../../features/Cart/data/repos/cart_repository_impl.dart' as _i855;
+import '../../features/Cart/domain/repos/cart_repository.dart' as _i547;
+import '../../features/Cart/domain/usecases/add_product_to_cart_usecase.dart'
+    as _i405;
+import '../../features/Cart/domain/usecases/get_cart_usecase.dart' as _i498;
+import '../../features/Cart/domain/usecases/remove_item_from_cart_usecase.dart'
+    as _i31;
+import '../../features/Cart/domain/usecases/update_cart_product_quantity_usecase.dart'
+    as _i463;
+import '../../features/Cart/presentation/viewmodel/cart_view_model.dart'
+    as _i929;
 import '../../features/home/data/contracts/product_details_onlineDataSource.dart'
     as _i14;
 import '../../features/home/data/contracts/remote_datasource.dart' as _i92;
@@ -170,9 +185,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
+    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.factory<_i826.UpdatePasswordValidator>(
         () => _i826.UpdatePasswordValidator());
-    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i94.SharedPreferencesService>(
         () => _i94.SharedPreferencesService(gh<_i460.SharedPreferences>()));
@@ -192,6 +207,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i923.UpdatePasswordRepository>(() =>
         _i411.UpdatePasswordRepositoryImpl(
             gh<_i154.UpdatePasswordOnlineDatasource>()));
+    gh.factory<_i191.CartOnlineDatasource>(
+        () => _i145.CartOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i547.CartRepository>(
+        () => _i855.CartRepositoryImpl(gh<_i191.CartOnlineDatasource>()));
     gh.factory<_i731.LogoutOnlineDatasource>(
         () => _i518.LogoutOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i699.RegisterOnlineDatasource>(
@@ -227,6 +246,21 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i334.LoginUsecase(gh<_i983.LoginRepo>()));
     gh.factory<_i0.HomeRepository>(
         () => _i76.HomeRepositoryImpl(gh<_i92.RemoteDatasource>()));
+    gh.factory<_i405.AddProductToCartUsecase>(
+        () => _i405.AddProductToCartUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i498.GetCartUsecase>(
+        () => _i498.GetCartUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i31.RemoveItemFromCartUsecase>(
+        () => _i31.RemoveItemFromCartUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i463.UpdateCartProductQuantityUsecase>(() =>
+        _i463.UpdateCartProductQuantityUsecase(gh<_i547.CartRepository>()));
+    gh.factory<_i929.CartViewmodel>(() => _i929.CartViewmodel(
+          gh<_i498.GetCartUsecase>(),
+          gh<_i31.RemoveItemFromCartUsecase>(),
+          gh<_i463.UpdateCartProductQuantityUsecase>(),
+          gh<_i405.AddProductToCartUsecase>(),
+          gh<_i924.TokenProvider>(),
+        ));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
     gh.factory<_i459.LogoutUsecase>(

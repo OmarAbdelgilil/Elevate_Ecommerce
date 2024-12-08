@@ -9,7 +9,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'register_viewModel_test.mocks.dart';
+import 'register_viewmodel_test.mocks.dart';
 
 @GenerateMocks([
   RegisterUseCase,
@@ -27,14 +27,14 @@ void main() {
   late MockGlobalKey<FormState> mockRegisterFormKey;
 
   setUp(
-        () {
+    () {
       mockRegisterUseCase = MockRegisterUseCase();
       mockRegisterValidator = MockRegisterValidator();
       mockFormState = MockFormState();
       mockRegisterFormKey = MockGlobalKey<FormState>();
       mockTextEditingController = MockTextEditingController();
 
-      viewmodel = RegisterViewModel(mockRegisterUseCase,mockRegisterValidator);
+      viewmodel = RegisterViewModel(mockRegisterUseCase, mockRegisterValidator);
 
       when(mockRegisterValidator.registerFormKey)
           .thenReturn(mockRegisterFormKey);
@@ -44,18 +44,14 @@ void main() {
       when(mockRegisterValidator.firstNameController)
           .thenReturn(mockTextEditingController);
 
-
       when(mockRegisterValidator.lastNameController)
           .thenReturn(mockTextEditingController);
-
 
       when(mockRegisterValidator.emailController)
           .thenReturn(mockTextEditingController);
 
-
       when(mockRegisterValidator.passwordController)
           .thenReturn(mockTextEditingController);
-
 
       when(mockRegisterValidator.confirmPasswordController)
           .thenReturn(mockTextEditingController);
@@ -71,54 +67,55 @@ void main() {
 
     test(
       'doIntent with RegisterIntent emits LoadingState and SuccessState on success',
-          () async {
-
+      () async {
         when(mockFormState.validate()).thenReturn(true);
 
-
-        when(mockTextEditingController.text).thenAnswer((_) => 'test@example.com');
+        when(mockTextEditingController.text)
+            .thenAnswer((_) => 'test@example.com');
         provideDummy<Result<RegisterResponse?>>(
             Success<RegisterResponse?>(RegisterResponse()));
 
-
         when(mockRegisterUseCase.register(any))
             .thenAnswer((_) async => Success<RegisterResponse?>(
-          RegisterResponse(
-            token: "dummyToken",
-            user: User(
-              id: "1",
-              firstName: "Farida",
-              lastName: "Tarek",
-              email: "faridaelamret73@gmail.com",
-            ),
-          ),
-        ));
-
+                  RegisterResponse(
+                    token: "dummyToken",
+                    user: User(
+                      id: "1",
+                      firstName: "Farida",
+                      lastName: "Tarek",
+                      email: "faridaelamret73@gmail.com",
+                    ),
+                  ),
+                ));
 
         expectLater(
           viewmodel.stream,
           emitsInOrder([
             isA<LoadingState>(),
-            isA<SuccessState>().having(
-                    (state) => state.user?.email, 'user email', 'faridaelamret73@gmail.com'),
+            isA<SuccessState>().having((state) => state.user?.email,
+                'user email', 'faridaelamret73@gmail.com'),
           ]),
         );
 
         viewmodel.doIntent(RegisterIntent(
-
-          "female","Farida","Tarek","faridaelamret73@gmail.com","Farida987#", "Farida987#","+201001319285",
-
+          "female",
+          "Farida",
+          "Tarek",
+          "faridaelamret73@gmail.com",
+          "Farida987#",
+          "Farida987#",
+          "+201001319285",
         ));
       },
     );
 
-
     test(
       'doIntent with RegisterIntent emits LoadingState on Fail',
-          () {
+      () {
         when(mockFormState.validate()).thenReturn(true);
         when(mockTextEditingController.text).thenReturn("");
-        provideDummy<Result<RegisterResponse?>>(Fail<RegisterResponse?>(Exception()));
+        provideDummy<Result<RegisterResponse?>>(
+            Fail<RegisterResponse?>(Exception()));
         when(mockTextEditingController.text)
             .thenAnswer((_) => 'test@example.com');
         when(mockRegisterUseCase.register(any))
@@ -129,20 +126,34 @@ void main() {
           emitsInOrder([isA<LoadingState>(), isA<ErrorState>()]),
         );
 
-        viewmodel.doIntent(RegisterIntent("female","Farida","Tarek","faridaelamret73@gmail.com","Farida987#","Farida987#","+201001319285"));
+        viewmodel.doIntent(RegisterIntent(
+            "female",
+            "Farida",
+            "Tarek",
+            "faridaelamret73@gmail.com",
+            "Farida987#",
+            "Farida987#",
+            "+201001319285"));
       },
     );
 
     test(
       'doIntent with RegisterIntent emits LoadingState  when RegisterFormKey is invalid',
-          () {
+      () {
         when(mockFormState.validate()).thenReturn(false);
         expectLater(
           viewmodel.stream,
           emitsInOrder([isA<LoadingState>(), isA<ErrorState>()]),
         );
 
-        viewmodel.doIntent(RegisterIntent("female","Farida","Tarek","faridaelamret73@gmail.com","Farida987#","Farida987#","+201001319285"));
+        viewmodel.doIntent(RegisterIntent(
+            "female",
+            "Farida",
+            "Tarek",
+            "faridaelamret73@gmail.com",
+            "Farida987#",
+            "Farida987#",
+            "+201001319285"));
       },
     );
   });

@@ -10,12 +10,10 @@ abstract class BaseCubit extends Cubit<BaseState> {
 
   void emitError({
     required String errorMessage,
-
-  }) => emit(ErrorState(
-    errorMessage,
-
-  ));
-
+  }) =>
+      emit(ErrorState(
+        errorMessage,
+      ));
 
   void emitSuccess(String message) => emit(SuccessState(message));
 }
