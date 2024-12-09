@@ -8,9 +8,11 @@ class AppRoutes {
   static const ProductDetails = "ProductDetails";
   static const bestSeller = "bestSeller";
 
-  static const ResetPassword="ResetPassword";
+  static const ResetPassword = "ResetPassword";
 
   static const occasions = "occasions";
   static const editProfile = "editProfile";
   static const Categories = "categories";
+  static const termsAndConditions = "terms&conditions";
+  static const aboutUs = "aboutUs";
 }
