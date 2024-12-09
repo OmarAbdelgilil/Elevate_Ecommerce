@@ -188,10 +188,10 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: AppSize.s10.h),
-                _profileSection(null, StringsManager.conditions, () {
+                _profileSection(null, StringsManager.conditions.tr(), () {
                   Navigator.pushNamed(context, AppRoutes.termsAndConditions);
                 }, null),
-                _profileSection(null, StringsManager.aboutUs, () {
+                _profileSection(null, StringsManager.aboutUs.tr(), () {
                   Navigator.pushNamed(context, AppRoutes.aboutUs);
                 }, null),
                 const Divider(color: ColorManager.grey),

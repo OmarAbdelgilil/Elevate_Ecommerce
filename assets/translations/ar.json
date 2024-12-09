@@ -128,7 +128,8 @@
 "Status": "الحالة",
 "Out of stock": "غير متوفر",
 "In stock": "متوفر",
-"All prices include tax": "جميع الاسعار تشمل الضريبة"
-
+"All prices include tax": "جميع الاسعار تشمل الضريبة",
+"html_file": "assets/html/terms_and_conditions_ar.html",
+"about_us_file": "assets/html/about_us_ar.html"
 
 }

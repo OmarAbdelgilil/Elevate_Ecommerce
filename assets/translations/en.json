@@ -128,5 +128,8 @@
 "Status": "Status",
 "Out of stock": "Out of stock",
 "In stock": "In stock",
-"All prices include tax": "All prices include tax"
+"All prices include tax": "All prices include tax",
+ "html_file": "assets/html/terms_and_conditions.html",
+   "about_us_file": "assets/html/about_us.html"
+
 }
