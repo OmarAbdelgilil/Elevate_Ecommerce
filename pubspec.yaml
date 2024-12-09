@@ -55,6 +55,7 @@ dependencies:
   flutter_secure_storage:
   hive: 
   hive_flutter: 
+  flutter_html:
   easy_localization: ^3.0.7
 
 dev_dependencies:
@@ -89,6 +90,7 @@ flutter:
   assets:
     - assets/lotties/
     - assets/svg/
+    - assets/html/
     - assets/translations/
 
   # An image asset can refer to one or more resolution-specific "variants", see
