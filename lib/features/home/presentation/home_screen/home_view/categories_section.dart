@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
@@ -5,6 +6,7 @@ import 'package:elevate_ecommerce/features/home/presentation/category_screen/cat
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/category_icon.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,7 +23,9 @@ class CategoriesSection extends StatelessWidget {
         create: (context) => viewModel,
         child: Column(
           children: [
-            SectionHeader(title: 'Categories', onpressed: () {}),
+            SectionHeader(
+                title: StringsManager.categoriesSectionHeader.tr(),
+                onpressed: () {}),
             BlocBuilder<CategoriesViewmodel, CategoriesState>(
               builder: (BuildContext context, CategoriesState state) {
                 if (state is LoadingState) {

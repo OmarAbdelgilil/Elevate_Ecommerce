@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_edit_screen/profile_edit_view/widgets/reset_password_button.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_edit_screen/profile_edit_view_model/profile_edit_view_model.dart';
@@ -40,56 +41,58 @@ class EditScreenBody extends StatelessWidget {
               children: [
                 Expanded(
                   child: CustomTextField(
-                    hint: StringsManager.firstNameFieldLabel,
-                    label: StringsManager.firstNameFieldLabel,
+                    hint: StringsManager.firstNameFieldLabel.tr(),
+                    label: StringsManager.firstNameFieldLabel.tr(),
                     controller: validator.firstNameController,
-                    validator: validator.validate(EditProfileValidTypes.firstName),
+                    validator:
+                        validator.validate(EditProfileValidTypes.firstName),
                   ),
                 ),
                 const SizedBox(width: AppSize.s10),
                 Expanded(
                   child: CustomTextField(
-                    hint: StringsManager.lastNameFieldLabel,
-                    label: StringsManager.lastNameFieldLabel,
+                    hint: StringsManager.lastNameFieldLabel.tr(),
+                    label: StringsManager.lastNameFieldLabel.tr(),
                     controller: validator.lastNameController,
-                    validator: validator.validate(EditProfileValidTypes.lastName),
+                    validator:
+                        validator.validate(EditProfileValidTypes.lastName),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: AppSize.s16),
             CustomTextField(
-              hint: StringsManager.emailFieldHint,
-              label: StringsManager.emailFieldLabel,
+              hint: StringsManager.emailFieldHint.tr(),
+              label: StringsManager.emailFieldLabel.tr(),
               controller: validator.emailController,
               validator: validator.validate(EditProfileValidTypes.email),
             ),
             const SizedBox(height: AppSize.s16),
             CustomTextField(
-              hint: StringsManager.phoneFieldLabel,
-              label: StringsManager.phoneFieldLabel,
+              hint: StringsManager.phoneFieldLabel.tr(),
+              label: StringsManager.phoneFieldLabel.tr(),
               controller: validator.phoneController,
               validator: validator.validate(EditProfileValidTypes.phone),
             ),
             const SizedBox(height: AppSize.s16),
             ResetPasswordButton(
-              hint: StringsManager.phoneFieldLabel,
-              label: StringsManager.passwordFieldLabel,
+              hint: StringsManager.phoneFieldLabel.tr(),
+              label: StringsManager.passwordFieldLabel.tr(),
               controller: validator.passwordController,
-                    onTap: (){
-                      Navigator.of(context).pushNamed(
-                          AppRoutes.ResetPassword);
-                    },
+              onTap: () {
+                Navigator.of(context).pushNamed(AppRoutes.ResetPassword);
+              },
               obscureText: true,
               readOnly: true,
-              suffixIcon: Text(StringsManager.change, style: AppTextStyles.title(color: ColorManager.primary)),
+              suffixIcon: Text(StringsManager.change.tr(),
+                  style: AppTextStyles.title(color: ColorManager.primary)),
             ),
             const SizedBox(height: AppSize.s22),
             SizedBox(
               width: double.infinity,
               child: CustomButton(
-                text: StringsManager.upDate,
-                color: ColorManager.primary,
+                  text: StringsManager.upDate.tr(),
+                  color: ColorManager.primary,
                   onPressed: () {
                     if (validator.editDataFormKey.currentState!.validate()) {
                       UpdateProfileRequest request = UpdateProfileRequest(
@@ -112,9 +115,7 @@ class EditScreenBody extends StatelessWidget {
                         }
                       });
                     }
-                  }
-
-              ),
+                  }),
             ),
           ],
         ),

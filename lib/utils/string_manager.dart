@@ -92,10 +92,23 @@ class StringsManager {
   static const categoriesSectionError = "Error loading categories";
   static const occasionSectionHeader = 'Occasion';
   static const occasionSectionError = 'Error loading occasions';
+  static const bestSellerSectionTitle = 'Bloom with our exquisite best sellers';
+  static const viewAllButtonText = 'View All';
+  static const deliverto = 'Deliver to ';
+  static const occasions = 'Occasions';
+  static const bouquetIncludes = 'Bouquet includes';
+  static const productDescription = 'Description';
+  static const status = 'Status';
   // product widget
   static const productPriceCurrency = 'EGP';
   static const productButton = 'add to cart';
-
+  static const inStock = 'In stock';
+  static const outOfStock = 'Out of stock';
+  static const productTax = 'All prices include tax';
+  //categories
+  static const all = 'All';
+  static const alllower = 'all';
+  static const search = 'Search';
   //cart
   static const String productAddedToCart =
       "Product added to cart successfully!";

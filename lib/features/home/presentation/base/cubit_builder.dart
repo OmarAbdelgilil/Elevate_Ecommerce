@@ -1,4 +1,5 @@
 // base_builder.dart
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 
@@ -23,14 +24,14 @@ Widget baseBuilder(BuildContext context, BaseState state, Widget child) {
       BaseWidgets.buildAnimatedImage(LottieAssets.noContent, false),
       BaseWidgets.buildMessage(
         context,
-        state.message ?? StringsManager.emptyContent,
+        state.message ?? StringsManager.emptyContent.tr(),
         ColorManager.black,
       ),
       BaseWidgets.buildButton(
         displayType: state.displayType,
         context: context,
         onTap: state.retry,
-        title: StringsManager.retryAgain,
+        title: StringsManager.retryAgain.tr(),
       ),
     ]);
   } else if (state is ErrorState) {

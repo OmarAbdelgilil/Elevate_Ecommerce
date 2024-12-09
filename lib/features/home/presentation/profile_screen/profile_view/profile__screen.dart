@@ -4,6 +4,7 @@ import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
 import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view_model/mian_lay_out_view_model.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
@@ -175,7 +176,9 @@ class ProfileScreen extends StatelessWidget {
                       onTap: () =>
                           _showLanguageModal(context, profileViewModel),
                       child: Text(
-                        profileViewModel.selectedLanguage,
+                        context.locale.languageCode == 'ar'
+                            ? StringsManager.arabic.tr()
+                            : StringsManager.english.tr(),
                         style: AppTextStyles.title(
                             color: ColorManager.primary,
                             fontWeight: FontWeight.w400,
@@ -255,6 +258,9 @@ Widget _profileSection(Widget? icon, String sectionName,
 
 void _showLanguageModal(
     BuildContext context, ProfileViewModel profileViewModel) {
+  final mainLayoutViewModel =
+      Provider.of<MainLayoutViewModel>(context, listen: false);
+
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.white,
@@ -267,20 +273,19 @@ void _showLanguageModal(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Header Text
-            Text(
-              StringsManager.selectedLanguage.tr(),
-              style: AppTextStyles.title(fontSize: 18),
-            ),
+            Text(StringsManager.selectedLanguage.tr(),
+                style: AppTextStyles.title(fontSize: 18)),
             const SizedBox(height: AppSize.s20),
             _buildLanguageOption(context, StringsManager.arabic.tr(), () {
-              context.setLocale(const Locale('ar')); // Switch to Arabic
-              profileViewModel.setLanguage(StringsManager.arabic.tr());
+              context.setLocale(const Locale('ar'));
+              profileViewModel.setLanguage('ar');
+              mainLayoutViewModel.setLanguage('ar');
               Navigator.pop(context);
             }),
             _buildLanguageOption(context, StringsManager.english.tr(), () {
-              context.setLocale(const Locale('en')); // Switch to English
-              profileViewModel.setLanguage(StringsManager.english.tr());
+              context.setLocale(const Locale('en'));
+              profileViewModel.setLanguage('en');
+              mainLayoutViewModel.setLanguage('en');
               Navigator.pop(context);
             }),
           ],

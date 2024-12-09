@@ -185,9 +185,9 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i375.ForgetPasswordValidator());
     gh.factory<_i67.LoginValidator>(() => _i67.LoginValidator());
     gh.factory<_i877.RegisterValidator>(() => _i877.RegisterValidator());
-    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.factory<_i826.UpdatePasswordValidator>(
         () => _i826.UpdatePasswordValidator());
+    gh.factory<_i923.EditProfileValidator>(() => _i923.EditProfileValidator());
     gh.lazySingleton<_i361.Dio>(() => dioModule.provideDio());
     gh.singleton<_i94.SharedPreferencesService>(
         () => _i94.SharedPreferencesService(gh<_i460.SharedPreferences>()));
