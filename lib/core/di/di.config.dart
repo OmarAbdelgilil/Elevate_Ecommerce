@@ -211,16 +211,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i871.AuthOfflineDatasource>(
         () => _i601.AuthOfflineDatasourceImpl());
-    gh.factory<_i154.UpdatePasswordOnlineDatasource>(
-        () => _i1034.UpdatePasswordOnlineDatasourceImpl(
-              gh<_i561.ApiManager>(),
-              gh<_i924.TokenProvider>(),
-            ));
     gh.factory<_i14.ProductDetails_Onlinedatasource>(() =>
         _i958.ProductDetails_Onlinedatasource_Impl(gh<_i561.ApiManager>()));
-    gh.factory<_i923.UpdatePasswordRepository>(() =>
-        _i411.UpdatePasswordRepositoryImpl(
-            gh<_i154.UpdatePasswordOnlineDatasource>()));
     gh.factory<_i191.CartOnlineDatasource>(
         () => _i145.CartOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i547.CartRepository>(
@@ -239,6 +231,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i977.LogoutRpoImpl(gh<_i731.LogoutOnlineDatasource>()));
     gh.factory<_i710.LoginOnlineDatasource>(
         () => _i988.LoginOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i154.UpdatePasswordOnlineDatasource>(
+        () => _i1034.UpdatePasswordOnlineDatasourceImpl(
+              gh<_i561.ApiManager>(),
+              gh<_i924.TokenProvider>(),
+            ));
     gh.factory<_i267.ForgetPasswordOnlineDatasource>(
         () => _i460.ForgetPasswordOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i974.ForgetPasswordRepository>(() =>
@@ -251,8 +248,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i321.ProductDetailsRepository>(() =>
         _i629.ProductDetailsRepoImpl(
             gh<_i14.ProductDetails_Onlinedatasource>()));
-    gh.factory<_i355.UpdatePasswordUseCase>(() =>
-        _i355.UpdatePasswordUseCase(gh<_i923.UpdatePasswordRepository>()));
     gh.factory<_i983.LoginRepo>(
         () => _i568.LoginRepoImpl(gh<_i710.LoginOnlineDatasource>()));
     gh.factory<_i715.GetLoggedUserDataRepo>(() =>
@@ -283,16 +278,13 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i405.AddProductToCartUsecase>(),
           gh<_i924.TokenProvider>(),
         ));
+    gh.factory<_i923.UpdatePasswordRepository>(() =>
+        _i411.UpdatePasswordRepositoryImpl(
+            gh<_i154.UpdatePasswordOnlineDatasource>()));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
     gh.factory<_i459.LogoutUsecase>(
         () => _i459.LogoutUsecase(gh<_i371.LogoutRepo>()));
-    gh.factory<_i833.UpdatePasswordViewModel>(
-        () => _i833.UpdatePasswordViewModel(
-              gh<_i355.UpdatePasswordUseCase>(),
-              gh<_i826.UpdatePasswordValidator>(),
-              gh<_i459.LogoutUsecase>(),
-            ));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
           gh<_i981.AuthOnlineDatasource>(),
           gh<_i871.AuthOfflineDatasource>(),
@@ -321,6 +313,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i177.ProductDetails_ViewModel(gh<_i665.ProductDetailsUsecase>()));
     gh.factory<_i1013.GetLogedUserDataUsecase>(() =>
         _i1013.GetLogedUserDataUsecase(gh<_i715.GetLoggedUserDataRepo>()));
+    gh.factory<_i355.UpdatePasswordUseCase>(() =>
+        _i355.UpdatePasswordUseCase(gh<_i923.UpdatePasswordRepository>()));
     gh.factory<_i694.RegisterUseCase>(
         () => _i694.RegisterUseCase(gh<_i760.RegisterRepository>()));
     gh.factory<_i61.RegisterViewModel>(() => _i61.RegisterViewModel(
@@ -349,6 +343,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i303.CategoriesViewmodel(gh<_i493.GetCategoriesUsecase>()));
     gh.factory<_i859.CategoriesViewmodel>(
         () => _i859.CategoriesViewmodel(gh<_i967.GetCategoriesUsecase>()));
+    gh.factory<_i833.UpdatePasswordViewModel>(
+        () => _i833.UpdatePasswordViewModel(
+              gh<_i355.UpdatePasswordUseCase>(),
+              gh<_i826.UpdatePasswordValidator>(),
+              gh<_i459.LogoutUsecase>(),
+            ));
     gh.factory<_i87.EditProfileScreenViewModel>(() =>
         _i87.EditProfileScreenViewModel(gh<_i840.UpdateUserDataUseCase>()));
     gh.factory<_i714.OccasionsViewmodel>(

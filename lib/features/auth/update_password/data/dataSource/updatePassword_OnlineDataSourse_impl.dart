@@ -13,8 +13,8 @@ class UpdatePasswordOnlineDatasourceImpl implements UpdatePasswordOnlineDatasour
   final ApiManager apiManager;
   final TokenProvider tokenProvider;
 
-  UpdatePasswordOnlineDatasourceImpl(this.apiManager, [TokenProvider? tokenProvider])
-      : tokenProvider = tokenProvider ?? TokenProvider();
+  UpdatePasswordOnlineDatasourceImpl(this.apiManager, this.tokenProvider);
+
 
   @override
   Future<Result<User?>> updatePassword(UpdatePasswordRequest request) {

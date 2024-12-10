@@ -736,7 +736,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          '/v1/addresses/${productId}',
+          '//v1/addresses/${productId}',
           queryParameters: queryParameters,
           data: _data,
         )
