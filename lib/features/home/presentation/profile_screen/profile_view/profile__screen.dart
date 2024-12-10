@@ -104,9 +104,9 @@ class ProfileScreen extends StatelessWidget {
                         InkWell(
                             onTap: userProvider.userData?.firstName != null
                                 ? () {
-                              Navigator.of(context).pushNamed(
-                                  AppRoutes.editProfile);
-                            }
+                                    Navigator.of(context)
+                                        .pushNamed(AppRoutes.editProfile);
+                                  }
                                 : null,
                             child: SvgPicture.asset(SVGAssets.penIcon)),
                       ],
@@ -186,8 +186,12 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: AppSize.s10.h),
-                _profileSection(null, StringsManager.conditions, () {}, null),
-                _profileSection(null, StringsManager.aboutUs, () {}, null),
+                _profileSection(null, StringsManager.conditions, () {
+                  Navigator.pushNamed(context, AppRoutes.termsAndConditions);
+                }, null),
+                _profileSection(null, StringsManager.aboutUs, () {
+                  Navigator.pushNamed(context, AppRoutes.aboutUs);
+                }, null),
                 const Divider(color: ColorManager.grey),
                 InkWell(
                   onTap: () {

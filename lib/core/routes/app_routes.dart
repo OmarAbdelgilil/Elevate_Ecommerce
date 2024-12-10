@@ -13,4 +13,6 @@ static const Address ="Address";
   static const occasions = "occasions";
   static const editProfile = "editProfile";
   static const Categories = "categories";
+  static const termsAndConditions = "terms&conditions";
+  static const aboutUs = "aboutUs";
 }
