@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/occasion.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/occasions_section/occasion_item.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/section_header.dart';
@@ -20,7 +21,7 @@ class OccasionSection extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         SectionHeader(
-            title: StringsManager.occasionSectionHeader,
+            title: StringsManager.occasionSectionHeader.tr(),
             onpressed: () {
               Navigator.of(context).push(MaterialPageRoute(
                 builder: (context) => OccasionsScreen(
@@ -46,8 +47,8 @@ class OccasionSection extends StatelessWidget {
             ),
           ),
         if (exception != null)
-          const Center(
-            child: Text(StringsManager.occasionSectionError),
+          Center(
+            child: Text(StringsManager.occasionSectionError.tr()),
           )
       ],
     );

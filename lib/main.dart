@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/cache/hive_service.dart';
 import 'package:elevate_ecommerce/core/common/bloc_observer.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
@@ -20,8 +21,9 @@ import 'package:provider/provider.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
   await Hive.initFlutter();
-
+  final String initialRoute;
   Hive.registerAdapter(UserModelAdapter());
   HttpOverrides.global = MyHttpOverrides();
   configureDependencies();
@@ -38,19 +40,27 @@ Future<void> main() async {
     final userModel = await HiveService().getUser(token);
     UserData userData = userModel!.toUserData();
     UserProvider().setUserData(userData);
+    initialRoute = AppRoutes.mainLayOut;
+  } else {
+    initialRoute = AppRoutes.login;
   }
   print("Token retrieved: $token");
 
-  final String initialRoute =
-      token != null ? AppRoutes.mainLayOut : AppRoutes.login;
+  // final String initialRoute =
+  //     token != null ? AppRoutes.mainLayOut : AppRoutes.login;
 
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => UserProvider()),
-        ChangeNotifierProvider(create: (_) => TokenProvider()),
-      ],
-      child: MyApp(initialRoute: initialRoute),
+    EasyLocalization(
+      supportedLocales: [Locale('en'), Locale('ar')],
+      path: 'assets/translations', // Path to translations
+      fallbackLocale: Locale('en'),
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UserProvider()),
+          ChangeNotifierProvider(create: (_) => TokenProvider()),
+        ],
+        child: MyApp(initialRoute: initialRoute),
+      ),
     ),
   );
 }
@@ -69,6 +79,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
         scaffoldMessengerKey: scaffoldMessengerKey,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -76,10 +89,7 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-
-
-        initialRoute: AppRoutes.register,
-
+        initialRoute: initialRoute,
       ),
     );
   }

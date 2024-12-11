@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
@@ -27,13 +28,13 @@ class CartScreen extends StatelessWidget {
               title: Row(
                 children: [
                   Text(
-                    StringsManager.cartTitle,
+                    StringsManager.cartTitle.tr(),
                     style:
                         TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
                   ),
                   if (state is CartSuccessState)
                     Text(
-                      '(${state.cartData!.numOfCartItems} ${StringsManager.items})',
+                      '(${state.cartData!.numOfCartItems} ${StringsManager.items.tr()})',
                       style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w500,
@@ -101,7 +102,8 @@ class CartScreen extends StatelessWidget {
                                         horizontal: 16),
                                     child: CustomButton(
                                       onPressed: () {},
-                                      text: StringsManager.checkoutButtonText,
+                                      text: StringsManager.checkoutButtonText
+                                          .tr(),
                                       radius: 20,
                                     ),
                                   )
@@ -112,7 +114,7 @@ class CartScreen extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: CustomButton(
-                                    text: StringsManager.loginButton,
+                                    text: StringsManager.loginButton.tr(),
                                     onPressed: () {
                                       Navigator.pushNamed(
                                           context, AppRoutes.login);

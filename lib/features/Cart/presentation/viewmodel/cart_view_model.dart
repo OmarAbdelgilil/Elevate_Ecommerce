@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_item.dart';
@@ -6,6 +7,7 @@ import 'package:elevate_ecommerce/features/Cart/domain/usecases/add_product_to_c
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/get_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/remove_item_from_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/update_cart_product_quantity_usecase.dart';
+import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view_model/mian_lay_out_view_model.dart';
 import 'package:elevate_ecommerce/main.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -121,7 +123,7 @@ class CartViewmodel extends Cubit<CartState> {
           case Fail<CartModel?>():
             emit(CartErrorState(exception: cart.exception));
         }
-        _showSnackbar(StringsManager.productAddedToCart);
+        _showSnackbar(StringsManager.productAddedToCart.tr());
       case Fail<bool?>():
         emit(CartErrorState(exception: result.exception));
     }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/widgets/product_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -79,7 +80,7 @@ class ProductGridItem extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
-                                "${StringsManager.productPriceCurrency} $priceAfterDiscount",
+                                "${StringsManager.productPriceCurrency.tr()} $priceAfterDiscount",
                                 style: AppTextStyles.price(
                                     color: ColorManager.black,
                                     fontSize: AppSize.s14,
@@ -130,7 +131,7 @@ class ProductGridItem extends StatelessWidget {
                               ColorManager.white, BlendMode.srcIn),
                         ),
                         Text(
-                          StringsManager.productButton,
+                          StringsManager.productButton.tr(),
                           style:
                               AppTextStyles.button(color: ColorManager.white),
                         )

@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
 import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view_model/mian_lay_out_view_model.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
@@ -97,7 +99,7 @@ class ProfileScreen extends StatelessWidget {
                       children: [
                         Text(
                           userProvider.userData?.firstName ??
-                              StringsManager.guest,
+                              StringsManager.guest.tr(),
                           style: AppTextStyles.title(),
                         ),
                         SizedBox(width: AppSize.s8.w),
@@ -112,7 +114,8 @@ class ProfileScreen extends StatelessWidget {
                       ],
                     ),
                     Text(
-                      userProvider.userData?.email ?? StringsManager.guestEmail,
+                      userProvider.userData?.email ??
+                          StringsManager.guestEmail.tr(),
                       style: AppTextStyles.title(
                         color: ColorManager.lightGrey,
                         fontSize: 18,
@@ -128,7 +131,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.myOrder,
+                    StringsManager.myOrder.tr(),
                     () {},
                     null),
                 _profileSection(
@@ -137,11 +140,8 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.savedAddress,
-                    () {
-                      Navigator.of(context).pushNamed(
-                          AppRoutes.Address);
-                    },
+                    StringsManager.savedAddress.tr(),
+                    () {},
                     null),
                 const Divider(color: ColorManager.grey),
                 _profileSection(
@@ -153,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                     inactiveThumbColor: Colors.grey.shade400,
                     inactiveTrackColor: Colors.grey.shade300,
                   ),
-                  StringsManager.notification,
+                  StringsManager.notification.tr(),
                   () {},
                   null,
                 ),
@@ -167,7 +167,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const SizedBox(width: 5),
                     Text(
-                      StringsManager.language,
+                      StringsManager.language.tr(),
                       style: AppTextStyles.title(
                           fontWeight: FontWeight.w400, fontSize: 15),
                     ),
@@ -176,7 +176,9 @@ class ProfileScreen extends StatelessWidget {
                       onTap: () =>
                           _showLanguageModal(context, profileViewModel),
                       child: Text(
-                        profileViewModel.selectedLanguage,
+                        context.locale.languageCode == 'ar'
+                            ? StringsManager.arabic.tr()
+                            : StringsManager.english.tr(),
                         style: AppTextStyles.title(
                             color: ColorManager.primary,
                             fontWeight: FontWeight.w400,
@@ -186,10 +188,10 @@ class ProfileScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: AppSize.s10.h),
-                _profileSection(null, StringsManager.conditions, () {
+                _profileSection(null, StringsManager.conditions.tr(), () {
                   Navigator.pushNamed(context, AppRoutes.termsAndConditions);
                 }, null),
-                _profileSection(null, StringsManager.aboutUs, () {
+                _profileSection(null, StringsManager.aboutUs.tr(), () {
                   Navigator.pushNamed(context, AppRoutes.aboutUs);
                 }, null),
                 const Divider(color: ColorManager.grey),
@@ -205,7 +207,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.logout,
+                    StringsManager.logout.tr(),
                     () {},
                     SvgPicture.asset(
                       SVGAssets.logoutIcon,
@@ -259,6 +261,9 @@ Widget _profileSection(Widget? icon, String sectionName,
 
 void _showLanguageModal(
     BuildContext context, ProfileViewModel profileViewModel) {
+  final mainLayoutViewModel =
+      Provider.of<MainLayoutViewModel>(context, listen: false);
+
   showModalBottomSheet(
     context: context,
     backgroundColor: Colors.white,
@@ -271,18 +276,19 @@ void _showLanguageModal(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Header Text
-            Text(
-              StringsManager.selectedLanguage,
-              style: AppTextStyles.title(fontSize: 18),
-            ),
+            Text(StringsManager.selectedLanguage.tr(),
+                style: AppTextStyles.title(fontSize: 18)),
             const SizedBox(height: AppSize.s20),
-            _buildLanguageOption(context, StringsManager.english, () {
-              profileViewModel.setLanguage(StringsManager.english);
+            _buildLanguageOption(context, StringsManager.arabic.tr(), () {
+              context.setLocale(const Locale('ar'));
+              profileViewModel.setLanguage('ar');
+              mainLayoutViewModel.setLanguage('ar');
               Navigator.pop(context);
             }),
-            _buildLanguageOption(context, StringsManager.arabic, () {
-              profileViewModel.setLanguage(StringsManager.arabic);
+            _buildLanguageOption(context, StringsManager.english.tr(), () {
+              context.setLocale(const Locale('en'));
+              profileViewModel.setLanguage('en');
+              mainLayoutViewModel.setLanguage('en');
               Navigator.pop(context);
             }),
           ],
