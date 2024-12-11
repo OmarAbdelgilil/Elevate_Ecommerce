@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
+import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addresseCard.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
@@ -18,7 +20,7 @@ class AddressesScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => addressViewModel..doIntent(LoadAddressIntent()),
       child: Scaffold(
-        appBar: customAppBar(title: StringsManager.savedAddress),
+        appBar: customAppBar(title: StringsManager.savedAddress.tr()),
         body: BlocBuilder<AddressViewModel, AddressState>(
           builder: (context, state) {
             if (state is AddressRemovedState) {
@@ -42,8 +44,8 @@ class AddressesScreen extends StatelessWidget {
                           : state is AddressSuccessState
                               ? (state.addressData!.isEmpty
                                   ? Center(
-                                      child:
-                                          Text(StringsManager.adressNotFound),
+                                      child: Text(
+                                          StringsManager.adressNotFound.tr()),
                                     )
                                   : ListView.builder(
                                       itemCount: state.addressData!.length,
@@ -61,7 +63,7 @@ class AddressesScreen extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: CustomButton(
-                    text: StringsManager.addAdress,
+                    text: StringsManager.addAdress.tr(),
                     onPressed: () {
                       // Navigate to add address screen
                     },
