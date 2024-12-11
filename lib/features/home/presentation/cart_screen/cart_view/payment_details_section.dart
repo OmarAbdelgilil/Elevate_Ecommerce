@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +20,7 @@ class PaymentDetailsSection extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    StringsManager.subTotal,
+                    StringsManager.subTotal.tr(),
                     style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
@@ -41,7 +42,7 @@ class PaymentDetailsSection extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    StringsManager.deliveryFee,
+                    StringsManager.deliveryFee.tr(),
                     style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w400,
@@ -67,7 +68,7 @@ class PaymentDetailsSection extends StatelessWidget {
           child: Row(
             children: [
               Text(
-                StringsManager.total,
+                StringsManager.total.tr(),
                 style: TextStyle(
                   fontSize: 20.sp,
                   fontWeight: FontWeight.w500,

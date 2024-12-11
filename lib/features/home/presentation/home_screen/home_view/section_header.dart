@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -25,7 +27,7 @@ class SectionHeader extends StatelessWidget {
           TextButton(
               onPressed: onpressed,
               child: Text(
-                'View All',
+                StringsManager.viewAllButtonText.tr(),
                 style: TextStyle(
                     fontSize: 14.sp,
                     color: ColorManager.primary,

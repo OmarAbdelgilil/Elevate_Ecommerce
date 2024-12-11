@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 
 class GuestButton extends StatelessWidget {
@@ -21,8 +23,8 @@ class GuestButton extends StatelessWidget {
             shadowColor: Colors.transparent,
             side: const BorderSide(color: Colors.black, width: 1),
           ),
-          child: const Text(
-            'Continue as guest',
+          child: Text(
+            StringsManager.continueAsguest.tr(),
             style: TextStyle(fontSize: 16, color: Color(0xFF535353)),
           ),
         ));

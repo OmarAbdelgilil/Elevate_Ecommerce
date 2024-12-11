@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 
 class RememberMeCheckbox extends StatelessWidget {
@@ -20,8 +22,8 @@ class RememberMeCheckbox extends StatelessWidget {
             );
           },
         ),
-        const Text(
-          'Remember me',
+        Text(
+          StringsManager.rememberme.tr(),
           style: TextStyle(color: Colors.black),
         ),
       ],

@@ -60,6 +60,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i18;
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
     as _i29;
+import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
+    as _i29;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -388,4 +390,23 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i29.UserAddressResponse?>.value(),
       ) as _i8.Future<_i29.UserAddressResponse?>);
+
+  @override
+  _i8.Future<_i29.AddressResponse?> getAddresses() => (super.noSuchMethod(
+        Invocation.method(
+          #getAddresses,
+          [],
+        ),
+        returnValue: _i8.Future<_i29.AddressResponse?>.value(),
+      ) as _i8.Future<_i29.AddressResponse?>);
+
+  @override
+  _i8.Future<_i29.AddressResponse?> removeAddress(String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeAddress,
+          [productId],
+        ),
+        returnValue: _i8.Future<_i29.AddressResponse?>.value(),
+      ) as _i8.Future<_i29.AddressResponse?>);
 }

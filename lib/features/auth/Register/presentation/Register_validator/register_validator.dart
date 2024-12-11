@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/register_validator/register_validator_types_enum.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -64,7 +65,7 @@ class RegisterValidator {
   String? Function(String?) _validateEmail() {
     return (String? value) {
       if (value != null && (value.isEmpty || !value.contains("@"))) {
-        return StringsManager.issueEmptyEamil;
+        return StringsManager.issueEmptyEamil.tr();
       }
       return null;
     };
@@ -75,9 +76,9 @@ class RegisterValidator {
       final RegExp passwordRegExp = RegExp(
           r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyPassword;
+        return StringsManager.issueEmptyPassword.tr();
       } else if (!passwordRegExp.hasMatch(value)) {
-        return StringsManager.issuePasswordPattern;
+        return StringsManager.issuePasswordPattern.tr();
       }
       return null;
     };
@@ -86,10 +87,10 @@ class RegisterValidator {
   String? Function(String?) _validateConfirmPassword() {
     return (String? value) {
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyPassword;
+        return StringsManager.issueEmptyPassword.tr();
       }
       if (_passwordController.text != value) {
-        return StringsManager.issuePasswordNotMatch;
+        return StringsManager.issuePasswordNotMatch.tr();
       }
       return null;
     };
@@ -98,10 +99,10 @@ class RegisterValidator {
   String? Function(String?) _validateFirstName() {
     return (String? value) {
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyFirstname;
+        return StringsManager.issueEmptyFirstname.tr();
       }
       if (!RegExp(r'^[A-Za-z]+$').hasMatch(value)) {
-        return StringsManager.validateFirstNameType;
+        return StringsManager.validateFirstNameType.tr();
       }
       return null;
     };
@@ -110,10 +111,10 @@ class RegisterValidator {
   String? Function(String?) _validateLastName() {
     return (String? value) {
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyLastname;
+        return StringsManager.issueEmptyLastname.tr();
       }
       if (!RegExp(r'^[A-Za-z]+$').hasMatch(value)) {
-        return StringsManager.validateLastNameType;
+        return StringsManager.validateLastNameType.tr();
       }
       return null;
     };
@@ -122,10 +123,10 @@ class RegisterValidator {
   String? Function(String?) _validatePhone() {
     return (String? value) {
       if (value == null || value.isEmpty) {
-        return StringsManager.issueEmptyPhone;
+        return StringsManager.issueEmptyPhone.tr();
       }
       if (!RegExp(r'^\+20\d{10}$').hasMatch(value)) {
-        return StringsManager.validatePhoneNumber;
+        return StringsManager.validatePhoneNumber.tr();
       }
       return null;
     };

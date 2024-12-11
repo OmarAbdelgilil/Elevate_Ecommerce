@@ -59,6 +59,7 @@ dependencies:
   flutter_html:
   google_maps_flutter:
 
+  easy_localization: ^3.0.7
 
 dev_dependencies:
   flutter_test:
@@ -93,6 +94,7 @@ flutter:
     - assets/lotties/
     - assets/svg/
     - assets/html/
+    - assets/translations/
     - assets/map_style/
 
   # An image asset can refer to one or more resolution-specific "variants", see
