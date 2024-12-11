@@ -6,6 +6,7 @@ import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/cart_item_card.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/payment_details_section.dart';
+import 'package:elevate_ecommerce/features/home/presentation/check_out/check_out_view.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -101,7 +102,18 @@ class CartScreen extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16),
                                     child: CustomButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        final now = DateTime.now();
+                                        final deliveryDate =
+                                            now.add(const Duration(days: 2));
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => CheckOutView(
+                                                deliveryDate: deliveryDate),
+                                          ),
+                                        );
+                                      },
                                       text: StringsManager.checkoutButtonText
                                           .tr(),
                                       radius: 20,
