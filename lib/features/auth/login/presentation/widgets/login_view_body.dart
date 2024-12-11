@@ -25,98 +25,100 @@ class LoginViewBody extends StatelessWidget {
   Widget buildLoginForm(BuildContext context) {
     return Form(
       key: loginValidator.loginFormKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 24),
-          CustomTextField(
-            hint: StringsManager.emailFieldHint,
-            label: StringsManager.emailFieldLabel,
-            controller: loginValidator.emailController,
-            validator: loginValidator.validate(LoginValidatorTypes.email),
-          ),
-          const SizedBox(height: 24),
-          CustomTextField(
-            obscureText: true,
-            hint: StringsManager.hintPassword,
-            label: StringsManager.passwordFieldLabel,
-            controller: loginValidator.passwordController,
-            validator: loginValidator.validate(LoginValidatorTypes.password),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              RememberMeCheckbox(notifier: rememberMeNotifier),
-              TextButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.forgetPassword),
-                child: const Text(
-                  'Forget password?',
-                  style: TextStyle(
-                    color: Colors.black,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.black,
-                    decorationThickness: 2,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 24),
+            CustomTextField(
+              hint: StringsManager.emailFieldHint,
+              label: StringsManager.emailFieldLabel,
+              controller: loginValidator.emailController,
+              validator: loginValidator.validate(LoginValidatorTypes.email),
+            ),
+            const SizedBox(height: 24),
+            CustomTextField(
+              obscureText: true,
+              hint: StringsManager.hintPassword,
+              label: StringsManager.passwordFieldLabel,
+              controller: loginValidator.passwordController,
+              validator: loginValidator.validate(LoginValidatorTypes.password),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RememberMeCheckbox(notifier: rememberMeNotifier),
+                TextButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AppRoutes.forgetPassword),
+                  child: const Text(
+                    'Forget password?',
+                    style: TextStyle(
+                      color: Colors.black,
+                      decoration: TextDecoration.underline,
+                      decorationColor: Colors.black,
+                      decorationThickness: 2,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          BlocBuilder<LoginViewModel, LoginState>(builder: (context, state) {
-            if (state is LoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: ColorManager.primary,
-                ),
+              ],
+            ),
+            const SizedBox(height: 24),
+            BlocBuilder<LoginViewModel, LoginState>(builder: (context, state) {
+              if (state is LoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: ColorManager.primary,
+                  ),
+                );
+              }
+              return CustomButton(
+                text: 'Login',
+                onPressed: () {
+                  if (loginValidator.loginFormKey.currentState?.validate() ??
+                      false) {
+                    final rememberMeState = rememberMeNotifier.value;
+                    print("Remember Me checkbox state: $rememberMeState");
+        
+                    context.read<LoginViewModel>().handleIntent(
+                          LoginIntent(
+                            email: loginValidator.emailController.text,
+                            password: loginValidator.passwordController.text,
+                            rememberMe: rememberMeState,
+                          ),
+                        );
+                  }
+                },
               );
-            }
-            return CustomButton(
-              text: 'Login',
-              onPressed: () {
-                if (loginValidator.loginFormKey.currentState?.validate() ??
-                    false) {
-                  final rememberMeState = rememberMeNotifier.value;
-                  print("Remember Me checkbox state: $rememberMeState");
-
-                  context.read<LoginViewModel>().handleIntent(
-                        LoginIntent(
-                          email: loginValidator.emailController.text,
-                          password: loginValidator.passwordController.text,
-                          rememberMe: rememberMeState,
-                        ),
-                      );
-                }
-              },
-            );
-          }),
-          const SizedBox(height: 16),
-          GuestButton(),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text(
-                'Don\'t have an account?',
-                style: TextStyle(color: Colors.black, fontSize: 16),
-              ),
-              TextButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.register),
-                child: Text(
-                  'Sign up',
-                  style: TextStyle(
-                    color: primaryColor,
-                    fontSize: 16,
-                    decoration: TextDecoration.underline,
-                    decorationColor: primaryColor,
-                    decorationThickness: 2,
+            }),
+            const SizedBox(height: 16),
+            GuestButton(),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  'Don\'t have an account?',
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+                TextButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AppRoutes.register),
+                  child: Text(
+                    'Sign up',
+                    style: TextStyle(
+                      color: primaryColor,
+                      fontSize: 16,
+                      decoration: TextDecoration.underline,
+                      decorationColor: primaryColor,
+                      decorationThickness: 2,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -32,7 +32,9 @@ import '../../../features/auth/forget_password/data/models/requests/update_user_
 import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
 
+import '../../../features/home/data/models/request/address_request/address_request.dart';
 import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
+import '../../../features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import '../../providers/token_provider.dart';
 
 part 'api_manager.g.dart';
@@ -136,4 +138,10 @@ abstract class ApiManager {
 
   @GET(ApiConstants.logoutPath)
   Future<Logout?> logout(@Header('Authorization') String authorization);
+
+  @PATCH(ApiConstants.addSaveAddressPath)
+  Future<UserAddressResponse?> saveAddress(
+      @Body() AddressRequest address,
+
+      );
 }

@@ -4,10 +4,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:ui' as _i30;
+import 'dart:ui' as _i32;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i7;
-import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i29;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i31;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -46,6 +46,8 @@ import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_respo
     as _i22;
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart'
     as _i23;
+import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
+    as _i30;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i19;
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
@@ -58,6 +60,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i18;
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
+    as _i29;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -375,12 +379,23 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i28.Logout?>.value(),
       ) as _i8.Future<_i28.Logout?>);
+
+  @override
+  _i8.Future<_i29.UserAddressResponse?> saveAddress(
+          _i30.AddressRequest? address) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAddress,
+          [address],
+        ),
+        returnValue: _i8.Future<_i29.UserAddressResponse?>.value(),
+      ) as _i8.Future<_i29.UserAddressResponse?>);
 }
 
 /// A class which mocks [TokenProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTokenProvider extends _i1.Mock implements _i29.TokenProvider {
+class MockTokenProvider extends _i1.Mock implements _i31.TokenProvider {
   MockTokenProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -411,7 +426,7 @@ class MockTokenProvider extends _i1.Mock implements _i29.TokenProvider {
       );
 
   @override
-  void addListener(_i30.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i32.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -420,7 +435,7 @@ class MockTokenProvider extends _i1.Mock implements _i29.TokenProvider {
       );
 
   @override
-  void removeListener(_i30.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i32.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

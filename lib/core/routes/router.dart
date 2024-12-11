@@ -3,7 +3,6 @@ import 'package:elevate_ecommerce/core/routes/route_not_found.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_view/register_view.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/update_password_view/update_password_view.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/home_response/best_seller.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_view.dart';
@@ -15,7 +14,10 @@ import 'package:elevate_ecommerce/features/home/presentation/profile_screen/term
 import 'package:flutter/material.dart';
 
 import '../../features/auth/login/presentation/views/login_view.dart';
+import '../../features/home/presentation/permission_screen/permission_view/permission_screen.dart';
 import '../../features/home/presentation/profile_edit_screen/profile_edit_view/profile_edit_screen.dart';
+import '../../features/home/presentation/profile_screen/save_address/save_address_view/save_address_view.dart';
+
 
 final dummyProduct = ProductsModel(
     id: '1',
@@ -56,15 +58,19 @@ Route manageRoutes(RouteSettings settings) {
               ));
     case AppRoutes.bestSeller:
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
+    case AppRoutes.saveAddressScreen:
+      return MaterialPageRoute(builder: (context) => const SaveAddressScreen());
+    case AppRoutes.permissionScreen:
+      return MaterialPageRoute(builder: (_) => const PermissionsScreen());
     case AppRoutes.ResetPassword:
-      return MaterialPageRoute(builder: (context) => UpdatePasswordView());
+      return MaterialPageRoute(builder: (context) =>const UpdatePasswordView());
     case AppRoutes.termsAndConditions:
       return MaterialPageRoute(
-        builder: (context) => TermsAndConditionsScreen(),
+        builder: (context) =>const TermsAndConditionsScreen(),
       );
     case AppRoutes.aboutUs:
       return MaterialPageRoute(
-        builder: (context) => AboutUsScreen(),
+        builder: (context) =>const AboutUsScreen(),
       );
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());

@@ -9,7 +9,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-import 'register_viewmodel_test.mocks.dart';
+import 'register_viewModel_test.mocks.dart';
+
 
 @GenerateMocks([
   RegisterUseCase,
