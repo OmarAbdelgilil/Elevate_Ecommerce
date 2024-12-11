@@ -11,10 +11,7 @@ class ApiConstants {
   static const String getProductDetailsPath = "/v1/products";
   static const String allOccasionsPath = "/v1/occasions";
 static const String updatePasswordPath="/v1/auth/change-password";
-
-
   static const String getAllBestSellerProductsPath = "/v1/best-seller";
-
   static const String profilePath = "/v1/auth/profile-data";
 
   static const String cartPath = "/v1/cart";
@@ -22,4 +19,6 @@ static const String updatePasswordPath="/v1/auth/change-password";
   static const String profileImageDefault =
       "https://flower.elevateegy.com/uploads/default-profile.png";
   static const String logoutPath = "/v1/auth/logout";
+  static const String getAddressesPath ="/v1/addresses";
+  static const String removeAddressPath ="//v1/addresses";
 }

@@ -130,6 +130,7 @@
 "In stock": "In stock",
 "All prices include tax": "All prices include tax",
  "html_file": "assets/html/terms_and_conditions.html",
-   "about_us_file": "assets/html/about_us.html"
-
+   "about_us_file": "assets/html/about_us.html",
+   "No Addresses Found, Add Your address": "No Addresses Found, Add Your address",
+   "Add new address": "Add new address"
 }

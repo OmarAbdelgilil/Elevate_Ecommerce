@@ -3,7 +3,6 @@ import 'package:elevate_ecommerce/core/routes/route_not_found.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_view/register_view.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/update_password_view/update_password_view.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/home_response/best_seller.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_view.dart';
@@ -12,6 +11,7 @@ import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/about_us/about_us_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/terms_and_conditions.dart/terms_and_conditions_screen.dart';
+import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addressView.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/auth/login/presentation/views/login_view.dart';
@@ -54,10 +54,13 @@ Route manageRoutes(RouteSettings settings) {
                 productId: "673e2e1f1159920171828153",
                 product: dummyProduct,
               ));
+          case AppRoutes.bestSeller:
     case AppRoutes.bestSeller:
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
     case AppRoutes.ResetPassword:
-      return MaterialPageRoute(builder: (context) => UpdatePasswordView());
+      return MaterialPageRoute(builder: (context)=>  UpdatePasswordView());
+    case AppRoutes.Address:
+      return MaterialPageRoute(builder: (context)=>  AddressesScreen());
     case AppRoutes.termsAndConditions:
       return MaterialPageRoute(
         builder: (context) => TermsAndConditionsScreen(),
