@@ -22,7 +22,6 @@ class AddressesScreen extends StatelessWidget {
         body: BlocBuilder<AddressViewModel, AddressState>(
           builder: (context, state) {
             if (state is AddressRemovedState) {
-
               addressViewModel.doIntent(LoadAddressIntent());
               return Center(child: CircularProgressIndicator());
             }
@@ -32,36 +31,37 @@ class AddressesScreen extends StatelessWidget {
                 Expanded(
                   child: state is AddressLoadingState
                       ? Center(
-                    child: CircularProgressIndicator(
-                      color: ColorManager.primary,
-                    ),
-                  )
+                          child: CircularProgressIndicator(
+                            color: ColorManager.primary,
+                          ),
+                        )
                       : state is AddressErrorState
-                      ? Center(
-                    child: Text(extractErrorMessage(state.exception)),
-                  )
-                      : state is AddressSuccessState
-                      ? (state.addressData!.isEmpty
-                      ? Center(
-                    child: Text('No Addresses Found, Add Your address'),
-                  )
-                      : ListView.builder(
-                    itemCount: state.addressData!.length,
-                    itemBuilder: (context, index) {
-                      return AddresseCard(
-                        viewModel: addressViewModel,
-                        address: state.addressData![index],
-                      );
-                    },
-                  ))
-                      : SizedBox(),
+                          ? Center(
+                              child: Text(extractErrorMessage(state.exception)),
+                            )
+                          : state is AddressSuccessState
+                              ? (state.addressData!.isEmpty
+                                  ? Center(
+                                      child:
+                                          Text(StringsManager.adressNotFound),
+                                    )
+                                  : ListView.builder(
+                                      itemCount: state.addressData!.length,
+                                      itemBuilder: (context, index) {
+                                        return AddresseCard(
+                                          viewModel: addressViewModel,
+                                          address: state.addressData![index],
+                                        );
+                                      },
+                                    ))
+                              : SizedBox(),
                 ),
 
                 // Add New Address Button
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: CustomButton(
-                    text: "Add new address",
+                    text: StringsManager.addAdress,
                     onPressed: () {
                       // Navigate to add address screen
                     },

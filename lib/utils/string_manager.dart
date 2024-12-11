@@ -2,8 +2,8 @@ class StringsManager {
   static const login = "login";
   static const bestSeller = "Best seller";
   static const signUp = "Sign up";
-  static const Reset_password="Reset password";
-  static const update ="update";
+  static const Reset_password = "Reset password";
+  static const update = "update";
   static const subject = "subject";
   static const profile = "profile";
   static const exams = "exams";
@@ -117,4 +117,6 @@ class StringsManager {
   static const upDate = 'Update';
   static const editProfile = 'Edit Profile';
   static const change = 'Change';
+  static const adressNotFound = 'No Addresses Found, Add Your address';
+  static const addAdress = 'Add new address';
 }
