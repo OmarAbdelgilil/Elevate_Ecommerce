@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -29,7 +30,7 @@ class ResetSuccessfullyScreen extends StatelessWidget {
                 height: 5.h,
               ),
               Text(
-                StringsManager.passwordResetSuccess,
+                StringsManager.passwordResetSuccess.tr(),
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp),
               ),
             ],

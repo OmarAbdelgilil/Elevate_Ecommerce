@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
@@ -7,6 +8,7 @@ import 'package:elevate_ecommerce/features/auth/login/presentation/login_validat
 import 'package:elevate_ecommerce/features/auth/login/presentation/login_validator/login_validator_types.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/guest_button.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/remember_me_button.dart';
+import 'package:elevate_ecommerce/features/home/presentation/profile_screen/profile_view/profile__screen.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -30,16 +32,16 @@ class LoginViewBody extends StatelessWidget {
         children: [
           const SizedBox(height: 24),
           CustomTextField(
-            hint: StringsManager.emailFieldHint,
-            label: StringsManager.emailFieldLabel,
+            hint: StringsManager.emailFieldHint.tr(),
+            label: StringsManager.emailFieldLabel.tr(),
             controller: loginValidator.emailController,
             validator: loginValidator.validate(LoginValidatorTypes.email),
           ),
           const SizedBox(height: 24),
           CustomTextField(
             obscureText: true,
-            hint: StringsManager.hintPassword,
-            label: StringsManager.passwordFieldLabel,
+            hint: StringsManager.hintPassword.tr(),
+            label: StringsManager.passwordFieldLabel.tr(),
             controller: loginValidator.passwordController,
             validator: loginValidator.validate(LoginValidatorTypes.password),
           ),
@@ -50,9 +52,9 @@ class LoginViewBody extends StatelessWidget {
               TextButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, AppRoutes.forgetPassword),
-                child: const Text(
-                  'Forget password?',
-                  style: TextStyle(
+                child: Text(
+                  StringsManager.forgetpassword.tr(),
+                  style: const TextStyle(
                     color: Colors.black,
                     decoration: TextDecoration.underline,
                     decorationColor: Colors.black,
@@ -72,7 +74,7 @@ class LoginViewBody extends StatelessWidget {
               );
             }
             return CustomButton(
-              text: 'Login',
+              text: StringsManager.login.tr(),
               onPressed: () {
                 if (loginValidator.loginFormKey.currentState?.validate() ??
                     false) {
@@ -96,15 +98,15 @@ class LoginViewBody extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text(
-                'Don\'t have an account?',
+              Text(
+                StringsManager.donthaveaccount.tr(),
                 style: TextStyle(color: Colors.black, fontSize: 16),
               ),
               TextButton(
                 onPressed: () =>
                     Navigator.pushNamed(context, AppRoutes.register),
                 child: Text(
-                  'Sign up',
+                  StringsManager.signUp.tr(),
                   style: TextStyle(
                     color: primaryColor,
                     fontSize: 16,

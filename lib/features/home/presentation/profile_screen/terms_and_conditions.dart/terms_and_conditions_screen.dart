@@ -1,6 +1,8 @@
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:easy_localization/easy_localization.dart';
 
 class TermsAndConditionsScreen extends StatelessWidget {
   const TermsAndConditionsScreen({super.key});
@@ -9,7 +11,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Terms and Conditions"),
+        title: Text(StringsManager.termscondition.tr()),
       ),
       body: FutureBuilder<String>(
         future: _loadHtmlFromAssets(),
@@ -28,6 +30,7 @@ class TermsAndConditionsScreen extends StatelessWidget {
   }
 
   Future<String> _loadHtmlFromAssets() async {
-    return await rootBundle.loadString('assets/html/terms_and_conditions.html');
+    final filePath = 'html_file'.tr();
+    return await rootBundle.loadString(filePath);
   }
 }

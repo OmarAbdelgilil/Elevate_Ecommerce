@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -37,7 +39,7 @@ class _GenderWidgetState extends State<GenderWidget> {
     return Row(
       children: [
         Text(
-          'Gender',
+          StringsManager.gender.tr(),
           style: TextStyle(
             fontSize: 18.sp,
             fontWeight: FontWeight.w500,
@@ -56,7 +58,7 @@ class _GenderWidgetState extends State<GenderWidget> {
               },
             ),
             Text(
-              'Female',
+              StringsManager.female.tr(),
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,
@@ -76,7 +78,7 @@ class _GenderWidgetState extends State<GenderWidget> {
               },
             ),
             Text(
-              'Male',
+              StringsManager.male.tr(),
               style: TextStyle(
                 fontSize: 14.sp,
                 fontWeight: FontWeight.w400,

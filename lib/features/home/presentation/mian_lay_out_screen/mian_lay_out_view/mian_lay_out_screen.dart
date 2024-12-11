@@ -34,8 +34,8 @@ class _MainLayoutBody extends StatelessWidget {
 class _MainBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.read<MainLayoutViewModel>();
-    final selectedIndex = context.watch<MainLayoutViewModel>().selectedIndex;
+    final viewModel = context.watch<MainLayoutViewModel>();
+    final selectedIndex = viewModel.selectedIndex;
     final tabs = viewModel.tabs;
 
     return BottomNavigationBar(
@@ -46,9 +46,7 @@ class _MainBottomNavigationBar extends StatelessWidget {
             tabs[index].icon,
             colorFilter: selectedIndex == index
                 ? const ColorFilter.mode(ColorManager.primary, BlendMode.srcIn)
-                : const ColorFilter.mode(ColorManager.grey,
-                    BlendMode.srcIn), // Apply the color filter
-
+                : const ColorFilter.mode(ColorManager.grey, BlendMode.srcIn),
             width: AppSize.s28,
           ),
           label: tabs[index].label,

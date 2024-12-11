@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:elevate_ecommerce/core/cache/hive_service.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
@@ -13,10 +15,11 @@ class ProfileViewModel extends ChangeNotifier {
   final LogoutUsecase _logoutUsecase;
 
   bool _isNotificationEnabled = false;
-  String _selectedLanguage = 'English';
+  String _selectedLanguage;
   bool _isLoggingOut = false;
 
-  ProfileViewModel(this._logoutUsecase);
+  ProfileViewModel(this._logoutUsecase)
+      : _selectedLanguage = _getDeviceLocale();
 
   bool get isNotificationEnabled => _isNotificationEnabled;
   String get selectedLanguage => _selectedLanguage;
@@ -55,5 +58,10 @@ class ProfileViewModel extends ChangeNotifier {
     }
 
     notifyListeners();
+  }
+
+  static String _getDeviceLocale() {
+    final deviceLocale = PlatformDispatcher.instance.locale;
+    return deviceLocale.languageCode;
   }
 }
