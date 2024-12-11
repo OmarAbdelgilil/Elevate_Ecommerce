@@ -114,7 +114,7 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
 
 
     } else if (result is Fail<UserAddressResponse?>) {
-      emit(ErrorState(result.toString()));
+      emit(ErrorState(result.exception.toString()));
     }
   }
 

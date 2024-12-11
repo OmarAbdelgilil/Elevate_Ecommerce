@@ -1,7 +1,3 @@
-/// street : "Home"
-/// phone : "01010700700"
-/// city : "Gizaa"
-/// _id : "67596a8d2a8d2b899c3e1ec3"
 
 class Address {
   Address({
