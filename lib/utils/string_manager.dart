@@ -138,4 +138,6 @@ class StringsManager {
   static const upDate = 'Update';
   static const editProfile = 'Edit Profile';
   static const change = 'Change';
+  static const adressNotFound = 'No Addresses Found, Add Your address';
+  static const addAdress = 'Add new address';
 }

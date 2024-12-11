@@ -140,9 +140,9 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.savedAddress.tr(),
-                    () {},
-                    null),
+                    StringsManager.savedAddress.tr(), () {
+                  Navigator.of(context).pushNamed(AppRoutes.Address);
+                }, null),
                 const Divider(color: ColorManager.grey),
                 _profileSection(
                   Switch(

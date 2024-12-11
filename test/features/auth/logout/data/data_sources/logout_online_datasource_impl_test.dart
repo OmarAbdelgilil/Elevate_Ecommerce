@@ -27,6 +27,7 @@ import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occ
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
+import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 
@@ -136,6 +137,18 @@ class DummyApiManager implements ApiManager {
   Future<CartResponse?> updateCartProductQuantity(
       String productId, UpdateCartProductQuantityRequest req) {
     // TODO: implement updateCartProductQuantity
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AddressResponse?> getAddresses() {
+    // TODO: implement getAddresses
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<AddressResponse?> removeAddress(String productId) {
+    // TODO: implement removeAddress
     throw UnimplementedError();
   }
 }
