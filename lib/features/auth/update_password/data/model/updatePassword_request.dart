@@ -2,7 +2,6 @@ class UpdatePasswordRequest {
   UpdatePasswordRequest({
     this.password,
     this.newPassword,
-
   });
 
   String? password;
@@ -15,5 +14,4 @@ class UpdatePasswordRequest {
 
     return map;
   }
-
 }

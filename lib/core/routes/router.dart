@@ -54,13 +54,13 @@ Route manageRoutes(RouteSettings settings) {
                 productId: "673e2e1f1159920171828153",
                 product: dummyProduct,
               ));
-          case AppRoutes.bestSeller:
+    case AppRoutes.bestSeller:
     case AppRoutes.bestSeller:
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
     case AppRoutes.ResetPassword:
-      return MaterialPageRoute(builder: (context)=>  UpdatePasswordView());
+      return MaterialPageRoute(builder: (context) => UpdatePasswordView());
     case AppRoutes.Address:
-      return MaterialPageRoute(builder: (context)=>  AddressesScreen());
+      return MaterialPageRoute(builder: (context) => AddressesScreen());
     case AppRoutes.termsAndConditions:
       return MaterialPageRoute(
         builder: (context) => TermsAndConditionsScreen(),

@@ -10,12 +10,10 @@ class AddressViewModel extends Cubit<AddressState> {
   final GetAddressesUsecase _getAddressesUsecase;
   final RemoveAddressUsecase _removeAddressUsecase;
 
-
   AddressViewModel(
-      this._getAddressesUsecase,
-      this._removeAddressUsecase,
-     )
-      : super(AddressInitialState());
+    this._getAddressesUsecase,
+    this._removeAddressUsecase,
+  ) : super(AddressInitialState());
 
   void doIntent(AddressIntent intent) {
     switch (intent) {
@@ -25,11 +23,8 @@ class AddressViewModel extends Cubit<AddressState> {
       case RemoveAddressIntent():
         _removeAddress(intent.addressId);
         break;
-
     }
   }
-
-
 
   Future<void> _getAddresses() async {
     emit(AddressLoadingState());
@@ -41,7 +36,6 @@ class AddressViewModel extends Cubit<AddressState> {
         emit(AddressErrorState(exception: result.exception));
     }
   }
-
 
   Future<void> _removeAddress(String addressId) async {
     emit(AddressRemovedState());
@@ -61,9 +55,6 @@ class AddressViewModel extends Cubit<AddressState> {
       emit(AddressErrorState());
     }
   }
-
-
-
 }
 
 sealed class AddressIntent {}
@@ -74,7 +65,6 @@ class RemoveAddressIntent extends AddressIntent {
   final String addressId;
   RemoveAddressIntent(this.addressId);
 }
-
 
 sealed class AddressState {}
 
