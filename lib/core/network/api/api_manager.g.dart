@@ -694,7 +694,8 @@ class _ApiManager implements ApiManager {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = address;
+    final _data = <String, dynamic>{};
+    _data.addAll(address.toJson());
     final _options = _setStreamType<UserAddressResponse>(Options(
       method: 'PATCH',
       headers: _headers,

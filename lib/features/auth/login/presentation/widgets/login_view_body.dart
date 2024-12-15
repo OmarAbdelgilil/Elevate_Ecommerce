@@ -55,12 +55,12 @@ class LoginViewBody extends StatelessWidget {
                       Navigator.pushNamed(context, AppRoutes.forgetPassword),
                   child:  Text(
                     StringsManager.forgetpassword.tr(),
-                    style: constTextStyle(
-                      color: Colors.black,
-                      decoration: TextDecoration.underline,
-                      decorationColor: Colors.black,
-                      decorationThickness: 2,
-                    ),
+                    // style: constTextStyle(
+                    //   color: Colors.black,
+                    //   decoration: TextDecoration.underline,
+                    //   decorationColor: Colors.black,
+                    //   decorationThickness: 2,
+                    // ),
                   ),
                 ),
               ],

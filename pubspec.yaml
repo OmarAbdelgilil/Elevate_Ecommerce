@@ -59,7 +59,9 @@ dependencies:
   flutter_html:
   google_maps_flutter:
 
-  easy_localization: ^3.0.7
+  easy_localization:
+  geocoding: ^3.0.0
+  fluttertoast: ^8.2.8
 
 dev_dependencies:
   flutter_test:

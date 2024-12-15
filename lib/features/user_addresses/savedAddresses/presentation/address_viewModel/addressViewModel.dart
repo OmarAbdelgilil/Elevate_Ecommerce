@@ -2,6 +2,7 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/model/address_model.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/usecase/getAddresses_usecase.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/usecase/removeAddress_usecase.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,6 +11,8 @@ class AddressViewModel extends Cubit<AddressState> {
   final GetAddressesUsecase _getAddressesUsecase;
   final RemoveAddressUsecase _removeAddressUsecase;
 
+  static AddressViewModel get(BuildContext context) =>
+      BlocProvider.of<AddressViewModel>(context);
 
   AddressViewModel(
       this._getAddressesUsecase,
@@ -81,6 +84,7 @@ sealed class AddressState {}
 class AddressInitialState extends AddressState {}
 
 class AddressRemovedState extends AddressState {}
+
 
 class AddressLoadingState extends AddressState {}
 

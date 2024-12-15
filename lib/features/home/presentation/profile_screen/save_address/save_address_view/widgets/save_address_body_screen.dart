@@ -27,11 +27,7 @@ final SaveAddressViewModel viewModel;
             children: [
               SizedBox(height:MediaQuery.of(context).size.height*.3,
 
-              child: GestureDetector(
-                  onTap: () {
-                    // Navigator.pushNamed(context, routeName);
-                  },
-                  child: MapWidget(viewModel: viewModel)),),
+              child: MapWidget(viewModel: viewModel),),
 
               SizedBox(height: AppSize.s30.h,),
               CustomTextField(
@@ -72,7 +68,11 @@ final SaveAddressViewModel viewModel;
                         phone: viewModel.getPhoneController.text,
                       );
                       viewModel.saveUserAddress(request);
+                      viewModel.clearTextControllers();
+
                     }
+
+
                   },
                 ),
               )

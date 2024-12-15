@@ -132,5 +132,9 @@
  "html_file": "assets/html/terms_and_conditions.html",
    "about_us_file": "assets/html/about_us.html",
    "No Addresses Found, Add Your address": "No Addresses Found, Add Your address",
-   "Add new address": "Add new address"
+   "Add new address": "Add new address",
+    "cancel": "cancel",
+    "loginRequired": "Login Required",
+    "loginRequiredMessage": "You are not logged in. Please log in to continue."
+
 }

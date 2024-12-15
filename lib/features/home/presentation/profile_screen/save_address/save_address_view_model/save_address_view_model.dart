@@ -6,6 +6,7 @@ import 'package:elevate_ecommerce/features/home/presentation/profile_screen/save
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
@@ -56,6 +57,9 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
       Position currentPosition = await Geolocator.getCurrentPosition();
       _userLocation = LatLng(currentPosition.latitude, currentPosition.longitude);
 
+      await fetchAddressFromCoordinates(currentPosition.latitude, currentPosition.longitude);
+
+
       Geolocator.getPositionStream().listen((position) {
         _userLocation = LatLng(position.latitude, position.longitude);
       });
@@ -87,7 +91,36 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
 
     });
   }
-  @override
+
+
+  void clearTextControllers(){
+    _streetController.clear();
+    _phoneController.clear();
+    _cityController.clear();
+  }
+
+
+Future<void> fetchAddressFromCoordinates(double latitude, double longitude) async {
+  try {
+    List<Placemark> placeMarks = await placemarkFromCoordinates(latitude, longitude);
+    if (placeMarks.isNotEmpty) {
+      Placemark place = placeMarks.first;
+
+      String? street = place.street;
+      String? city = place.locality;
+
+      _streetController.text = street ?? "Unknown Street";
+      _cityController.text = city ?? "Unknown City";
+
+
+    }
+  } catch (e) {
+    emit(ErrorState("Error fetching address: $e"));
+  }
+}
+
+
+@override
   set setMapController(GoogleMapController mapController) {
     if (_mapController == null) {
       _mapController = mapController;
@@ -111,6 +144,7 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
 
     if (result is Success<UserAddressResponse?>) {
       emit(SuccessState(result.data?.message ?? ''));
+
 
 
     } else if (result is Fail<UserAddressResponse?>) {

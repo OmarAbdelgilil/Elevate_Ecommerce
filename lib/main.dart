@@ -66,7 +66,7 @@ Future<void> main() async {
 }
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-    GlobalKey<ScaffoldMessengerState>();
+GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
@@ -101,7 +101,7 @@ class MyHttpOverrides extends HttpOverrides {
     final client = super.createHttpClient(context);
     client.badCertificateCallback =
         (X509Certificate cert, String host, int port) =>
-            true; // bypass SSL verification
+    true; // bypass SSL verification
     return client;
   }
 }

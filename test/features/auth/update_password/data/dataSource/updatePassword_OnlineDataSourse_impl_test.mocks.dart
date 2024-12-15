@@ -4,12 +4,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:ui' as _i32;
-import 'dart:ui' as _i31;
+import 'dart:ui' as _i33;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i7;
-import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i31;
-import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i30;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i32;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -62,10 +60,10 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i18;
-import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
-    as _i29;
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
     as _i29;
+import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
+    as _i31;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -385,25 +383,6 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i28.Logout?>);
 
   @override
-  _i8.Future<_i29.AddressResponse?> getAddresses() => (super.noSuchMethod(
-        Invocation.method(
-          #getAddresses,
-          [],
-        ),
-        returnValue: _i8.Future<_i29.AddressResponse?>.value(),
-      ) as _i8.Future<_i29.AddressResponse?>);
-
-  @override
-  _i8.Future<_i29.AddressResponse?> removeAddress(String? productId) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #removeAddress,
-          [productId],
-        ),
-        returnValue: _i8.Future<_i29.AddressResponse?>.value(),
-      ) as _i8.Future<_i29.AddressResponse?>);
-
-  @override
   _i8.Future<_i29.UserAddressResponse?> saveAddress(
           _i30.AddressRequest? address) =>
       (super.noSuchMethod(
@@ -413,13 +392,31 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i29.UserAddressResponse?>.value(),
       ) as _i8.Future<_i29.UserAddressResponse?>);
+
+  @override
+  _i8.Future<_i31.AddressResponse?> getAddresses() => (super.noSuchMethod(
+        Invocation.method(
+          #getAddresses,
+          [],
+        ),
+        returnValue: _i8.Future<_i31.AddressResponse?>.value(),
+      ) as _i8.Future<_i31.AddressResponse?>);
+
+  @override
+  _i8.Future<_i31.AddressResponse?> removeAddress(String? productId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeAddress,
+          [productId],
+        ),
+        returnValue: _i8.Future<_i31.AddressResponse?>.value(),
+      ) as _i8.Future<_i31.AddressResponse?>);
 }
 
 /// A class which mocks [TokenProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTokenProvider extends _i1.Mock implements _i31.TokenProvider {
-class MockTokenProvider extends _i1.Mock implements _i30.TokenProvider {
+class MockTokenProvider extends _i1.Mock implements _i32.TokenProvider {
   MockTokenProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -450,8 +447,7 @@ class MockTokenProvider extends _i1.Mock implements _i30.TokenProvider {
       );
 
   @override
-  void addListener(_i31.VoidCallback? listener) => super.noSuchMethod(
-  void addListener(_i32.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i33.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -460,8 +456,7 @@ class MockTokenProvider extends _i1.Mock implements _i30.TokenProvider {
       );
 
   @override
-  void removeListener(_i31.VoidCallback? listener) => super.noSuchMethod(
-  void removeListener(_i32.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i33.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

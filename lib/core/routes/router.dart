@@ -40,7 +40,7 @@ Route manageRoutes(RouteSettings settings) {
     case AppRoutes.mainLayOut:
       return MaterialPageRoute(builder: (context) => const MainLayOutScreen());
     case AppRoutes.editProfile:
-      return MaterialPageRoute(builder: (context) => ProfileEditScreen());
+      return MaterialPageRoute(builder: (context) => const ProfileEditScreen());
     case AppRoutes.register:
       return MaterialPageRoute(builder: (context) => const RegisterScreen());
     case AppRoutes.forgetPassword:
@@ -66,8 +66,8 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const PermissionsScreen());
     case AppRoutes.ResetPassword:
       return MaterialPageRoute(builder: (context)=> const UpdatePasswordView());
-    case AppRoutes.Address:
-      return MaterialPageRoute(builder: (context)=>  AddressesScreen());
+    case AppRoutes.address:
+      return MaterialPageRoute(builder: (context)=>  const AddressesScreen());
     case AppRoutes.termsAndConditions:
       return MaterialPageRoute(
         builder: (context) =>const TermsAndConditionsScreen(),

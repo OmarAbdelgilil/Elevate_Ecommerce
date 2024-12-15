@@ -148,4 +148,9 @@ class StringsManager {
 
   static const adressNotFound = 'No Addresses Found, Add Your address';
   static const addAdress = 'Add new address';
+  static const cancel = 'cancel';
+  static const loginRequired = 'loginRequired';
+  static const loginRequiredMessage = 'loginRequiredMessage';
+
+
 }
