@@ -1,1 +1,1 @@
-enum UpdatePasswordValidTypes { currentPassword, newPassword,confirmPassword }
+enum UpdatePasswordValidTypes { currentPassword, newPassword, confirmPassword }

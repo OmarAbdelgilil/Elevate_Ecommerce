@@ -8,8 +8,8 @@ class AppRoutes {
   static const ProductDetails = "ProductDetails";
   static const bestSeller = "bestSeller";
 
-  static const ResetPassword="ResetPassword";
-static const address ="Address";
+  static const ResetPassword = "ResetPassword";
+  static const address = "Address";
   static const occasions = "occasions";
   static const editProfile = "editProfile";
   static const Categories = "categories";
@@ -18,4 +18,5 @@ static const address ="Address";
   static const permissionScreen = "permissionScreenRoute";
   static const saveAddressScreen = "saveAddressScreenRoute";
 
+  static const orders = "orders";
 }

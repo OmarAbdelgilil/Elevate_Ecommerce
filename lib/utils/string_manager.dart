@@ -153,4 +153,11 @@ class StringsManager {
   static const loginRequiredMessage = 'loginRequiredMessage';
 
 
+
+  //orders
+  static const String orderScreenTitle = 'My orders';
+  static const String ordersActive = 'Active';
+  static const String completedOrders = "Completed";
+  static const String orderNumber = "Order number#";
+  static const String orderTrackButton = "Track order";
 }

@@ -137,4 +137,10 @@
 "loginRequired": "تسجيل الدخول المطلوب",
     "loginRequiredMessage": "لم تقم بتسجيل الدخول. يرجى تسجيل الدخول للمتابعة."
 
+"Add new address": "اضافة عنوان جديد",
+"Active" : "نشط",
+"Completed":"مكتمل",
+"Order number#":"رقم الطلب#",
+"Track order":"تابع الطلب"
+
 }

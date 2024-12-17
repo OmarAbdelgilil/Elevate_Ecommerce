@@ -11,7 +11,6 @@ import 'package:mockito/mockito.dart';
 
 import 'register_viewModel_test.mocks.dart';
 
-
 @GenerateMocks([
   RegisterUseCase,
   RegisterValidator,

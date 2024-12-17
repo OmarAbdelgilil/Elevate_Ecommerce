@@ -137,4 +137,9 @@
     "loginRequired": "Login Required",
     "loginRequiredMessage": "You are not logged in. Please log in to continue."
 
+   "Add new address": "Add new address",
+   "Active" : "Active",
+   "Completed" : "Completed",
+   "Order number#":"Order number#",
+   "Track order":"Track order"
 }

@@ -156,6 +156,14 @@ import '../../features/home/presentation/profile_screen/profile_view_model/profi
     as _i85;
 import '../../features/home/presentation/profile_screen/save_address/save_address_view_model/save_address_view_model.dart'
     as _i90;
+import '../../features/orders/data/contracts/orders_online_datasource.dart'
+    as _i183;
+import '../../features/orders/data/datasource/orders_online_datasource_impl.dart'
+    as _i442;
+import '../../features/orders/data/repos/orders_repository_impl.dart' as _i116;
+import '../../features/orders/domain/repos/orders_repository.dart' as _i714;
+import '../../features/orders/domain/usecases/get_orders_usecase.dart' as _i755;
+import '../../features/orders/presentation/orders_view_model.dart' as _i844;
 import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse.dart'
     as _i25;
 import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse_impl.dart'
@@ -211,6 +219,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i14.AuthOfflineDatasourceImpl());
     gh.factory<_i15.ProductDetails_Onlinedatasource>(
         () => _i16.ProductDetails_Onlinedatasource_Impl(gh<_i12.ApiManager>()));
+    gh.factory<_i183.OrdersOnlineDatasource>(
+        () => _i442.OrdersOnlineDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i17.CartOnlineDatasource>(
         () => _i18.CartOnlineDatasourceImpl(gh<_i12.ApiManager>()));
     gh.factory<_i19.CartRepository>(
@@ -253,6 +263,8 @@ extension GetItInjectableX on _i1.GetIt {
         gh<_i29.GetLoggedUserDataOnlineDatasource>()));
     gh.factory<_i52.RegisterRepository>(
         () => _i53.RegisterRepositoryImpl(gh<_i23.RegisterOnlineDatasource>()));
+    gh.factory<_i714.OrdersRepository>(
+        () => _i116.OrdersRepositoryImpl(gh<_i183.OrdersOnlineDatasource>()));
     gh.factory<_i54.LoginUsecase>(
         () => _i54.LoginUsecase(gh<_i48.LoginRepo>()));
     gh.factory<_i55.HomeRepository>(
@@ -261,6 +273,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i57.GetAddressesUsecase(gh<_i43.AddressesRepository>()));
     gh.factory<_i58.RemoveAddressUsecase>(
         () => _i58.RemoveAddressUsecase(gh<_i43.AddressesRepository>()));
+    gh.factory<_i755.GetOrdersUsecase>(
+        () => _i755.GetOrdersUsecase(gh<_i714.OrdersRepository>()));
     gh.factory<_i59.AddProductToCartUsecase>(
         () => _i59.AddProductToCartUsecase(gh<_i19.CartRepository>()));
     gh.factory<_i60.GetCartUsecase>(
@@ -283,6 +297,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i66.ForgetPasswordUsecase(gh<_i39.ForgetPasswordRepository>()));
     gh.factory<_i67.LogoutUsecase>(
         () => _i67.LogoutUsecase(gh<_i31.LogoutRepo>()));
+    gh.factory<_i844.OrdersViewModel>(
+        () => _i844.OrdersViewModel(gh<_i755.GetOrdersUsecase>()));
     gh.factory<_i68.AuthRepository>(() => _i69.AuthRepositoryImpl(
           gh<_i41.AuthOnlineDatasource>(),
           gh<_i13.AuthOfflineDatasource>(),

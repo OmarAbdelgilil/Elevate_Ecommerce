@@ -60,6 +60,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i18;
+import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
+    as _i30;
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
     as _i29;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
@@ -411,12 +413,21 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i31.AddressResponse?>.value(),
       ) as _i8.Future<_i31.AddressResponse?>);
+
+  @override
+  _i8.Future<_i30.OrderResponse?> getOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getOrders,
+          [],
+        ),
+        returnValue: _i8.Future<_i30.OrderResponse?>.value(),
+      ) as _i8.Future<_i30.OrderResponse?>);
 }
 
 /// A class which mocks [TokenProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTokenProvider extends _i1.Mock implements _i32.TokenProvider {
+class MockTokenProvider extends _i1.Mock implements _i30.TokenProvider {
   MockTokenProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -447,7 +458,7 @@ class MockTokenProvider extends _i1.Mock implements _i32.TokenProvider {
       );
 
   @override
-  void addListener(_i33.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i31.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -456,7 +467,7 @@ class MockTokenProvider extends _i1.Mock implements _i32.TokenProvider {
       );
 
   @override
-  void removeListener(_i33.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i31.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],
