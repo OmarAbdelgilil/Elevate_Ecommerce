@@ -25,6 +25,8 @@ Future<void> main() async {
   await Hive.initFlutter();
   final String initialRoute;
   Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(AddressAdapter());
+
   HttpOverrides.global = MyHttpOverrides();
   configureDependencies();
   Bloc.observer = SimpleBlocObserver();
@@ -38,7 +40,7 @@ Future<void> main() async {
     await TokenProvider().saveToken(token);
     print("Token saved: ${TokenProvider().token}");
     final userModel = await HiveService().getUser(token);
-    UserData userData = userModel!.toUserData();
+    UserData userData = userModel!.mapUserModelToUserData(userModel);
     UserProvider().setUserData(userData);
     initialRoute = AppRoutes.mainLayOut;
   } else {
