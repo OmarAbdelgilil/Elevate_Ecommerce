@@ -15,4 +15,5 @@ class AppRoutes {
   static const Categories = "categories";
   static const termsAndConditions = "terms&conditions";
   static const aboutUs = "aboutUs";
+  static const orders = "orders";
 }

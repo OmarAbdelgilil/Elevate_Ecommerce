@@ -21,5 +21,5 @@ class ApiConstants {
   static const String logoutPath = "/v1/auth/logout";
   static const String getAddressesPath = "/v1/addresses";
   static const String removeAddressPath = "//v1/addresses";
-  static const String ordersPath = "v1/orders";
+  static const String ordersPath = "/v1/orders";
 }

@@ -7,7 +7,6 @@ import 'package:elevate_ecommerce/features/Cart/domain/usecases/add_product_to_c
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/get_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/remove_item_from_cart_usecase.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/usecases/update_cart_product_quantity_usecase.dart';
-import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view_model/mian_lay_out_view_model.dart';
 import 'package:elevate_ecommerce/main.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';

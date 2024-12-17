@@ -770,7 +770,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          'v1/orders',
+          '/v1/orders',
           queryParameters: queryParameters,
           data: _data,
         )

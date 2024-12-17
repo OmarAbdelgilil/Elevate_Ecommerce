@@ -163,6 +163,7 @@ import '../../features/orders/data/datasource/orders_online_datasource_impl.dart
 import '../../features/orders/data/repos/orders_repository_impl.dart' as _i116;
 import '../../features/orders/domain/repos/orders_repository.dart' as _i714;
 import '../../features/orders/domain/usecases/get_orders_usecase.dart' as _i755;
+import '../../features/orders/presentation/orders_view_model.dart' as _i844;
 import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse.dart'
     as _i272;
 import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse_impl.dart'
@@ -298,6 +299,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
     gh.factory<_i459.LogoutUsecase>(
         () => _i459.LogoutUsecase(gh<_i371.LogoutRepo>()));
+    gh.factory<_i844.OrdersViewModel>(
+        () => _i844.OrdersViewModel(gh<_i755.GetOrdersUsecase>()));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
           gh<_i981.AuthOnlineDatasource>(),
           gh<_i871.AuthOfflineDatasource>(),

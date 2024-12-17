@@ -131,9 +131,9 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.myOrder.tr(),
-                    () {},
-                    null),
+                    StringsManager.myOrder.tr(), () {
+                  Navigator.pushNamed(context, AppRoutes.orders);
+                }, null),
                 _profileSection(
                     SvgPicture.asset(
                       SVGAssets.locationIcon,
