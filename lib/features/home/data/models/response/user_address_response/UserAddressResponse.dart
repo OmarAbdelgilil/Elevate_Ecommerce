@@ -1,7 +1,7 @@
 import 'Address.dart';
 
 /// message : "success"
-/// address : [{"street":"Home","phone":"01010700700","city":"Gizaa","_id":"67596a8d2a8d2b899c3e1ec3"}]
+/// address : [{"street":"Home","phone":"01010700700","city":"Gizaa","lat":"21.12414141","lang":"21.12414141","username":"daly","_id":"6760eb271d7443525c6f92ed"},{"street":"Home","phone":"01010700700","city":"Gizaa","lat":"21.12414141","lang":"21.12414141","username":"daly","_id":"6760eb651d7443525c6f92fe"}]
 
 class UserAddressResponse {
   UserAddressResponse({

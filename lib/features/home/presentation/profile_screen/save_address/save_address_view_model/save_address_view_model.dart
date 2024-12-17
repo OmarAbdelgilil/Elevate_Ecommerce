@@ -12,6 +12,8 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../../core/common/api_result.dart';
+import '../../../../../../core/di/di.dart';
+import '../../../../../../core/providers/user_provider.dart';
 import '../../../../domain/usecase/save_user_address.dart';
 @injectable
 class SaveAddressViewModel extends BaseCubit implements SaveAddressViewModelInput,SaveAddressViewModelOutput{
@@ -25,6 +27,7 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
   LatLng? _userLocation;
   String? _mapStyle;
 
+final userProvider = getIt<UserProvider>();
 
   static SaveAddressViewModel get(BuildContext context) =>
       BlocProvider.of<SaveAddressViewModel>(context);
@@ -32,7 +35,8 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _cityController =
   TextEditingController();
-
+final TextEditingController _userNameController =
+TextEditingController();
   Future<void> _fetchMapStyle() async {
     _mapStyle = await rootBundle.loadString('assets/map_style/map_style.json');
   }
@@ -84,7 +88,8 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
   void start() async {
 
     emit(LoadingState());
-
+    _userNameController.text =
+        '${userProvider.userData?.firstName} ${userProvider.userData?.lastName} ' ;
     Future.delayed(const Duration(milliseconds: 100), () {
       emit(CheckLocationPermissionsState());
       emit(LoadingState());
@@ -97,6 +102,7 @@ SaveAddressViewModel(this._saveUserAddressUseCase);
     _streetController.clear();
     _phoneController.clear();
     _cityController.clear();
+    _userNameController.clear();
   }
 
 
@@ -163,6 +169,11 @@ Future<void> fetchAddressFromCoordinates(double latitude, double longitude) asyn
   @override
   String get getMapStyle => _mapStyle!;
 
+
+
+@override
+  TextEditingController get getUserNameController => _userNameController;
+
 }
 
 abstract class SaveAddressViewModelInput {
@@ -175,6 +186,7 @@ abstract class SaveAddressViewModelOutput {
   TextEditingController get getCityController;
 
   TextEditingController get getStreetController;
+  TextEditingController get getUserNameController;
 
 
   GoogleMapController get getMapController;

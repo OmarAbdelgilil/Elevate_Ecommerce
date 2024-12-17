@@ -60,8 +60,10 @@ dependencies:
   google_maps_flutter:
 
   easy_localization:
-  geocoding: ^3.0.0
-  fluttertoast: ^8.2.8
+  geocoding: 
+  fluttertoast:
+  firebase_core: ^3.4.0
+  firebase_crashlytics: ^4.1.0
 
 dev_dependencies:
   flutter_test:
