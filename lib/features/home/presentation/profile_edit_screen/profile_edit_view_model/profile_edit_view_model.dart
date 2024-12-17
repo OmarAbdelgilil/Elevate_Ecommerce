@@ -13,8 +13,6 @@ import '../../../domain/usecase/update_user_data_usecase.dart';
 import '../../base/base_cubit.dart';
 import '../../base/base_states.dart';
 
-
-
 @injectable
 class EditProfileScreenViewModel extends BaseCubit {
   final UpdateUserDataUseCase _updateUserDataUseCase;

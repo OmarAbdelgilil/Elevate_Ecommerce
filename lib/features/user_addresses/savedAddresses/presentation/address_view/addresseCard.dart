@@ -7,7 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AddresseCard extends StatelessWidget {
   final AddressModel address;
   final AddressViewModel viewModel;
-  const AddresseCard({super.key, required this.address, required this.viewModel});
+  const AddresseCard(
+      {super.key, required this.address, required this.viewModel});
 
   @override
   Widget build(BuildContext context) {
@@ -25,41 +26,52 @@ class AddresseCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Row(
-               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.location_on_outlined ,color: Colors.black ,size:23,),
-                      SizedBox(width:2.w,),
+                      Icon(
+                        Icons.location_on_outlined,
+                        color: Colors.black,
+                        size: 23,
+                      ),
+                      SizedBox(
+                        width: 2.w,
+                      ),
                       Text(
                         address.city,
-                        style:AppTextStyles.title(fontWeight: FontWeight.w500,fontSize: 18.sp),
+                        style: AppTextStyles.title(
+                            fontWeight: FontWeight.w500, fontSize: 18.sp),
                       ),
                     ],
                   ),
-
                   Row(
                     children: [
                       InkWell(
-                        onTap: (){
-                          viewModel.doIntent(RemoveAddressIntent(address.id));
-                        },
-                          child: Icon(Icons.delete_sharp, color: Colors.red,size: 26,)),
-                      SizedBox(width: 2.w,),
+                          onTap: () {
+                            viewModel.doIntent(RemoveAddressIntent(address.id));
+                          },
+                          child: Icon(
+                            Icons.delete_sharp,
+                            color: Colors.red,
+                            size: 26,
+                          )),
+                      SizedBox(
+                        width: 2.w,
+                      ),
                       Icon(Icons.edit, color: Colors.black),
                     ],
                   ),
                 ],
               ),
-              SizedBox(height: 10.h,),
+              SizedBox(
+                height: 10.h,
+              ),
               Text(
                 " ${address.street}",
-
-                style:AppTextStyles.subtitle(fontSize: 15.sp),
+                style: AppTextStyles.subtitle(fontSize: 15.sp),
               ),
-
             ],
           ),
         ),

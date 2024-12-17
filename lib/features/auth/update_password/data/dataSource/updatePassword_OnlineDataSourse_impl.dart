@@ -9,12 +9,12 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UpdatePasswordOnlineDatasource)
-class UpdatePasswordOnlineDatasourceImpl implements UpdatePasswordOnlineDatasource {
+class UpdatePasswordOnlineDatasourceImpl
+    implements UpdatePasswordOnlineDatasource {
   final ApiManager apiManager;
   final TokenProvider tokenProvider;
 
   UpdatePasswordOnlineDatasourceImpl(this.apiManager, this.tokenProvider);
-
 
   @override
   Future<Result<User?>> updatePassword(UpdatePasswordRequest request) {
@@ -23,7 +23,8 @@ class UpdatePasswordOnlineDatasourceImpl implements UpdatePasswordOnlineDatasour
       if (token != null) {
         var result = await apiManager.updatePassword(request, 'Bearer $token');
         var user = result.user;
-        var userDto = UserDto(isVerified: user?.isVerified, token: result.token);
+        var userDto =
+            UserDto(isVerified: user?.isVerified, token: result.token);
 
         return userDto.toUser();
       } else {

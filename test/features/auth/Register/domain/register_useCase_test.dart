@@ -3,7 +3,6 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/repository/register_repository.dart';
 import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart';
-import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

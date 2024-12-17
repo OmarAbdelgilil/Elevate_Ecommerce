@@ -56,6 +56,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i18;
+import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
+    as _i30;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
     as _i29;
 import 'package:mockito/mockito.dart' as _i1;
@@ -394,4 +396,13 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i29.AddressResponse?>.value(),
       ) as _i8.Future<_i29.AddressResponse?>);
+
+  @override
+  _i8.Future<_i30.OrderResponse?> getOrders() => (super.noSuchMethod(
+        Invocation.method(
+          #getOrders,
+          [],
+        ),
+        returnValue: _i8.Future<_i30.OrderResponse?>.value(),
+      ) as _i8.Future<_i30.OrderResponse?>);
 }

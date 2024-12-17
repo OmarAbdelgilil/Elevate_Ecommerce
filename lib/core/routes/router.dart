@@ -11,6 +11,7 @@ import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/about_us/about_us_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/terms_and_conditions.dart/terms_and_conditions_screen.dart';
+import 'package:elevate_ecommerce/features/orders/presentation/orders_screen.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addressView.dart';
 import 'package:flutter/material.dart';
 
@@ -54,13 +55,13 @@ Route manageRoutes(RouteSettings settings) {
                 productId: "673e2e1f1159920171828153",
                 product: dummyProduct,
               ));
-          case AppRoutes.bestSeller:
+    case AppRoutes.bestSeller:
     case AppRoutes.bestSeller:
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
     case AppRoutes.ResetPassword:
-      return MaterialPageRoute(builder: (context)=>  UpdatePasswordView());
+      return MaterialPageRoute(builder: (context) => UpdatePasswordView());
     case AppRoutes.Address:
-      return MaterialPageRoute(builder: (context)=>  AddressesScreen());
+      return MaterialPageRoute(builder: (context) => AddressesScreen());
     case AppRoutes.termsAndConditions:
       return MaterialPageRoute(
         builder: (context) => TermsAndConditionsScreen(),
@@ -68,6 +69,10 @@ Route manageRoutes(RouteSettings settings) {
     case AppRoutes.aboutUs:
       return MaterialPageRoute(
         builder: (context) => AboutUsScreen(),
+      );
+    case AppRoutes.orders:
+      return MaterialPageRoute(
+        builder: (context) => OrdersScreen(),
       );
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());

@@ -140,4 +140,11 @@ class StringsManager {
   static const change = 'Change';
   static const adressNotFound = 'No Addresses Found, Add Your address';
   static const addAdress = 'Add new address';
+
+  //orders
+  static const String orderScreenTitle = 'My orders';
+  static const String ordersActive = 'Active';
+  static const String completedOrders = "Completed";
+  static const String orderNumber = "Order number#";
+  static const String orderTrackButton = "Track order";
 }
