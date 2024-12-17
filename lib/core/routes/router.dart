@@ -59,7 +59,7 @@ Route manageRoutes(RouteSettings settings) {
                 product: dummyProduct,
               ));
     case AppRoutes.bestSeller:
-    case AppRoutes.bestSeller:
+
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
     case AppRoutes.saveAddressScreen:
       return MaterialPageRoute(builder: (context) => const SaveAddressScreen());

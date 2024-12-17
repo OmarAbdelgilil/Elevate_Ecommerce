@@ -103,32 +103,32 @@ final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
 GlobalKey<ScaffoldMessengerState>();
 
 
- class MyApp extends StatelessWidget {
-   final String initialRoute;
+class MyApp extends StatelessWidget {
+  final String initialRoute;
 
-   const MyApp({super.key, required this.initialRoute});
-   @override
-   Widget build(BuildContext context) {
-     return ScreenUtilInit(
-       designSize: const Size(411, 890),
-       minTextAdapt: true,
-       splitScreenMode: true,
-       child: MaterialApp(
-         localizationsDelegates: context.localizationDelegates,
-         supportedLocales: context.supportedLocales,
-         locale: context.locale,
-         scaffoldMessengerKey: scaffoldMessengerKey,
-         debugShowCheckedModeBanner: false,
-         theme: ThemeData(
-           primaryColorLight: primaryColor,
-         ),
-         title: 'Flower app',
-         onGenerateRoute: manageRoutes,
-         initialRoute: initialRoute,
-       ),
-     );
-   }
- }
+  const MyApp({super.key, required this.initialRoute});
+  @override
+  Widget build(BuildContext context) {
+    return ScreenUtilInit(
+      designSize: const Size(411, 890),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      child: MaterialApp(
+        localizationsDelegates: context.localizationDelegates,
+        supportedLocales: context.supportedLocales,
+        locale: context.locale,
+        scaffoldMessengerKey: scaffoldMessengerKey,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primaryColorLight: primaryColor,
+        ),
+        title: 'Flower app',
+        onGenerateRoute: manageRoutes,
+        initialRoute: initialRoute,
+      ),
+    );
+  }
+}
 
 class MyHttpOverrides extends HttpOverrides {
   @override
