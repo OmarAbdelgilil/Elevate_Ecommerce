@@ -23,7 +23,7 @@ void main() {
 
   test('should return Success when login is successful', () async {
     when(mockLoginRepo.login(loginRequest)).thenAnswer(
-          (_) async => Success(loginResponse), // Ensure that a dummy result is provided here
+          (_) async => Success(loginResponse),
     );
 
     final result = await loginUsecase.login(loginRequest);
