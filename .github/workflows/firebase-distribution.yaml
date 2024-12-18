@@ -3,13 +3,13 @@ name: Firebase App Distribution
 on:
   pull_request:
     types:
-      - labeled 
+      - labeled
     branches:
-      - dev 
+      - dev
 
 jobs:
   build:
-    if: contains(github.event.pull_request.labels.*.name, 'ReadyForTesting') 
+    if: contains(github.event.pull_request.labels.*.name, 'ReadyForTesting')
 
     runs-on: ubuntu-latest
 
@@ -23,6 +23,12 @@ jobs:
 
     - name: Install dependencies
       run: flutter pub get
+
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17' # Specify Java version compatible with Flutter
+        distribution: 'temurin'
 
     - name: Build release APK
       run: flutter build apk --release
