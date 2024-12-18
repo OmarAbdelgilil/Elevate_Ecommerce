@@ -9,7 +9,7 @@ on:
 jobs:
   distribute-app:
     name: Distribute App to Firebase
-    runs-on: windows-latest
+    runs-on: ubuntu-latest 
 
     steps:
     - name: Checkout Code
@@ -20,6 +20,9 @@ jobs:
       with:
         distribution: 'zulu'
         java-version: '11'
+
+    - name: Set JAVA_HOME
+      run: echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))" >> $GITHUB_ENV
 
     - name: Set up Flutter (for Flutter apps)
       uses: subosito/flutter-action@v2
@@ -39,5 +42,5 @@ jobs:
         npm install -g firebase-tools
         firebase appdistribution:distribute \
           build/app/outputs/flutter-apk/app-release.apk \ # Path to the APK
-          --app 1:284880685668:android:25422020aa8c9f0ad46d71 \                      # Replace with your Firebase app ID
-          --groups testers                   # Replace with your tester group
+          --app 1:284880685668:android:25422020aa8c9f0ad46d71 \ # Replace with your Firebase app ID
+          --groups testers # Replace with your tester group
