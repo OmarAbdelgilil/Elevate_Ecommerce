@@ -101,7 +101,12 @@ class CartScreen extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16),
                                     child: CustomButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          AppRoutes.checkOut,
+                                        );
+                                      },
                                       text: StringsManager.checkoutButtonText
                                           .tr(),
                                       radius: 20,

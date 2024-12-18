@@ -18,5 +18,6 @@ class AppRoutes {
   static const permissionScreen = "permissionScreenRoute";
   static const saveAddressScreen = "saveAddressScreenRoute";
 
+  static const checkOut = "checkOut";
   static const orders = "orders";
 }

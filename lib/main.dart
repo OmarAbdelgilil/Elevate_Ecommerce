@@ -45,7 +45,7 @@ Future<void> main() async {
 
     await Hive.initFlutter();
     Hive.registerAdapter(UserModelAdapter());
-
+    Hive.registerAdapter((AddressAdapter()));
     HttpOverrides.global = MyHttpOverrides();
 
     configureDependencies();
@@ -66,7 +66,7 @@ Future<void> main() async {
         await TokenProvider().saveToken(token);
         final userModel = await HiveService().getUser(token);
         if (userModel != null) {
-          final UserData userData = userModel.toUserData();
+          final UserData userData = userModel.mapUserModelToUserData(userModel);
           UserProvider().setUserData(userData);
           initialRoute = AppRoutes.mainLayOut;
         } else {

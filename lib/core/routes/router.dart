@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/presentation/for
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/update_password_view/update_password_view.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
+import 'package:elevate_ecommerce/features/home/presentation/check_out/check_out_view.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/best_seller_view.dart';
 import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view/mian_lay_out_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions_screen.dart';
@@ -76,6 +77,10 @@ Route manageRoutes(RouteSettings settings) {
     case AppRoutes.aboutUs:
       return MaterialPageRoute(
         builder: (context) =>const AboutUsScreen(),
+      );
+    case AppRoutes.checkOut:
+      return MaterialPageRoute(
+        builder: (context) => CheckOutView(),
       );
     case AppRoutes.orders:
       return MaterialPageRoute(

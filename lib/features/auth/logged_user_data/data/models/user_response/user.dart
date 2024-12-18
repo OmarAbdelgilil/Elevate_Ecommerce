@@ -11,6 +11,9 @@ class UserData {
   DateTime? createdAt;
   DateTime? passwordChangedAt;
   List<dynamic>? addresses;
+  String? passwordResetCode;
+  DateTime? passwordResetExpires;
+  bool? resetCodeVerified;
 
   UserData({
     this.wishlist,
@@ -25,6 +28,9 @@ class UserData {
     this.createdAt,
     this.passwordChangedAt,
     this.addresses,
+    this.passwordResetCode,
+    this.passwordResetExpires,
+    this.resetCodeVerified,
   });
 
   factory UserData.fromJson(Map<String, dynamic> json) => UserData(
@@ -44,6 +50,11 @@ class UserData {
             ? null
             : DateTime.parse(json['passwordChangedAt'] as String),
         addresses: json['addresses'] as List<dynamic>?,
+        passwordResetCode: json['passwordResetCode'] as String?,
+        passwordResetExpires: json['passwordResetExpires'] == null
+            ? null
+            : DateTime.parse(json['passwordResetExpires'] as String),
+        resetCodeVerified: json['resetCodeVerified'] as bool?,
       );
 
   Map<String, dynamic> toJson() => {
@@ -59,5 +70,8 @@ class UserData {
         'createdAt': createdAt?.toIso8601String(),
         'passwordChangedAt': passwordChangedAt?.toIso8601String(),
         'addresses': addresses,
+        'passwordResetCode': passwordResetCode,
+        'passwordResetExpires': passwordResetExpires?.toIso8601String(),
+        'resetCodeVerified': resetCodeVerified,
       };
 }
