@@ -43,4 +43,4 @@ jobs:
         firebase appdistribution:distribute \
           build/app/outputs/flutter-apk/app-release.apk \ 
           --app 1:284880685668:android:25422020aa8c9f0ad46d71 \ 
-          --groups testers # Replace with your tester group
+          --groups testers
