@@ -23,7 +23,7 @@ class AboutUsScreen extends StatelessWidget {
               ),
             );
           }
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );

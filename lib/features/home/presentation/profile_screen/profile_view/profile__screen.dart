@@ -13,7 +13,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import '../../../../../core/widgets/custom_dialog.dart';
 import '../../../../../utils/assets_manager.dart';
+import '../../../data/models/response/user_address_response/Address.dart';
 import '../profile_view_model/profile_view_model.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -140,9 +142,19 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.savedAddress.tr(), () {
-                  Navigator.of(context).pushNamed(AppRoutes.Address);
-                }, null),
+                    StringsManager.savedAddress,
+                    () {
+//
+                    if( userProvider.userData?.id == null){
+                      showLoginDialog(context);
+                    }else{
+                      Navigator.of(context).pushNamed(AppRoutes.address);
+
+                    }
+
+
+                    },
+                    null),
                 const Divider(color: ColorManager.grey),
                 _profileSection(
                   Switch(

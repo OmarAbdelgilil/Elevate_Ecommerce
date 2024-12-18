@@ -9,12 +9,15 @@ class AppRoutes {
   static const bestSeller = "bestSeller";
 
   static const ResetPassword = "ResetPassword";
-  static const Address = "Address";
+  static const address = "Address";
   static const occasions = "occasions";
   static const editProfile = "editProfile";
   static const Categories = "categories";
   static const termsAndConditions = "terms&conditions";
   static const aboutUs = "aboutUs";
+  static const permissionScreen = "permissionScreenRoute";
+  static const saveAddressScreen = "saveAddressScreenRoute";
+
   static const checkOut = "checkOut";
   static const orders = "orders";
 }
