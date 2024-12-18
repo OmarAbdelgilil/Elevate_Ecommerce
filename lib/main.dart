@@ -31,15 +31,15 @@ Future<void> main() async {
 
     BindingBase.debugZoneErrorsAreFatal = true;
 
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
 
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    // await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
 
-    FlutterError.onError = (FlutterErrorDetails details) {
-      FirebaseCrashlytics.instance.recordFlutterError(details);
-    };
+    // FlutterError.onError = (FlutterErrorDetails details) {
+    //   FirebaseCrashlytics.instance.recordFlutterError(details);
+    // };
 
     await EasyLocalization.ensureInitialized();
 
