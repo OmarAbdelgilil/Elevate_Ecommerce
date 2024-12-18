@@ -12,10 +12,14 @@ import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/use
     as _i11;
 import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource.dart'
     as _i2;
+import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
+    as _i14;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i8;
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
+    as _i13;
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart'
@@ -148,4 +152,22 @@ class MockRemoteDatasource extends _i1.Mock implements _i2.RemoteDatasource {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i11.UserResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i13.UserAddressResponse?>> saveAddress(
+          _i14.AddressRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveAddress,
+          [request],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i13.UserAddressResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i13.UserAddressResponse?>>(
+          this,
+          Invocation.method(
+            #saveAddress,
+            [request],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i13.UserAddressResponse?>>);
 }

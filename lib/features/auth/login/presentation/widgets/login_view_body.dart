@@ -27,98 +27,100 @@ class LoginViewBody extends StatelessWidget {
   Widget buildLoginForm(BuildContext context) {
     return Form(
       key: loginValidator.loginFormKey,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 24),
-          CustomTextField(
-            hint: StringsManager.emailFieldHint.tr(),
-            label: StringsManager.emailFieldLabel.tr(),
-            controller: loginValidator.emailController,
-            validator: loginValidator.validate(LoginValidatorTypes.email),
-          ),
-          const SizedBox(height: 24),
-          CustomTextField(
-            obscureText: true,
-            hint: StringsManager.hintPassword.tr(),
-            label: StringsManager.passwordFieldLabel.tr(),
-            controller: loginValidator.passwordController,
-            validator: loginValidator.validate(LoginValidatorTypes.password),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              RememberMeCheckbox(notifier: rememberMeNotifier),
-              TextButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.forgetPassword),
-                child: Text(
-                  StringsManager.forgetpassword.tr(),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    decoration: TextDecoration.underline,
-                    decorationColor: Colors.black,
-                    decorationThickness: 2,
+      child: SingleChildScrollView(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const SizedBox(height: 24),
+            CustomTextField(
+              hint: StringsManager.emailFieldHint.tr(),
+              label: StringsManager.emailFieldLabel.tr(),
+              controller: loginValidator.emailController,
+              validator: loginValidator.validate(LoginValidatorTypes.email),
+            ),
+            const SizedBox(height: 24),
+            CustomTextField(
+              obscureText: true,
+              hint: StringsManager.hintPassword.tr(),
+              label: StringsManager.passwordFieldLabel.tr(),
+              controller: loginValidator.passwordController,
+              validator: loginValidator.validate(LoginValidatorTypes.password),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                RememberMeCheckbox(notifier: rememberMeNotifier),
+                TextButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AppRoutes.forgetPassword),
+                  child:  Text(
+                    StringsManager.forgetpassword.tr(),
+                    // style: constTextStyle(
+                    //   color: Colors.black,
+                    //   decoration: TextDecoration.underline,
+                    //   decorationColor: Colors.black,
+                    //   decorationThickness: 2,
+                    // ),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 24),
-          BlocBuilder<LoginViewModel, LoginState>(builder: (context, state) {
-            if (state is LoadingState) {
-              return const Center(
-                child: CircularProgressIndicator(
-                  color: ColorManager.primary,
-                ),
-              );
-            }
-            return CustomButton(
-              text: StringsManager.login.tr(),
-              onPressed: () {
-                if (loginValidator.loginFormKey.currentState?.validate() ??
-                    false) {
-                  final rememberMeState = rememberMeNotifier.value;
-                  print("Remember Me checkbox state: $rememberMeState");
+              ],
+            ),
+            const SizedBox(height: 24),
+            BlocBuilder<LoginViewModel, LoginState>(builder: (context, state) {
+              if (state is LoadingState) {
+                return const Center(
+                  child: CircularProgressIndicator(
+                    color: ColorManager.primary,
+                  ),
+                );
+              }
+              return CustomButton(
+                text: StringsManager.login.tr(),
+                onPressed: () {
+                  if (loginValidator.loginFormKey.currentState?.validate() ??
+                      false) {
+                    final rememberMeState = rememberMeNotifier.value;
+                    print("Remember Me checkbox state: $rememberMeState");
 
-                  context.read<LoginViewModel>().handleIntent(
-                        LoginIntent(
-                          email: loginValidator.emailController.text,
-                          password: loginValidator.passwordController.text,
-                          rememberMe: rememberMeState,
-                        ),
-                      );
-                }
-              },
-            );
-          }),
-          const SizedBox(height: 16),
-          GuestButton(),
-          const SizedBox(height: 16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                StringsManager.donthaveaccount.tr(),
-                style: TextStyle(color: Colors.black, fontSize: 16),
-              ),
-              TextButton(
-                onPressed: () =>
-                    Navigator.pushNamed(context, AppRoutes.register),
-                child: Text(
-                  StringsManager.signUp.tr(),
-                  style: TextStyle(
-                    color: primaryColor,
-                    fontSize: 16,
-                    decoration: TextDecoration.underline,
-                    decorationColor: primaryColor,
-                    decorationThickness: 2,
+                    context.read<LoginViewModel>().handleIntent(
+                          LoginIntent(
+                            email: loginValidator.emailController.text,
+                            password: loginValidator.passwordController.text,
+                            rememberMe: rememberMeState,
+                          ),
+                        );
+                  }
+                },
+              );
+            }),
+            const SizedBox(height: 16),
+            GuestButton(),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                 Text(
+                  StringsManager.donthaveaccount.tr(),
+                  style: TextStyle(color: Colors.black, fontSize: 16),
+                ),
+                TextButton(
+                  onPressed: () =>
+                      Navigator.pushNamed(context, AppRoutes.register),
+                  child: Text(
+                    StringsManager.signUp.tr(),
+                    style: TextStyle(
+                      color: primaryColor,
+                      fontSize: 16,
+                      decoration: TextDecoration.underline,
+                      decorationColor: primaryColor,
+                      decorationThickness: 2,
+                    ),
                   ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -138,8 +138,21 @@ class StringsManager {
   static const upDate = 'Update';
   static const editProfile = 'Edit Profile';
   static const change = 'Change';
+  static const saveAddress = 'saveAddress';
+
+  static const cityFieldLabel = 'City';
+
+  static const streetFieldLabel = 'Street';
+
+
+
   static const adressNotFound = 'No Addresses Found, Add Your address';
   static const addAdress = 'Add new address';
+  static const cancel = 'cancel';
+  static const loginRequired = 'loginRequired';
+  static const loginRequiredMessage = 'loginRequiredMessage';
+
+
 
   //orders
   static const String orderScreenTitle = 'My orders';

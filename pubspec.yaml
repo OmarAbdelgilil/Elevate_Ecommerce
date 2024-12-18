@@ -47,6 +47,7 @@ dependencies:
   cached_network_image:
   google_fonts:
   shared_preferences:
+  geolocator:
 
 
   dio:
@@ -56,7 +57,13 @@ dependencies:
   hive: 
   hive_flutter: 
   flutter_html:
-  easy_localization: ^3.0.7
+  google_maps_flutter:
+
+  easy_localization:
+  geocoding: 
+  fluttertoast:
+  firebase_core: ^3.4.0
+  firebase_crashlytics: ^4.1.0
 
 dev_dependencies:
   flutter_test:
@@ -92,6 +99,7 @@ flutter:
     - assets/svg/
     - assets/html/
     - assets/translations/
+    - assets/map_style/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
