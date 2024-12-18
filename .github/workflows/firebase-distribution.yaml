@@ -5,42 +5,30 @@ on:
       branches:
         - dev # Trigger workflow on pull requests targeting the dev branch
   
-
 jobs:
-  distribute-app:
-    name: Distribute App to Firebase
-    runs-on: ubuntu-latest 
+  build:
+
+    runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v1
 
-    - name: Set up JDK (for Android builds)
-      uses: actions/setup-java@v3
-      with:
-        distribution: 'zulu'
-        java-version: '17'
-
-    - name: Set JAVA_HOME
-      run: echo "JAVA_HOME=$(dirname $(dirname $(readlink -f $(which javac))))" >> $GITHUB_ENV
-
-    - name: Set up Flutter (for Flutter apps)
+    - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.24.3'
+        flutter-version: 'stable'
 
-    - name: Install Dependencies
+    - name: Install dependencies
       run: flutter pub get
 
-    - name: Build APK
-      run: flutter build apk --release # Change to 'ios' for iOS builds
+    - name: Build release APK
+      run: flutter build apk --release
 
-    - name: Upload to Firebase App Distribution
-      env:
-        FIREBASE_AUTH_TOKEN: ${{ secrets.FIREBASE_AUTH_TOKEN }}
-      run: |
-        npm install -g firebase-tools
-        firebase appdistribution:distribute \
-          build/app/outputs/flutter-apk/app-release.apk \ 
-          --app 1:284880685668:android:25422020aa8c9f0ad46d71 \ 
-          --groups testers
+    - name: Upload artifact to Firebase App Distribution
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+        appId: 1:284880685668:android:25422020aa8c9f0ad46d71
+        serviceCredentialsFileContent: ${{ secrets.FIREBASE_AUTH_TOKEN }}
+        groups: testers
+        file: build/app/outputs/flutter-apk/app-release.apk
+
