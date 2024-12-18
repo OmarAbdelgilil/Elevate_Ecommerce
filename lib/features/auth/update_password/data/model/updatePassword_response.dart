@@ -25,9 +25,9 @@ class UpdatePasswordResponse {
   }
 
   Map<String, dynamic> toJson() => {
-    'message': message,
-    'token': token,
-    'user': user?.toJson(),
-    'error': error,
-  };
+        'message': message,
+        'token': token,
+        'user': user?.toJson(),
+        'error': error,
+      };
 }
