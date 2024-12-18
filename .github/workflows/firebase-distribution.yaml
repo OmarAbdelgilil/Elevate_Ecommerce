@@ -1,0 +1,36 @@
+name: Firebase App Distribution
+
+on:
+  pull_request:
+    types:
+      - labeled 
+    branches:
+      - dev 
+
+jobs:
+  build:
+    if: contains(github.event.pull_request.labels.*.name, 'ReadyForTesting') 
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.24.3'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Build release APK
+      run: flutter build apk --release
+
+    - name: Upload artifact to Firebase App Distribution
+      uses: wzieba/Firebase-Distribution-Github-Action@v1
+      with:
+        appId: 1:284880685668:android:25422020aa8c9f0ad46d71
+        serviceCredentialsFileContent: ${{ secrets.FIREBASE_AUTH_TOKEN }}
+        groups: testers
+        file: build/app/outputs/flutter-apk/app-release.apk

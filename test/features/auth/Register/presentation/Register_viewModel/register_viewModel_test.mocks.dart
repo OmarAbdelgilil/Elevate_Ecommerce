@@ -15,6 +15,8 @@ import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/registe
     as _i4;
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator.dart'
     as _i10;
+import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator_types_enum.dart'
+    as _i12;
 import 'package:flutter/foundation.dart' as _i3;
 import 'package:flutter/material.dart' as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -265,7 +267,8 @@ class MockRegisterValidator extends _i1.Mock implements _i10.RegisterValidator {
       );
 
   @override
-  String? Function(String?) validate(dynamic type) => (super.noSuchMethod(
+  String? Function(String?) validate(_i12.RegisterValidTypes? type) =>
+      (super.noSuchMethod(
         Invocation.method(
           #validate,
           [type],
@@ -347,6 +350,15 @@ class MockFormState extends _i1.Mock implements _i2.FormState {
         ),
         returnValue: false,
       ) as bool);
+
+  @override
+  Set<_i2.FormFieldState<Object?>> validateGranularly() => (super.noSuchMethod(
+        Invocation.method(
+          #validateGranularly,
+          [],
+        ),
+        returnValue: <_i2.FormFieldState<Object?>>{},
+      ) as Set<_i2.FormFieldState<Object?>>);
 
   @override
   void initState() => super.noSuchMethod(
@@ -603,16 +615,6 @@ class MockTextEditingController extends _i1.Mock
         ),
         returnValueForMissingStub: null,
       );
-
-  @override
-  bool isSelectionWithinTextBounds(_i2.TextSelection? selection) =>
-      (super.noSuchMethod(
-        Invocation.method(
-          #isSelectionWithinTextBounds,
-          [selection],
-        ),
-        returnValue: false,
-      ) as bool);
 
   @override
   void addListener(_i11.VoidCallback? listener) => super.noSuchMethod(

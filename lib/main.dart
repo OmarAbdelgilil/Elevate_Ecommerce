@@ -23,7 +23,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 
 Future<void> main() async {
   runZonedGuarded(() async {
