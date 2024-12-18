@@ -23,7 +23,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-import 'firebase_options.dart';
+// import 'firebase_options.dart';
 
 Future<void> main() async {
   runZonedGuarded(() async {
@@ -31,15 +31,15 @@ Future<void> main() async {
 
     BindingBase.debugZoneErrorsAreFatal = true;
 
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    // await Firebase.initializeApp(
+    //   options: DefaultFirebaseOptions.currentPlatform,
+    // );
 
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+    // await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
 
-    FlutterError.onError = (FlutterErrorDetails details) {
-      FirebaseCrashlytics.instance.recordFlutterError(details);
-    };
+    // FlutterError.onError = (FlutterErrorDetails details) {
+    //   FirebaseCrashlytics.instance.recordFlutterError(details);
+    // };
 
     await EasyLocalization.ensureInitialized();
 
@@ -100,8 +100,7 @@ Future<void> main() async {
 }
 
 final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey =
-GlobalKey<ScaffoldMessengerState>();
-
+    GlobalKey<ScaffoldMessengerState>();
 
 class MyApp extends StatelessWidget {
   final String initialRoute;
@@ -136,7 +135,7 @@ class MyHttpOverrides extends HttpOverrides {
     final client = super.createHttpClient(context);
     client.badCertificateCallback =
         (X509Certificate cert, String host, int port) =>
-    true; // bypass SSL verification
+            true; // bypass SSL verification
     return client;
   }
 }
