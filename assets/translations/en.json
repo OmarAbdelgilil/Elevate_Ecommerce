@@ -133,6 +133,10 @@
    "about_us_file": "assets/html/about_us.html",
    "No Addresses Found, Add Your address": "No Addresses Found, Add Your address",
    "Add new address": "Add new address",
+    "cancel": "cancel",
+    "loginRequired": "Login Required",
+    "loginRequiredMessage": "You are not logged in. Please log in to continue.",
+
    "Active" : "Active",
    "Completed" : "Completed",
    "Order number#":"Order number#",
