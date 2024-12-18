@@ -1,5 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
-import 'package:elevate_ecommerce/features/home/presentation/check_out/checkout_card.dart';
+import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/checkout_card.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -9,9 +10,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class AddressSection extends StatefulWidget {
   final AddressViewModel viewModel;
 
-  const AddressSection({Key? key, required this.viewModel}) : super(key: key);
+  const AddressSection({super.key, required this.viewModel});
 
   @override
+  // ignore: library_private_types_in_public_api
   _AddressSectionState createState() => _AddressSectionState();
 }
 
@@ -47,10 +49,10 @@ class _AddressSectionState extends State<AddressSection> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 24),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.only(left: 16.0),
                 child: Text(
-                  'Delivery address',
+                  'Delivery address'.tr(),
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
               ),
@@ -99,7 +101,7 @@ class _AddressSectionState extends State<AddressSection> {
                         ),
                         SizedBox(width: 5),
                         Text(
-                          'Add new',
+                          'Add new'.tr(),
                           style: TextStyle(
                             color: primaryColor,
                             fontSize: 16,

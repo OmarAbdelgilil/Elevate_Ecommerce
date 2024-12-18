@@ -1,10 +1,12 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:flutter/material.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
-  const PaymentMethodScreen({Key? key}) : super(key: key);
+  const PaymentMethodScreen({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PaymentMethodScreenState createState() => _PaymentMethodScreenState();
 }
 
@@ -18,19 +20,19 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Payment Method',
+          Text(
+            'Payment Method'.tr(),
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 16),
           PaymentMethodOption(
-            title: 'Cash on delivery',
+            title: 'Cash on delivery'.tr(),
             isSelected: _selectedMethod == 'Cash on delivery',
             onTap: () => setState(() => _selectedMethod = 'Cash on delivery'),
           ),
           const SizedBox(height: 12),
           PaymentMethodOption(
-            title: 'Credit card',
+            title: 'Credit card'.tr(),
             isSelected: _selectedMethod == 'Credit card',
             onTap: () => setState(() => _selectedMethod = 'Credit card'),
           ),
@@ -46,11 +48,11 @@ class PaymentMethodOption extends StatelessWidget {
   final VoidCallback onTap;
 
   const PaymentMethodOption({
-    Key? key,
+    super.key,
     required this.title,
     required this.isSelected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

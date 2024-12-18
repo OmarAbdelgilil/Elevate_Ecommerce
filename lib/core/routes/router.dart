@@ -71,15 +71,13 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => AboutUsScreen(),
       );
-<<<<<<< HEAD
     case AppRoutes.checkOut:
       return MaterialPageRoute(
         builder: (context) => CheckOutView(),
-=======
+      );
     case AppRoutes.orders:
       return MaterialPageRoute(
         builder: (context) => OrdersScreen(),
->>>>>>> 31371b19460757939b4db7310054a85bcd1f3901
       );
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());

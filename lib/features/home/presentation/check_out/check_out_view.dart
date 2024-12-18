@@ -31,7 +31,7 @@ class CheckOutView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: customAppBar(title: 'Checkout'),
+        appBar: customAppBar(title: 'Checkout'.tr()),
         body: BlocBuilder<CartViewmodel, CartState>(
           builder: (context, state) {
             int subtotal = 0;
@@ -85,7 +85,7 @@ class CheckOutView extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: CustomButton(
                       onPressed: () {},
-                      text: 'Place Order',
+                      text: 'Place Order'.tr(),
                       radius: 20,
                     ),
                   )

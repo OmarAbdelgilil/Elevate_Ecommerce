@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class GiftToggleForm extends StatefulWidget {
   const GiftToggleForm({super.key});
 
   @override
+  // ignore: library_private_types_in_public_api
   _GiftToggleFormState createState() => _GiftToggleFormState();
 }
 
@@ -29,8 +31,8 @@ class _GiftToggleFormState extends State<GiftToggleForm> {
                 },
               ),
               const SizedBox(width: 8),
-              const Text(
-                'It is a gift',
+              Text(
+                'It is a gift'.tr(),
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
@@ -41,17 +43,17 @@ class _GiftToggleFormState extends State<GiftToggleForm> {
           const SizedBox(height: 16),
           if (isGift) ...[
             TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Name',
-                hintText: 'Enter the name',
+              decoration: InputDecoration(
+                labelText: 'Name'.tr(),
+                hintText: 'Enter the name'.tr(),
                 border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
             TextFormField(
-              decoration: const InputDecoration(
-                labelText: 'Phone number',
-                hintText: 'Enter the phone number',
+              decoration: InputDecoration(
+                labelText: 'Phone number'.tr(),
+                hintText: 'Enter the phone number'.tr(),
                 border: OutlineInputBorder(),
               ),
             ),

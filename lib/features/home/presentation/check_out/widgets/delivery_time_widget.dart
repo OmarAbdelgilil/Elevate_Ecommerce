@@ -5,19 +5,16 @@ import 'package:flutter/material.dart';
 class DeliveryTimeWidget extends StatelessWidget {
   final DateTime deliveryDate;
 
-  const DeliveryTimeWidget({required this.deliveryDate, Key? key})
-      : super(key: key);
+  const DeliveryTimeWidget({required this.deliveryDate, super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Format the delivery date
     final formattedDate =
         DateFormat('dd MMM yyyy, hh:mm a').format(deliveryDate);
 
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
-        // border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(10),
       ),
       child: Row(
@@ -26,8 +23,8 @@ class DeliveryTimeWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Delivery time',
+              Text(
+                'Delivery time'.tr(),
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
@@ -35,12 +32,12 @@ class DeliveryTimeWidget extends StatelessWidget {
                 children: [
                   const Icon(Icons.access_time, size: 18),
                   const SizedBox(width: 8),
-                  const Text(
-                    'Instant, ',
+                  Text(
+                    'Instant, '.tr(),
                     style: TextStyle(fontSize: 14),
                   ),
                   Text(
-                    'Arrive by $formattedDate',
+                    'Arrive by $formattedDate'.tr(),
                     style: const TextStyle(
                         fontSize: 14,
                         color: Colors.green,
@@ -52,8 +49,8 @@ class DeliveryTimeWidget extends StatelessWidget {
           ),
           GestureDetector(
             onTap: () {},
-            child: const Text(
-              'Schedule',
+            child: Text(
+              'Schedule'.tr(),
               style: TextStyle(
                 color: primaryColor,
                 fontSize: 16,
