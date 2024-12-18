@@ -1,12 +1,15 @@
 name: Firebase App Distribution
 
 on:
-    pull_request:
-      branches:
-        - dev # Trigger workflow on pull requests targeting the dev branch
-  
+  pull_request:
+    types:
+      - labeled 
+    branches:
+      - dev 
+
 jobs:
   build:
+    if: contains(github.event.pull_request.labels.*.name, 'ReadyForTesting') 
 
     runs-on: ubuntu-latest
 
@@ -31,4 +34,3 @@ jobs:
         serviceCredentialsFileContent: ${{ secrets.FIREBASE_AUTH_TOKEN }}
         groups: testers
         file: build/app/outputs/flutter-apk/app-release.apk
-
