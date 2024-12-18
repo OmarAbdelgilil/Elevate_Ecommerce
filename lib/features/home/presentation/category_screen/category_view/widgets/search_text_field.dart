@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
@@ -18,7 +20,7 @@ class SearchTextField extends StatelessWidget {
                 color: ColorManager.lightGrey,
               ),
               borderRadius: BorderRadius.all(Radius.circular(8))),
-          hintText: 'Search',
+          hintText: StringsManager.search.tr(),
           hintStyle: TextStyle(color: ColorManager.lightGrey)),
     );
   }

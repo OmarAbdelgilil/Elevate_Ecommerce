@@ -25,6 +25,7 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
+import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -33,7 +34,9 @@ import '../../../features/auth/forget_password/data/models/requests/update_user_
 import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
 
+import '../../../features/home/data/models/request/address_request/address_request.dart';
 import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
+import '../../../features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import '../../providers/token_provider.dart';
 
 part 'api_manager.g.dart';
@@ -53,7 +56,6 @@ abstract class ApiManager {
         return handler.next(options);
       },
       onError: (DioException e, handler) {
-
         return handler.next(e);
       },
     ));
@@ -72,9 +74,9 @@ abstract class ApiManager {
 
   @PATCH(ApiConstants.updatePasswordPath)
   Future<UpdatePasswordResponse> updatePassword(
-      @Body() UpdatePasswordRequest request,
-      @Header('Authorization') String authorization,
-      );
+    @Body() UpdatePasswordRequest request,
+    @Header('Authorization') String authorization,
+  );
 
   @POST(ApiConstants.loginPath)
   Future<LoginResponse> login(@Body() LoginRequest request);
@@ -138,6 +140,12 @@ abstract class ApiManager {
   @GET(ApiConstants.logoutPath)
   Future<Logout?> logout(@Header('Authorization') String authorization);
 
+  @PATCH(ApiConstants.addSaveAddressPath)
+  Future<UserAddressResponse?> saveAddress(
+      @Body() AddressRequest address,
+
+      );
+
 
   @GET(ApiConstants.getAddressesPath)
   @Extra({'requiresToken': true})
@@ -145,7 +153,8 @@ abstract class ApiManager {
 
   @DELETE("${ApiConstants.removeAddressPath}/{productId}")
   @Extra({'requiresToken': true})
-  Future<AddressResponse?>removeAddress(
-      @Path("productId") String productId);
+  Future<AddressResponse?> removeAddress(@Path("productId") String productId);
 
+  @GET(ApiConstants.ordersPath)
+  Future<OrderResponse?> getOrders();
 }

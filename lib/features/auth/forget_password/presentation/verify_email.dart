@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
@@ -29,7 +30,7 @@ class VerifyEmail extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              StringsManager.verifyEmailScreenTitle,
+              StringsManager.verifyEmailScreenTitle.tr(),
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
             ),
             SizedBox(
@@ -37,24 +38,25 @@ class VerifyEmail extends StatelessWidget {
             ),
             Text(
                 textAlign: TextAlign.center,
-                StringsManager.verifyEmailScreenEmailGuide,
+                StringsManager.verifyEmailScreenEmailGuide.tr(),
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp)),
             SizedBox(
               height: 30.h,
             ),
             CustomTextField(
-              hint: StringsManager.emailFieldHint,
+              hint: StringsManager.emailFieldHint.tr(),
               controller: emailController,
               validator: emailValidator,
-              label: StringsManager.emailFieldLabel,
-              errorText:
-                  exception != null ? StringsManager.emailFieldError : null,
+              label: StringsManager.emailFieldLabel.tr(),
+              errorText: exception != null
+                  ? StringsManager.emailFieldError.tr()
+                  : null,
             ),
             SizedBox(
               height: 50.h,
             ),
             CustomButton(
-              text: StringsManager.continueButtonText,
+              text: StringsManager.continueButtonText.tr(),
               color: primaryColor,
               onPressed: () {
                 sendOtp(emailController.text);

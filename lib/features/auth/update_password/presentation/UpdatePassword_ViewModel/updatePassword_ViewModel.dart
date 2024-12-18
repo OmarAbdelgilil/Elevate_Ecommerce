@@ -1,4 +1,3 @@
-
 import 'package:elevate_ecommerce/core/cache/hive_service.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
@@ -17,9 +16,10 @@ import 'package:injectable/injectable.dart';
 class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
   final UpdatePasswordUseCase updatePasswordUseCase;
   final UpdatePasswordValidator updatePasswordValidator;
-  final LogoutUsecase logoutUsecase ;
+  final LogoutUsecase logoutUsecase;
 
-  UpdatePasswordViewModel(this.updatePasswordUseCase, this.updatePasswordValidator,this.logoutUsecase)
+  UpdatePasswordViewModel(this.updatePasswordUseCase,
+      this.updatePasswordValidator, this.logoutUsecase)
       : super(InitialState()) {
     updatePasswordValidator.attachListeners(_onFieldsChanged);
   }
@@ -46,19 +46,22 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
 
   void _updatePassword(UpdatePasswordIntent intent) async {
     emit(LoadingState());
-    if (!updatePasswordValidator.updatePasswordFormKey.currentState!.validate()) {
+    if (!updatePasswordValidator.updatePasswordFormKey.currentState!
+        .validate()) {
       emit(ErrorState(Exception("Invalid input")));
       return;
     }
-    var result = await updatePasswordUseCase.updatePassword(UpdatePasswordRequest(
-       newPassword: updatePasswordValidator.newPasswordController.text,
-        password: updatePasswordValidator.currentPasswordController.text,));
+    var result =
+        await updatePasswordUseCase.updatePassword(UpdatePasswordRequest(
+      newPassword: updatePasswordValidator.newPasswordController.text,
+      password: updatePasswordValidator.currentPasswordController.text,
+    ));
 
     switch (result) {
       case Success<User?>():
-       TokenProvider().saveToken(result.data!.token!);
-       await logoutUsecase.logout();
-        final token =TokenProvider().token;
+        TokenProvider().saveToken(result.data!.token!);
+        await logoutUsecase.logout();
+        final token = TokenProvider().token;
         HiveService().clearUser(token!);
         UserProvider().clearUserData();
         TokenProvider().clearToken();
@@ -76,7 +79,7 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
   void _checkfields() {
     fieldsFilledNotifier.value =
         updatePasswordValidator.newPasswordController.text.isNotEmpty &&
-        updatePasswordValidator.currentPasswordController.text.isNotEmpty &&
+            updatePasswordValidator.currentPasswordController.text.isNotEmpty &&
             updatePasswordValidator.confirmPasswordController.text.isNotEmpty;
   }
 }
@@ -84,13 +87,10 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
 sealed class UpdatePasswordScreenIntent {}
 
 class UpdatePasswordIntent extends UpdatePasswordScreenIntent {
-
   String password;
   String newPassword;
 
-
-  UpdatePasswordIntent(
-      this.password, this.newPassword);
+  UpdatePasswordIntent(this.password, this.newPassword);
 }
 
 class CheckfieldsInent extends UpdatePasswordScreenIntent {}

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
@@ -25,7 +26,7 @@ class ProductScreenBody extends StatelessWidget {
             children: [
               Lottie.asset(LottieAssets.noContent),
               Text(
-                StringsManager.noProductsFound,
+                StringsManager.noProductsFound.tr(),
                 style: AppTextStyles.title(),
               ),
             ],

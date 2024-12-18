@@ -2,10 +2,14 @@ class StringsManager {
   static const login = "login";
   static const bestSeller = "Best seller";
   static const signUp = "Sign up";
-  static const Reset_password="Reset password";
-  static const update ="update";
+  static const Reset_password = "Reset password";
+  static const update = "update";
   static const subject = "subject";
   static const profile = "profile";
+  static const forgetpassword = "Forget password?";
+  static const donthaveaccount = "Don\'t have an account?";
+  static const rememberme = "Remember me";
+  static const continueAsguest = "Continue as guest";
   static const exams = "exams";
   static const browseBySubject = "Browse By Subject";
   static const issueValidEmail = "Please Enter Valid Email";
@@ -68,7 +72,11 @@ class StringsManager {
   static const retryAgain = "Retry again";
   static const noProductsFound = "No products found";
   static const emptyContent = "Empty content";
-
+  static const gender = "Gender";
+  static const male = "Male";
+  static const female = "Female";
+  static const termscondition = "Terms&Conditions";
+  static const alreadyHaveAccount = "Already have an account?";
   static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen
@@ -84,10 +92,23 @@ class StringsManager {
   static const categoriesSectionError = "Error loading categories";
   static const occasionSectionHeader = 'Occasion';
   static const occasionSectionError = 'Error loading occasions';
+  static const bestSellerSectionTitle = 'Bloom with our exquisite best sellers';
+  static const viewAllButtonText = 'View All';
+  static const deliverto = 'Deliver to ';
+  static const occasions = 'Occasions';
+  static const bouquetIncludes = 'Bouquet includes';
+  static const productDescription = 'Description';
+  static const status = 'Status';
   // product widget
   static const productPriceCurrency = 'EGP';
   static const productButton = 'add to cart';
-
+  static const inStock = 'In stock';
+  static const outOfStock = 'Out of stock';
+  static const productTax = 'All prices include tax';
+  //categories
+  static const all = 'All';
+  static const alllower = 'all';
+  static const search = 'Search';
   //cart
   static const String productAddedToCart =
       "Product added to cart successfully!";
@@ -117,4 +138,26 @@ class StringsManager {
   static const upDate = 'Update';
   static const editProfile = 'Edit Profile';
   static const change = 'Change';
+  static const saveAddress = 'saveAddress';
+
+  static const cityFieldLabel = 'City';
+
+  static const streetFieldLabel = 'Street';
+
+
+
+  static const adressNotFound = 'No Addresses Found, Add Your address';
+  static const addAdress = 'Add new address';
+  static const cancel = 'cancel';
+  static const loginRequired = 'loginRequired';
+  static const loginRequiredMessage = 'loginRequiredMessage';
+
+
+
+  //orders
+  static const String orderScreenTitle = 'My orders';
+  static const String ordersActive = 'Active';
+  static const String completedOrders = "Completed";
+  static const String orderNumber = "Order number#";
+  static const String orderTrackButton = "Track order";
 }

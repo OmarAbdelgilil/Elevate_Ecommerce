@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/features/home/presentation/base/base_widgets.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/search_text_field.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/product_screen.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/values_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,7 +25,8 @@ class CategoryScreen extends StatelessWidget {
       create: (context) =>
           getIt.get<CategoriesViewmodel>()..doIntent(LoadCategoriesIntent()),
       child: Scaffold(
-        appBar: customAppBar(title: "Categories"),
+        appBar:
+            customAppBar(title: StringsManager.categoriesSectionHeader.tr()),
         body: BlocBuilder<CategoriesViewmodel, CategoriesState>(
           builder: (context, state) {
             if (state is SuccessState) {
@@ -78,7 +81,7 @@ class CategoryScreen extends StatelessWidget {
                       indicatorColor: ColorManager.primary,
                       labelColor: ColorManager.primary,
                       tabs: [
-                        const Tab(text: "All"),
+                        Tab(text: StringsManager.all.tr()),
                         ...categories
                             .map((category) => Tab(text: category.name)),
                       ],

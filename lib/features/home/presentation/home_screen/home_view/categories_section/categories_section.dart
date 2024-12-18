@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_screen_view_models/categories_viewmodel.dart';
@@ -24,7 +25,7 @@ class CategoriesSection extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             SectionHeader(
-                title: StringsManager.categoriesSectionHeader,
+                title: StringsManager.categoriesSectionHeader.tr(),
                 onpressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
@@ -54,8 +55,8 @@ class CategoriesSection extends StatelessWidget {
                   );
                 }
                 if (state is ErrorState) {
-                  return const Center(
-                      child: Text(StringsManager.categoriesSectionError));
+                  return Center(
+                      child: Text(StringsManager.categoriesSectionError.tr()));
                 }
                 return const Placeholder();
               },

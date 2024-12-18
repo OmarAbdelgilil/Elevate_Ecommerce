@@ -11,13 +11,12 @@ class AddressesRepositoryImpl implements AddressesRepository {
   AddressesRepositoryImpl(this._addressOnlineDatasource);
 
   @override
-  Future<Result<List<AddressModel>>> getAddresses()async {
- return await _addressOnlineDatasource.getAddresses();
+  Future<Result<List<AddressModel>>> getAddresses() async {
+    return await _addressOnlineDatasource.getAddresses();
   }
 
   @override
-  Future<Result<bool?>> removeAddress(String addressId) async{
-   return await _addressOnlineDatasource.removeAddress(addressId);
+  Future<Result<bool?>> removeAddress(String addressId) async {
+    return await _addressOnlineDatasource.removeAddress(addressId);
   }
-
-  }
+}
