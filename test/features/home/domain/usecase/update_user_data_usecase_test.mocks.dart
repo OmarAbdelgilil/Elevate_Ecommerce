@@ -10,10 +10,14 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requ
     as _i12;
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
     as _i11;
+import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
+    as _i14;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i8;
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
+    as _i13;
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart'
@@ -148,4 +152,22 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i11.UserResponse?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i13.UserAddressResponse?>> saveUserAddress(
+          _i14.AddressRequest? request) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #saveUserAddress,
+          [request],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i13.UserAddressResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i13.UserAddressResponse?>>(
+          this,
+          Invocation.method(
+            #saveUserAddress,
+            [request],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i13.UserAddressResponse?>>);
 }
