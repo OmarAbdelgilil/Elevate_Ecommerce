@@ -47,8 +47,11 @@ dependencies:
   cached_network_image:
   google_fonts:
   shared_preferences:
-
-
+  firebase_messaging:
+  firebase_core: ^3.8.1
+  firebase_auth:
+  cloud_firestore:
+  flutter_local_notifications:
   dio:
   bloc:
   provider:
@@ -73,6 +76,7 @@ dev_dependencies:
   json_serializable:
   smooth_page_indicator:
   hive_generator:
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

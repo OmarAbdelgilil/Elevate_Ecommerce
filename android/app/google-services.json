@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "98645490250",
+    "project_id": "elevateflowery",
+    "storage_bucket": "elevateflowery.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98645490250:android:f8c87c19e21e1efbf344b3",
+        "android_client_info": {
+          "package_name": "com.example.elevate_ecommerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98645490250-e7b8pvf1gjjmpo29uvgu1f31h4u1rjpl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ5epvp-9QLU-3OtQmiraTW07fzvLbDo0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "98645490250-e7b8pvf1gjjmpo29uvgu1f31h4u1rjpl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
