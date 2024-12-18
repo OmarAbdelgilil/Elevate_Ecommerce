@@ -140,5 +140,20 @@
    "Active" : "Active",
    "Completed" : "Completed",
    "Order number#":"Order number#",
-   "Track order":"Track order"
+   "Track order":"Track order",
+   "Place Order": "Place Order",
+   "Schedule": "Schedule",
+   "Arrive by $formattedDate":"Arrive by $formattedDate",
+   "Instant, ":"Instant, ",
+   "Delivery time":"Delivery time",
+   "Delivery address":"Delivery address",
+   "Add new": "Add new",
+   "It is a gift": "It is a gift",
+   "Credit card": "Credit card",
+   "Cash on delivery": "Cash on delivery",
+   "Payment Method": "Payment Method",
+   "Enter the phone number": "Enter the phone number",
+   "Phone number": "Phone number",
+   "Enter the name": "Enter the name",
+   "Name": "Name"
 }

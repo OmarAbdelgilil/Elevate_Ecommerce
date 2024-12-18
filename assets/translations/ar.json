@@ -141,6 +141,20 @@
 "Active" : "نشط",
 "Completed":"مكتمل",
 "Order number#":"رقم الطلب#",
-"Track order":"تابع الطلب"
-
+"Track order":"تابع الطلب",
+"Place Order": "تاكيد الطلب",
+"Schedule": "مواعيد",
+"Arrive by $formattedDate":"توصيل في $formattedDate",
+"Instant, ":"فوري، ",
+"Delivery time":"وقت التوصيل",
+   "Delivery address":"عنوان التوصيل",
+   "Add new": "اضافة جديد",
+   "It is a gift": " هدية",
+   "Credit card": "بطاقة ائتمان",
+   "Cash on delivery": "نقدا عند التوصيل",
+   "Payment Method": "طريقة الدفع",
+   "Enter the phone number": "ادخل رقم الهاتف",
+   "Phone number": "رقم الهاتف",
+   "Enter the name": "ادخل الاسم",
+   "Name": "الاسم"
 }
