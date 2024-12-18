@@ -45,7 +45,7 @@ Future<void> main() async {
 
     await Hive.initFlutter();
     Hive.registerAdapter(UserModelAdapter());
-
+    Hive.registerAdapter((AddressAdapter()));
     HttpOverrides.global = MyHttpOverrides();
 
     configureDependencies();
@@ -66,7 +66,7 @@ Future<void> main() async {
         await TokenProvider().saveToken(token);
         final userModel = await HiveService().getUser(token);
         if (userModel != null) {
-          final UserData userData = userModel.toUserData();
+          final UserData userData = userModel.mapUserModelToUserData(userModel);
           UserProvider().setUserData(userData);
           initialRoute = AppRoutes.mainLayOut;
         } else {
@@ -79,36 +79,6 @@ Future<void> main() async {
       FirebaseCrashlytics.instance.recordError(e, stack, fatal: false);
       initialRoute = AppRoutes.login;
     }
-    WidgetsFlutterBinding.ensureInitialized();
-    await EasyLocalization.ensureInitialized();
-    await Hive.initFlutter();
-    final String initialRoute;
-    Hive.registerAdapter(UserModelAdapter());
-    Hive.registerAdapter(AddressAdapter());
-
-    HttpOverrides.global = MyHttpOverrides();
-    configureDependencies();
-    Bloc.observer = SimpleBlocObserver();
-    await SystemChrome.setPreferredOrientations([
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ]);
-    final TokenStorage tokenStorage = TokenStorage();
-    final String? token = await tokenStorage.getToken();
-    if (token != null) {
-      await TokenProvider().saveToken(token);
-      print("Token saved: ${TokenProvider().token}");
-      final userModel = await HiveService().getUser(token);
-      UserData userData = userModel!.mapUserModelToUserData(userModel);
-      UserProvider().setUserData(userData);
-      initialRoute = AppRoutes.mainLayOut;
-    } else {
-      initialRoute = AppRoutes.login;
-    }
-    print("Token retrieved: $token");
-
-    // final String initialRoute =
-    //     token != null ? AppRoutes.mainLayOut : AppRoutes.login;
 
     runApp(
       EasyLocalization(
