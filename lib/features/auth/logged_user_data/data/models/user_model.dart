@@ -39,7 +39,16 @@ class UserModel extends HiveObject {
   List<String>? wishlist;
 
   @HiveField(11)
-  List<String>? addresses;
+  List<Address>? addresses;
+
+  @HiveField(12)
+  String? passwordResetCode;
+
+  @HiveField(13)
+  String? passwordResetExpires;
+
+  @HiveField(14)
+  bool? resetCodeVerified;
 
   UserModel({
     this.id,
@@ -54,6 +63,9 @@ class UserModel extends HiveObject {
     this.passwordChangedAt,
     this.wishlist,
     this.addresses,
+    this.passwordResetCode,
+    this.passwordResetExpires,
+    this.resetCodeVerified,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -69,7 +81,12 @@ class UserModel extends HiveObject {
       createdAt: json['createdAt'],
       passwordChangedAt: json['passwordChangedAt'],
       wishlist: List<String>.from(json['wishlist'] ?? []),
-      addresses: List<String>.from(json['addresses'] ?? []),
+      addresses: (json['addresses'] as List?)
+          ?.map((address) => Address.fromJson(address))
+          .toList(),
+      passwordResetCode: json['passwordResetCode'],
+      passwordResetExpires: json['passwordResetExpires'],
+      resetCodeVerified: json['resetCodeVerified'],
     );
   }
 
@@ -86,27 +103,72 @@ class UserModel extends HiveObject {
       'createdAt': createdAt,
       'passwordChangedAt': passwordChangedAt,
       'wishlist': wishlist,
-      'addresses': addresses,
+      'addresses': addresses?.map((address) => address.toJson()).toList(),
+      'passwordResetCode': passwordResetCode,
+      'passwordResetExpires': passwordResetExpires,
+      'resetCodeVerified': resetCodeVerified,
     };
+  }
+
+  UserData mapUserModelToUserData(UserModel userModel) {
+    return UserData(
+      id: userModel.id,
+      firstName: userModel.firstName,
+      lastName: userModel.lastName,
+      email: userModel.email,
+      gender: userModel.gender,
+      phone: userModel.phone,
+      photo: userModel.photo,
+      role: userModel.role,
+      createdAt: userModel.createdAt != null
+          ? DateTime.parse(userModel.createdAt!)
+          : null,
+      passwordChangedAt: userModel.passwordChangedAt != null
+          ? DateTime.parse(userModel.passwordChangedAt!)
+          : null,
+      wishlist: userModel.wishlist,
+      addresses:
+          userModel.addresses?.map((address) => address.toJson()).toList(),
+      passwordResetCode: userModel.passwordResetCode,
+      passwordResetExpires: userModel.passwordResetExpires != null
+          ? DateTime.parse(userModel.passwordResetExpires!)
+          : null,
+      resetCodeVerified: userModel.resetCodeVerified,
+    );
   }
 }
 
-extension UserModelMapper on UserModel {
-  UserData toUserData() {
-    return UserData(
-      id: id,
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      gender: gender,
-      phone: phone,
-      photo: photo,
-      role: role,
-      createdAt: createdAt == null ? null : DateTime.parse(createdAt!),
-      passwordChangedAt:
-          passwordChangedAt == null ? null : DateTime.parse(passwordChangedAt!),
-      wishlist: wishlist,
-      addresses: addresses,
+@HiveType(typeId: 1) // Unique ID for the Address adapter
+class Address {
+  @HiveField(0)
+  String? street;
+
+  @HiveField(1)
+  String? phone;
+
+  @HiveField(2)
+  String? city;
+
+  @HiveField(3)
+  String? id;
+
+  Address({this.street, this.phone, this.city, this.id});
+
+  factory Address.fromJson(Map<String, dynamic> json) {
+    return Address(
+      street: json['street'],
+      phone: json['phone'],
+      city: json['city'],
+      id: json['_id'],
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'street': street,
+      'phone': phone,
+      'city': city,
+      '_id': id,
+    };
   }
 }
