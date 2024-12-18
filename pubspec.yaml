@@ -50,6 +50,11 @@ dependencies:
   geolocator:
 
 
+  firebase_messaging:
+  firebase_core: ^3.8.1
+  firebase_auth:
+  cloud_firestore:
+  flutter_local_notifications:
   dio:
   bloc:
   provider:
@@ -60,9 +65,8 @@ dependencies:
   google_maps_flutter:
 
   easy_localization:
-  geocoding: 
+  geocoding:
   fluttertoast:
-  firebase_core: ^3.4.0
   firebase_crashlytics: ^4.1.0
 
 dev_dependencies:
@@ -81,6 +85,7 @@ dev_dependencies:
   json_serializable:
   smooth_page_indicator:
   hive_generator:
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

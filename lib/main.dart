@@ -12,10 +12,12 @@ import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/routes/router.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_model.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
+import 'package:elevate_ecommerce/utils/messageHandeller.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,6 +28,39 @@ import 'package:provider/provider.dart';
 // import 'firebase_options.dart';
 
 Future<void> main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  await messaging.requestPermission();
+  String? tokenFcm = await messaging.getToken();
+  print("device Token: $tokenFcm");
+
+  Hive.registerAdapter(UserModelAdapter());
+  HttpOverrides.global = MyHttpOverrides();
+  configureDependencies();
+  Bloc.observer = SimpleBlocObserver();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  final TokenStorage tokenStorage = TokenStorage();
+  final String? token = await tokenStorage.getToken();
+  if (token != null) {
+    await TokenProvider().saveToken(token);
+    print("Token saved: ${TokenProvider().token}");
+    final userModel = await HiveService().getUser(token);
+    UserData userData = userModel!.toUserData();
+    UserProvider().setUserData(userData);
+  }
+  print("Token retrieved: $token");
+
+  final String initialRoute =
+      token != null ? AppRoutes.mainLayOut : AppRoutes.login;
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
 
