@@ -64,6 +64,7 @@ dependencies:
   fluttertoast:
   firebase_core: ^3.4.0
   firebase_crashlytics: ^4.1.0
+  webview_flutter: ^4.10.0
 
 dev_dependencies:
   flutter_test:

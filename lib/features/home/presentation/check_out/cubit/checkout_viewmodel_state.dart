@@ -7,8 +7,14 @@ final class CheckoutViewmodelInitial extends CheckoutViewmodelState {}
 class PaymentLoadingState extends CheckoutViewmodelState {}
 
 class PaymentSuccessState extends CheckoutViewmodelState {
-  Payment payment;
-  PaymentSuccessState(this.payment);
+  final Payment payment;
+  final String sessionUrl; // Add this
+  PaymentSuccessState(this.payment, this.sessionUrl);
+}
+
+class AddressSelectedState extends CheckoutViewmodelState {
+  final AddressModel selectedAddress;
+  AddressSelectedState(this.selectedAddress);
 }
 
 class PaymentErrorState extends CheckoutViewmodelState {
@@ -19,6 +25,6 @@ class PaymentErrorState extends CheckoutViewmodelState {
 sealed class PaymentIntent {}
 
 class PerformPayment extends PaymentIntent {
-  PaymentRequest paymentRequest;
-  PerformPayment(this.paymentRequest);
+  final String userPhone;
+  PerformPayment(this.userPhone);
 }

@@ -46,7 +46,7 @@ class Session {
   String? paymentMethodCollection;
   PaymentMethodConfigurationDetails? paymentMethodConfigurationDetails;
   PaymentMethodOptions? paymentMethodOptions;
-  List<String>? paymentMethodTypes;
+  List<dynamic>? paymentMethodTypes;
   String? paymentStatus;
   PhoneNumberCollection? phoneNumberCollection;
   dynamic recoveredFrom;
@@ -179,7 +179,7 @@ class Session {
             ? null
             : PaymentMethodOptions.fromJson(
                 json['payment_method_options'] as Map<String, dynamic>),
-        paymentMethodTypes: json['payment_method_types'] as List<String>?,
+        paymentMethodTypes: json['payment_method_types'] as List<dynamic>?,
         paymentStatus: json['payment_status'] as String?,
         phoneNumberCollection: json['phone_number_collection'] == null
             ? null
