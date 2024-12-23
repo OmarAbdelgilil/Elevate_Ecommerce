@@ -11,27 +11,29 @@ void showLoginDialog(BuildContext context) {
     barrierDismissible: false,
     builder: (BuildContext context) {
       return AlertDialog(
-        title:  Text(StringsManager.loginRequired.tr()),
-        content:  Text(StringsManager.loginRequiredMessage.tr()),
+        title: Text(StringsManager.loginRequired.tr()),
+        content: Text(StringsManager.loginRequiredMessage.tr()),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
             },
-            child: Text(StringsManager.cancel.tr(),style: AppTextStyles.title(color: ColorManager.black),),
+            child: Text(
+              StringsManager.cancel.tr(),
+              style: AppTextStyles.title(color: ColorManager.black),
+            ),
           ),
           Container(
             decoration: BoxDecoration(
-              color: ColorManager.primary,
-              borderRadius: BorderRadius.circular(24)
-            ),
+                color: ColorManager.primary,
+                borderRadius: BorderRadius.circular(24)),
             child: TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, AppRoutes.login);
               },
               child: Text(
                 StringsManager.login.tr(),
-                style:  AppTextStyles.title(color: ColorManager.white),
+                style: AppTextStyles.title(color: ColorManager.white),
               ),
             ),
           ),

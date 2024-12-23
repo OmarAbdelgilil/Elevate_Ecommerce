@@ -15,20 +15,21 @@ Widget baseBuilder(BuildContext context, BaseState state, Widget child) {
       child: const SizedBox(
           width: 30,
           height: 30,
-          child: CircularProgressIndicator(strokeWidth: 2,color: ColorManager.primary, )),
+          child: CircularProgressIndicator(
+            strokeWidth: 2,
+            color: ColorManager.primary,
+          )),
     );
   } else if (state is SuccessState) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Fluttertoast.showToast(
-          msg: state.message,
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 1,
-          backgroundColor: Colors.greenAccent,
-          textColor: Colors.black,
-          fontSize: 16.0,
-
-
+        msg: state.message,
+        toastLength: Toast.LENGTH_LONG,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.greenAccent,
+        textColor: Colors.black,
+        fontSize: 16.0,
       );
     });
   } else if (state is EmptyState) {
@@ -56,8 +57,6 @@ Widget baseBuilder(BuildContext context, BaseState state, Widget child) {
         backgroundColor: Colors.red,
         textColor: Colors.white,
         fontSize: 16.0,
-
-
       );
     });
   }

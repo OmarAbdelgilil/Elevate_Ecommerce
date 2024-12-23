@@ -21,7 +21,6 @@ import '../../features/home/presentation/permission_screen/permission_view/permi
 import '../../features/home/presentation/profile_edit_screen/profile_edit_view/profile_edit_screen.dart';
 import '../../features/home/presentation/profile_screen/save_address/save_address_view/save_address_view.dart';
 
-
 final dummyProduct = ProductsModel(
     id: '1',
     title: 'Test Product',
@@ -60,23 +59,23 @@ Route manageRoutes(RouteSettings settings) {
                 product: dummyProduct,
               ));
     case AppRoutes.bestSeller:
-
       return MaterialPageRoute(builder: (context) => const bestSeller_screen());
     case AppRoutes.saveAddressScreen:
       return MaterialPageRoute(builder: (context) => const SaveAddressScreen());
     case AppRoutes.permissionScreen:
       return MaterialPageRoute(builder: (_) => const PermissionsScreen());
     case AppRoutes.ResetPassword:
-      return MaterialPageRoute(builder: (context)=> const UpdatePasswordView());
+      return MaterialPageRoute(
+          builder: (context) => const UpdatePasswordView());
     case AppRoutes.address:
       return MaterialPageRoute(builder: (context) => const AddressesScreen());
     case AppRoutes.termsAndConditions:
       return MaterialPageRoute(
-        builder: (context) =>const TermsAndConditionsScreen(),
+        builder: (context) => const TermsAndConditionsScreen(),
       );
     case AppRoutes.aboutUs:
       return MaterialPageRoute(
-        builder: (context) =>const AboutUsScreen(),
+        builder: (context) => const AboutUsScreen(),
       );
     case AppRoutes.checkOut:
       return MaterialPageRoute(
