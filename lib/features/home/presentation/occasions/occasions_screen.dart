@@ -59,7 +59,7 @@ class OccasionsScreen extends StatelessWidget {
                     SliverFillRemaining(
                       child: TabBarView(
                         children: [
-                          const ProductScreen(filterType: 'all', id: ''),
+                          ProductScreen(filterType: 'all', id: ''),
                           ...occasions.map(
                             (occasion) => ProductScreen(
                               filterType: 'occasion',

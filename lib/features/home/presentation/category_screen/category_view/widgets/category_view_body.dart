@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
+import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:elevate_ecommerce/features/home/presentation/base/base_widgets.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/search_text_field.dart';
+import 'package:elevate_ecommerce/features/home/presentation/filters/filters.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/product_screen.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -14,11 +16,19 @@ import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/categry_viewmodel.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CategoryScreen extends StatelessWidget {
+class CategoryScreen extends StatefulWidget {
   final String selectedCategoryId;
 
   const CategoryScreen({super.key, required this.selectedCategoryId});
 
+  @override
+  State<CategoryScreen> createState() => _CategoryScreenState();
+}
+
+class _CategoryScreenState extends State<CategoryScreen> {
+  ProductsFiltersEnum? filter;
+  int? minPrice;
+  int? maxPrice;
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -31,8 +41,8 @@ class CategoryScreen extends StatelessWidget {
           builder: (context, state) {
             if (state is SuccessState) {
               final categories = state.categories!;
-              final selectedIndex = categories
-                  .indexWhere((category) => category.id == selectedCategoryId);
+              final selectedIndex = categories.indexWhere(
+                  (category) => category.id == widget.selectedCategoryId);
 
               return DefaultTabController(
                 length: categories.length + 1,
@@ -50,7 +60,17 @@ class CategoryScreen extends StatelessWidget {
                             width: AppSize.s64,
                             height: 48.0,
                             child: InkWell(
-                              onTap: () {},
+                              onTap: () async {
+                                final result = await showFilters(context);
+                                if (result != null) {
+                                  setState(() {
+                                    filter = result['sortOption'];
+                                    minPrice = result['priceRange'][0].toInt();
+                                    maxPrice = result['priceRange'][1].toInt();
+                                    print(filter);
+                                  });
+                                }
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius:
@@ -89,9 +109,22 @@ class CategoryScreen extends StatelessWidget {
                     Expanded(
                       child: TabBarView(
                         children: [
-                          const ProductScreen(filterType: "all", id: ""),
+                          ProductScreen(
+                            key: ValueKey(
+                                '${filter ?? 'dd'}-${minPrice ?? ''}-${maxPrice ?? 'oo'}'),
+                            filterType: "all",
+                            id: "",
+                            filter: filter,
+                            priceFrom: minPrice,
+                            priceTo: maxPrice,
+                          ),
                           ...categories.map(
                             (category) => ProductScreen(
+                              key: ValueKey(
+                                  '${category.id!}-${filter ?? 'dd'}-${minPrice ?? ''}-${maxPrice ?? 'oo'}'),
+                              filter: filter,
+                              priceFrom: minPrice,
+                              priceTo: maxPrice,
                               filterType: "category",
                               id: category.id!,
                             ),
