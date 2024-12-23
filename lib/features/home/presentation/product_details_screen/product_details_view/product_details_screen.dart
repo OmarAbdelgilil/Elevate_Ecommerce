@@ -4,7 +4,6 @@ import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view_model.dart';
-import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
@@ -13,6 +12,7 @@ import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: depend_on_referenced_packages
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailsScreen extends StatefulWidget {

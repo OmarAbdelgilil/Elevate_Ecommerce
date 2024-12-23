@@ -1,11 +1,9 @@
-
-
-import 'package:elevate_ecommerce/features/home/presentation/mian_lay_out_screen/mian_lay_out_view_model/mian_lay_out_view_model.dart';
-import 'package:elevate_ecommerce/utils/color_manager.dart';
-import 'package:elevate_ecommerce/utils/values_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
+import '../../../../../utils/color_manager.dart';
+import '../../../../../utils/values_manager.dart';
+import '../mian_lay_out_view_model/mian_lay_out_view_model.dart';
 
 class MainLayOutScreen extends StatelessWidget {
   const MainLayOutScreen({super.key});
