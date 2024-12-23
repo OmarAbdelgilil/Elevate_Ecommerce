@@ -6,7 +6,7 @@ class AddressRequest {
     this.lat,
     this.lang,
     this.username,
-    });
+  });
 
   AddressRequest.fromJson(dynamic json) {
     street = json['street'];
@@ -33,5 +33,4 @@ class AddressRequest {
     map['username'] = username;
     return map;
   }
-
 }

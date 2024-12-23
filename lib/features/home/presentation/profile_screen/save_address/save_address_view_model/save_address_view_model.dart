@@ -15,28 +15,26 @@ import '../../../../../../core/common/api_result.dart';
 import '../../../../../../core/di/di.dart';
 import '../../../../../../core/providers/user_provider.dart';
 import '../../../../domain/usecase/save_user_address.dart';
+
 @injectable
-class SaveAddressViewModel extends BaseCubit implements SaveAddressViewModelInput,SaveAddressViewModelOutput{
+class SaveAddressViewModel extends BaseCubit
+    implements SaveAddressViewModelInput, SaveAddressViewModelOutput {
+  final SaveUserAddressUseCase _saveUserAddressUseCase;
 
-final SaveUserAddressUseCase _saveUserAddressUseCase;
-
-
-SaveAddressViewModel(this._saveUserAddressUseCase);
+  SaveAddressViewModel(this._saveUserAddressUseCase);
 
   GoogleMapController? _mapController;
   LatLng? _userLocation;
   String? _mapStyle;
 
-final userProvider = getIt<UserProvider>();
+  final userProvider = getIt<UserProvider>();
 
   static SaveAddressViewModel get(BuildContext context) =>
       BlocProvider.of<SaveAddressViewModel>(context);
   final TextEditingController _streetController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _cityController =
-  TextEditingController();
-final TextEditingController _userNameController =
-TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _userNameController = TextEditingController();
   Future<void> _fetchMapStyle() async {
     _mapStyle = await rootBundle.loadString('assets/map_style/map_style.json');
   }
@@ -59,10 +57,11 @@ TextEditingController();
       }
 
       Position currentPosition = await Geolocator.getCurrentPosition();
-      _userLocation = LatLng(currentPosition.latitude, currentPosition.longitude);
+      _userLocation =
+          LatLng(currentPosition.latitude, currentPosition.longitude);
 
-      await fetchAddressFromCoordinates(currentPosition.latitude, currentPosition.longitude);
-
+      await fetchAddressFromCoordinates(
+          currentPosition.latitude, currentPosition.longitude);
 
       Geolocator.getPositionStream().listen((position) {
         _userLocation = LatLng(position.latitude, position.longitude);
@@ -83,50 +82,44 @@ TextEditingController();
     emit(ContentState());
   }
 
-
   @override
   void start() async {
-
     emit(LoadingState());
     _userNameController.text =
-        '${userProvider.userData?.firstName} ${userProvider.userData?.lastName} ' ;
+        '${userProvider.userData?.firstName} ${userProvider.userData?.lastName} ';
     Future.delayed(const Duration(milliseconds: 100), () {
       emit(CheckLocationPermissionsState());
       emit(LoadingState());
-
     });
   }
 
-
-  void clearTextControllers(){
+  void clearTextControllers() {
     _streetController.clear();
     _phoneController.clear();
     _cityController.clear();
     _userNameController.clear();
   }
 
+  Future<void> fetchAddressFromCoordinates(
+      double latitude, double longitude) async {
+    try {
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(latitude, longitude);
+      if (placeMarks.isNotEmpty) {
+        Placemark place = placeMarks.first;
 
-Future<void> fetchAddressFromCoordinates(double latitude, double longitude) async {
-  try {
-    List<Placemark> placeMarks = await placemarkFromCoordinates(latitude, longitude);
-    if (placeMarks.isNotEmpty) {
-      Placemark place = placeMarks.first;
+        String? street = place.street;
+        String? city = place.locality;
 
-      String? street = place.street;
-      String? city = place.locality;
-
-      _streetController.text = street ?? "Unknown Street";
-      _cityController.text = city ?? "Unknown City";
-
-
+        _streetController.text = street ?? "Unknown Street";
+        _cityController.text = city ?? "Unknown City";
+      }
+    } catch (e) {
+      emit(ErrorState("Error fetching address: $e"));
     }
-  } catch (e) {
-    emit(ErrorState("Error fetching address: $e"));
   }
-}
 
-
-@override
+  @override
   set setMapController(GoogleMapController mapController) {
     if (_mapController == null) {
       _mapController = mapController;
@@ -134,6 +127,7 @@ Future<void> fetchAddressFromCoordinates(double latitude, double longitude) asyn
       print('_____________mapController is already initialized');
     }
   }
+
   @override
   TextEditingController get getCityController => _cityController;
 
@@ -150,15 +144,10 @@ Future<void> fetchAddressFromCoordinates(double latitude, double longitude) asyn
 
     if (result is Success<UserAddressResponse?>) {
       emit(SuccessState(result.data?.message ?? ''));
-
-
-
     } else if (result is Fail<UserAddressResponse?>) {
       emit(ErrorState(result.exception.toString()));
     }
   }
-
-
 
   @override
   GoogleMapController get getMapController => _mapController!;
@@ -169,11 +158,8 @@ Future<void> fetchAddressFromCoordinates(double latitude, double longitude) asyn
   @override
   String get getMapStyle => _mapStyle!;
 
-
-
-@override
+  @override
   TextEditingController get getUserNameController => _userNameController;
-
 }
 
 abstract class SaveAddressViewModelInput {
@@ -187,7 +173,6 @@ abstract class SaveAddressViewModelOutput {
 
   TextEditingController get getStreetController;
   TextEditingController get getUserNameController;
-
 
   GoogleMapController get getMapController;
 

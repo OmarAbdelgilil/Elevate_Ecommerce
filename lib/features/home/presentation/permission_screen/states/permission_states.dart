@@ -1,7 +1,3 @@
-
-
-
-
 import '../../base/base_states.dart';
 
 class LocationServiceDisabledState extends BaseState {}

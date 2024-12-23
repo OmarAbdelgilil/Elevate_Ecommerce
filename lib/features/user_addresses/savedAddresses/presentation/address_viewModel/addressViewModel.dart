@@ -76,7 +76,6 @@ class AddressInitialState extends AddressState {}
 
 class AddressRemovedState extends AddressState {}
 
-
 class AddressLoadingState extends AddressState {}
 
 class AddressSuccessState extends AddressState {

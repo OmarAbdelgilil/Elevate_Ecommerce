@@ -55,7 +55,8 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Result<UserAddressResponse?>> saveUserAddress(AddressRequest request)async{
+  Future<Result<UserAddressResponse?>> saveUserAddress(
+      AddressRequest request) async {
     final result = await _homeDatasource.saveAddress(request);
     return result;
   }

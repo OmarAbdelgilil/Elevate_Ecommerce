@@ -7,14 +7,13 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../../../../../utils/values_manager.dart';
 
-
 class MapWidget extends StatelessWidget {
   const MapWidget({super.key, required this.viewModel});
   final SaveAddressViewModel viewModel;
 
   @override
   Widget build(BuildContext context) {
-    return   Stack(
+    return Stack(
       children: [
         GoogleMap(
           compassEnabled: false,
@@ -23,7 +22,6 @@ class MapWidget extends StatelessWidget {
           myLocationButtonEnabled: false,
           zoomControlsEnabled: false,
           mapType: MapType.normal,
-
           style: viewModel.getMapStyle,
           onMapCreated: (controller) {
             viewModel.setMapController = controller;
@@ -36,8 +34,9 @@ class MapWidget extends StatelessWidget {
         Center(
           child: SvgPicture.asset(
             SVGAssets.locationIcon,
-            colorFilter: const ColorFilter.mode(ColorManager.primary, BlendMode.srcIn),
-            height:40,
+            colorFilter:
+                const ColorFilter.mode(ColorManager.primary, BlendMode.srcIn),
+            height: 40,
             width: 40,
           ),
         ),

@@ -2,14 +2,11 @@ import 'package:elevate_ecommerce/features/home/presentation/permission_screen/p
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 import '../../base/base_states.dart';
 import '../../base/cubit_builder.dart';
 import '../../base/cubit_listener.dart';
 import '../permission_view_model/permission_view_model.dart';
 import '../states/permission_states.dart';
-
-
 
 class PermissionsScreen extends StatelessWidget {
   const PermissionsScreen({super.key});
@@ -32,8 +29,7 @@ class PermissionsScreen extends StatelessWidget {
                 viewModel: PermissionsViewModel.get(context),
                 locationError: LocationError.permissions,
               );
-            }
-            else if (state is LocationServiceDisabledState) {
+            } else if (state is LocationServiceDisabledState) {
               return PermissionsBody(
                 viewModel: PermissionsViewModel.get(context),
                 locationError: LocationError.services,
