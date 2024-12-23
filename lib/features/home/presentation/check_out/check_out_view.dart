@@ -12,6 +12,7 @@ import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/d
 import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/gift_toggle_formf.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/payment_method_screen.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -38,7 +39,7 @@ class CheckOutView extends StatelessWidget {
         ),
       ],
       child: Scaffold(
-        appBar: customAppBar(title: 'Checkout'.tr()),
+        appBar: customAppBar(title: StringsManager.checkoutScreenTitle.tr()),
         body: BlocBuilder<CartViewmodel, CartState>(
           builder: (context, state) {
             int subtotal = 0;
@@ -64,7 +65,7 @@ class CheckOutView extends StatelessWidget {
                     height: 24,
                   ),
                   AddressSection(viewModel: addressViewModel),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Container(
                     width: double.infinity,
                     color: const Color(0xFFEAEAEA),
@@ -85,12 +86,12 @@ class CheckOutView extends StatelessWidget {
                     color: const Color(0xFFEAEAEA),
                     height: 24,
                   ),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   PaymentDetailsSection(
                     subtotal: subtotal,
                     total: total,
                   ),
-                  SizedBox(height: 48),
+                  const SizedBox(height: 48),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Builder(
@@ -136,7 +137,8 @@ class CheckOutView extends StatelessWidget {
                                   null) {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                    content: Text('Please select the address'),
+                                    content:
+                                        Text(StringsManager.selectAddress.tr()),
                                     backgroundColor: Colors.red,
                                   ),
                                 );
@@ -145,7 +147,7 @@ class CheckOutView extends StatelessWidget {
                                     .doIntent(PerformPayment(userPhone));
                               }
                             },
-                            text: 'Place Order'.tr(),
+                            text: StringsManager.placeOrder.tr(),
                             radius: 20,
                           ),
                         );
