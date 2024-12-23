@@ -25,6 +25,7 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
+import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -143,9 +144,18 @@ abstract class ApiManager {
   @Extra({'requiresToken': true})
   Future<AddressResponse?> getAddresses();
 
-  @DELETE("${ApiConstants.removeAddressPath}/{productId}")
+  @GET(ApiConstants.getNotificationsPath)
+  @Extra({'requiresToken': true})
+  Future<NotificationResponse?> getNotifications();
+
+  @DELETE("${ApiConstants.removeNotificationPath}/{notificationId}")
+  @Extra({'requiresToken': true})
+  Future<NotificationResponse?>removeNotification(
+      @Path("notificationId") String notificationId);
+
+  @DELETE("${ApiConstants.removeAddressPath}/{addressId}")
   @Extra({'requiresToken': true})
   Future<AddressResponse?>removeAddress(
-      @Path("productId") String productId);
+      @Path("addressId") String productId);
 
 }

@@ -56,6 +56,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i20;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i18;
+import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart'
+    as _i30;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
     as _i29;
 import 'package:mockito/mockito.dart' as _i1;
@@ -384,6 +386,27 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i29.AddressResponse?>.value(),
       ) as _i8.Future<_i29.AddressResponse?>);
+
+  @override
+  _i8.Future<_i30.NotificationResponse?> getNotifications() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getNotifications,
+          [],
+        ),
+        returnValue: _i8.Future<_i30.NotificationResponse?>.value(),
+      ) as _i8.Future<_i30.NotificationResponse?>);
+
+  @override
+  _i8.Future<_i30.NotificationResponse?> removeNotification(
+          String? notificationId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeNotification,
+          [notificationId],
+        ),
+        returnValue: _i8.Future<_i30.NotificationResponse?>.value(),
+      ) as _i8.Future<_i30.NotificationResponse?>);
 
   @override
   _i8.Future<_i29.AddressResponse?> removeAddress(String? productId) =>

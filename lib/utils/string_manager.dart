@@ -68,7 +68,7 @@ class StringsManager {
   static const retryAgain = "Retry again";
   static const noProductsFound = "No products found";
   static const emptyContent = "Empty content";
-
+static const notification ="Notification";
   static const passwordResetSuccess = "Password reset successfully!";
 
   ///// mainLayOutScreen
@@ -105,7 +105,6 @@ class StringsManager {
   static const savedAddress = 'Saved address';
   static const guest = 'Guest';
   static const guestEmail = 'Guest@gmail.com';
-  static const notification = 'Notification';
   static const language = 'Language';
   static const english = 'English';
   static const selectedLanguage = 'Selected Language';

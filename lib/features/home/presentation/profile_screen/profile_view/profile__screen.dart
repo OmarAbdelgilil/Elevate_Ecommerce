@@ -3,11 +3,13 @@ import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/api_constants.dart';
 import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
+import 'package:elevate_ecommerce/features/notifications/presentation/viewModel/notification_viewModel.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:elevate_ecommerce/utils/values_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -38,11 +40,18 @@ class ProfileScreen extends StatelessWidget {
                       width: 90.w,
                       height: 26.h,
                     ),
-                    SvgPicture.asset(
-                      SVGAssets.notificationIcon,
-                      width: 90.w,
-                      height: 26.h,
+                    InkWell(
+                      onTap: (){
+                        Navigator.pushNamed(
+                            context, AppRoutes.notifications);
+                      },
+                      child: SvgPicture.asset(
+                        SVGAssets.notificationIcon,
+                        width: 90.w,
+                        height: 26.h,
+                      ),
                     ),
+
                   ],
                 ),
                 Column(

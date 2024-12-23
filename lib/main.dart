@@ -30,11 +30,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
+/*  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);
   FirebaseMessaging messaging = FirebaseMessaging.instance;
   await messaging.requestPermission();
   String? tokenFcm = await messaging.getToken();
-  print("device Token: $tokenFcm");
+  print("device Token: $tokenFcm");*/
 
   Hive.registerAdapter(UserModelAdapter());
   HttpOverrides.global = MyHttpOverrides();
@@ -92,7 +92,7 @@ class MyApp extends StatelessWidget {
         onGenerateRoute: manageRoutes,
 
 
-        initialRoute: AppRoutes.register,
+        initialRoute: AppRoutes.login,
 
       ),
     );

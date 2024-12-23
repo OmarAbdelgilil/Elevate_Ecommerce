@@ -11,6 +11,7 @@ import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/about_us/about_us_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/terms_and_conditions.dart/terms_and_conditions_screen.dart';
+import 'package:elevate_ecommerce/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addressView.dart';
 import 'package:flutter/material.dart';
 
@@ -69,6 +70,8 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => AboutUsScreen(),
       );
+    case AppRoutes.notifications :
+      return MaterialPageRoute(  builder: (context) => NotificationsScreen());
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }

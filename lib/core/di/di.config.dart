@@ -156,6 +156,20 @@ import '../../features/home/presentation/profile_edit_screen/profile_edit_view_m
     as _i87;
 import '../../features/home/presentation/profile_screen/profile_view_model/profile_view_model.dart'
     as _i243;
+import '../../features/notifications/data/dataSource/notification_onlineDataSourceImpl.dart'
+    as _i513;
+import '../../features/notifications/data/dataSource/notification_onlineDataSourse.dart'
+    as _i870;
+import '../../features/notifications/data/repositoryImpl/notification_repositoryImpl.dart'
+    as _i241;
+import '../../features/notifications/domain/repository/notification_repository.dart'
+    as _i1068;
+import '../../features/notifications/domain/usecases/getNotifications_usecase.dart'
+    as _i510;
+import '../../features/notifications/domain/usecases/removeNotification_usecase.dart'
+    as _i369;
+import '../../features/notifications/presentation/viewModel/notification_viewModel.dart'
+    as _i53;
 import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse.dart'
     as _i272;
 import '../../features/user_addresses/savedAddresses/data/dataSource/address_OnlineDataSourse_impl.dart'
@@ -227,10 +241,15 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i87.RemoteDatasourceImpl(gh<_i561.ApiManager>()));
     gh.factory<_i194.GetLoggedUserDataOnlineDatasource>(() =>
         _i120.GetLoggedUserDataOnlineDataSourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i870.NotificationOnlineDataSourse>(
+        () => _i513.NotificationOnlinedatasourceimpl(gh<_i561.ApiManager>()));
     gh.factory<_i371.LogoutRepo>(
         () => _i977.LogoutRpoImpl(gh<_i731.LogoutOnlineDatasource>()));
     gh.factory<_i710.LoginOnlineDatasource>(
         () => _i988.LoginOnlineDatasourceImpl(gh<_i561.ApiManager>()));
+    gh.factory<_i1068.NotificationRepository>(() =>
+        _i241.NotificationRepositoryimpl(
+            gh<_i870.NotificationOnlineDataSourse>()));
     gh.factory<_i154.UpdatePasswordOnlineDatasource>(
         () => _i1034.UpdatePasswordOnlineDatasourceImpl(
               gh<_i561.ApiManager>(),
@@ -283,6 +302,10 @@ extension GetItInjectableX on _i174.GetIt {
             gh<_i154.UpdatePasswordOnlineDatasource>()));
     gh.factory<_i995.ForgetPasswordUsecase>(() =>
         _i995.ForgetPasswordUsecase(gh<_i974.ForgetPasswordRepository>()));
+    gh.factory<_i510.GetNotificationsUsecase>(() =>
+        _i510.GetNotificationsUsecase(gh<_i1068.NotificationRepository>()));
+    gh.factory<_i369.RemoveNotificationUsecase>(() =>
+        _i369.RemoveNotificationUsecase(gh<_i1068.NotificationRepository>()));
     gh.factory<_i459.LogoutUsecase>(
         () => _i459.LogoutUsecase(gh<_i371.LogoutRepo>()));
     gh.factory<_i787.AuthRepository>(() => _i153.AuthRepositoryImpl(
@@ -309,6 +332,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i967.GetCategoriesUsecase(gh<_i0.HomeRepository>()));
     gh.factory<_i17.GetHomepageUsecase>(
         () => _i17.GetHomepageUsecase(gh<_i0.HomeRepository>()));
+    gh.factory<_i53.NotificationViewModel>(() => _i53.NotificationViewModel(
+          gh<_i510.GetNotificationsUsecase>(),
+          gh<_i369.RemoveNotificationUsecase>(),
+        ));
     gh.factory<_i177.ProductDetails_ViewModel>(() =>
         _i177.ProductDetails_ViewModel(gh<_i665.ProductDetailsUsecase>()));
     gh.factory<_i1013.GetLogedUserDataUsecase>(() =>
