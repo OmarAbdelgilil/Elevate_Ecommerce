@@ -132,11 +132,17 @@ class CheckOutView extends StatelessWidget {
                           },
                           child: CustomButton(
                             onPressed: () {
-                              if (checkoutViewmodelCubit.selectedAddress !=
+                              if (checkoutViewmodelCubit.selectedAddress ==
                                   null) {
-                                checkoutViewmodelCubit.doIntent(
-                                  PerformPayment(userPhone),
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content: Text('Please select the address'),
+                                    backgroundColor: Colors.red,
+                                  ),
                                 );
+                              } else {
+                                checkoutViewmodelCubit
+                                    .doIntent(PerformPayment(userPhone));
                               }
                             },
                             text: 'Place Order'.tr(),
