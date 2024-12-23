@@ -6,12 +6,16 @@
 import 'dart:async' as _i4;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i5;
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
+    as _i10;
 import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
     as _i6;
 import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
     as _i7;
 import 'package:elevate_ecommerce/features/payment/domain/repos/payment_repo.dart'
     as _i2;
+import 'package:elevate_ecommerce/features/payment/domain/usecases/create_cache_order_usecase.dart'
+    as _i9;
 import 'package:elevate_ecommerce/features/payment/domain/usecases/payment_usecase.dart'
     as _i3;
 import 'package:mockito/mockito.dart' as _i1;
@@ -74,4 +78,41 @@ class MockPaymentUsecase extends _i1.Mock implements _i3.PaymentUsecase {
           ),
         )),
       ) as _i4.Future<_i5.Result<_i6.Payment?>>);
+}
+
+/// A class which mocks [CreateCacheOrderUsecase].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockCreateCacheOrderUsecase extends _i1.Mock
+    implements _i9.CreateCacheOrderUsecase {
+  MockCreateCacheOrderUsecase() {
+    _i1.throwOnMissingStub(this);
+  }
+
+  @override
+  _i2.PaymentRepo get paymentRepo => (super.noSuchMethod(
+        Invocation.getter(#paymentRepo),
+        returnValue: _FakePaymentRepo_0(
+          this,
+          Invocation.getter(#paymentRepo),
+        ),
+      ) as _i2.PaymentRepo);
+
+  @override
+  _i4.Future<_i5.Result<_i10.CreateOrder?>> getPayment(
+          _i7.PaymentRequest? paymentRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getPayment,
+          [paymentRequest],
+        ),
+        returnValue: _i4.Future<_i5.Result<_i10.CreateOrder?>>.value(
+            _i8.dummyValue<_i5.Result<_i10.CreateOrder?>>(
+          this,
+          Invocation.method(
+            #getPayment,
+            [paymentRequest],
+          ),
+        )),
+      ) as _i4.Future<_i5.Result<_i10.CreateOrder?>>);
 }

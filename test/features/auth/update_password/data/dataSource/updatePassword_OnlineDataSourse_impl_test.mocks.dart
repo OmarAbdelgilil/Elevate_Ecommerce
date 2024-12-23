@@ -4,10 +4,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'dart:async' as _i8;
-import 'dart:ui' as _i35;
+import 'dart:ui' as _i36;
 
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart' as _i7;
-import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i34;
+import 'package:elevate_ecommerce/core/providers/token_provider.dart' as _i35;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart'
     as _i12;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
@@ -62,6 +62,8 @@ import 'package:elevate_ecommerce/features/home/data/models/response/user_addres
     as _i28;
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
     as _i31;
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
+    as _i34;
 import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
     as _i32;
 import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
@@ -434,12 +436,23 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i32.Payment?>.value(),
       ) as _i8.Future<_i32.Payment?>);
+
+  @override
+  _i8.Future<_i34.CreateOrder?> createOrder(
+          _i33.PaymentRequest? paymentRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createOrder,
+          [paymentRequest],
+        ),
+        returnValue: _i8.Future<_i34.CreateOrder?>.value(),
+      ) as _i8.Future<_i34.CreateOrder?>);
 }
 
 /// A class which mocks [TokenProvider].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockTokenProvider extends _i1.Mock implements _i34.TokenProvider {
+class MockTokenProvider extends _i1.Mock implements _i35.TokenProvider {
   MockTokenProvider() {
     _i1.throwOnMissingStub(this);
   }
@@ -470,7 +483,7 @@ class MockTokenProvider extends _i1.Mock implements _i34.TokenProvider {
       );
 
   @override
-  void addListener(_i35.VoidCallback? listener) => super.noSuchMethod(
+  void addListener(_i36.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #addListener,
           [listener],
@@ -479,7 +492,7 @@ class MockTokenProvider extends _i1.Mock implements _i34.TokenProvider {
       );
 
   @override
-  void removeListener(_i35.VoidCallback? listener) => super.noSuchMethod(
+  void removeListener(_i36.VoidCallback? listener) => super.noSuchMethod(
         Invocation.method(
           #removeListener,
           [listener],

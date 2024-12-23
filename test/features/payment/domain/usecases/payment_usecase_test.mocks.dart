@@ -6,6 +6,8 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
+    as _i8;
 import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
@@ -53,4 +55,22 @@ class MockPaymentRepo extends _i1.Mock implements _i2.PaymentRepo {
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.Payment?>>);
+
+  @override
+  _i3.Future<_i4.Result<_i8.CreateOrder?>> createOrder(
+          _i6.PaymentRequest? paymentRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createOrder,
+          [paymentRequest],
+        ),
+        returnValue: _i3.Future<_i4.Result<_i8.CreateOrder?>>.value(
+            _i7.dummyValue<_i4.Result<_i8.CreateOrder?>>(
+          this,
+          Invocation.method(
+            #createOrder,
+            [paymentRequest],
+          ),
+        )),
+      ) as _i3.Future<_i4.Result<_i8.CreateOrder?>>);
 }

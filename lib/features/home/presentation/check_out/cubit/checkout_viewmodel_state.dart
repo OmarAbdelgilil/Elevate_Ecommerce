@@ -12,6 +12,11 @@ class PaymentSuccessState extends CheckoutViewmodelState {
   PaymentSuccessState(this.payment, this.sessionUrl);
 }
 
+class CashOnDeliverySuccessState extends CheckoutViewmodelState {
+  final CreateOrder createOrder; // Use CreateOrder type
+  CashOnDeliverySuccessState(this.createOrder);
+}
+
 class AddressSelectedState extends CheckoutViewmodelState {
   final AddressModel selectedAddress;
   AddressSelectedState(this.selectedAddress);

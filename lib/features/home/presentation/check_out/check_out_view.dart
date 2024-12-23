@@ -70,7 +70,10 @@ class CheckOutView extends StatelessWidget {
                     color: const Color(0xFFEAEAEA),
                     height: 24,
                   ),
-                  const PaymentMethodScreen(),
+                  PaymentMethodScreen(
+                    onPaymentMethodSelected: checkoutViewmodelCubit
+                        .setPaymentMethod, // Pass callback
+                  ),
                   Container(
                     width: double.infinity,
                     color: const Color(0xFFEAEAEA),
@@ -107,6 +110,14 @@ class CheckOutView extends StatelessWidget {
                                         "http://localhost:3000/allOrders",
                                     cancelUrl: "http://localhost:3000/cart",
                                   ),
+                                ),
+                              );
+                            } else if (state is CashOnDeliverySuccessState) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                SnackBar(
+                                  content: Text(
+                                      'Order created successfully with ID: ${state.createOrder}'),
+                                  backgroundColor: Colors.green,
                                 ),
                               );
                             } else if (state is PaymentErrorState) {
