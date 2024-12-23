@@ -60,6 +60,10 @@ import 'package:elevate_ecommerce/features/home/data/models/response/user_addres
     as _i28;
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
     as _i31;
+import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
+    as _i32;
+import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
+    as _i33;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
     as _i30;
 import 'package:mockito/mockito.dart' as _i1;
@@ -418,4 +422,14 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i31.OrderResponse?>.value(),
       ) as _i8.Future<_i31.OrderResponse?>);
+
+  @override
+  _i8.Future<_i32.Payment?> doPayment(_i33.PaymentRequest? paymentRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #doPayment,
+          [paymentRequest],
+        ),
+        returnValue: _i8.Future<_i32.Payment?>.value(),
+      ) as _i8.Future<_i32.Payment?>);
 }
