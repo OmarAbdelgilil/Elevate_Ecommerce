@@ -2,6 +2,7 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
@@ -32,8 +33,10 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Result<ProductResponse?>> getAllProducts() async {
-    return await _homeDatasource.getAllProducts();
+  Future<Result<ProductResponse?>> getAllProducts(
+      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
+    return await _homeDatasource.getAllProducts(
+        filter: filter, priceFrom: priceFrom, priceTo: priceTo);
   }
 
   @override
@@ -55,7 +58,8 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Result<UserAddressResponse?>> saveUserAddress(AddressRequest request)async{
+  Future<Result<UserAddressResponse?>> saveUserAddress(
+      AddressRequest request) async {
     final result = await _homeDatasource.saveAddress(request);
     return result;
   }

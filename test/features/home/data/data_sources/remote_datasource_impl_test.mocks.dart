@@ -275,10 +275,11 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i17.HomeResponse?>);
 
   @override
-  _i8.Future<_i18.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+  _i8.Future<_i18.ProductResponse?> getAllProducts(String? param) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
-          [],
+          [param],
         ),
         returnValue: _i8.Future<_i18.ProductResponse?>.value(),
       ) as _i8.Future<_i18.ProductResponse?>);
