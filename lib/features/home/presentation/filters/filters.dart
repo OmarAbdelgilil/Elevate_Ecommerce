@@ -2,10 +2,12 @@ import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:flutter/material.dart';
 
-Future<Map<String, dynamic>?> showFilters(BuildContext context) async {
-  ProductsFiltersEnum selectedSortOption = ProductsFiltersEnum.highestPrice;
-  double minPrice = 0;
-  double maxPrice = 250;
+Future<Map<String, dynamic>?> showFilters(BuildContext context,
+    {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
+  ProductsFiltersEnum selectedSortOption =
+      filter ?? ProductsFiltersEnum.highestPrice;
+  double minPrice = priceFrom != null ? priceFrom.toDouble() : 0;
+  double maxPrice = priceTo != null ? priceTo.toDouble() : 2000;
 
   return await showModalBottomSheet<Map<String, dynamic>?>(
     context: context,

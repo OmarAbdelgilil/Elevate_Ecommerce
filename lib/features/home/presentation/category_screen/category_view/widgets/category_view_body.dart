@@ -61,13 +61,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
                             height: 48.0,
                             child: InkWell(
                               onTap: () async {
-                                final result = await showFilters(context);
+                                final result = await showFilters(context,
+                                    filter: filter,
+                                    priceFrom: minPrice,
+                                    priceTo: maxPrice);
                                 if (result != null) {
                                   setState(() {
                                     filter = result['sortOption'];
                                     minPrice = result['priceRange'][0].toInt();
                                     maxPrice = result['priceRange'][1].toInt();
-                                    print(filter);
                                   });
                                 }
                               },
