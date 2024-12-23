@@ -1,11 +1,5 @@
-
-
-import 'package:elevate_ecommerce/utils/string_manager.dart';
-
 class AppValidators {
   AppValidators._();
-
-
 
   static String? validatePhoneNumber(String? val) {
     if (val == null) {
@@ -21,9 +15,6 @@ class AppValidators {
     }
   }
 
-
-
-
   static String? validateNotEmpty(String? val) {
     if (val == null) {
       return 'pleas enter this text field';
@@ -33,5 +24,4 @@ class AppValidators {
       return null;
     }
   }
-
 }

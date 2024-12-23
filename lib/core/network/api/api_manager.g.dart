@@ -479,13 +479,13 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse2?> addProductToCart(AddCartProductRequest req) async {
+  Future<CartResponse?> addProductToCart(AddCartProductRequest req) async {
     final _extra = <String, dynamic>{'requiresToken': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(req.toJson());
-    final _options = _setStreamType<CartResponse2>(Options(
+    final _options = _setStreamType<CartResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -502,10 +502,10 @@ class _ApiManager implements ApiManager {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
-    late CartResponse2? _value;
+    late CartResponse? _value;
     try {
       _value =
-          _result.data == null ? null : CartResponse2.fromJson(_result.data!);
+          _result.data == null ? null : CartResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -552,12 +552,12 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse2?> removeItemFromCart(String productId) async {
+  Future<CartResponse?> removeItemFromCart(String productId) async {
     final _extra = <String, dynamic>{'requiresToken': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CartResponse2>(Options(
+    final _options = _setStreamType<CartResponse>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -574,10 +574,10 @@ class _ApiManager implements ApiManager {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
-    late CartResponse2? _value;
+    late CartResponse? _value;
     try {
       _value =
-          _result.data == null ? null : CartResponse2.fromJson(_result.data!);
+          _result.data == null ? null : CartResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

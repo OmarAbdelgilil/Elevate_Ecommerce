@@ -8,7 +8,6 @@ import 'package:elevate_ecommerce/features/auth/login/presentation/login_validat
 import 'package:elevate_ecommerce/features/auth/login/presentation/login_validator/login_validator_types.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/guest_button.dart';
 import 'package:elevate_ecommerce/features/auth/login/presentation/widgets/remember_me_button.dart';
-import 'package:elevate_ecommerce/features/home/presentation/profile_screen/profile_view/profile__screen.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -53,7 +52,7 @@ class LoginViewBody extends StatelessWidget {
                 TextButton(
                   onPressed: () =>
                       Navigator.pushNamed(context, AppRoutes.forgetPassword),
-                  child:  Text(
+                  child: Text(
                     StringsManager.forgetpassword.tr(),
                     // style: constTextStyle(
                     //   color: Colors.black,
@@ -99,7 +98,7 @@ class LoginViewBody extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 Text(
+                Text(
                   StringsManager.donthaveaccount.tr(),
                   style: TextStyle(color: Colors.black, fontSize: 16),
                 ),

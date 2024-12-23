@@ -2,8 +2,10 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_execution.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart';
-import 'package:elevate_ecommerce/features/home/data/DTOs/categories_DTO.dart';
 import 'package:elevate_ecommerce/features/home/data/DTOs/home_dto.dart';
+
+import 'package:elevate_ecommerce/features/home/data/Dtos/categories_dto.dart';
+
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
@@ -88,5 +90,4 @@ class RemoteDatasourceImpl implements RemoteDatasource {
       return result;
     });
   }
-
 }

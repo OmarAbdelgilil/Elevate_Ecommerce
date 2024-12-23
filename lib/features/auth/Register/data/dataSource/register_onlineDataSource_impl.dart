@@ -5,7 +5,6 @@ import 'package:elevate_ecommerce/features/auth/Register/data/dataSource/registe
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:injectable/injectable.dart';
-import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart';
 
 @Injectable(as: RegisterOnlineDatasource)
 class RegisterOnlineDatasourceImpl implements RegisterOnlineDatasource {
@@ -16,8 +15,6 @@ class RegisterOnlineDatasourceImpl implements RegisterOnlineDatasource {
   Future<Result<RegisterResponse?>> register(RegisterRequest request) {
     return executeApi(() async {
       var result = await apiManager.register(request);
-      var user = result.user;
-      var userDto = UserDto(isVerified: user?.isVerified, token: result.token);
       return result;
     });
   }
