@@ -1,6 +1,4 @@
 import 'package:elevate_ecommerce/utils/color_manager.dart';
-import 'package:elevate_ecommerce/utils/color_manager.dart';
-import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:lottie/lottie.dart';
@@ -8,6 +6,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../../../utils/assets_manager.dart';
 import '../../../../../../utils/values_manager.dart';
 import '../permission_view_model/permission_view_model.dart';
+
 enum LocationError { services, permissions }
 
 class PermissionsBody extends StatelessWidget {
@@ -50,7 +49,6 @@ class PermissionsBody extends StatelessWidget {
                       locationError == LocationError.services
                           ? 'Location Service is Disabled'
                           : 'Location Permissions is Disabled',
-
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -63,7 +61,6 @@ class PermissionsBody extends StatelessWidget {
                       locationError == LocationError.services
                           ? 'we need location service enabled in order to get your location to send you a vehicle.'
                           : 'we need location permissions in order to get your location to send you a vehicle.',
-
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -86,7 +83,6 @@ class PermissionsBody extends StatelessWidget {
                   ),
                   child: Text(
                     'Open Settings',
-
                   ),
                 ),
               ),

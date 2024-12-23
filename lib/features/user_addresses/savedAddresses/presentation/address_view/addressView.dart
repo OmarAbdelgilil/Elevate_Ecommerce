@@ -7,13 +7,10 @@ import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addresseCard.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../../core/di/di.dart';
 import '../../../../../core/network/api/extract_error_message.dart';
 import '../../../../../core/routes/app_routes.dart';
-
-
 
 class AddressesScreen extends StatelessWidget {
   const AddressesScreen({super.key});
@@ -35,24 +32,29 @@ class AddressesScreen extends StatelessWidget {
           child: BlocBuilder<AddressViewModel, AddressState>(
             builder: (context, state) {
               if (state is AddressLoadingState) {
-                return const Center(child: CircularProgressIndicator(color: ColorManager.primary,));
+                return const Center(
+                    child: CircularProgressIndicator(
+                  color: ColorManager.primary,
+                ));
               } else if (state is AddressErrorState) {
-                return Center(child: Text(extractErrorMessage(state.exception)));
+                return Center(
+                    child: Text(extractErrorMessage(state.exception)));
               } else if (state is AddressSuccessState) {
                 return Column(
                   children: [
                     Expanded(
                       child: state.addressData!.isEmpty
-                          ? Center(child: Text(StringsManager.adressNotFound.tr()))
+                          ? Center(
+                              child: Text(StringsManager.adressNotFound.tr()))
                           : ListView.builder(
-                        itemCount: state.addressData!.length,
-                        itemBuilder: (context, index) {
-                          return AddresseCard(
-                            viewModel: addressViewModel,
-                            address: state.addressData![index],
-                          );
-                        },
-                      ),
+                              itemCount: state.addressData!.length,
+                              itemBuilder: (context, index) {
+                                return AddresseCard(
+                                  viewModel: addressViewModel,
+                                  address: state.addressData![index],
+                                );
+                              },
+                            ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
@@ -60,7 +62,8 @@ class AddressesScreen extends StatelessWidget {
                         text: StringsManager.addAdress.tr(),
                         onPressed: () async {
                           // Navigate to the address save screen and wait for the result
-                          final result = await Navigator.pushNamed(context, AppRoutes.saveAddressScreen);
+                          final result = await Navigator.pushNamed(
+                              context, AppRoutes.saveAddressScreen);
                           if (result == true) {
                             // Trigger reload if the result indicates data was changed
                             addressViewModel.doIntent(LoadAddressIntent());

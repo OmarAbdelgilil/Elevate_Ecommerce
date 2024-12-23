@@ -17,17 +17,29 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      return web;
+      throw UnsupportedError(
+        'DefaultFirebaseOptions have not been configured for web - '
+        'you can reconfigure this by running the FlutterFire CLI again.',
+      );
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
         return android;
       case TargetPlatform.iOS:
-        return ios;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for ios - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.macOS:
-        return macos;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for macos - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.windows:
-        return windows;
+        throw UnsupportedError(
+          'DefaultFirebaseOptions have not been configured for windows - '
+          'you can reconfigure this by running the FlutterFire CLI again.',
+        );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -40,51 +52,11 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCVsiDMq6GEfnpJMjCVCHguXX5duZaOOe8',
-    appId: '1:98645490250:web:ab003e29faea48a1f344b3',
-    messagingSenderId: '98645490250',
-    projectId: 'elevateflowery',
-    authDomain: 'elevateflowery.firebaseapp.com',
-    storageBucket: 'elevateflowery.firebasestorage.app',
-    measurementId: 'G-N096TMN5HX',
-  );
-
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAZ5epvp-9QLU-3OtQmiraTW07fzvLbDo0',
-    appId: '1:98645490250:android:f8c87c19e21e1efbf344b3',
-    messagingSenderId: '98645490250',
-    projectId: 'elevateflowery',
-    storageBucket: 'elevateflowery.firebasestorage.app',
-  );
-
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyB3rh9RD2-FWgZA9zQf2guvBI5sDHldqdo',
-    appId: '1:98645490250:ios:cbe37e0809f0da47f344b3',
-    messagingSenderId: '98645490250',
-    projectId: 'elevateflowery',
-    storageBucket: 'elevateflowery.firebasestorage.app',
-    iosClientId: '98645490250-mfps3pribkv6ledh69app94elqkjv0sk.apps.googleusercontent.com',
-    iosBundleId: 'com.example.elevateEcommerce',
-  );
-
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyB3rh9RD2-FWgZA9zQf2guvBI5sDHldqdo',
-    appId: '1:98645490250:ios:cbe37e0809f0da47f344b3',
-    messagingSenderId: '98645490250',
-    projectId: 'elevateflowery',
-    storageBucket: 'elevateflowery.firebasestorage.app',
-    iosClientId: '98645490250-mfps3pribkv6ledh69app94elqkjv0sk.apps.googleusercontent.com',
-    iosBundleId: 'com.example.elevateEcommerce',
-  );
-
-  static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyCVsiDMq6GEfnpJMjCVCHguXX5duZaOOe8',
-    appId: '1:98645490250:web:3ab36dfd6fd95a61f344b3',
-    messagingSenderId: '98645490250',
-    projectId: 'elevateflowery',
-    authDomain: 'elevateflowery.firebaseapp.com',
-    storageBucket: 'elevateflowery.firebasestorage.app',
-    measurementId: 'G-M57YQTVJPP',
+    apiKey: 'AIzaSyAnGWRXuwm2a938ReLE6AnWgc4ppNQRR3I',
+    appId: '1:284880685668:android:25422020aa8c9f0ad46d71',
+    messagingSenderId: '284880685668',
+    projectId: 'flowers-app-d9f88',
+    storageBucket: 'flowers-app-d9f88.firebasestorage.app',
   );
 }

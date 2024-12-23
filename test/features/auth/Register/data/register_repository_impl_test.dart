@@ -3,27 +3,28 @@ import 'package:elevate_ecommerce/features/auth/Register/data/dataSource/registe
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/repository_impl/register_repository_impl.dart';
-import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'register_repository_impl_test.mocks.dart';
+
 @GenerateMocks([RegisterOnlineDatasource])
-
 void main() {
-  group("when call RegisterRepo.register it should call register function from RegisterOnlineDatasource ", (){
-
+  group(
+      "when call RegisterRepo.register it should call register function from RegisterOnlineDatasource ",
+      () {
     test('test register Success on registerOnlineDataSource ', () async {
       // Arrange
       var mockedResult = Success<RegisterResponse?>(RegisterResponse());
       provideDummy<Result<RegisterResponse?>>(mockedResult);
-      var registerOnlineDataSource =MockRegisterOnlineDatasource();
-      var registerRepoImpl =RegisterRepositoryImpl(registerOnlineDataSource);
+      var registerOnlineDataSource = MockRegisterOnlineDatasource();
+      var registerRepoImpl = RegisterRepositoryImpl(registerOnlineDataSource);
       final request = RegisterRequest();
-      when(registerOnlineDataSource.register(any)).thenAnswer((_)async=>mockedResult);
+      when(registerOnlineDataSource.register(any))
+          .thenAnswer((_) async => mockedResult);
       // Act
-      var actual= await registerRepoImpl.register(request);
+      var actual = await registerRepoImpl.register(request);
       // Assert
       expect(actual, mockedResult);
       verify(registerOnlineDataSource.register(request)).called(1);
@@ -31,21 +32,18 @@ void main() {
 
     test('test register Fail on registerOnlineDataSource ', () async {
       // Arrange
-      var failmockedResult =Fail<RegisterResponse?>(Exception());
+      var failmockedResult = Fail<RegisterResponse?>(Exception());
       provideDummy<Result<RegisterResponse?>>(Fail(Exception()));
-      var registerOnlineDataSource =MockRegisterOnlineDatasource();
-      var registerRepoImpl =RegisterRepositoryImpl(registerOnlineDataSource);
+      var registerOnlineDataSource = MockRegisterOnlineDatasource();
+      var registerRepoImpl = RegisterRepositoryImpl(registerOnlineDataSource);
       final request = RegisterRequest();
-      when(registerOnlineDataSource.register(any)).thenAnswer((_)async=>failmockedResult);
+      when(registerOnlineDataSource.register(any))
+          .thenAnswer((_) async => failmockedResult);
       // Act
-      var actual= await registerRepoImpl.register(request);
+      var actual = await registerRepoImpl.register(request);
       // Assert
       expect(actual, failmockedResult);
       verify(registerOnlineDataSource.register(request)).called(1);
     });
-
-
   });
-
-
 }

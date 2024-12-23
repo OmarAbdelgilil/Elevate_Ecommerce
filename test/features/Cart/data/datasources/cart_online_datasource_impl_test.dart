@@ -5,8 +5,6 @@ import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_pr
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
-import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart.dart';
-import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -34,8 +32,7 @@ void main() {
             .having((req) => req.product, 'product', productId)
             .having((req) => req.quantity, 'quantity', quantity),
       ))).thenAnswer(
-        (_) async =>
-            CartResponse2(cart: Cart2(), message: '', numOfCartItems: 1),
+        (_) async => CartResponse(cart: Cart(), message: '', numOfCartItems: 1),
       );
 
       final result =
@@ -107,7 +104,7 @@ void main() {
       provideDummy<Result<bool?>>(Success(false));
 
       when(mockApiManager.removeItemFromCart(productId))
-          .thenAnswer((_) async => CartResponse2());
+          .thenAnswer((_) async => CartResponse());
 
       final result = await cartOnlineDatasource.removeItemFromCart(productId);
 
