@@ -89,11 +89,6 @@ class ProductViewModel extends BaseCubit {
     //   emit(ContentState());
     //   return;
 
-
-
-
-
-
     final result = await _getAllBestSellerProductsUseCase.getAllProducts();
     if (result is Success<BestSellerProductResponse?>) {
       final response = result.data;

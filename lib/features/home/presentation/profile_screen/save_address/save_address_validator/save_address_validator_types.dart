@@ -1,1 +1,1 @@
-enum SaveAddressValidatorTypes { phone, city,street }
+enum SaveAddressValidatorTypes { phone, city, street }
