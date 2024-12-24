@@ -8,6 +8,7 @@ import 'package:elevate_ecommerce/features/home/data/Dtos/categories_dto.dart';
 
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:elevate_ecommerce/features/home/data/Dtos/occasions_dto.dart';
@@ -49,9 +50,37 @@ class RemoteDatasourceImpl implements RemoteDatasource {
   }
 
   @override
-  Future<Result<ProductResponse?>> getAllProducts() async {
+  Future<Result<ProductResponse?>> getAllProducts(
+      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
     return executeApi(() async {
-      final result = await apiManager.getAllProducts();
+      String? filterPath = '?';
+      switch (filter) {
+        case null:
+          break;
+        case ProductsFiltersEnum.lowestPrice:
+          filterPath += 'sort=priceAfterDiscount';
+          break;
+        case ProductsFiltersEnum.highestPrice:
+          filterPath += 'sort=-priceAfterDiscount';
+          break;
+        case ProductsFiltersEnum.newProducts:
+          filterPath += 'sort=-createdAt';
+          break;
+        case ProductsFiltersEnum.oldProducts:
+          filterPath += 'sort=createdAt';
+          break;
+        case ProductsFiltersEnum.discount:
+          filterPath += 'discount[gt]=0';
+          break;
+      }
+      if (priceFrom != null && priceTo != null) {
+        if (filterPath != '?') {
+          filterPath += '&';
+        }
+        filterPath +=
+            "priceAfterDiscount[gte]=${priceFrom.toString()}&priceAfterDiscount[lte]=${priceTo.toString()}";
+      }
+      final result = await apiManager.getAllProducts(filterPath);
       return result;
     });
   }

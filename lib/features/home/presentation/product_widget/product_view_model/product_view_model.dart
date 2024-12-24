@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_usecase.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:injectable/injectable.dart';
@@ -27,19 +28,22 @@ class ProductViewModel extends BaseCubit {
       this._getAllBestSellerProductsUseCase);
 
   @override
-  void start() => _fetchAllProducts();
+  void start({ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) =>
+      _fetchAllProducts(filter: filter, priceFrom: priceFrom, priceTo: priceTo);
 
-  Future<void> _fetchAllProducts() async {
+  Future<void> _fetchAllProducts(
+      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
     emit(LoadingState());
 
-    final cachedData = await _sharedPreferencesService.getCachedProducts();
-    if (cachedData != null) {
-      _productList = cachedData;
-      emit(ContentState());
-      return;
-    }
+    // final cachedData = await _sharedPreferencesService.getCachedProducts();
+    // if (cachedData != null) {
+    //   _productList = cachedData;
+    //   emit(ContentState());
+    //   return;
+    // }
 
-    final result = await _getAllProductsUseCase.getAllProducts();
+    final result = await _getAllProductsUseCase.getAllProducts(
+        filter: filter, priceFrom: priceFrom, priceTo: priceTo);
     if (result is Success<ProductResponse?>) {
       final response = result.data;
       if (response != null && response.products!.isNotEmpty) {
