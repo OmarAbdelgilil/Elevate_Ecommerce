@@ -99,8 +99,8 @@ abstract class ApiManager {
   @GET(ApiConstants.homePagePath)
   Future<HomeResponse?> getHomePage();
 
-  @GET(ApiConstants.getAllProductsPath)
-  Future<ProductResponse?> getAllProducts();
+  @GET("${ApiConstants.getAllProductsPath}{param}")
+  Future<ProductResponse?> getAllProducts(@Path('param') String param);
 
   @GET(ApiConstants.getAllBestSellerProductsPath)
   Future<BestSellerProductResponse?> getAllBestSellerProducts();

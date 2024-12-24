@@ -306,7 +306,7 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<ProductResponse?> getAllProducts() async {
+  Future<ProductResponse?> getAllProducts(String param) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -318,7 +318,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          '/v1/products',
+          '/v1/products${param}',
           queryParameters: queryParameters,
           data: _data,
         )
