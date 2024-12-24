@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 class GetAddressesUsecase {
   final AddressesRepository _addressesRepository;
   GetAddressesUsecase(this._addressesRepository);
-  Future<Result<List<AddressModel>>>getAddresses() async {
+  Future<Result<List<AddressModel>>> getAddresses() async {
     return await _addressesRepository.getAddresses();
   }
 }

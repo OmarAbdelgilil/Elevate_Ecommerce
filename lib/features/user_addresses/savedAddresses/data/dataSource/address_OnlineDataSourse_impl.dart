@@ -6,7 +6,7 @@ import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/da
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/model/address_model.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as:AddressOnlineDatasource)
+@Injectable(as: AddressOnlineDatasource)
 class AddressOnlineDatasourceImpl implements AddressOnlineDatasource {
   final ApiManager apiManager;
   AddressOnlineDatasourceImpl(this.apiManager);
@@ -14,7 +14,7 @@ class AddressOnlineDatasourceImpl implements AddressOnlineDatasource {
   @override
   Future<Result<List<AddressModel>>> getAddresses() {
     return executeApi(
-          () async {
+      () async {
         final result = await apiManager.getAddresses();
         final addressModels = result!.addresses.map((address) {
           return AddressDto(
@@ -30,12 +30,10 @@ class AddressOnlineDatasourceImpl implements AddressOnlineDatasource {
     );
   }
 
-
-
   @override
   Future<Result<bool?>> removeAddress(String addressId) {
     return executeApi(
-          () async {
+      () async {
         final response = await apiManager.removeAddress(addressId);
         if (response?.message == 'success') {
           return true;
@@ -45,5 +43,4 @@ class AddressOnlineDatasourceImpl implements AddressOnlineDatasource {
       },
     );
   }
-
 }

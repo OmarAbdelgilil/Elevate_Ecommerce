@@ -4,9 +4,8 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:elevate_ecommerce/features/auth/update_password/domain/repository/update_password_repository.dart';
 import 'package:injectable/injectable.dart';
 
-
 @injectable
-class UpdatePasswordUseCase{
+class UpdatePasswordUseCase {
   final UpdatePasswordRepository _updatePasswordRepository;
   UpdatePasswordUseCase(this._updatePasswordRepository);
 

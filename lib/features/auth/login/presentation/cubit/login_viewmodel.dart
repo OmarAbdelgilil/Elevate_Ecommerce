@@ -55,8 +55,8 @@ class LoginViewModel extends Cubit<LoginState> {
             print('Mapped UserModel: ${userModel.toJson()}');
             final hiveService = HiveService();
             final token = result.data!.token!;
-            await hiveService.saveUser(token, userModel);
-            final cachedUser = await hiveService.getUser(token);
+            await hiveService.saveUser(cashedToken, userModel);
+            final cachedUser = await hiveService.getUser(cashedToken);
 
             UserProvider().setUserData(userData);
 

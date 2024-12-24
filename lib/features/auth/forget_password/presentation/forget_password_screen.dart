@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 //import 'package:elevate_ecommerce/core/routes/app_routes.dart';
@@ -7,6 +8,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/presentation/res
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/verify_email.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/verify_otp.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/verify_password.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +38,7 @@ class ForgetPasswordScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => viewModel,
       child: Scaffold(
-        appBar: customAppBar(title: 'Password'),
+        appBar: customAppBar(title: StringsManager.password.tr()),
         body: BlocBuilder<ForegetPasswordViewmodel, ForgetPasswordState>(
           builder: (context, state) {
             if (state is LoadingState) {

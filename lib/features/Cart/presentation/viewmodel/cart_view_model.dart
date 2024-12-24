@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/Cart/domain/model/cart_item.dart';
@@ -121,7 +122,7 @@ class CartViewmodel extends Cubit<CartState> {
           case Fail<CartModel?>():
             emit(CartErrorState(exception: cart.exception));
         }
-        _showSnackbar(StringsManager.productAddedToCart);
+        _showSnackbar(StringsManager.productAddedToCart.tr());
       case Fail<bool?>():
         emit(CartErrorState(exception: result.exception));
     }

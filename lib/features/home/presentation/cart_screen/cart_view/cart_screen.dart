@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/network/api/extract_error_message.dart';
 import 'package:elevate_ecommerce/core/routes/app_routes.dart';
@@ -6,6 +7,7 @@ import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/cart_item_card.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/payment_details_section.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
+import 'package:elevate_ecommerce/features/home/presentation/profile_screen/save_address/save_address_view_model/save_address_view_model.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -18,8 +20,13 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartViewmodel viewModel = getIt<CartViewmodel>();
-    return BlocProvider(
-      create: (context) => viewModel..doIntent(LoadCartIntent()),
+    final saveAddressViewModel = getIt.get<SaveAddressViewModel>();
+    saveAddressViewModel.permissionsPermitted();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => viewModel..doIntent(LoadCartIntent())),
+        BlocProvider(create: (context) => saveAddressViewModel),
+      ],
       child: BlocBuilder<CartViewmodel, CartState>(
         builder: (context, state) {
           return Scaffold(
@@ -27,13 +34,13 @@ class CartScreen extends StatelessWidget {
               title: Row(
                 children: [
                   Text(
-                    StringsManager.cartTitle,
+                    StringsManager.cartTitle.tr(),
                     style:
                         TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w500),
                   ),
                   if (state is CartSuccessState)
                     Text(
-                      '(${state.cartData!.numOfCartItems} ${StringsManager.items})',
+                      '(${state.cartData!.numOfCartItems} ${StringsManager.items.tr()})',
                       style: TextStyle(
                           fontSize: 20.sp,
                           fontWeight: FontWeight.w500,
@@ -64,7 +71,7 @@ class CartScreen extends StatelessWidget {
                                         horizontal: 16),
                                     child: Column(
                                       children: [
-                                        Location(),
+                                        const Location(),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 20),
@@ -100,8 +107,14 @@ class CartScreen extends StatelessWidget {
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16),
                                     child: CustomButton(
-                                      onPressed: () {},
-                                      text: StringsManager.checkoutButtonText,
+                                      onPressed: () {
+                                        Navigator.pushNamed(
+                                          context,
+                                          AppRoutes.checkOut,
+                                        );
+                                      },
+                                      text: StringsManager.checkoutButtonText
+                                          .tr(),
                                       radius: 20,
                                     ),
                                   )
@@ -112,7 +125,7 @@ class CartScreen extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: CustomButton(
-                                    text: StringsManager.loginButton,
+                                    text: StringsManager.loginButton.tr(),
                                     onPressed: () {
                                       Navigator.pushNamed(
                                           context, AppRoutes.login);

@@ -10,7 +10,9 @@ class ApiConstants {
   static const String homePagePath = "/v1/home";
   static const String getProductDetailsPath = "/v1/products";
   static const String allOccasionsPath = "/v1/occasions";
-static const String updatePasswordPath="/v1/auth/change-password";
+  static const String updatePasswordPath = "/v1/auth/change-password";
+static const String addSaveAddressPath="/v1/addresses";
+
   static const String getAllBestSellerProductsPath = "/v1/best-seller";
   static const String profilePath = "/v1/auth/profile-data";
   static const String cartPath = "/v1/cart";
@@ -22,4 +24,5 @@ static const String updatePasswordPath="/v1/auth/change-password";
   static const String removeAddressPath ="//v1/addresses";
   static const String getNotificationsPath="/v1/notifications?sort=-createdAt";
   static const String removeNotificationPath ="/v1/notifications";
+  static const String ordersPath = "/v1/orders";
 }

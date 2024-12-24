@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 class RemoveAddressUsecase {
   final AddressesRepository _addressesRepository;
   RemoveAddressUsecase(this._addressesRepository);
-  Future<Result<bool?>> removeAddress(String addressId ) async {
+  Future<Result<bool?>> removeAddress(String addressId) async {
     return await _addressesRepository.removeAddress(addressId);
   }
 }

@@ -18,7 +18,8 @@ class CustomTextField extends StatefulWidget {
     this.validator,
     required this.label,
     required this.controller,
-    this.errorText, this.readOnly,
+    this.errorText,
+    this.readOnly,
   });
 
   @override
@@ -53,7 +54,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return TextFormField(
       obscureText: _obscureText, // Use _obscureText to toggle visibility
       validator: _validate,
-      readOnly: widget.readOnly??false,
+      readOnly: widget.readOnly ?? false,
       onChanged: widget.onChange,
       controller: widget.controller,
       decoration: InputDecoration(

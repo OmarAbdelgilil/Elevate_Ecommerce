@@ -1,9 +1,11 @@
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id "dev.flutter.flutter-gradle-plugin"
+    id 'com.android.application'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+    id 'kotlin-android'
+    id 'dev.flutter.flutter-gradle-plugin'
 }
+
 
 android {
     namespace = "com.example.elevate_ecommerce"
@@ -20,9 +22,9 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
+        // Specify your unique Application ID
         applicationId "com.example.elevate_ecommerce"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 33
         versionCode 1
         versionName "1.0"
@@ -30,14 +32,22 @@ android {
 
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig = signingConfigs.debug
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            firebaseCrashlytics {
+                mappingFileUploadEnabled true
+            }
+        }
+        debug {
+//            firebaseCrashlytics {
+//                mappingFileUploadEnabled false // Disable for debug builds
+//            }
         }
     }
+
 }
 
 flutter {
     source = "../.."
 }
-apply plugin: 'com.google.gms.google-services' //for fcm

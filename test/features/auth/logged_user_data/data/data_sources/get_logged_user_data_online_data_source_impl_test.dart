@@ -4,7 +4,6 @@ import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
-import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
@@ -21,13 +20,16 @@ import 'package:elevate_ecommerce/features/auth/login/data/models/response/login
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart';
+import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
@@ -117,7 +119,7 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse2?> addProductToCart(AddCartProductRequest req) {
+  Future<CartResponse?> addProductToCart(AddCartProductRequest req) {
     // TODO: implement addProductToCart
     throw UnimplementedError();
   }
@@ -129,7 +131,7 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse2?> removeItemFromCart(String productId) {
+  Future<CartResponse?> removeItemFromCart(String productId) {
     // TODO: implement removeItemFromCart
     throw UnimplementedError();
   }
@@ -154,13 +156,25 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
+  Future<UserAddressResponse?> saveAddress(AddressRequest address) {
+    // TODO: implement saveAddress
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<OrderResponse?> getOrders() {
+    // TODO: implement getOrders
+    throw UnimplementedError();
+  }
+
+  @override
   Future<NotificationResponse?> getNotifications() {
     // TODO: implement getNotifications
     throw UnimplementedError();
   }
 
   @override
-  Future<NotificationResponse?> removeNotification(String productId) {
+  Future<NotificationResponse?> removeNotification(String notificationId) {
     // TODO: implement removeNotification
     throw UnimplementedError();
   }

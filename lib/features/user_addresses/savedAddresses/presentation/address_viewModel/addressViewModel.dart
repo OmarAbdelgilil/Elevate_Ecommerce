@@ -2,6 +2,7 @@ import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/model/address_model.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/usecase/getAddresses_usecase.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/usecase/removeAddress_usecase.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -10,12 +11,13 @@ class AddressViewModel extends Cubit<AddressState> {
   final GetAddressesUsecase _getAddressesUsecase;
   final RemoveAddressUsecase _removeAddressUsecase;
 
+  static AddressViewModel get(BuildContext context) =>
+      BlocProvider.of<AddressViewModel>(context);
 
   AddressViewModel(
-      this._getAddressesUsecase,
-      this._removeAddressUsecase,
-     )
-      : super(AddressInitialState());
+    this._getAddressesUsecase,
+    this._removeAddressUsecase,
+  ) : super(AddressInitialState());
 
   void doIntent(AddressIntent intent) {
     switch (intent) {
@@ -25,11 +27,8 @@ class AddressViewModel extends Cubit<AddressState> {
       case RemoveAddressIntent():
         _removeAddress(intent.addressId);
         break;
-
     }
   }
-
-
 
   Future<void> _getAddresses() async {
     emit(AddressLoadingState());
@@ -41,7 +40,6 @@ class AddressViewModel extends Cubit<AddressState> {
         emit(AddressErrorState(exception: result.exception));
     }
   }
-
 
   Future<void> _removeAddress(String addressId) async {
     emit(AddressRemovedState());
@@ -61,9 +59,6 @@ class AddressViewModel extends Cubit<AddressState> {
       emit(AddressErrorState());
     }
   }
-
-
-
 }
 
 sealed class AddressIntent {}
@@ -75,12 +70,12 @@ class RemoveAddressIntent extends AddressIntent {
   RemoveAddressIntent(this.addressId);
 }
 
-
 sealed class AddressState {}
 
 class AddressInitialState extends AddressState {}
 
 class AddressRemovedState extends AddressState {}
+
 
 class AddressLoadingState extends AddressState {}
 

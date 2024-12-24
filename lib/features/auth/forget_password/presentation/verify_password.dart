@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -33,7 +34,7 @@ class VerifyPassword extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              StringsManager.resetPassScreenTitle,
+              StringsManager.resetPassScreenTitle.tr(),
               style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18.sp),
             ),
             SizedBox(
@@ -41,25 +42,26 @@ class VerifyPassword extends StatelessWidget {
             ),
             Text(
                 textAlign: TextAlign.center,
-                StringsManager.resetPassScreenGuide,
+                StringsManager.resetPassScreenGuide.tr(),
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 14.sp)),
             SizedBox(
               height: 30.h,
             ),
             CustomTextField(
-              hint: StringsManager.hintPassword,
-              label: StringsManager.newPasswordLabel,
+              hint: StringsManager.hintPassword.tr(),
+              label: StringsManager.newPasswordLabel.tr(),
               controller: passwordController,
               validator: passwordValidator,
-              errorText:
-                  exception != null ? StringsManager.passwordFieldError : null,
+              errorText: exception != null
+                  ? StringsManager.passwordFieldError.tr()
+                  : null,
             ),
             SizedBox(
               height: 16.h,
             ),
             CustomTextField(
-              hint: StringsManager.confirmPasswordHint,
-              label: StringsManager.confirmPasswordHint,
+              hint: StringsManager.confirmPasswordHint.tr(),
+              label: StringsManager.confirmPasswordHint.tr(),
               controller: confirmPasswordController,
               validator: confirmPasswordValidator,
             ),
@@ -67,7 +69,7 @@ class VerifyPassword extends StatelessWidget {
               height: 50.h,
             ),
             CustomButton(
-              text: StringsManager.confirmButtonText,
+              text: StringsManager.confirmButtonText.tr(),
               onPressed: () {
                 if (passwordFormKey.currentState!.validate()) {
                   resetPassword(passwordController.text);

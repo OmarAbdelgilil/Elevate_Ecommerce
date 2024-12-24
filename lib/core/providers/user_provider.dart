@@ -27,7 +27,6 @@ class UserProvider with ChangeNotifier {
   void updateUserData(Map<String, dynamic> updatedFields) {
     if (_userData != null) {
       _userData = UserData(
-        wishlist: updatedFields['wishlist'] ?? _userData!.wishlist,
         id: updatedFields['_id'] ?? _userData!.id,
         firstName: updatedFields['firstName'] ?? _userData!.firstName,
         lastName: updatedFields['lastName'] ?? _userData!.lastName,
@@ -38,8 +37,15 @@ class UserProvider with ChangeNotifier {
         role: updatedFields['role'] ?? _userData!.role,
         createdAt: updatedFields['createdAt'] ?? _userData!.createdAt,
         passwordChangedAt:
-        updatedFields['passwordChangedAt'] ?? _userData!.passwordChangedAt,
+            updatedFields['passwordChangedAt'] ?? _userData!.passwordChangedAt,
+        wishlist: updatedFields['wishlist'] ?? _userData!.wishlist,
         addresses: updatedFields['addresses'] ?? _userData!.addresses,
+        passwordResetCode:
+            updatedFields['passwordResetCode'] ?? _userData!.passwordResetCode,
+        passwordResetExpires: updatedFields['passwordResetExpires'] ??
+            _userData!.passwordResetExpires,
+        resetCodeVerified:
+            updatedFields['resetCodeVerified'] ?? _userData!.resetCodeVerified,
       );
       notifyListeners();
     }

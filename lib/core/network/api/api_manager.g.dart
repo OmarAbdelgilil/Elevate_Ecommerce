@@ -6,7 +6,7 @@ part of 'api_manager.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element,unnecessary_string_interpolations
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _ApiManager implements ApiManager {
   _ApiManager(
@@ -479,13 +479,13 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse2?> addProductToCart(AddCartProductRequest req) async {
+  Future<CartResponse?> addProductToCart(AddCartProductRequest req) async {
     final _extra = <String, dynamic>{'requiresToken': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(req.toJson());
-    final _options = _setStreamType<CartResponse2>(Options(
+    final _options = _setStreamType<CartResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -502,10 +502,10 @@ class _ApiManager implements ApiManager {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
-    late CartResponse2? _value;
+    late CartResponse? _value;
     try {
       _value =
-          _result.data == null ? null : CartResponse2.fromJson(_result.data!);
+          _result.data == null ? null : CartResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -552,12 +552,12 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse2?> removeItemFromCart(String productId) async {
+  Future<CartResponse?> removeItemFromCart(String productId) async {
     final _extra = <String, dynamic>{'requiresToken': true};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CartResponse2>(Options(
+    final _options = _setStreamType<CartResponse>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
@@ -574,10 +574,10 @@ class _ApiManager implements ApiManager {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
-    late CartResponse2? _value;
+    late CartResponse? _value;
     try {
       _value =
-          _result.data == null ? null : CartResponse2.fromJson(_result.data!);
+          _result.data == null ? null : CartResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -682,6 +682,42 @@ class _ApiManager implements ApiManager {
     late Logout? _value;
     try {
       _value = _result.data == null ? null : Logout.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<UserAddressResponse?> saveAddress(AddressRequest address) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(address.toJson());
+    final _options = _setStreamType<UserAddressResponse>(Options(
+      method: 'PATCH',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/addresses',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
+    late UserAddressResponse? _value;
+    try {
+      _value = _result.data == null
+          ? null
+          : UserAddressResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -821,6 +857,40 @@ class _ApiManager implements ApiManager {
     try {
       _value =
           _result.data == null ? null : AddressResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<OrderResponse?> getOrders() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<OrderResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/orders',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
+    late OrderResponse? _value;
+    try {
+      _value =
+          _result.data == null ? null : OrderResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_usecase.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
@@ -87,7 +88,11 @@ class ProductViewModel extends BaseCubit {
     //   _bestSellerProductList = cachedData;
     //   emit(ContentState());
     //   return;
-    // }
+
+
+
+
+
 
     final result = await _getAllBestSellerProductsUseCase.getAllProducts();
     if (result is Success<BestSellerProductResponse?>) {
@@ -100,7 +105,7 @@ class ProductViewModel extends BaseCubit {
 
         emit(ContentState());
       } else {
-        emit(EmptyState(message: StringsManager.noProductsFound));
+        emit(EmptyState(message: StringsManager.noProductsFound.tr()));
       }
     } else if (result is Fail) {
       emit(ErrorState(result.toString()));

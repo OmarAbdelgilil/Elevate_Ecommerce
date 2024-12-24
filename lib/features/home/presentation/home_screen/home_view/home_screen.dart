@@ -5,6 +5,7 @@ import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_vi
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/home_app_bar.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/occasions_section/occasion_section.dart';
+import 'package:elevate_ecommerce/features/home/presentation/profile_screen/save_address/save_address_view_model/save_address_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -16,9 +17,14 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final saveAddressViewModel = getIt.get<SaveAddressViewModel>();
+    saveAddressViewModel.permissionsPermitted();
     _loadHomePage();
-    return BlocProvider(
-      create: (context) => viewModel,
+   return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => viewModel),
+        BlocProvider(create: (context) => saveAddressViewModel),
+      ],
       child: Scaffold(
         appBar: homeAppBar(),
         body: Padding(
@@ -26,7 +32,7 @@ class HomeScreen extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                const Location(),
+               const Location(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -123,3 +129,6 @@ class HomeScreen extends StatelessWidget {
     viewModel.doIntent(LoadHomeIntent());
   }
 }
+
+
+

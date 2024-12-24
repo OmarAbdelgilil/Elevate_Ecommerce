@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:elevate_ecommerce/core/di/di.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
@@ -6,10 +7,12 @@ import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
+import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+// ignore: depend_on_referenced_packages
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
@@ -119,7 +122,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'EGP ${productDetails.priceAfterDiscount ?? productDetails.price}',
+                      '${StringsManager.productPriceCurrency.tr()} ${productDetails.priceAfterDiscount ?? productDetails.price}',
                       style: AppTextStyles.subtitle(
                         fontSize: 22.sp,
                         fontWeight: FontWeight.w700,
@@ -131,7 +134,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'All prices include tax',
+                          StringsManager.productTax.tr(),
                           style: AppTextStyles.subtitle(
                             color: gray53Color,
                             fontWeight: FontWeight.w400,
@@ -139,7 +142,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           ),
                         ),
                         Text(
-                          'Status: ${productDetails.quantity! > 0 ? "In stock" : "Out of stock"}',
+                          '${StringsManager.status.tr()}: ${productDetails.quantity! > 0 ? StringsManager.inStock.tr() : StringsManager.outOfStock.tr()}',
                           style: AppTextStyles.subtitle(
                             color: Colors.black,
                             fontWeight: FontWeight.w500,
@@ -150,7 +153,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                     SizedBox(height: 15.h),
                     Text(
-                      'Description',
+                      StringsManager.productDescription.tr(),
                       style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
@@ -168,7 +171,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     ),
                     SizedBox(height: 15.h),
                     Text(
-                      'Bouquet includes',
+                      StringsManager.bouquetIncludes.tr(),
                       style: AppTextStyles.subtitle(
                         color: Colors.black,
                         fontWeight: FontWeight.w500,
@@ -198,7 +201,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                           );
                         }
                         return CustomButton(
-                          text: 'Add to cart',
+                          text: StringsManager.productButton.tr(),
                           onPressed: () {
                             cartViewmodel.doIntent(AddProductIntent(
                                 productId: productDetails.id!, quantity: 1));

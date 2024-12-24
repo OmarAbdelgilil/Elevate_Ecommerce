@@ -47,11 +47,9 @@ dependencies:
   cached_network_image:
   google_fonts:
   shared_preferences:
-  firebase_messaging:
-  firebase_core: ^3.8.1
-  firebase_auth:
-  cloud_firestore:
-  flutter_local_notifications:
+  geolocator:
+
+
   dio:
   bloc:
   provider:
@@ -59,6 +57,14 @@ dependencies:
   hive: 
   hive_flutter: 
   flutter_html:
+  google_maps_flutter:
+  easy_localization:
+  geocoding: 
+  fluttertoast:
+  firebase_core: ^3.4.0
+  firebase_crashlytics: ^4.1.0
+  firebase_messaging: ^15.1.6
+  flutter_local_notifications: ^18.0.1
 
 dev_dependencies:
   flutter_test:
@@ -77,7 +83,6 @@ dev_dependencies:
   smooth_page_indicator:
   hive_generator:
 
-
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -94,6 +99,8 @@ flutter:
     - assets/lotties/
     - assets/svg/
     - assets/html/
+    - assets/translations/
+    - assets/map_style/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
