@@ -3,10 +3,11 @@ import 'package:elevate_ecommerce/core/common/colors.dart';
 import 'package:flutter/material.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
-  const PaymentMethodScreen({super.key});
+  final Function(String) onPaymentMethodSelected; // Add callback
+
+  const PaymentMethodScreen({super.key, required this.onPaymentMethodSelected});
 
   @override
-  // ignore: library_private_types_in_public_api
   _PaymentMethodScreenState createState() => _PaymentMethodScreenState();
 }
 
@@ -28,17 +29,22 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           PaymentMethodOption(
             title: 'Cash on delivery'.tr(),
             isSelected: _selectedMethod == 'Cash on delivery',
-            onTap: () => setState(() => _selectedMethod = 'Cash on delivery'),
+            onTap: () => _selectMethod('Cash on delivery'),
           ),
           const SizedBox(height: 12),
           PaymentMethodOption(
             title: 'Credit card'.tr(),
             isSelected: _selectedMethod == 'Credit card',
-            onTap: () => setState(() => _selectedMethod = 'Credit card'),
+            onTap: () => _selectMethod('Credit card'),
           ),
         ],
       ),
     );
+  }
+
+  void _selectMethod(String method) {
+    setState(() => _selectedMethod = method);
+    widget.onPaymentMethodSelected(method); // Call the callback
   }
 }
 

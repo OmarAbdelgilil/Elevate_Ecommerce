@@ -24,4 +24,6 @@ class ApiConstants {
   static const String getAddressesPath = "/v1/addresses";
   static const String removeAddressPath = "//v1/addresses";
   static const String ordersPath = "/v1/orders";
+  static const String paymentPath =
+      "/v1/orders/checkout?url=http://localhost:3000";
 }

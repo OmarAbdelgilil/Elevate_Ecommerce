@@ -23,66 +23,73 @@ class CheckoutCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        if (onSelected != null) onSelected!();
-      },
-      child: Container(
-        margin: EdgeInsets.symmetric(vertical: 6.h, horizontal: 10.w),
-        decoration: BoxDecoration(
-          color: Color(0xFFFEF7FF),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey.shade300, width: 1),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.withOpacity(0.1),
-              spreadRadius: 1,
-              blurRadius: 4,
-              offset: const Offset(0, 1),
-            ),
-          ],
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 6.h, horizontal: 10.w),
+      decoration: BoxDecoration(
+        color: Color(0xFFFEF7FF),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: Colors.grey.shade300,
+          width: isSelected ? 2 : 1,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.1),
+            spreadRadius: 1,
+            blurRadius: 4,
+            offset: const Offset(0, 1),
+          ),
+        ],
+      ),
+      child: InkWell(
+        onTap: onSelected,
         child: Padding(
           padding:
               EdgeInsets.only(left: 8.w, right: 16.w, top: 12.h, bottom: 12.h),
-          child: Row(children: [
-            Expanded(
+          child: Row(
+            children: [
+              Expanded(
                 child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Radio<String>(
                               activeColor: primaryColor,
                               value: address.id,
-                              groupValue: isSelected ? address.id : null,
-                              onChanged: (value) {
-                                if (onSelected != null) {
-                                  onSelected!();
-                                }
-                              },
+                              groupValue: isSelected ? address.id : '',
+                              onChanged: (_) => onSelected?.call(),
                             ),
-                            Text(address.city,
-                                style: AppTextStyles.title(
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 16.sp)),
-                          ]),
-                    ],
-                  ),
-                  SizedBox(height: 8.h),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 10.0),
-                    child: Text(address.street,
-                        style: AppTextStyles.subtitle(fontSize: 14.sp)),
-                  ),
-                ])),
-            Icon(Icons.edit_outlined, color: Color(0xFF535353), size: 24.sp),
-          ]),
+                            Text(
+                              address.city,
+                              style: AppTextStyles.title(
+                                fontWeight: FontWeight.w500,
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8.h),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10.0),
+                      child: Text(
+                        address.street,
+                        style: AppTextStyles.subtitle(fontSize: 14.sp),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Icon(Icons.edit_outlined, color: Color(0xFF535353), size: 24.sp),
+            ],
+          ),
         ),
       ),
     );

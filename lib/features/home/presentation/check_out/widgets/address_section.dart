@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/features/home/presentation/check_out/cubit/checkout_viewmodel_cubit.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/checkout_card.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
@@ -7,18 +8,10 @@ import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AddressSection extends StatefulWidget {
+class AddressSection extends StatelessWidget {
   final AddressViewModel viewModel;
 
   const AddressSection({super.key, required this.viewModel});
-
-  @override
-  // ignore: library_private_types_in_public_api
-  _AddressSectionState createState() => _AddressSectionState();
-}
-
-class _AddressSectionState extends State<AddressSection> {
-  String? selectedAddressId;
 
   @override
   Widget build(BuildContext context) {
@@ -56,19 +49,27 @@ class _AddressSectionState extends State<AddressSection> {
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
                 ),
               ),
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: addresses.length,
-                itemBuilder: (context, index) {
-                  return CheckoutCard(
-                    viewModel: widget.viewModel,
-                    address: addresses[index],
-                    isSelected: addresses[index].id == selectedAddressId,
-                    onSelected: () {
-                      setState(() {
-                        selectedAddressId = addresses[index].id;
-                      });
+              BlocBuilder<CheckoutViewmodelCubit, CheckoutViewmodelState>(
+                builder: (context, checkoutState) {
+                  final checkoutCubit = context.read<CheckoutViewmodelCubit>();
+
+                  return ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: addresses.length,
+                    itemBuilder: (context, index) {
+                      final address = addresses[index];
+                      final isSelected =
+                          checkoutCubit.selectedAddress?.id == address.id;
+
+                      return CheckoutCard(
+                        viewModel: viewModel,
+                        address: address,
+                        isSelected: isSelected,
+                        onSelected: () {
+                          checkoutCubit.setSelectedAddress(address);
+                        },
+                      );
                     },
                   );
                 },

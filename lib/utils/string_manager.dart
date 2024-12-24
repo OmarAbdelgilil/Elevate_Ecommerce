@@ -156,4 +156,8 @@ class StringsManager {
   static const String completedOrders = "Completed";
   static const String orderNumber = "Order number#";
   static const String orderTrackButton = "Track order";
+  //checkout
+  static const String checkoutScreenTitle = 'Checkout';
+  static const String placeOrder = 'Place Order';
+  static const String selectAddress = 'Please select the address';
 }
