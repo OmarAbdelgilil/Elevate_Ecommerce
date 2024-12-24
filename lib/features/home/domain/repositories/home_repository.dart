@@ -22,5 +22,4 @@ abstract class HomeRepository {
   Future<Result<UserResponse?>> upDateUserProfile(UpdateProfileRequest request);
 
   Future<Result<UserAddressResponse?>> saveUserAddress(AddressRequest request);
-
 }

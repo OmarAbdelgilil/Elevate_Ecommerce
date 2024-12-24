@@ -5,8 +5,9 @@ import 'Address.dart';
 
 class UserAddressResponse {
   UserAddressResponse({
-      this.message, 
-      this.address,});
+    this.message,
+    this.address,
+  });
 
   UserAddressResponse.fromJson(dynamic json) {
     message = json['message'];
@@ -19,11 +20,14 @@ class UserAddressResponse {
   }
   String? message;
   List<Address>? address;
-UserAddressResponse copyWith({  String? message,
-  List<Address>? address,
-}) => UserAddressResponse(  message: message ?? this.message,
-  address: address ?? this.address,
-);
+  UserAddressResponse copyWith({
+    String? message,
+    List<Address>? address,
+  }) =>
+      UserAddressResponse(
+        message: message ?? this.message,
+        address: address ?? this.address,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['message'] = message;
@@ -32,5 +36,4 @@ UserAddressResponse copyWith({  String? message,
     }
     return map;
   }
-
 }

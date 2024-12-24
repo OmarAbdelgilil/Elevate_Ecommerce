@@ -4,6 +4,7 @@ import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart';
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart';
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/forgot_password_request.dart';
@@ -119,7 +120,7 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse?> addProductToCart(AddCartProductRequest req) {
+  Future<CartResponse2?> addProductToCart(AddCartProductRequest req) {
     // TODO: implement addProductToCart
     throw UnimplementedError();
   }
@@ -131,7 +132,7 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<CartResponse?> removeItemFromCart(String productId) {
+  Future<CartResponse2?> removeItemFromCart(String productId) {
     // TODO: implement removeItemFromCart
     throw UnimplementedError();
   }

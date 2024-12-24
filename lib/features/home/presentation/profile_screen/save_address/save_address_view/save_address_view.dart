@@ -26,14 +26,12 @@ class SaveAddressScreen extends StatelessWidget {
               if (state is CheckLocationPermissionsState) {
                 Navigator.pushNamed(context, AppRoutes.permissionScreen)
                     .whenComplete(
-                      () {
-                        SaveAddressViewModel.get(context).permissionsPermitted();
+                  () {
+                    SaveAddressViewModel.get(context).permissionsPermitted();
                   },
                 );
               }
-              if(state is SuccessState ){
-
-
+              if (state is SuccessState) {
                 Navigator.pop(context, true);
               }
               return baseListener(context, state);

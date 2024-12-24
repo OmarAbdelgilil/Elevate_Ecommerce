@@ -8,13 +8,14 @@
 
 class Address {
   Address({
-      this.street, 
-      this.phone, 
-      this.city, 
-      this.lat, 
-      this.lang, 
-      this.username, 
-      this.id,});
+    this.street,
+    this.phone,
+    this.city,
+    this.lat,
+    this.lang,
+    this.username,
+    this.id,
+  });
 
   Address.fromJson(dynamic json) {
     street = json['street'];
@@ -32,21 +33,24 @@ class Address {
   String? lang;
   String? username;
   String? id;
-Address copyWith({  String? street,
-  String? phone,
-  String? city,
-  String? lat,
-  String? lang,
-  String? username,
-  String? id,
-}) => Address(  street: street ?? this.street,
-  phone: phone ?? this.phone,
-  city: city ?? this.city,
-  lat: lat ?? this.lat,
-  lang: lang ?? this.lang,
-  username: username ?? this.username,
-  id: id ?? this.id,
-);
+  Address copyWith({
+    String? street,
+    String? phone,
+    String? city,
+    String? lat,
+    String? lang,
+    String? username,
+    String? id,
+  }) =>
+      Address(
+        street: street ?? this.street,
+        phone: phone ?? this.phone,
+        city: city ?? this.city,
+        lat: lat ?? this.lat,
+        lang: lang ?? this.lang,
+        username: username ?? this.username,
+        id: id ?? this.id,
+      );
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['street'] = street;
@@ -58,5 +62,4 @@ Address copyWith({  String? street,
     map['_id'] = id;
     return map;
   }
-
 }
