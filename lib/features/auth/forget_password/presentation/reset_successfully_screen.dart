@@ -13,6 +13,7 @@ class ResetSuccessfullyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Future.delayed(const Duration(seconds: 3), () {
+      // ignore: use_build_context_synchronously
       Navigator.of(mainContext)
           .pushNamedAndRemoveUntil(AppRoutes.login, (Route route) => false);
     });

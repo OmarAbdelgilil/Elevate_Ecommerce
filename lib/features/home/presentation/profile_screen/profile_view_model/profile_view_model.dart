@@ -40,7 +40,6 @@ class ProfileViewModel extends ChangeNotifier {
     notifyListeners();
 
     final result = await _logoutUsecase.logout();
-    print('Logout result: $result');
     _isLoggingOut = false;
 
     if (result is Success<Logout?>) {
@@ -50,12 +49,9 @@ class ProfileViewModel extends ChangeNotifier {
         UserProvider().clearUserData();
         TokenProvider().clearToken();
         TokenStorage().deleteToken();
-      } on Exception catch (e) {
-        print(e);
-      }
-    } else if (result is Fail) {
-      print('Logout failed:');
-    }
+        // ignore: empty_catches
+      } on Exception {}
+    } else if (result is Fail) {}
 
     notifyListeners();
   }

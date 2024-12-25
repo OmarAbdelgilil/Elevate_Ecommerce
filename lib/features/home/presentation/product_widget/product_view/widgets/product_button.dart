@@ -18,7 +18,7 @@ class ProductButton extends StatelessWidget {
       bloc: cartViewmodel,
       builder: (context, state) {
         if (state is CartLoadingState) {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(
               color: ColorManager.primary,
             ),

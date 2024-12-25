@@ -32,9 +32,9 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
     as _i9;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i2;
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart'
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_request.dart'
     as _i10;
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart'
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_response.dart'
     as _i3;
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart'
     as _i23;
@@ -44,7 +44,7 @@ import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_respo
     as _i22;
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
     as _i29;
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart'
     as _i19;
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
     as _i16;
@@ -54,9 +54,9 @@ import 'package:elevate_ecommerce/features/home/data/models/response/home_respon
     as _i17;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
     as _i20;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/product_response.dart'
     as _i18;
-import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/user_address_response.dart'
     as _i28;
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
     as _i31;

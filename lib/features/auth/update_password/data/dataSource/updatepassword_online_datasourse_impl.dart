@@ -4,8 +4,8 @@ import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/auth/data/DTOs/user_dto.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/data/dataSource/updatePassword_OnlineDatasource.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/dataSource/updatepassword_online_datasource.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_request.dart';
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: UpdatePasswordOnlineDatasource)

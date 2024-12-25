@@ -25,7 +25,8 @@ class DeliveryTimeWidget extends StatelessWidget {
             children: [
               Text(
                 'Delivery time'.tr(),
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 8),
               Row(
@@ -34,7 +35,7 @@ class DeliveryTimeWidget extends StatelessWidget {
                   const SizedBox(width: 8),
                   Text(
                     'Instant, '.tr(),
-                    style: TextStyle(fontSize: 14),
+                    style: const TextStyle(fontSize: 14),
                   ),
                   Text(
                     'Arrive by $formattedDate'.tr(),
@@ -51,7 +52,7 @@ class DeliveryTimeWidget extends StatelessWidget {
             onTap: () {},
             child: Text(
               'Schedule'.tr(),
-              style: TextStyle(
+              style: const TextStyle(
                 color: primaryColor,
                 fontSize: 16,
                 fontWeight: FontWeight.bold,

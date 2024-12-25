@@ -3,7 +3,7 @@ import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
-import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart';
+import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_usecase.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
@@ -64,17 +64,13 @@ class RegisterViewModel extends Cubit<RegisterScreenState> {
         registerValidator.disposeFields();
 
         TokenProvider().saveToken(result.data!.token!);
-        print('Token saved: ${TokenProvider().token}');
 
         UserData userData = User().mapUserToUserData(result.data!.user!);
         await UserProvider().setUserData(userData);
-        print(
-            'User data saved in provider test : ${UserProvider().userData?.toJson()}');
-        print('User data saved in provider: ${userData.toJson()}');
+
         emit(SuccessState(result.data?.user));
         break;
       case Fail<RegisterResponse?>():
-        print("Registration failed: ${result.exception}");
         emit(ErrorState(result.exception));
         break;
     }

@@ -8,6 +8,7 @@ class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen({super.key, required this.onPaymentMethodSelected});
 
   @override
+  // ignore: library_private_types_in_public_api
   _PaymentMethodScreenState createState() => _PaymentMethodScreenState();
 }
 
@@ -23,7 +24,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
         children: [
           Text(
             'Payment Method'.tr(),
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
           ),
           const SizedBox(height: 16),
           PaymentMethodOption(
@@ -66,7 +67,7 @@ class PaymentMethodOption extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Color(0xFFFEF7FF),
+          color: const Color(0xFFFEF7FF),
           borderRadius: BorderRadius.circular(8),
           border: Border.all(
             color: Colors.grey.shade300, // Added gray border

@@ -25,17 +25,17 @@ class OrdersScreen extends StatelessWidget {
                 tabs: [
                   Tab(
                     child: Text(StringsManager.ordersActive.tr(),
-                        style: TextStyle(fontSize: 16)),
+                        style: const TextStyle(fontSize: 16)),
                   ),
                   Tab(
                     child: Text(
                       StringsManager.completedOrders.tr(),
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   )
                 ],
               ),
-              Expanded(
+              const Expanded(
                 child: TabBarView(
                   children: [
                     ActiveOrders(),

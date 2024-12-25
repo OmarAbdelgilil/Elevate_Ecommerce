@@ -12,9 +12,9 @@ import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_respon
     as _i11;
 import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart'
     as _i10;
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart'
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_request.dart'
     as _i8;
-import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_useCase.dart'
+import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_usecase.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/Update_password_validator/update_password_types_enum.dart'
     as _i14;

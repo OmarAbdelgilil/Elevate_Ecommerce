@@ -24,7 +24,7 @@ class RememberMeCheckbox extends StatelessWidget {
         ),
         Text(
           StringsManager.rememberme.tr(),
-          style: TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.black),
         ),
       ],
     );

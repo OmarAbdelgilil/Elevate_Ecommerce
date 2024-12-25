@@ -25,7 +25,7 @@ class GuestButton extends StatelessWidget {
           ),
           child: Text(
             StringsManager.continueAsguest.tr(),
-            style: TextStyle(fontSize: 16, color: Color(0xFF535353)),
+            style: const TextStyle(fontSize: 16, color: Color(0xFF535353)),
           ),
         ));
   }

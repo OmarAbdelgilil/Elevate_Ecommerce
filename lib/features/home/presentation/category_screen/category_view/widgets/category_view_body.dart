@@ -54,7 +54,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           horizontal: AppSize.s16, vertical: AppSize.s8),
                       child: Row(
                         children: [
-                          Expanded(child: SearchTextField()),
+                          const Expanded(child: SearchTextField()),
                           const SizedBox(width: AppSize.s8),
                           SizedBox(
                             width: AppSize.s64,

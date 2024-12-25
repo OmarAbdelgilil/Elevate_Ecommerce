@@ -11,10 +11,10 @@ class CartItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.all(8.0),
+      margin: const EdgeInsets.all(8.0),
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
-          side: BorderSide(color: Colors.grey)),
+          side: const BorderSide(color: Colors.grey)),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -32,7 +32,7 @@ class CartItemCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             // Text and details
             Expanded(
               child: Column(
@@ -40,17 +40,19 @@ class CartItemCard extends StatelessWidget {
                 children: [
                   Text(
                     product.product!.title!,
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 4),
+                  const SizedBox(height: 4),
                   Text(
                     product.product!.slug!,
-                    style: TextStyle(fontSize: 13, color: Colors.grey),
+                    style: const TextStyle(fontSize: 13, color: Colors.grey),
                   ),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   Text(
                     'EGP ${product.product!.price}',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                        fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -63,7 +65,7 @@ class CartItemCard extends StatelessWidget {
                   onPressed: () {
                     viewModel.doIntent(RemoveItemIntent(product.product!.id!));
                   },
-                  icon: Icon(Icons.delete_sharp, color: Colors.red),
+                  icon: const Icon(Icons.delete_sharp, color: Colors.red),
                 ),
                 Row(
                   children: [
@@ -78,11 +80,11 @@ class CartItemCard extends StatelessWidget {
                               quantity: product.quantity! - 1));
                         }
                       },
-                      icon: Icon(Icons.remove, color: Colors.black),
+                      icon: const Icon(Icons.remove, color: Colors.black),
                     ),
                     Text(
                       product.quantity.toString(), // Replace with dynamic value
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                     IconButton(
                       onPressed: () {
@@ -90,7 +92,7 @@ class CartItemCard extends StatelessWidget {
                             productId: product.product!.id!,
                             quantity: product.quantity! + 1));
                       },
-                      icon: Icon(Icons.add, color: Colors.black),
+                      icon: const Icon(Icons.add, color: Colors.black),
                     ),
                   ],
                 ),

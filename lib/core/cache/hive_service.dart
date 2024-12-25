@@ -7,8 +7,6 @@ class HiveService {
   Future<void> saveUser(String token, UserModel user) async {
     final box = await Hive.openBox<UserModel>(userBoxName);
     await box.put(token, user);
-    final cachedUser = box.get(token);
-    print('User saved in Hive for token $token: ${cachedUser?.toJson()}');
   }
 
   Future<UserModel?> getUser(String token) async {
@@ -21,12 +19,10 @@ class HiveService {
   Future<void> clearUser(String token) async {
     final box = await Hive.openBox<UserModel>(userBoxName);
     await box.delete(token);
-    print('User data cleared for token $token');
   }
 
   Future<void> clearAllUsers() async {
     final box = await Hive.openBox<UserModel>(userBoxName);
     await box.clear();
-    print('All user data cleared');
   }
 }

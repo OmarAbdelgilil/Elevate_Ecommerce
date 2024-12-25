@@ -1,8 +1,8 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_useCase.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/presentation/UpdatePassword_ViewModel/updatePassword_ViewModel.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_usecase.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/presentation/UpdatePassword_ViewModel/updatepassword_viewmodel.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/Update_password_validator/update_password_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -10,7 +10,6 @@ import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
 import 'updatePassword_ViewModel_test.mocks.dart';
-
 
 @GenerateMocks([
   UpdatePasswordUseCase,
@@ -53,7 +52,6 @@ void main() {
     when(mockUpdatePasswordValidator.confirmPasswordController)
         .thenReturn(mockConfirmPasswordController);
 
-
     viewmodel = UpdatePasswordViewModel(
       mockUpdatePasswordUseCase,
       mockUpdatePasswordValidator,
@@ -66,10 +64,9 @@ void main() {
       expect(viewmodel.state, isA<InitialState>());
     });
 
-
     test(
       'doIntent with UpdatePasswordIntent emits LoadingState, ErrorState on failure',
-          () async {
+      () async {
         when(mockFormState.validate()).thenReturn(true);
         when(mockCurrentPasswordController.text).thenReturn("OldPass123!");
         when(mockNewPasswordController.text).thenReturn("NewPass456!");
@@ -89,7 +86,7 @@ void main() {
 
     test(
       'doIntent with invalid form emits LoadingState, ErrorState',
-          () {
+      () {
         when(mockFormState.validate()).thenReturn(false);
 
         expectLater(
@@ -102,4 +99,3 @@ void main() {
     );
   });
 }
-

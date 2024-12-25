@@ -66,33 +66,33 @@ import '../../features/auth/logout/data/repos/logout_repo_impl.dart' as _i34;
 import '../../features/auth/logout/domain/repos/logout_repo.dart' as _i33;
 import '../../features/auth/logout/domain/use_cases/logout_usecase.dart'
     as _i76;
-import '../../features/auth/Register/data/dataSource/register_onlineDataSource.dart'
+import '../../features/auth/Register/data/dataSource/register_online_datasource.dart'
     as _i25;
-import '../../features/auth/Register/data/dataSource/register_onlineDataSource_impl.dart'
+import '../../features/auth/Register/data/dataSource/register_online_datasource_impl.dart'
     as _i26;
 import '../../features/auth/Register/data/repository_impl/register_repository_impl.dart'
     as _i59;
 import '../../features/auth/Register/domain/repository/register_repository.dart'
     as _i58;
-import '../../features/auth/Register/domain/useCases/register_useCase.dart'
+import '../../features/auth/Register/domain/useCases/register_usecase.dart'
     as _i95;
 import '../../features/auth/Register/presentation/Register_validator/register_validator.dart'
     as _i8;
-import '../../features/auth/Register/presentation/Register_viewModel/register_viewModel.dart'
+import '../../features/auth/Register/presentation/Register_viewModel/register_viewmodel.dart'
     as _i96;
-import '../../features/auth/update_password/data/dataSource/updatePassword_OnlineDatasource.dart'
+import '../../features/auth/update_password/data/dataSource/updatepassword_online_datasource.dart'
     as _i39;
-import '../../features/auth/update_password/data/dataSource/updatePassword_OnlineDataSourse_impl.dart'
+import '../../features/auth/update_password/data/dataSource/updatepassword_online_datasourse_impl.dart'
     as _i40;
-import '../../features/auth/update_password/data/repository_impl/updatePassword_repository_impl.dart'
+import '../../features/auth/update_password/data/repository_impl/updatepassword_repository_impl.dart'
     as _i74;
 import '../../features/auth/update_password/domain/repository/update_password_repository.dart'
     as _i73;
-import '../../features/auth/update_password/domain/useCases/update_password_useCase.dart'
+import '../../features/auth/update_password/domain/useCases/update_password_usecase.dart'
     as _i94;
 import '../../features/auth/update_password/presentation/Update_password_validator/update_password_validator.dart'
     as _i9;
-import '../../features/auth/update_password/presentation/UpdatePassword_ViewModel/updatePassword_ViewModel.dart'
+import '../../features/auth/update_password/presentation/UpdatePassword_ViewModel/updatepassword_viewmodel.dart'
     as _i106;
 import '../../features/Cart/data/contracts/cart_online_datasource.dart' as _i19;
 import '../../features/Cart/data/datasources/cart_online_datasource_impl.dart'
@@ -108,10 +108,10 @@ import '../../features/Cart/domain/usecases/update_cart_product_quantity_usecase
     as _i71;
 import '../../features/Cart/presentation/viewmodel/cart_view_model.dart'
     as _i72;
-import '../../features/home/data/contracts/product_details_onlineDataSource.dart'
+import '../../features/home/data/contracts/product_details_onlinedatasource.dart'
     as _i15;
 import '../../features/home/data/contracts/remote_datasource.dart' as _i29;
-import '../../features/home/data/data_sources/product_details_onlineDataSource_impl.dart'
+import '../../features/home/data/data_sources/product_details_onlinedatasource_impl.dart'
     as _i16;
 import '../../features/home/data/data_sources/remote_datasource_impl.dart'
     as _i30;
@@ -228,8 +228,8 @@ extension GetItInjectableX on _i1.GetIt {
         ));
     gh.factory<_i13.AuthOfflineDatasource>(
         () => _i14.AuthOfflineDatasourceImpl());
-    gh.factory<_i15.ProductDetails_Onlinedatasource>(
-        () => _i16.ProductDetails_Onlinedatasource_Impl(gh<_i12.ApiManager>()));
+    gh.factory<_i15.ProductDetailsOnlinedatasource>(
+        () => _i16.ProductDetailsOnlinedatasourceImpl(gh<_i12.ApiManager>()));
     gh.factory<_i17.OrdersOnlineDatasource>(
         () => _i18.OrdersOnlineDatasourceImpl(gh<_i12.ApiManager>()));
     gh.factory<_i19.CartOnlineDatasource>(
@@ -270,8 +270,8 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i50.AddressesRepositoryImpl(gh<_i27.AddressOnlineDatasource>()));
     gh.singleton<_i51.SharedPreferencesService>(
         () => _i51.SharedPreferencesService(gh<_i3.SharedPreferences>()));
-    gh.factory<_i52.ProductDetailsRepository>(() => _i53.ProductDetailsRepoImpl(
-        gh<_i15.ProductDetails_Onlinedatasource>()));
+    gh.factory<_i52.ProductDetailsRepository>(() =>
+        _i53.ProductDetailsRepoImpl(gh<_i15.ProductDetailsOnlinedatasource>()));
     gh.factory<_i54.LoginRepo>(
         () => _i55.LoginRepoImpl(gh<_i37.LoginOnlineDatasource>()));
     gh.factory<_i56.GetLoggedUserDataRepo>(() => _i57.GetLoggedUserDataRepoImpl(

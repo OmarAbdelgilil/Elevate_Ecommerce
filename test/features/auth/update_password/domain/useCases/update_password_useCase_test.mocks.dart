@@ -7,7 +7,7 @@ import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart' as _i5;
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart'
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_request.dart'
     as _i6;
 import 'package:elevate_ecommerce/features/auth/update_password/domain/repository/update_password_repository.dart'
     as _i2;

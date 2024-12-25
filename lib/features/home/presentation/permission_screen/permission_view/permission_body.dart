@@ -23,6 +23,7 @@ class PermissionsBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: viewModel.getCanPop,
+      // ignore: deprecated_member_use
       onPopInvoked: (_) {
         if (!viewModel.getCanPop) {
           SystemNavigator.pop();
@@ -81,7 +82,7 @@ class PermissionsBody extends StatelessWidget {
                       borderRadius: BorderRadius.circular(AppSize.s20),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Open Settings',
                   ),
                 ),

@@ -29,7 +29,7 @@ class CategoriesSection extends StatelessWidget {
                 onpressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        CategoryScreen(selectedCategoryId: ''),
+                        const CategoryScreen(selectedCategoryId: ''),
                   ));
                 }),
             BlocBuilder<CategoriesViewmodel, CategoriesState>(

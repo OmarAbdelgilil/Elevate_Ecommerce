@@ -26,7 +26,7 @@ class PaymentDetailsSection extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         color: Colors.grey[600]),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     "${subtotal.toString()}\$",
                     style: TextStyle(
@@ -36,7 +36,7 @@ class PaymentDetailsSection extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               Row(
@@ -48,7 +48,7 @@ class PaymentDetailsSection extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                         color: Colors.grey[600]),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   Text(
                     "10\$",
                     style: TextStyle(
@@ -61,8 +61,8 @@ class PaymentDetailsSection extends StatelessWidget {
             ],
           ),
         ),
-        SizedBox(height: 10),
-        Divider(),
+        const SizedBox(height: 10),
+        const Divider(),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
           child: Row(
@@ -74,7 +74,7 @@ class PaymentDetailsSection extends StatelessWidget {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              Spacer(),
+              const Spacer(),
               Text(
                 "$total\$",
                 style: TextStyle(

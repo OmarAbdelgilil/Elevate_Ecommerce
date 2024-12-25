@@ -10,9 +10,9 @@ import 'package:elevate_ecommerce/features/home/data/models/response/home_respon
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/product_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/occasion.dart';

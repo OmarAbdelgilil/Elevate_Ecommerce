@@ -5,14 +5,14 @@ class AppRoutes {
   static const register = "registerRoute";
   static const login = "login";
   static const productWidget = "productWidgetRoute";
-  static const ProductDetails = "ProductDetails";
+  static const productDetails = "ProductDetails";
   static const bestSeller = "bestSeller";
 
-  static const ResetPassword = "ResetPassword";
+  static const resetPassword = "ResetPassword";
   static const address = "Address";
   static const occasions = "occasions";
   static const editProfile = "editProfile";
-  static const Categories = "categories";
+  static const categories = "categories";
   static const termsAndConditions = "terms&conditions";
   static const aboutUs = "aboutUs";
   static const permissionScreen = "permissionScreenRoute";

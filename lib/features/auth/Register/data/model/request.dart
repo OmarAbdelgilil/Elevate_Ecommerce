@@ -26,7 +26,6 @@ class RegisterRequest {
     map['rePassword'] = rePassword;
     map['phone'] = phone;
     map['gender'] = gender;
-    print("RegisterRequest Payload: $map");
     return map;
   }
 }

@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
-import 'package:elevate_ecommerce/features/auth/Register/data/dataSource/register_onlineDataSource.dart'
+import 'package:elevate_ecommerce/features/auth/Register/data/dataSource/register_online_datasource.dart'
     as _i2;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i6;

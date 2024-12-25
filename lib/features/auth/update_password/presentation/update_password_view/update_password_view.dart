@@ -6,7 +6,7 @@ import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/presentation/UpdatePassword_ViewModel/updatePassword_ViewModel.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/presentation/UpdatePassword_ViewModel/updatepassword_viewmodel.dart';
 import 'package:elevate_ecommerce/main.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';

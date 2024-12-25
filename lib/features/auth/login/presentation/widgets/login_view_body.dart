@@ -79,7 +79,6 @@ class LoginViewBody extends StatelessWidget {
                   if (loginValidator.loginFormKey.currentState?.validate() ??
                       false) {
                     final rememberMeState = rememberMeNotifier.value;
-                    print("Remember Me checkbox state: $rememberMeState");
 
                     context.read<LoginViewModel>().handleIntent(
                           LoginIntent(
@@ -93,21 +92,21 @@ class LoginViewBody extends StatelessWidget {
               );
             }),
             const SizedBox(height: 16),
-            GuestButton(),
+            const GuestButton(),
             const SizedBox(height: 16),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
                   StringsManager.donthaveaccount.tr(),
-                  style: TextStyle(color: Colors.black, fontSize: 16),
+                  style: const TextStyle(color: Colors.black, fontSize: 16),
                 ),
                 TextButton(
                   onPressed: () =>
                       Navigator.pushNamed(context, AppRoutes.register),
                   child: Text(
                     StringsManager.signUp.tr(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: primaryColor,
                       fontSize: 16,
                       decoration: TextDecoration.underline,

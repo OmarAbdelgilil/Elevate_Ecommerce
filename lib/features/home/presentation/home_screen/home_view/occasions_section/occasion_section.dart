@@ -24,7 +24,7 @@ class OccasionSection extends StatelessWidget {
             title: StringsManager.occasionSectionHeader.tr(),
             onpressed: () {
               Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => OccasionsScreen(
+                builder: (context) => const OccasionsScreen(
                   selectedOccasionId: '',
                 ),
               ));

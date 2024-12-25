@@ -5,7 +5,6 @@ class TokenStorage {
   final String _tokenKey = 'auth_token';
 
   Future<void> saveToken(String token) async {
-    print('Saving token: $token');
     try {
       await _secureStorage.write(key: _tokenKey, value: token);
     } catch (e) {
@@ -16,7 +15,6 @@ class TokenStorage {
   Future<String?> getToken() async {
     try {
       final token = await _secureStorage.read(key: _tokenKey);
-      print('Retrieved token: $token');
       return token;
     } catch (e) {
       throw Exception('Failed to retrieve token: $e');

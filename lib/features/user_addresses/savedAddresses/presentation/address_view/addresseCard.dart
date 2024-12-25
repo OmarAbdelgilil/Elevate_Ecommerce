@@ -17,10 +17,10 @@ class AddresseCard extends StatelessWidget {
       width: double.infinity,
       child: Card(
         color: Theme.of(context).scaffoldBackgroundColor,
-        margin: EdgeInsets.all(10.0),
+        margin: const EdgeInsets.all(10.0),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
-            side: BorderSide(color: Colors.grey)),
+            side: const BorderSide(color: Colors.grey)),
         child: Padding(
           padding: const EdgeInsets.all(10.0),
           child: Column(
@@ -31,7 +31,7 @@ class AddresseCard extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Icon(
+                      const Icon(
                         Icons.location_on_outlined,
                         color: Colors.black,
                         size: 23,
@@ -52,7 +52,7 @@ class AddresseCard extends StatelessWidget {
                           onTap: () {
                             viewModel.doIntent(RemoveAddressIntent(address.id));
                           },
-                          child: Icon(
+                          child: const Icon(
                             Icons.delete_sharp,
                             color: Colors.red,
                             size: 26,
@@ -60,7 +60,7 @@ class AddresseCard extends StatelessWidget {
                       SizedBox(
                         width: 2.w,
                       ),
-                      Icon(Icons.edit, color: Colors.black),
+                      const Icon(Icons.edit, color: Colors.black),
                     ],
                   ),
                 ],

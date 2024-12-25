@@ -14,11 +14,11 @@ import 'package:elevate_ecommerce/features/home/data/contracts/remote_datasource
     as _i2;
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
     as _i14;
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart'
     as _i9;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/product_response.dart'
     as _i8;
-import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/user_address_response.dart'
     as _i13;
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i5;

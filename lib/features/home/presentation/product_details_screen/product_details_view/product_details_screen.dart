@@ -26,6 +26,7 @@ class ProductDetailsScreen extends StatefulWidget {
   });
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProductDetailsScreenState createState() => _ProductDetailsScreenState();
 }
 
@@ -98,7 +99,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                               child: SmoothPageIndicator(
                                 controller: _pageController,
                                 count: productDetails.images!.length,
-                                effect: ExpandingDotsEffect(
+                                effect: const ExpandingDotsEffect(
                                   activeDotColor: primaryColor,
                                   dotColor: Colors.white,
                                   dotHeight: 9,
@@ -194,7 +195,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                       bloc: cartViewmodel,
                       builder: (context, state) {
                         if (state is CartLoadingState) {
-                          return Center(
+                          return const Center(
                             child: CircularProgressIndicator(
                               color: ColorManager.primary,
                             ),

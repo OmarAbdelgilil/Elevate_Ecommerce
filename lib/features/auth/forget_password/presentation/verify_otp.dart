@@ -64,7 +64,6 @@ class VerifyOtp extends StatelessWidget {
                           final otp = _controllers
                               .map((controller) => controller.text)
                               .join();
-                          print(otp);
                           verifyOtp(emailController.text, otp);
                         }
                       },
@@ -90,7 +89,7 @@ class VerifyOtp extends StatelessWidget {
                       size: 16.sp,
                     ),
                     Text(StringsManager.invalidOtpError.tr(),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: Colors.red,
                         ))
                   ],
@@ -110,7 +109,7 @@ class VerifyOtp extends StatelessWidget {
                     },
                     child: Text(
                       StringsManager.resendButtonText.tr(),
-                      style: TextStyle(
+                      style: const TextStyle(
                           decoration: TextDecoration.underline,
                           color: primaryColor),
                     ))

@@ -41,7 +41,6 @@ class ForegetPasswordViewmodel extends Cubit<ForgetPasswordState> {
       emit(InitialState(null));
       return;
     }
-    print(intent.email);
     var result = await forgetPasswordUsecase
         .forgotPassword(ForgotPasswordRequest(email: intent.email));
     switch (result) {
@@ -66,7 +65,6 @@ class ForegetPasswordViewmodel extends Cubit<ForgetPasswordState> {
 
   Future<void> _resetPassword(ResetPasswordIntent intent) async {
     emit(LoadingState());
-    print(intent.newPassword);
     if (!forgetPasswordValidator.passwordFormKey.currentState!.validate()) {
       emit(ResetPasswordState(null));
       return;

@@ -15,7 +15,6 @@ class UserProvider with ChangeNotifier {
 
   Future<void> setUserData(UserData data) async {
     _userData = data;
-    print('Setting user data: ${data.toJson()}');
     notifyListeners();
   }
 

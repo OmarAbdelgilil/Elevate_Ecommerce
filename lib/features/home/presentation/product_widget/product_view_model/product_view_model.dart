@@ -1,5 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart';
 import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_usecase.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
@@ -7,8 +7,8 @@ import 'package:injectable/injectable.dart';
 import '../../../../../core/common/api_result.dart';
 import '../../../../../core/cache/shared_preferences_service.dart';
 import '../../../../../utils/string_manager.dart';
-import '../../../data/models/response/best_seller_product_response/BestSeller.dart';
-import '../../../data/models/response/product_response/ProductResponse.dart';
+import '../../../data/models/response/best_seller_product_response/best_seller.dart';
+import '../../../data/models/response/product_response/product_response.dart';
 import '../../../domain/usecase/get_all_best_sellet_products_usecase.dart';
 import '../../base/base_cubit.dart';
 import '../../base/base_states.dart';

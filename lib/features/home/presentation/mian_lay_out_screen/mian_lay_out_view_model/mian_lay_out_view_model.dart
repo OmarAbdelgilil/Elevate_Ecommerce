@@ -48,12 +48,12 @@ class MainLayoutViewModel extends ChangeNotifier {
       TabItem(
         icon: SVGAssets.cardTab,
         label: StringsManager.cardTab.tr(),
-        screen: CartScreen(),
+        screen: const CartScreen(),
       ),
       TabItem(
         icon: SVGAssets.personTab,
         label: StringsManager.profile.tr(),
-        screen: ProfileScreen(),
+        screen: const ProfileScreen(),
       ),
     ];
   }

@@ -11,8 +11,8 @@ import 'base_widgets.dart';
 
 Widget baseBuilder(BuildContext context, BaseState state, Widget child) {
   if (state is LoadingState) {
-    return Center(
-      child: const SizedBox(
+    return const Center(
+      child: SizedBox(
           width: 30,
           height: 30,
           child: CircularProgressIndicator(

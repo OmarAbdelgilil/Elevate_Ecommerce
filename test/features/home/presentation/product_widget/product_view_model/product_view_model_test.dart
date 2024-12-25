@@ -1,8 +1,8 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/product_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart';
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_best_sellet_products_usecase.dart';
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_usecase.dart';
@@ -14,7 +14,11 @@ import 'package:mockito/mockito.dart';
 
 import 'product_view_model_test.mocks.dart';
 
-@GenerateMocks([GetAllProductsUseCase, GetAllBestSellerProductsUseCase, SharedPreferencesService])
+@GenerateMocks([
+  GetAllProductsUseCase,
+  GetAllBestSellerProductsUseCase,
+  SharedPreferencesService
+])
 void main() {
   late ProductViewModel viewModel;
   late MockGetAllProductsUseCase mockGetAllProductsUseCase;
@@ -52,7 +56,6 @@ void main() {
 
     provideDummy<Result<ProductResponse?>>(Fail(Exception()));
     provideDummy<Result<BestSellerProductResponse?>>(Fail(Exception()));
-
   });
 
   group('ProductViewModel Tests', () {
@@ -95,7 +98,9 @@ void main() {
       viewModel.start();
     });
 
-    test('fetchBestSellerProducts() emits LoadingState and ContentState on success', () async {
+    test(
+        'fetchBestSellerProducts() emits LoadingState and ContentState on success',
+        () async {
       // Arrange
       final bestSellerProductList = [
         BestSeller(id: '1', title: 'Best Seller Product', price: 20),

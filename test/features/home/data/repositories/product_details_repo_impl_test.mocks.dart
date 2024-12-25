@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
-import 'package:elevate_ecommerce/features/home/data/contracts/product_details_onlineDataSource.dart'
+import 'package:elevate_ecommerce/features/home/data/contracts/product_details_onlinedatasource.dart'
     as _i2;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart'
     as _i5;

@@ -4,8 +4,8 @@ import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
 import 'package:elevate_ecommerce/features/auth/logout/domain/use_cases/logout_usecase.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_useCase.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_request.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/domain/useCases/update_password_usecase.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/Update_password_validator/update_password_validator.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +70,6 @@ class UpdatePasswordViewModel extends Cubit<UpdatePasswordState> {
         emit(SuccessState(result.data));
         break;
       case Fail<User?>():
-        print("Change Password failed: ${result.exception}");
         emit(ErrorState(result.exception));
         break;
     }

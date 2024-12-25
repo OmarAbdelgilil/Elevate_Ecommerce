@@ -5,6 +5,7 @@
 /// lang : "21.12414141"
 /// username : "daly"
 /// _id : "6760eb271d7443525c6f92ed"
+library;
 
 class Address {
   Address({

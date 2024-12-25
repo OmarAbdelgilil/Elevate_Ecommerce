@@ -1,11 +1,10 @@
+import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_execution.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
 import 'package:elevate_ecommerce/core/providers/token_provider.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/contracts/get_logged_user_data_online_datasource.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
 import 'package:injectable/injectable.dart';
-
-import '../../../../../core/common/api_result.dart';
 
 @Injectable(as: GetLoggedUserDataOnlineDatasource)
 class GetLoggedUserDataOnlineDataSourceImpl

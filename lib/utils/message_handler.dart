@@ -15,7 +15,6 @@ Future<void> firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await setupFlutterNotifications();
   showFlutterNotification(message);
-  print('Handling a background message ${message.messageId}');
 }
 
 Future<void> setupFlutterNotifications() async {

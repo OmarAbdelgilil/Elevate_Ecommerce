@@ -80,7 +80,7 @@ class EditScreenBody extends StatelessWidget {
               label: StringsManager.passwordFieldLabel.tr(),
               controller: validator.passwordController,
               onTap: () {
-                Navigator.of(context).pushNamed(AppRoutes.ResetPassword);
+                Navigator.of(context).pushNamed(AppRoutes.resetPassword);
               },
               obscureText: true,
               readOnly: true,

@@ -20,9 +20,9 @@ import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_respon
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_request.dart';
-import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_request.dart';
+import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatepassword_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart';
@@ -38,8 +38,8 @@ import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
 
 import '../../../features/home/data/models/request/address_request/address_request.dart';
-import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
-import '../../../features/home/data/models/response/user_address_response/UserAddressResponse.dart';
+import '../../../features/home/data/models/response/product_response/product_response.dart';
+import '../../../features/home/data/models/response/user_address_response/user_address_response.dart';
 import '../../providers/token_provider.dart';
 
 part 'api_manager.g.dart';
@@ -63,6 +63,7 @@ abstract class ApiManager {
       },
     ));
 
+    // ignore: deprecated_member_use
     (dio.httpClientAdapter as IOHttpClientAdapter).onHttpClientCreate =
         (HttpClient client) {
       client.badCertificateCallback =

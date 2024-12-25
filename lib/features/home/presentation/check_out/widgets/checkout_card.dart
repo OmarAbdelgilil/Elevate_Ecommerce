@@ -26,7 +26,7 @@ class CheckoutCard extends StatelessWidget {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 6.h, horizontal: 10.w),
       decoration: BoxDecoration(
-        color: Color(0xFFFEF7FF),
+        color: const Color(0xFFFEF7FF),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: Colors.grey.shade300,
@@ -87,7 +87,8 @@ class CheckoutCard extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(Icons.edit_outlined, color: Color(0xFF535353), size: 24.sp),
+              Icon(Icons.edit_outlined,
+                  color: const Color(0xFF535353), size: 24.sp),
             ],
           ),
         ),

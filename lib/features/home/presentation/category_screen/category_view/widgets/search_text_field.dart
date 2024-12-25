@@ -11,17 +11,17 @@ class SearchTextField extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
           contentPadding: const EdgeInsets.symmetric(vertical: 0),
-          prefixIcon: Icon(
+          prefixIcon: const Icon(
             Icons.search,
             color: ColorManager.lightGrey,
           ),
-          border: OutlineInputBorder(
+          border: const OutlineInputBorder(
               borderSide: BorderSide(
                 color: ColorManager.lightGrey,
               ),
               borderRadius: BorderRadius.all(Radius.circular(8))),
           hintText: StringsManager.search.tr(),
-          hintStyle: TextStyle(color: ColorManager.lightGrey)),
+          hintStyle: const TextStyle(color: ColorManager.lightGrey)),
     );
   }
 }

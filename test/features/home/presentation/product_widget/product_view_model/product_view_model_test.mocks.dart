@@ -8,11 +8,11 @@ import 'dart:async' as _i3;
 import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart'
     as _i9;
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller.dart'
     as _i11;
-import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/best_seller_productresponse.dart'
     as _i8;
-import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
+import 'package:elevate_ecommerce/features/home/data/models/response/product_response/product_response.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart'
     as _i10;

@@ -33,7 +33,7 @@ Route manageRoutes(RouteSettings settings) {
   switch (settings.name) {
     case AppRoutes.login:
       return MaterialPageRoute(builder: (context) => const LoginView());
-    case AppRoutes.Categories:
+    case AppRoutes.categories:
       return MaterialPageRoute(
           builder: (context) => const CategoryScreen(
                 selectedCategoryId: '',
@@ -52,7 +52,7 @@ Route manageRoutes(RouteSettings settings) {
                 selectedOccasionId: '',
               ));
 
-    case AppRoutes.ProductDetails:
+    case AppRoutes.productDetails:
       return MaterialPageRoute(
           builder: (context) => ProductDetailsScreen(
                 productId: "673e2e1f1159920171828153",
@@ -64,7 +64,7 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (context) => const SaveAddressScreen());
     case AppRoutes.permissionScreen:
       return MaterialPageRoute(builder: (_) => const PermissionsScreen());
-    case AppRoutes.ResetPassword:
+    case AppRoutes.resetPassword:
       return MaterialPageRoute(
           builder: (context) => const UpdatePasswordView());
     case AppRoutes.address:
@@ -79,11 +79,11 @@ Route manageRoutes(RouteSettings settings) {
       );
     case AppRoutes.checkOut:
       return MaterialPageRoute(
-        builder: (context) => CheckOutView(),
+        builder: (context) => const CheckOutView(),
       );
     case AppRoutes.orders:
       return MaterialPageRoute(
-        builder: (context) => OrdersScreen(),
+        builder: (context) => const OrdersScreen(),
       );
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());

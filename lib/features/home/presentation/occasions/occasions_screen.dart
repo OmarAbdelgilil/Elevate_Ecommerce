@@ -43,9 +43,9 @@ class OccasionsScreen extends StatelessWidget {
                             isScrollable: true,
                             indicatorColor: ColorManager.primary,
                             labelColor: ColorManager.primary,
-                            labelStyle: TextStyle(fontSize: AppSize.s16),
+                            labelStyle: const TextStyle(fontSize: AppSize.s16),
                             unselectedLabelStyle:
-                                TextStyle(fontSize: AppSize.s16),
+                                const TextStyle(fontSize: AppSize.s16),
                             tabs: [
                               const Tab(text: "All"),
                               ...occasions.map(

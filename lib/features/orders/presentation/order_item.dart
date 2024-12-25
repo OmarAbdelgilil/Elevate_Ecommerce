@@ -30,7 +30,7 @@ class OrderItemWidget extends StatelessWidget {
               height: 125,
               fit: BoxFit.fill,
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Expanded(
@@ -39,17 +39,17 @@ class OrderItemWidget extends StatelessWidget {
                 children: [
                   Text(
                     product.title!,
-                    style: TextStyle(fontSize: 12),
+                    style: const TextStyle(fontSize: 12),
                   ),
                   Text(
                     'EGP ${product.price}',
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                    style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
                   Text(
                     '${StringsManager.orderNumber.tr()}123456',
                     style: TextStyle(fontSize: 12, color: Colors.grey[600]),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   CustomButton(

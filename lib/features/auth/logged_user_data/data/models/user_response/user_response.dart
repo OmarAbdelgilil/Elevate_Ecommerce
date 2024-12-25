@@ -1,4 +1,5 @@
-import '../../../../domain/model/user.dart';
+import 'package:elevate_ecommerce/features/auth/domain/model/user.dart';
+
 import 'user.dart';
 
 class UserResponse {

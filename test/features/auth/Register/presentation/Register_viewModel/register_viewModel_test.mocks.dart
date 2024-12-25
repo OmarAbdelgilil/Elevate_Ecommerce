@@ -11,7 +11,7 @@ import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart
     as _i8;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
     as _i7;
-import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_useCase.dart'
+import 'package:elevate_ecommerce/features/auth/Register/domain/useCases/register_usecase.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator.dart'
     as _i10;

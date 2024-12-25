@@ -43,10 +43,11 @@ class AddressSection extends StatelessWidget {
             children: [
               const SizedBox(height: 24),
               Padding(
-                padding: EdgeInsets.only(left: 16.0),
+                padding: const EdgeInsets.only(left: 16.0),
                 child: Text(
                   'Delivery address'.tr(),
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      fontSize: 18, fontWeight: FontWeight.w500),
                 ),
               ),
               BlocBuilder<CheckoutViewmodelCubit, CheckoutViewmodelState>(
@@ -83,7 +84,7 @@ class AddressSection extends StatelessWidget {
                     style: ElevatedButton.styleFrom(
                       foregroundColor: primaryColor,
                       backgroundColor: Colors.transparent,
-                      side: BorderSide(
+                      side: const BorderSide(
                         color: Colors.grey,
                         width: 1,
                       ),
@@ -96,14 +97,14 @@ class AddressSection extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        const Icon(
                           Icons.add,
                           color: Colors.pink,
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         Text(
                           'Add new'.tr(),
-                          style: TextStyle(
+                          style: const TextStyle(
                             color: primaryColor,
                             fontSize: 16,
                             fontWeight: FontWeight.w500,

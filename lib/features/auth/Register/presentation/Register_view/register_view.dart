@@ -8,7 +8,7 @@ import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_textfield.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_validator/register_validator_types_enum.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_view/gender_widget.dart';
-import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_viewModel/register_viewModel.dart';
+import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_viewModel/register_viewmodel.dart';
 import 'package:elevate_ecommerce/main.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -165,7 +165,6 @@ class RegisterScreen extends StatelessWidget {
                         GenderWidget(
                           initialGender: 'male',
                           onGenderChanged: (selectedGender) {
-                            print('Selected Gender: $selectedGender');
                             selectedGenderInView = selectedGender;
                           },
                         ),

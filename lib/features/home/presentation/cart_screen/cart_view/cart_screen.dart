@@ -44,7 +44,7 @@ class CartScreen extends StatelessWidget {
               ),
             ),
             body: state is CartLoadingState
-                ? Center(
+                ? const Center(
                     child: CircularProgressIndicator(
                       color: ColorManager.primary,
                     ),
@@ -55,7 +55,7 @@ class CartScreen extends StatelessWidget {
                       )
                     : state is CartSuccessState
                         ? state.cartData!.cartItems!.isEmpty
-                            ? Center(
+                            ? const Center(
                                 child: Text('Cart is Empty'),
                               )
                             : Column(
@@ -65,7 +65,7 @@ class CartScreen extends StatelessWidget {
                                         horizontal: 16),
                                     child: Column(
                                       children: [
-                                        Location(),
+                                        const Location(),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 20),
@@ -87,14 +87,14 @@ class CartScreen extends StatelessWidget {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 10,
                                   ),
                                   PaymentDetailsSection(
                                       subtotal: viewModel.cartSubtotal(
                                           state.cartData!.cartItems!),
                                       total: state.cartData!.totalPrice! + 10),
-                                  SizedBox(
+                                  const SizedBox(
                                     height: 40,
                                   ),
                                   Padding(
@@ -127,7 +127,7 @@ class CartScreen extends StatelessWidget {
                                   ),
                                 ),
                               )
-                            : Placeholder(),
+                            : const Placeholder(),
           );
         },
       ),

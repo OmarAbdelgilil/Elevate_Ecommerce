@@ -1,5 +1,5 @@
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
-import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/user_address_response.dart';
 import 'package:elevate_ecommerce/features/home/presentation/base/base_cubit.dart';
 import 'package:elevate_ecommerce/features/home/presentation/base/base_states.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/save_address/save_address_view_model/states.dart';
@@ -123,9 +123,7 @@ class SaveAddressViewModel extends BaseCubit
   set setMapController(GoogleMapController mapController) {
     if (_mapController == null) {
       _mapController = mapController;
-    } else {
-      print('_____________mapController is already initialized');
-    }
+    } else {}
   }
 
   @override

@@ -19,7 +19,7 @@ class ActiveOrders extends StatelessWidget {
         child: BlocBuilder<OrdersViewModel, OrdersState>(
           builder: (context, state) {
             if (state is OrdersLoadingState) {
-              return Center(
+              return const Center(
                 child: CircularProgressIndicator(
                   color: ColorManager.primary,
                 ),
@@ -28,7 +28,7 @@ class ActiveOrders extends StatelessWidget {
             if (state is OrdersSuccessState) {
               return Center(
                 child: state.orders.orderItems!.isEmpty
-                    ? Text('No orders found')
+                    ? const Text('No orders found')
                     : Padding(
                         padding: const EdgeInsets.all(30.0),
                         child: SizedBox(
@@ -51,7 +51,7 @@ class ActiveOrders extends StatelessWidget {
                 child: Text(extractErrorMessage(state.error)),
               );
             }
-            return Placeholder();
+            return const Placeholder();
           },
         ));
   }

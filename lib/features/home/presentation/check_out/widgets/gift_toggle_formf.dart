@@ -33,7 +33,7 @@ class _GiftToggleFormState extends State<GiftToggleForm> {
               const SizedBox(width: 8),
               Text(
                 'It is a gift'.tr(),
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.w500,
                 ),
@@ -46,7 +46,7 @@ class _GiftToggleFormState extends State<GiftToggleForm> {
               decoration: InputDecoration(
                 labelText: 'Name'.tr(),
                 hintText: 'Enter the name'.tr(),
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
@@ -54,7 +54,7 @@ class _GiftToggleFormState extends State<GiftToggleForm> {
               decoration: InputDecoration(
                 labelText: 'Phone number'.tr(),
                 hintText: 'Enter the phone number'.tr(),
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
               ),
             ),
           ],
