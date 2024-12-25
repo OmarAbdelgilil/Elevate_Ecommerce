@@ -58,7 +58,6 @@ dependencies:
   hive_flutter: 
   flutter_html:
   google_maps_flutter:
-
   easy_localization:
   geocoding: 
   fluttertoast:

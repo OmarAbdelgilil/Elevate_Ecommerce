@@ -11,7 +11,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requ
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/reset_password_request.dart'
     as _i15;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart'
-    as _i26;
+    as _i27;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/verify_password_request.dart'
     as _i13;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/forgot_password_response.dart'
@@ -21,13 +21,13 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/responses/verify_password_response.dart'
     as _i6;
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
-    as _i25;
+    as _i26;
 import 'package:elevate_ecommerce/features/auth/login/data/models/request/login_request.dart'
     as _i11;
 import 'package:elevate_ecommerce/features/auth/login/data/models/response/login_response.dart'
     as _i4;
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart'
-    as _i27;
+    as _i28;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart'
     as _i9;
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart'
@@ -37,13 +37,15 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:elevate_ecommerce/features/auth/update_password/data/model/updatePassword_response.dart'
     as _i3;
 import 'package:elevate_ecommerce/features/Cart/data/models/requests/add_cart_product_request.dart'
-    as _i23;
-import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart'
     as _i24;
+import 'package:elevate_ecommerce/features/Cart/data/models/requests/update_cart_product_quantity_request.dart'
+    as _i25;
 import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response/cart_response.dart'
     as _i22;
+import 'package:elevate_ecommerce/features/Cart/data/models/responses/cart_response2/cart_response2.dart'
+    as _i23;
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
-    as _i29;
+    as _i30;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
     as _i19;
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart'
@@ -57,17 +59,19 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i18;
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
-    as _i28;
-import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
-    as _i31;
-import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
-    as _i34;
-import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
+    as _i29;
+import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart'
     as _i32;
-import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
+import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
     as _i33;
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
+    as _i36;
+import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
+    as _i34;
+import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
+    as _i35;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
-    as _i30;
+    as _i31;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint
@@ -315,10 +319,11 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i17.HomeResponse?>);
 
   @override
-  _i8.Future<_i18.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+  _i8.Future<_i18.ProductResponse?> getAllProducts(String? param) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
-          [],
+          [param],
         ),
         returnValue: _i8.Future<_i18.ProductResponse?>.value(),
         returnValueForMissingStub: _i8.Future<_i18.ProductResponse?>.value(),
@@ -372,21 +377,21 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i22.CartResponse?>);
 
   @override
-  _i8.Future<_i22.CartResponse?> addProductToCart(
-          _i23.AddCartProductRequest? req) =>
+  _i8.Future<_i23.CartResponse2?> addProductToCart(
+          _i24.AddCartProductRequest? req) =>
       (super.noSuchMethod(
         Invocation.method(
           #addProductToCart,
           [req],
         ),
-        returnValue: _i8.Future<_i22.CartResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i22.CartResponse?>.value(),
-      ) as _i8.Future<_i22.CartResponse?>);
+        returnValue: _i8.Future<_i23.CartResponse2?>.value(),
+        returnValueForMissingStub: _i8.Future<_i23.CartResponse2?>.value(),
+      ) as _i8.Future<_i23.CartResponse2?>);
 
   @override
   _i8.Future<_i22.CartResponse?> updateCartProductQuantity(
     String? productId,
-    _i24.UpdateCartProductQuantityRequest? req,
+    _i25.UpdateCartProductQuantityRequest? req,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -401,113 +406,138 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i22.CartResponse?>);
 
   @override
-  _i8.Future<_i22.CartResponse?> removeItemFromCart(String? productId) =>
+  _i8.Future<_i23.CartResponse2?> removeItemFromCart(String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #removeItemFromCart,
           [productId],
         ),
-        returnValue: _i8.Future<_i22.CartResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i22.CartResponse?>.value(),
-      ) as _i8.Future<_i22.CartResponse?>);
+        returnValue: _i8.Future<_i23.CartResponse2?>.value(),
+        returnValueForMissingStub: _i8.Future<_i23.CartResponse2?>.value(),
+      ) as _i8.Future<_i23.CartResponse2?>);
 
   @override
-  _i8.Future<_i25.UserResponse?> getProfile(String? authorization) =>
+  _i8.Future<_i26.UserResponse?> getProfile(String? authorization) =>
       (super.noSuchMethod(
         Invocation.method(
           #getProfile,
           [authorization],
         ),
-        returnValue: _i8.Future<_i25.UserResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i25.UserResponse?>.value(),
-      ) as _i8.Future<_i25.UserResponse?>);
+        returnValue: _i8.Future<_i26.UserResponse?>.value(),
+        returnValueForMissingStub: _i8.Future<_i26.UserResponse?>.value(),
+      ) as _i8.Future<_i26.UserResponse?>);
 
   @override
-  _i8.Future<_i25.UserResponse?> updateProfileData(
-          _i26.UpdateProfileRequest? request) =>
+  _i8.Future<_i26.UserResponse?> updateProfileData(
+          _i27.UpdateProfileRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #updateProfileData,
           [request],
         ),
-        returnValue: _i8.Future<_i25.UserResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i25.UserResponse?>.value(),
-      ) as _i8.Future<_i25.UserResponse?>);
+        returnValue: _i8.Future<_i26.UserResponse?>.value(),
+        returnValueForMissingStub: _i8.Future<_i26.UserResponse?>.value(),
+      ) as _i8.Future<_i26.UserResponse?>);
 
   @override
-  _i8.Future<_i27.Logout?> logout(String? authorization) => (super.noSuchMethod(
+  _i8.Future<_i28.Logout?> logout(String? authorization) => (super.noSuchMethod(
         Invocation.method(
           #logout,
           [authorization],
         ),
-        returnValue: _i8.Future<_i27.Logout?>.value(),
-        returnValueForMissingStub: _i8.Future<_i27.Logout?>.value(),
-      ) as _i8.Future<_i27.Logout?>);
+        returnValue: _i8.Future<_i28.Logout?>.value(),
+        returnValueForMissingStub: _i8.Future<_i28.Logout?>.value(),
+      ) as _i8.Future<_i28.Logout?>);
 
   @override
-  _i8.Future<_i28.UserAddressResponse?> saveAddress(
-          _i29.AddressRequest? address) =>
+  _i8.Future<_i29.UserAddressResponse?> saveAddress(
+          _i30.AddressRequest? address) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveAddress,
           [address],
         ),
-        returnValue: _i8.Future<_i28.UserAddressResponse?>.value(),
+        returnValue: _i8.Future<_i29.UserAddressResponse?>.value(),
         returnValueForMissingStub:
-            _i8.Future<_i28.UserAddressResponse?>.value(),
-      ) as _i8.Future<_i28.UserAddressResponse?>);
+            _i8.Future<_i29.UserAddressResponse?>.value(),
+      ) as _i8.Future<_i29.UserAddressResponse?>);
 
   @override
-  _i8.Future<_i30.AddressResponse?> getAddresses() => (super.noSuchMethod(
+  _i8.Future<_i31.AddressResponse?> getAddresses() => (super.noSuchMethod(
         Invocation.method(
           #getAddresses,
           [],
         ),
-        returnValue: _i8.Future<_i30.AddressResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i30.AddressResponse?>.value(),
-      ) as _i8.Future<_i30.AddressResponse?>);
+        returnValue: _i8.Future<_i31.AddressResponse?>.value(),
+        returnValueForMissingStub: _i8.Future<_i31.AddressResponse?>.value(),
+      ) as _i8.Future<_i31.AddressResponse?>);
 
   @override
-  _i8.Future<_i30.AddressResponse?> removeAddress(String? productId) =>
+  _i8.Future<_i32.NotificationResponse?> getNotifications() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getNotifications,
+          [],
+        ),
+        returnValue: _i8.Future<_i32.NotificationResponse?>.value(),
+        returnValueForMissingStub:
+            _i8.Future<_i32.NotificationResponse?>.value(),
+      ) as _i8.Future<_i32.NotificationResponse?>);
+
+  @override
+  _i8.Future<_i32.NotificationResponse?> removeNotification(
+          String? notificationId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeNotification,
+          [notificationId],
+        ),
+        returnValue: _i8.Future<_i32.NotificationResponse?>.value(),
+        returnValueForMissingStub:
+            _i8.Future<_i32.NotificationResponse?>.value(),
+      ) as _i8.Future<_i32.NotificationResponse?>);
+
+  @override
+  _i8.Future<_i31.AddressResponse?> removeAddress(String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
           #removeAddress,
           [productId],
         ),
-        returnValue: _i8.Future<_i30.AddressResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i30.AddressResponse?>.value(),
-      ) as _i8.Future<_i30.AddressResponse?>);
+        returnValue: _i8.Future<_i31.AddressResponse?>.value(),
+        returnValueForMissingStub: _i8.Future<_i31.AddressResponse?>.value(),
+      ) as _i8.Future<_i31.AddressResponse?>);
 
   @override
-  _i8.Future<_i31.OrderResponse?> getOrders() => (super.noSuchMethod(
+  _i8.Future<_i33.OrderResponse?> getOrders() => (super.noSuchMethod(
         Invocation.method(
           #getOrders,
           [],
         ),
-        returnValue: _i8.Future<_i31.OrderResponse?>.value(),
-        returnValueForMissingStub: _i8.Future<_i31.OrderResponse?>.value(),
-      ) as _i8.Future<_i31.OrderResponse?>);
+        returnValue: _i8.Future<_i33.OrderResponse?>.value(),
+        returnValueForMissingStub: _i8.Future<_i33.OrderResponse?>.value(),
+      ) as _i8.Future<_i33.OrderResponse?>);
 
   @override
-  _i8.Future<_i32.Payment?> doPayment(_i33.PaymentRequest? paymentRequest) =>
+  _i8.Future<_i34.Payment?> doPayment(_i35.PaymentRequest? paymentRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #doPayment,
           [paymentRequest],
         ),
-        returnValue: _i8.Future<_i32.Payment?>.value(),
-        returnValueForMissingStub: _i8.Future<_i32.Payment?>.value(),
-      ) as _i8.Future<_i32.Payment?>);
+        returnValue: _i8.Future<_i34.Payment?>.value(),
+        returnValueForMissingStub: _i8.Future<_i34.Payment?>.value(),
+      ) as _i8.Future<_i34.Payment?>);
 
   @override
-  _i8.Future<_i34.CreateOrder?> createOrder(
-          _i33.PaymentRequest? paymentRequest) =>
+  _i8.Future<_i36.CreateOrder?> createOrder(
+          _i35.PaymentRequest? paymentRequest) =>
       (super.noSuchMethod(
         Invocation.method(
           #createOrder,
           [paymentRequest],
         ),
-        returnValue: _i8.Future<_i34.CreateOrder?>.value(),
-        returnValueForMissingStub: _i8.Future<_i34.CreateOrder?>.value(),
-      ) as _i8.Future<_i34.CreateOrder?>);
+        returnValue: _i8.Future<_i36.CreateOrder?>.value(),
+        returnValueForMissingStub: _i8.Future<_i36.CreateOrder?>.value(),
+      ) as _i8.Future<_i36.CreateOrder?>);
 }

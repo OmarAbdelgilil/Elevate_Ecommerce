@@ -18,7 +18,7 @@ class SaveAddressScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(title: StringsManager.savedAddress.tr()),
+      appBar: customAppBar(title: StringsManager.savedAddresses.tr()),
       body: BlocProvider(
           create: (context) => GetIt.I<SaveAddressViewModel>()..start(),
           child: BlocConsumer<SaveAddressViewModel, BaseState>(

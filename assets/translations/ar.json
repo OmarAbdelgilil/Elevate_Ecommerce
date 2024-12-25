@@ -75,7 +75,7 @@
     "Delivery Fee": "رسوم التوصيل",
     "Total": "الإجمالي",
     "My Orders": "طلباتي",
-    "Saved address": "العنوان المحفوظ",
+    "Saved Addresses": "العناوين المحفوظة",
     "Guest": "زائر",
     "guest@gmail.com": "guest@gmail.com",
     "Notification": "الإشعارات",
@@ -156,5 +156,6 @@
    "Enter the phone number": "ادخل رقم الهاتف",
    "Phone number": "رقم الهاتف",
    "Enter the name": "ادخل الاسم",
-   "Name": "الاسم"
+   "Name": "الاسم",
+   "There is No notifications":"لا يوجد اشعارات"
 }

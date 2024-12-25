@@ -75,7 +75,7 @@
     "Delivery Fee": "Delivery Fee",
     "Total": "Total",
     "My Orders": "My Orders",
-    "Saved address": "Saved Address",
+    "Saved addresses": "Saved Addresses",
     "Guest": "Guest",
     "guest@gmail.com": "guest@gmail.com",
     "Notification": "Notification",
@@ -155,5 +155,6 @@
    "Enter the phone number": "Enter the phone number",
    "Phone number": "Phone number",
    "Enter the name": "Enter the name",
-   "Name": "Name"
+   "Name": "Name",
+   "There is No notifications": "There is No notifications"
 }

@@ -17,6 +17,7 @@ import 'package:elevate_ecommerce/features/auth/forget_password/data/models/resp
 import 'package:elevate_ecommerce/features/auth/Register/data/model/request.dart';
 import 'package:elevate_ecommerce/features/auth/Register/data/model/response.dart';
 import 'package:elevate_ecommerce/features/auth/logout/data/models/logout_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_categories_response/get_all_categories_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/home_response/home_response.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart';
@@ -25,6 +26,8 @@ import 'package:elevate_ecommerce/features/auth/update_password/data/model/updat
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/get_all_occasions_response/get_all_occations_response.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Product_details_response.dart';
+import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
+import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart';
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart';
 import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart';
 import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart';
@@ -37,9 +40,7 @@ import '../../../features/auth/forget_password/data/models/requests/update_user_
 import '../../../features/auth/login/data/models/request/login_request.dart';
 import '../../../features/auth/login/data/models/response/login_response.dart';
 
-import '../../../features/home/data/models/request/address_request/address_request.dart';
 import '../../../features/home/data/models/response/product_response/ProductResponse.dart';
-import '../../../features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import '../../providers/token_provider.dart';
 
 part 'api_manager.g.dart';
@@ -152,9 +153,19 @@ abstract class ApiManager {
   @Extra({'requiresToken': true})
   Future<AddressResponse?> getAddresses();
 
-  @DELETE("${ApiConstants.removeAddressPath}/{productId}")
+  @GET(ApiConstants.getNotificationsPath)
   @Extra({'requiresToken': true})
-  Future<AddressResponse?> removeAddress(@Path("productId") String productId);
+  Future<NotificationResponse?> getNotifications();
+
+  @DELETE("${ApiConstants.removeNotificationPath}/{notificationId}")
+  @Extra({'requiresToken': true})
+  Future<NotificationResponse?>removeNotification(
+      @Path("notificationId") String notificationId);
+
+  @DELETE("${ApiConstants.removeAddressPath}/{addressId}")
+  @Extra({'requiresToken': true})
+  Future<AddressResponse?>removeAddress(
+      @Path("addressId") String productId);
 
   @GET(ApiConstants.ordersPath)
   Future<OrderResponse?> getOrders();

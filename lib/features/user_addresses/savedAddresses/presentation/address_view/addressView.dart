@@ -22,7 +22,7 @@ class AddressesScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => addressViewModel..doIntent(LoadAddressIntent()),
       child: Scaffold(
-        appBar: customAppBar(title: StringsManager.savedAddress.tr()),
+        appBar: customAppBar(title: StringsManager.savedAddresses.tr()),
         body: BlocListener<AddressViewModel, AddressState>(
           listener: (context, state) {
             if (state is AddressRemovedState) {
@@ -83,3 +83,11 @@ class AddressesScreen extends StatelessWidget {
     );
   }
 }
+
+
+
+/*
+NotificationItem(
+viewModel: notificationViewModel,
+notification: state.notiicationData![index],
+)*/
