@@ -531,6 +531,7 @@ class MockRemoteDatasource extends _i1.Mock implements _i37.RemoteDatasource {
     _i42.ProductsFiltersEnum? filter,
     int? priceFrom,
     int? priceTo,
+    String? keyword,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -540,6 +541,7 @@ class MockRemoteDatasource extends _i1.Mock implements _i37.RemoteDatasource {
             #filter: filter,
             #priceFrom: priceFrom,
             #priceTo: priceTo,
+            #keyword: keyword,
           },
         ),
         returnValue: _i8.Future<_i38.Result<_i18.ProductResponse?>>.value(
@@ -552,6 +554,7 @@ class MockRemoteDatasource extends _i1.Mock implements _i37.RemoteDatasource {
               #filter: filter,
               #priceFrom: priceFrom,
               #priceTo: priceTo,
+              #keyword: keyword,
             },
           ),
         )),

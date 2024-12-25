@@ -90,6 +90,7 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
     _i9.ProductsFiltersEnum? filter,
     int? priceFrom,
     int? priceTo,
+    String? keyword,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -99,6 +100,7 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
             #filter: filter,
             #priceFrom: priceFrom,
             #priceTo: priceTo,
+            #keyword: keyword,
           },
         ),
         returnValue: _i3.Future<_i4.Result<_i8.ProductResponse?>>.value(
@@ -111,6 +113,7 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
               #filter: filter,
               #priceFrom: priceFrom,
               #priceTo: priceTo,
+              #keyword: keyword,
             },
           ),
         )),

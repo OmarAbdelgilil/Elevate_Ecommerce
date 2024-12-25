@@ -50,10 +50,19 @@ class RemoteDatasourceImpl implements RemoteDatasource {
   }
 
   @override
-  Future<Result<ProductResponse?>> getAllProducts(
-      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
+  Future<Result<ProductResponse?>> getAllProducts({
+    ProductsFiltersEnum? filter,
+    int? priceFrom,
+    int? priceTo,
+    String? keyword, // Add this line
+  }) async {
     return executeApi(() async {
-      String? filterPath = '?';
+      String filterPath = '?';
+      if (keyword != null && keyword.isNotEmpty) {
+        filterPath +=
+            'keyword=$keyword&'; // Add keyword to the query parameters
+      }
+
       switch (filter) {
         case null:
           break;
@@ -73,13 +82,15 @@ class RemoteDatasourceImpl implements RemoteDatasource {
           filterPath += 'discount[gt]=0';
           break;
       }
+
       if (priceFrom != null && priceTo != null) {
         if (filterPath != '?') {
           filterPath += '&';
         }
         filterPath +=
-            "priceAfterDiscount[gte]=${priceFrom.toString()}&priceAfterDiscount[lte]=${priceTo.toString()}";
+            "priceAfterDiscount[gte]=$priceFrom&priceAfterDiscount[lte]=$priceTo";
       }
+
       final result = await apiManager.getAllProducts(filterPath);
       return result;
     });

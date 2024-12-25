@@ -33,10 +33,18 @@ class HomeRepositoryImpl implements HomeRepository {
   }
 
   @override
-  Future<Result<ProductResponse?>> getAllProducts(
-      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
+  Future<Result<ProductResponse?>> getAllProducts({
+    ProductsFiltersEnum? filter,
+    int? priceFrom,
+    int? priceTo,
+    String? keyword,
+  }) async {
     return await _homeDatasource.getAllProducts(
-        filter: filter, priceFrom: priceFrom, priceTo: priceTo);
+      filter: filter,
+      priceFrom: priceFrom,
+      priceTo: priceTo,
+      keyword: keyword,
+    );
   }
 
   @override

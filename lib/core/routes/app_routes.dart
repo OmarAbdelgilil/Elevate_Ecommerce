@@ -23,4 +23,5 @@ class AppRoutes {
 
   static const checkOut = "checkOut";
   static const orders = "orders";
+  static const search = "search";
 }

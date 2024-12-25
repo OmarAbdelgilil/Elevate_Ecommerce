@@ -131,24 +131,27 @@ class CheckOutView extends StatelessWidget {
                               );
                             }
                           },
-                          child: CustomButton(
-                            onPressed: () {
-                              if (checkoutViewmodelCubit.selectedAddress ==
-                                  null) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content:
-                                        Text(StringsManager.selectAddress.tr()),
-                                    backgroundColor: Colors.red,
-                                  ),
-                                );
-                              } else {
-                                checkoutViewmodelCubit
-                                    .doIntent(PerformPayment(userPhone));
-                              }
-                            },
-                            text: StringsManager.placeOrder.tr(),
-                            radius: 20,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 20),
+                            child: CustomButton(
+                              onPressed: () {
+                                if (checkoutViewmodelCubit.selectedAddress ==
+                                    null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text(
+                                          StringsManager.selectAddress.tr()),
+                                      backgroundColor: Colors.red,
+                                    ),
+                                  );
+                                } else {
+                                  checkoutViewmodelCubit
+                                      .doIntent(PerformPayment(userPhone));
+                                }
+                              },
+                              text: StringsManager.placeOrder.tr(),
+                              radius: 20,
+                            ),
                           ),
                         );
                       },

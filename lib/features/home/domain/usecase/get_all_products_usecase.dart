@@ -12,8 +12,14 @@ class GetAllProductsUseCase {
   GetAllProductsUseCase(this._homeRepository);
 
   Future<Result<ProductResponse?>> getAllProducts(
-      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo}) async {
+      {ProductsFiltersEnum? filter,
+      int? priceFrom,
+      int? priceTo,
+      String? keyword}) async {
     return await _homeRepository.getAllProducts(
-        filter: filter, priceFrom: priceFrom, priceTo: priceTo);
+        filter: filter,
+        priceFrom: priceFrom,
+        priceTo: priceTo,
+        keyword: keyword);
   }
 }
