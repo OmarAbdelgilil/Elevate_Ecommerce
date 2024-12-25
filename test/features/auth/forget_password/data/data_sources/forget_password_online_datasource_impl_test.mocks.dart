@@ -60,8 +60,10 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
     as _i18;
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
     as _i29;
-import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
+import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart'
     as _i32;
+import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
+    as _i33;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
     as _i31;
 import 'package:mockito/mockito.dart' as _i1;
@@ -403,6 +405,27 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i31.AddressResponse?>);
 
   @override
+  _i8.Future<_i32.NotificationResponse?> getNotifications() =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getNotifications,
+          [],
+        ),
+        returnValue: _i8.Future<_i32.NotificationResponse?>.value(),
+      ) as _i8.Future<_i32.NotificationResponse?>);
+
+  @override
+  _i8.Future<_i32.NotificationResponse?> removeNotification(
+          String? notificationId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #removeNotification,
+          [notificationId],
+        ),
+        returnValue: _i8.Future<_i32.NotificationResponse?>.value(),
+      ) as _i8.Future<_i32.NotificationResponse?>);
+
+  @override
   _i8.Future<_i31.AddressResponse?> removeAddress(String? productId) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -413,11 +436,11 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i31.AddressResponse?>);
 
   @override
-  _i8.Future<_i32.OrderResponse?> getOrders() => (super.noSuchMethod(
+  _i8.Future<_i33.OrderResponse?> getOrders() => (super.noSuchMethod(
         Invocation.method(
           #getOrders,
           [],
         ),
-        returnValue: _i8.Future<_i32.OrderResponse?>.value(),
-      ) as _i8.Future<_i32.OrderResponse?>);
+        returnValue: _i8.Future<_i33.OrderResponse?>.value(),
+      ) as _i8.Future<_i33.OrderResponse?>);
 }
