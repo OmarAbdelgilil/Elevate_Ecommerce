@@ -33,6 +33,9 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart';
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart';
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart';
+import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart';
+import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
@@ -181,6 +184,18 @@ class DummyApiManager implements ApiManager {
   @override
   Future<NotificationResponse?> removeNotification(String notificationId) {
     // TODO: implement removeNotification
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<CreateOrder?> createOrder(PaymentRequest paymentRequest) {
+    // TODO: implement createOrder
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Payment?> doPayment(PaymentRequest paymentRequest) {
+    // TODO: implement doPayment
     throw UnimplementedError();
   }
 }
