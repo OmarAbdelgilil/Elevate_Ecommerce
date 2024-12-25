@@ -25,4 +25,6 @@ class ApiConstants {
   static const String getNotificationsPath="/v1/notifications?sort=-createdAt";
   static const String removeNotificationPath ="/v1/notifications";
   static const String ordersPath = "/v1/orders";
+  static const String paymentPath =
+      "/v1/orders/checkout?url=http://localhost:3000";
 }

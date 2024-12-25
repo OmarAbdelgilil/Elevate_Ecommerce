@@ -29,6 +29,9 @@ import 'package:elevate_ecommerce/features/home/data/models/response/product_res
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart';
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart';
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart';
+import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart';
+import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
@@ -100,8 +103,8 @@ abstract class ApiManager {
   @GET(ApiConstants.homePagePath)
   Future<HomeResponse?> getHomePage();
 
-  @GET(ApiConstants.getAllProductsPath)
-  Future<ProductResponse?> getAllProducts();
+  @GET("${ApiConstants.getAllProductsPath}{param}")
+  Future<ProductResponse?> getAllProducts(@Path('param') String param);
 
   @GET(ApiConstants.getAllBestSellerProductsPath)
   Future<BestSellerProductResponse?> getAllBestSellerProducts();
@@ -166,4 +169,14 @@ abstract class ApiManager {
 
   @GET(ApiConstants.ordersPath)
   Future<OrderResponse?> getOrders();
+  @POST(ApiConstants.paymentPath)
+  @Extra({'requiresToken': true})
+  Future<Payment?> doPayment(
+    @Body() PaymentRequest paymentRequest,
+  );
+  @POST(ApiConstants.ordersPath)
+  @Extra({'requiresToken': true})
+  Future<CreateOrder?> createOrder(
+    @Body() PaymentRequest paymentRequest,
+  );
 }

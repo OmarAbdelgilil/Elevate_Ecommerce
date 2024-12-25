@@ -306,7 +306,7 @@ class _ApiManager implements ApiManager {
   }
 
   @override
-  Future<ProductResponse?> getAllProducts() async {
+  Future<ProductResponse?> getAllProducts(String param) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -318,7 +318,7 @@ class _ApiManager implements ApiManager {
     )
         .compose(
           _dio.options,
-          '/v1/products',
+          '/v1/products${param}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -891,6 +891,75 @@ class _ApiManager implements ApiManager {
     try {
       _value =
           _result.data == null ? null : OrderResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<Payment?> doPayment(PaymentRequest paymentRequest) async {
+    final _extra = <String, dynamic>{'requiresToken': true};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(paymentRequest.toJson());
+    final _options = _setStreamType<Payment>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/orders/checkout?url=http://localhost:3000',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
+    late Payment? _value;
+    try {
+      _value = _result.data == null ? null : Payment.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CreateOrder?> createOrder(PaymentRequest paymentRequest) async {
+    final _extra = <String, dynamic>{'requiresToken': true};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(paymentRequest.toJson());
+    final _options = _setStreamType<CreateOrder>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/v1/orders',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>?>(_options);
+    late CreateOrder? _value;
+    try {
+      _value =
+          _result.data == null ? null : CreateOrder.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

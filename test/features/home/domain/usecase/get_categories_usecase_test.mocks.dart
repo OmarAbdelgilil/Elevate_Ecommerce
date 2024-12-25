@@ -7,23 +7,25 @@ import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
 import 'package:elevate_ecommerce/features/auth/forget_password/data/models/requests/update_user_data_requeset.dart'
-    as _i12;
+    as _i13;
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user_response.dart'
-    as _i11;
+    as _i12;
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart'
-    as _i14;
+    as _i15;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
-    as _i9;
+    as _i10;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i8;
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart'
-    as _i13;
+    as _i14;
+import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart'
+    as _i9;
 import 'package:elevate_ecommerce/features/home/domain/models/categories.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/home.dart'
     as _i7;
 import 'package:elevate_ecommerce/features/home/domain/models/occasions.dart'
-    as _i10;
+    as _i11;
 import 'package:elevate_ecommerce/features/home/domain/repositories/home_repository.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
@@ -84,11 +86,20 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
       ) as _i3.Future<_i4.Result<_i7.Home?>>);
 
   @override
-  _i3.Future<_i4.Result<_i8.ProductResponse?>> getAllProducts() =>
+  _i3.Future<_i4.Result<_i8.ProductResponse?>> getAllProducts({
+    _i9.ProductsFiltersEnum? filter,
+    int? priceFrom,
+    int? priceTo,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
+          {
+            #filter: filter,
+            #priceFrom: priceFrom,
+            #priceTo: priceTo,
+          },
         ),
         returnValue: _i3.Future<_i4.Result<_i8.ProductResponse?>>.value(
             _i6.dummyValue<_i4.Result<_i8.ProductResponse?>>(
@@ -96,78 +107,83 @@ class MockHomeRepository extends _i1.Mock implements _i2.HomeRepository {
           Invocation.method(
             #getAllProducts,
             [],
+            {
+              #filter: filter,
+              #priceFrom: priceFrom,
+              #priceTo: priceTo,
+            },
           ),
         )),
       ) as _i3.Future<_i4.Result<_i8.ProductResponse?>>);
 
   @override
-  _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>
+  _i3.Future<_i4.Result<_i10.BestSellerProductResponse?>>
       getAllBestSellerProducts() => (super.noSuchMethod(
             Invocation.method(
               #getAllBestSellerProducts,
               [],
             ),
             returnValue:
-                _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>.value(
-                    _i6.dummyValue<_i4.Result<_i9.BestSellerProductResponse?>>(
+                _i3.Future<_i4.Result<_i10.BestSellerProductResponse?>>.value(
+                    _i6.dummyValue<_i4.Result<_i10.BestSellerProductResponse?>>(
               this,
               Invocation.method(
                 #getAllBestSellerProducts,
                 [],
               ),
             )),
-          ) as _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>);
+          ) as _i3.Future<_i4.Result<_i10.BestSellerProductResponse?>>);
 
   @override
-  _i3.Future<_i4.Result<_i10.Occasions?>> getAllOccasions() =>
+  _i3.Future<_i4.Result<_i11.Occasions?>> getAllOccasions() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllOccasions,
           [],
         ),
-        returnValue: _i3.Future<_i4.Result<_i10.Occasions?>>.value(
-            _i6.dummyValue<_i4.Result<_i10.Occasions?>>(
+        returnValue: _i3.Future<_i4.Result<_i11.Occasions?>>.value(
+            _i6.dummyValue<_i4.Result<_i11.Occasions?>>(
           this,
           Invocation.method(
             #getAllOccasions,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i10.Occasions?>>);
+      ) as _i3.Future<_i4.Result<_i11.Occasions?>>);
 
   @override
-  _i3.Future<_i4.Result<_i11.UserResponse?>> upDateUserProfile(
-          _i12.UpdateProfileRequest? request) =>
+  _i3.Future<_i4.Result<_i12.UserResponse?>> upDateUserProfile(
+          _i13.UpdateProfileRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #upDateUserProfile,
           [request],
         ),
-        returnValue: _i3.Future<_i4.Result<_i11.UserResponse?>>.value(
-            _i6.dummyValue<_i4.Result<_i11.UserResponse?>>(
+        returnValue: _i3.Future<_i4.Result<_i12.UserResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i12.UserResponse?>>(
           this,
           Invocation.method(
             #upDateUserProfile,
             [request],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i11.UserResponse?>>);
+      ) as _i3.Future<_i4.Result<_i12.UserResponse?>>);
 
   @override
-  _i3.Future<_i4.Result<_i13.UserAddressResponse?>> saveUserAddress(
-          _i14.AddressRequest? request) =>
+  _i3.Future<_i4.Result<_i14.UserAddressResponse?>> saveUserAddress(
+          _i15.AddressRequest? request) =>
       (super.noSuchMethod(
         Invocation.method(
           #saveUserAddress,
           [request],
         ),
-        returnValue: _i3.Future<_i4.Result<_i13.UserAddressResponse?>>.value(
-            _i6.dummyValue<_i4.Result<_i13.UserAddressResponse?>>(
+        returnValue: _i3.Future<_i4.Result<_i14.UserAddressResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i14.UserAddressResponse?>>(
           this,
           Invocation.method(
             #saveUserAddress,
             [request],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i13.UserAddressResponse?>>);
+      ) as _i3.Future<_i4.Result<_i14.UserAddressResponse?>>);
 }

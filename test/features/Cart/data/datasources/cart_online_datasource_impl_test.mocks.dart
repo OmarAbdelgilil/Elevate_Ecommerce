@@ -64,6 +64,12 @@ import 'package:elevate_ecommerce/features/notifications/data/response/notificat
     as _i32;
 import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
     as _i33;
+import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
+    as _i36;
+import 'package:elevate_ecommerce/features/payment/data/models/payment/payment.dart'
+    as _i34;
+import 'package:elevate_ecommerce/features/payment/data/models/request/payment/payment.request.dart'
+    as _i35;
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/data/models/response/addressResponse.dart'
     as _i31;
 import 'package:mockito/mockito.dart' as _i1;
@@ -269,10 +275,11 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
       ) as _i8.Future<_i17.HomeResponse?>);
 
   @override
-  _i8.Future<_i18.ProductResponse?> getAllProducts() => (super.noSuchMethod(
+  _i8.Future<_i18.ProductResponse?> getAllProducts(String? param) =>
+      (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
-          [],
+          [param],
         ),
         returnValue: _i8.Future<_i18.ProductResponse?>.value(),
       ) as _i8.Future<_i18.ProductResponse?>);
@@ -443,4 +450,25 @@ class MockApiManager extends _i1.Mock implements _i7.ApiManager {
         ),
         returnValue: _i8.Future<_i33.OrderResponse?>.value(),
       ) as _i8.Future<_i33.OrderResponse?>);
+
+  @override
+  _i8.Future<_i34.Payment?> doPayment(_i35.PaymentRequest? paymentRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #doPayment,
+          [paymentRequest],
+        ),
+        returnValue: _i8.Future<_i34.Payment?>.value(),
+      ) as _i8.Future<_i34.Payment?>);
+
+  @override
+  _i8.Future<_i36.CreateOrder?> createOrder(
+          _i35.PaymentRequest? paymentRequest) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #createOrder,
+          [paymentRequest],
+        ),
+        returnValue: _i8.Future<_i36.CreateOrder?>.value(),
+      ) as _i8.Future<_i36.CreateOrder?>);
 }
