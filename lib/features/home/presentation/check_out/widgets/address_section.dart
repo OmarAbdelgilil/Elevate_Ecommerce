@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/cubit/checkout_viewmodel_cubit.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/checkout_card.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart';
@@ -79,7 +80,9 @@ class AddressSection extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushNamed(context, AppRoutes.saveAddressScreen);
+                    },
                     style: ElevatedButton.styleFrom(
                       foregroundColor: primaryColor,
                       backgroundColor: Colors.transparent,
