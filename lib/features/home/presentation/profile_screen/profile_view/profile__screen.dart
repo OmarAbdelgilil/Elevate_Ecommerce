@@ -41,11 +41,18 @@ class ProfileScreen extends StatelessWidget {
                       width: 90.w,
                       height: 26.h,
                     ),
-                    SvgPicture.asset(
-                      SVGAssets.notificationIcon,
-                      width: 90.w,
-                      height: 26.h,
-                    ),
+            InkWell(
+              onTap: (){
+                Navigator.pushNamed(
+                    context, AppRoutes.notifications);
+              },
+              child: SvgPicture.asset(
+                SVGAssets.notificationIcon,
+                width: 90.w,
+                height: 26.h,
+              ),
+            ),
+
                   ],
                 ),
                 Column(
@@ -141,7 +148,7 @@ class ProfileScreen extends StatelessWidget {
                       width: 25.w,
                       height: 25.h,
                     ),
-                    StringsManager.savedAddress, () {
+                    StringsManager.savedAddresses.tr(), () {
 //
                   if (userProvider.userData?.id == null) {
                     showLoginDialog(context);

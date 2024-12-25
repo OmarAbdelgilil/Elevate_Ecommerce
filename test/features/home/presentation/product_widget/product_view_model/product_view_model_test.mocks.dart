@@ -6,22 +6,24 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/cache/shared_preferences_service.dart'
-    as _i9;
+    as _i10;
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSeller.dart'
-    as _i11;
+    as _i12;
 import 'package:elevate_ecommerce/features/home/data/models/response/best_seller_product_response/BestSellerProductResponse.dart'
-    as _i8;
+    as _i9;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/ProductResponse.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/home/data/models/response/product_response/Products.dart'
-    as _i10;
+    as _i11;
+import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart'
+    as _i6;
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_best_sellet_products_usecase.dart'
-    as _i7;
+    as _i8;
 import 'package:elevate_ecommerce/features/home/domain/usecase/get_all_products_usecase.dart'
     as _i2;
 import 'package:mockito/mockito.dart' as _i1;
-import 'package:mockito/src/dummies.dart' as _i6;
+import 'package:mockito/src/dummies.dart' as _i7;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -46,18 +48,32 @@ class MockGetAllProductsUseCase extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.ProductResponse?>> getAllProducts() =>
+  _i3.Future<_i4.Result<_i5.ProductResponse?>> getAllProducts({
+    _i6.ProductsFiltersEnum? filter,
+    int? priceFrom,
+    int? priceTo,
+  }) =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
+          {
+            #filter: filter,
+            #priceFrom: priceFrom,
+            #priceTo: priceTo,
+          },
         ),
         returnValue: _i3.Future<_i4.Result<_i5.ProductResponse?>>.value(
-            _i6.dummyValue<_i4.Result<_i5.ProductResponse?>>(
+            _i7.dummyValue<_i4.Result<_i5.ProductResponse?>>(
           this,
           Invocation.method(
             #getAllProducts,
             [],
+            {
+              #filter: filter,
+              #priceFrom: priceFrom,
+              #priceTo: priceTo,
+            },
           ),
         )),
       ) as _i3.Future<_i4.Result<_i5.ProductResponse?>>);
@@ -67,41 +83,41 @@ class MockGetAllProductsUseCase extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockGetAllBestSellerProductsUseCase extends _i1.Mock
-    implements _i7.GetAllBestSellerProductsUseCase {
+    implements _i8.GetAllBestSellerProductsUseCase {
   MockGetAllBestSellerProductsUseCase() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<_i4.Result<_i8.BestSellerProductResponse?>> getAllProducts() =>
+  _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>> getAllProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getAllProducts,
           [],
         ),
         returnValue:
-            _i3.Future<_i4.Result<_i8.BestSellerProductResponse?>>.value(
-                _i6.dummyValue<_i4.Result<_i8.BestSellerProductResponse?>>(
+            _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>.value(
+                _i7.dummyValue<_i4.Result<_i9.BestSellerProductResponse?>>(
           this,
           Invocation.method(
             #getAllProducts,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i8.BestSellerProductResponse?>>);
+      ) as _i3.Future<_i4.Result<_i9.BestSellerProductResponse?>>);
 }
 
 /// A class which mocks [SharedPreferencesService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockSharedPreferencesService extends _i1.Mock
-    implements _i9.SharedPreferencesService {
+    implements _i10.SharedPreferencesService {
   MockSharedPreferencesService() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i3.Future<void> cacheProducts(List<_i10.Products>? products) =>
+  _i3.Future<void> cacheProducts(List<_i11.Products>? products) =>
       (super.noSuchMethod(
         Invocation.method(
           #cacheProducts,
@@ -112,13 +128,13 @@ class MockSharedPreferencesService extends _i1.Mock
       ) as _i3.Future<void>);
 
   @override
-  _i3.Future<List<_i10.Products>?> getCachedProducts() => (super.noSuchMethod(
+  _i3.Future<List<_i11.Products>?> getCachedProducts() => (super.noSuchMethod(
         Invocation.method(
           #getCachedProducts,
           [],
         ),
-        returnValue: _i3.Future<List<_i10.Products>?>.value(),
-      ) as _i3.Future<List<_i10.Products>?>);
+        returnValue: _i3.Future<List<_i11.Products>?>.value(),
+      ) as _i3.Future<List<_i11.Products>?>);
 
   @override
   _i3.Future<void> clearCache() => (super.noSuchMethod(
@@ -132,7 +148,7 @@ class MockSharedPreferencesService extends _i1.Mock
 
   @override
   _i3.Future<void> cacheBestSellerProducts(
-          List<_i11.BestSeller>? bestSellers) =>
+          List<_i12.BestSeller>? bestSellers) =>
       (super.noSuchMethod(
         Invocation.method(
           #cacheBestSellerProducts,
@@ -143,14 +159,14 @@ class MockSharedPreferencesService extends _i1.Mock
       ) as _i3.Future<void>);
 
   @override
-  _i3.Future<List<_i11.BestSeller>?> getCachedBestSellerProducts() =>
+  _i3.Future<List<_i12.BestSeller>?> getCachedBestSellerProducts() =>
       (super.noSuchMethod(
         Invocation.method(
           #getCachedBestSellerProducts,
           [],
         ),
-        returnValue: _i3.Future<List<_i11.BestSeller>?>.value(),
-      ) as _i3.Future<List<_i11.BestSeller>?>);
+        returnValue: _i3.Future<List<_i12.BestSeller>?>.value(),
+      ) as _i3.Future<List<_i12.BestSeller>?>);
 
   @override
   _i3.Future<void> clearBestSellerCache() => (super.noSuchMethod(

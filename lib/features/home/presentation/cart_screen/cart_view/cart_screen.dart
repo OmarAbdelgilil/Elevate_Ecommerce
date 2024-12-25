@@ -7,6 +7,7 @@ import 'package:elevate_ecommerce/features/Cart/presentation/viewmodel/cart_view
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/cart_item_card.dart';
 import 'package:elevate_ecommerce/features/home/presentation/cart_screen/cart_view/payment_details_section.dart';
 import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/location.dart';
+import 'package:elevate_ecommerce/features/home/presentation/profile_screen/save_address/save_address_view_model/save_address_view_model.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
@@ -19,8 +20,13 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     CartViewmodel viewModel = getIt<CartViewmodel>();
-    return BlocProvider(
-      create: (context) => viewModel..doIntent(LoadCartIntent()),
+    final saveAddressViewModel = getIt.get<SaveAddressViewModel>();
+    saveAddressViewModel.permissionsPermitted();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => viewModel..doIntent(LoadCartIntent())),
+        BlocProvider(create: (context) => saveAddressViewModel),
+      ],
       child: BlocBuilder<CartViewmodel, CartState>(
         builder: (context, state) {
           return Scaffold(
@@ -65,7 +71,7 @@ class CartScreen extends StatelessWidget {
                                         horizontal: 16),
                                     child: Column(
                                       children: [
-                                        Location(),
+                                        const Location(),
                                         Padding(
                                           padding: const EdgeInsets.symmetric(
                                               vertical: 20),

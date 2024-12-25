@@ -10,6 +10,9 @@ class AppRoutes {
 
   static const ResetPassword = "ResetPassword";
   static const address = "Address";
+  static const notifications ="notifications";
+
+  static const Address ="Address";
   static const occasions = "occasions";
   static const editProfile = "editProfile";
   static const Categories = "categories";

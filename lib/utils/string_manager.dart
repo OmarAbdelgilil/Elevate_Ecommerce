@@ -72,13 +72,14 @@ class StringsManager {
   static const retryAgain = "Retry again";
   static const noProductsFound = "No products found";
   static const emptyContent = "Empty content";
+static const notification ="Notification";
   static const gender = "Gender";
   static const male = "Male";
   static const female = "Female";
   static const termscondition = "Terms&Conditions";
   static const alreadyHaveAccount = "Already have an account?";
   static const passwordResetSuccess = "Password reset successfully!";
-
+static const noNotificationsMsg="There is No notifications";
   ///// mainLayOutScreen
   static const homeTab = 'Home';
   static const categoryTab = 'Category';
@@ -123,10 +124,9 @@ class StringsManager {
   static const String total = 'Total';
 
   static const myOrder = 'My Orders';
-  static const savedAddress = 'Saved address';
+  static const savedAddresses ="Saved Addresses";
   static const guest = 'Guest';
   static const guestEmail = 'Guest@gmail.com';
-  static const notification = 'Notification';
   static const language = 'Language';
   static const english = 'English';
   static const selectedLanguage = 'Selected Language';
