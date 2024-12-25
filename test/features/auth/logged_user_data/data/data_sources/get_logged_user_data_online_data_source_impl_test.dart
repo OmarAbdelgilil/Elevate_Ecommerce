@@ -72,7 +72,7 @@ class DummyApiManager implements ApiManager {
   }
 
   @override
-  Future<ProductResponse?> getAllProducts() {
+  Future<ProductResponse?> getAllProducts(String s) {
     throw UnimplementedError();
   }
 
