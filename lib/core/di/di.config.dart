@@ -136,6 +136,8 @@ import '../../features/home/domain/usecase/update_user_data_usecase.dart'
 import '../../features/home/domain/usecases/get_categories_usecase.dart'
     as _i90;
 import '../../features/home/domain/usecases/get_homepage_usecase.dart' as _i91;
+import '../../features/home/presentation/category_screen/category_view/widgets/search_cubit.dart'
+    as _i108;
 import '../../features/home/presentation/category_screen/categry_viewmodel.dart'
     as _i104;
 import '../../features/home/presentation/check_out/cubit/checkout_viewmodel_cubit.dart'
@@ -145,7 +147,7 @@ import '../../features/home/presentation/home_screen/home_screen_view_models/cat
 import '../../features/home/presentation/home_screen/home_screen_view_models/home_screen_viewmodel.dart'
     as _i101;
 import '../../features/home/presentation/occasions/occasions_viewmodel.dart'
-    as _i108;
+    as _i109;
 import '../../features/home/presentation/product_details_screen/product_details_viewModel/product_details_viewModel.dart'
     as _i92;
 import '../../features/home/presentation/product_widget/product_view_model/product_view_model.dart'
@@ -191,7 +193,7 @@ import '../../features/user_addresses/savedAddresses/presentation/address_viewMo
     as _i84;
 import '../cache/shared_preferences_service.dart' as _i51;
 import '../network/api/api_manager.dart' as _i12;
-import '../network/api/network_module.dart' as _i109;
+import '../network/api/network_module.dart' as _i110;
 import '../providers/token_provider.dart' as _i4;
 import '../providers/user_provider.dart' as _i5;
 
@@ -392,12 +394,14 @@ extension GetItInjectableX on _i1.GetIt {
             ));
     gh.factory<_i107.EditProfileScreenViewModel>(() =>
         _i107.EditProfileScreenViewModel(gh<_i83.UpdateUserDataUseCase>()));
-    gh.factory<_i108.OccasionsViewmodel>(
-        () => _i108.OccasionsViewmodel(gh<_i89.GetOccasionsUsecase>()));
+    gh.factory<_i108.SearchCubit>(
+        () => _i108.SearchCubit(gh<_i87.GetAllProductsUseCase>()));
+    gh.factory<_i109.OccasionsViewmodel>(
+        () => _i109.OccasionsViewmodel(gh<_i89.GetOccasionsUsecase>()));
     return this;
   }
 }
 
 class _$RegisterModule extends _i51.RegisterModule {}
 
-class _$DioModule extends _i109.DioModule {}
+class _$DioModule extends _i110.DioModule {}

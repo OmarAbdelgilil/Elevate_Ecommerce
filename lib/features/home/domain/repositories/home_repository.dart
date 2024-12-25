@@ -16,7 +16,10 @@ abstract class HomeRepository {
   Future<Result<Home?>> getHomePage();
 
   Future<Result<ProductResponse?>> getAllProducts(
-      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo});
+      {ProductsFiltersEnum? filter,
+      int? priceFrom,
+      int? priceTo,
+      String? keyword});
 
   Future<Result<BestSellerProductResponse?>> getAllBestSellerProducts();
 

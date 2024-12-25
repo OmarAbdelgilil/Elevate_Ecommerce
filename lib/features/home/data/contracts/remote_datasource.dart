@@ -14,8 +14,12 @@ import '../models/request/address_request/address_request.dart';
 abstract class RemoteDatasource {
   Future<Result<Categories?>> getAllCategories();
   Future<Result<Home?>> getHomePage();
-  Future<Result<ProductResponse?>> getAllProducts(
-      {ProductsFiltersEnum? filter, int? priceFrom, int? priceTo});
+  Future<Result<ProductResponse?>> getAllProducts({
+    ProductsFiltersEnum? filter,
+    int? priceFrom,
+    int? priceTo,
+    String? keyword,
+  });
   Future<Result<BestSellerProductResponse?>> getAllBestSellerProducts();
   Future<Result<Occasions?>> getAllOccasions();
   Future<Result<UserResponse?>> upDateUserProfile(UpdateProfileRequest request);

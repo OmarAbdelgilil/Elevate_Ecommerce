@@ -2,8 +2,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/features/home/data/products_filters_enum.dart';
 import 'package:elevate_ecommerce/features/home/presentation/base/base_widgets.dart';
-import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/search_text_field.dart';
+import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/search_result_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/filters/filters.dart';
+import 'package:elevate_ecommerce/features/home/presentation/home_screen/home_view/search_text_field.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_widget/product_view/product_screen.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
@@ -29,6 +30,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   ProductsFiltersEnum? filter;
   int? minPrice;
   int? maxPrice;
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -54,7 +56,18 @@ class _CategoryScreenState extends State<CategoryScreen> {
                           horizontal: AppSize.s16, vertical: AppSize.s8),
                       child: Row(
                         children: [
-                          Expanded(child: SearchTextField()),
+                          Expanded(
+                              child: GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              const SearchScreen(),
+                                        ));
+                                  },
+                                  child: AbsorbPointer(
+                                      child: const SearchTextField()))),
                           const SizedBox(width: AppSize.s8),
                           SizedBox(
                             width: AppSize.s64,
