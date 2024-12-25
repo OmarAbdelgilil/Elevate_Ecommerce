@@ -52,6 +52,7 @@ class MockGetAllProductsUseCase extends _i1.Mock
     _i6.ProductsFiltersEnum? filter,
     int? priceFrom,
     int? priceTo,
+    String? keyword,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -61,6 +62,7 @@ class MockGetAllProductsUseCase extends _i1.Mock
             #filter: filter,
             #priceFrom: priceFrom,
             #priceTo: priceTo,
+            #keyword: keyword,
           },
         ),
         returnValue: _i3.Future<_i4.Result<_i5.ProductResponse?>>.value(
@@ -73,6 +75,7 @@ class MockGetAllProductsUseCase extends _i1.Mock
               #filter: filter,
               #priceFrom: priceFrom,
               #priceTo: priceTo,
+              #keyword: keyword,
             },
           ),
         )),

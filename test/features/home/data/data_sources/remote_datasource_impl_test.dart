@@ -154,7 +154,7 @@ void main() {
       verifyNoMoreInteractions(mockApiManager);
     });
     test('getAllProducts returns Success', () async {
-      when(mockApiManager.getAllProducts())
+      when(mockApiManager.getAllProducts('?'))
           .thenAnswer((_) async => dummyResponse);
 
       final actual = await remoteDatasource.getAllProducts();
@@ -162,20 +162,20 @@ void main() {
       expect(actual, isA<Success<ProductResponse?>>());
       expect((actual as Success).data, dummyResponse);
 
-      verify(mockApiManager.getAllProducts()).called(1);
+      verify(mockApiManager.getAllProducts('?')).called(1);
     });
 
     test('getAllProducts returns Fail', () async {
       final exception = Exception('Failed to get details');
 
-      when(mockApiManager.getAllProducts()).thenThrow(exception);
+      when(mockApiManager.getAllProducts('?')).thenThrow(exception);
 
       final actual = await remoteDatasource.getAllProducts();
 
       expect(actual, isA<Fail<ProductResponse?>>());
       expect((actual as Fail).exception, exception);
 
-      verify(mockApiManager.getAllProducts()).called(1);
+      verify(mockApiManager.getAllProducts('?')).called(1);
     });
   });
 
