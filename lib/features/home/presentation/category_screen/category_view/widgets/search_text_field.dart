@@ -5,8 +5,13 @@ import 'package:flutter/material.dart';
 
 class SearchTextField extends StatelessWidget {
   final Function(String) onSearchSubmitted;
+  final Function(String) onChanged;
 
-  const SearchTextField({super.key, required this.onSearchSubmitted});
+  const SearchTextField({
+    super.key,
+    required this.onSearchSubmitted,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +34,9 @@ class SearchTextField extends StatelessWidget {
         hintText: StringsManager.search.tr(),
         hintStyle: TextStyle(color: ColorManager.lightGrey),
       ),
+      onChanged: (value) {
+        onChanged(value);
+      },
       onSubmitted: (value) {
         if (value.isNotEmpty) {
           onSearchSubmitted(value);

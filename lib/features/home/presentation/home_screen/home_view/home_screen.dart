@@ -20,19 +20,19 @@ class HomeScreen extends StatelessWidget {
     final saveAddressViewModel = getIt.get<SaveAddressViewModel>();
     saveAddressViewModel.permissionsPermitted();
     _loadHomePage();
-   return MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => viewModel),
         BlocProvider(create: (context) => saveAddressViewModel),
       ],
       child: Scaffold(
-        appBar: homeAppBar(),
+        appBar: homeAppBar(context),
         body: Padding(
           padding: const EdgeInsets.only(left: 16, top: 10),
           child: SingleChildScrollView(
             child: Column(
               children: [
-               const Location(),
+                const Location(),
                 const SizedBox(
                   height: 10,
                 ),
@@ -129,6 +129,3 @@ class HomeScreen extends StatelessWidget {
     viewModel.doIntent(LoadHomeIntent());
   }
 }
-
-
-
