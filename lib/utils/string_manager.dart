@@ -160,4 +160,15 @@ static const noNotificationsMsg="There is No notifications";
   static const String checkoutScreenTitle = 'Checkout';
   static const String placeOrder = 'Place Order';
   static const String selectAddress = 'Please select the address';
+  //track order
+  static const String trackOrder="Track Order";
+  static const String estmaitedArrival="Estimated arrival";
+  static const String isYourDeliveryHero= "Is your delivery hero for today";
+  static const String OrderDetails="Order details";
+  static const String ReceivedYourOrder="Received your order";
+  static const String PreparingYourOrder="Preparing your order";
+  static const String OutForDelivery="Out for delivery";
+  static const String Delivered="Delivered";
+  static const String showMap="Show map";
+
 }

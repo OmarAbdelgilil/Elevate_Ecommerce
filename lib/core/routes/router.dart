@@ -14,6 +14,8 @@ import 'package:elevate_ecommerce/features/home/presentation/profile_screen/abou
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/terms_and_conditions.dart/terms_and_conditions_screen.dart';
 import 'package:elevate_ecommerce/features/notifications/presentation/view/notifications_screen.dart';
 import 'package:elevate_ecommerce/features/orders/presentation/orders_screen.dart';
+import 'package:elevate_ecommerce/features/track_order/presentation/trackMap_view/trackMap_screen.dart';
+import 'package:elevate_ecommerce/features/track_order/presentation/trackOrder_view/trackOrder_screen.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addressView.dart';
 import 'package:flutter/material.dart';
 
@@ -86,6 +88,10 @@ Route manageRoutes(RouteSettings settings) {
       return MaterialPageRoute(
         builder: (context) => OrdersScreen(),
       );
+    case AppRoutes.trackOrder:
+      return MaterialPageRoute(builder: (context)=>const TrackOrderScreen());
+    case AppRoutes.trackMap:
+      return MaterialPageRoute(builder: (context)=> TrackmapScreen());
     case AppRoutes.notifications :
       return MaterialPageRoute(  builder: (context) => NotificationsScreen());
     default:

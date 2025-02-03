@@ -48,6 +48,7 @@ dependencies:
   google_fonts:
   shared_preferences:
   geolocator:
+  another_stepper: ^1.2.2
 
 
   dio:
@@ -102,6 +103,7 @@ flutter:
     - assets/html/
     - assets/translations/
     - assets/map_style/
+    - assets/png/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

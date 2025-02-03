@@ -71,10 +71,7 @@ class DummyApiManager implements ApiManager {
     throw UnimplementedError();
   }
 
-  @override
-  Future<ProductResponse?> getAllProducts() {
-    throw UnimplementedError();
-  }
+
 
   @override
   Future<HomeResponse?> getHomePage() {
@@ -196,6 +193,12 @@ class DummyApiManager implements ApiManager {
   @override
   Future<Payment?> doPayment(PaymentRequest paymentRequest) {
     // TODO: implement doPayment
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ProductResponse?> getAllProducts(String param) {
+    // TODO: implement getAllProducts
     throw UnimplementedError();
   }
 }

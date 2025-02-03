@@ -10,7 +10,6 @@ import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:injectable/injectable.dart';
-
 import '../../../../../../core/common/api_result.dart';
 import '../../../../../../core/di/di.dart';
 import '../../../../../../core/providers/user_provider.dart';

@@ -21,13 +21,14 @@ class SVGAssets {
   static const String logoutIcon =
       "${_basePath}logout_24dp_5F6368_FILL0_wght400_GRAD0_opsz24 1.svg";
   static const String languageIcon = "${_basePath}language.svg";
+  static const String deliveryBoy = "${_basePath}Delivery Boy.svg";
 }
 
 class LottieAssets {
   LottieAssets._();
 
   static const String _basePath = "assets/lotties/";
-
+  static const String trackCar = "${_basePath}TrackCar.json";
   static const String success = "${_basePath}success.json";
   static const String loading = "${_basePath}loading.json";
   static const String error = "${_basePath}error.json";

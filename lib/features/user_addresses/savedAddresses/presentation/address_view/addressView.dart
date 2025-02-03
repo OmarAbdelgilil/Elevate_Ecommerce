@@ -86,8 +86,4 @@ class AddressesScreen extends StatelessWidget {
 
 
 
-/*
-NotificationItem(
-viewModel: notificationViewModel,
-notification: state.notiicationData![index],
-)*/
+
