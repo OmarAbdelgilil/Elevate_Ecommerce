@@ -11,6 +11,7 @@ import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/routes/router.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_model.dart';
 import 'package:elevate_ecommerce/features/auth/logged_user_data/data/models/user_response/user.dart';
+import 'package:elevate_ecommerce/features/chat/data/sl/sl.dart';
 import 'package:elevate_ecommerce/firebase_options.dart';
 import 'package:elevate_ecommerce/utils/message_handler.dart';
 import 'package:elevate_ecommerce/utils/token_storage.dart';
@@ -24,6 +25,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
+
+import 'features/chat/domain/repo/chat_repo.dart';
 
 Future<void> main() async {
   runZonedGuarded(() async {
@@ -84,7 +87,7 @@ Future<void> main() async {
       FirebaseCrashlytics.instance.recordError(e, stack, fatal: false);
       initialRoute = AppRoutes.login;
     }
-
+    setup();
     runApp(
       EasyLocalization(
         supportedLocales: const [Locale('en'), Locale('ar')],
@@ -128,7 +131,7 @@ class MyApp extends StatelessWidget {
         ),
         title: 'Flower app',
         onGenerateRoute: manageRoutes,
-        initialRoute: /*initialRoute*/ AppRoutes.trackOrder ,
+        initialRoute: /*initialRoute*/ AppRoutes.login ,
       ),
     );
   }

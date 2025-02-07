@@ -1,5 +1,7 @@
 class ImageAssets {
   static const String imagePath = "assets/images/";
+  static const String car = "${imagePath}Car.png";
+
 }
 
 class SVGAssets {
@@ -8,6 +10,10 @@ class SVGAssets {
   static const String _basePath = "assets/svg/";
 
   static const String homeTab = "${_basePath}home_tab.svg";
+
+  static const String boy = "${_basePath}Delivery Boy.svg";
+  static const String call = "${_basePath}call.svg";
+  static const String whatsApp = "${_basePath}whatsapp.svg";
   static const String cardTab = "${_basePath}card_tab.svg";
   static const String categoryTab = "${_basePath}category_tab.svg";
   static const String personTab = "${_basePath}person_tab.svg";

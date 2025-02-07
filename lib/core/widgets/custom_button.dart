@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomButton extends StatelessWidget {
-  final double width;
-  final double height;
+  final double? width;
+  final double? height;
   final Color? color;
   final Color? fontColor;
   final double fontSize;
@@ -14,8 +14,8 @@ class CustomButton extends StatelessWidget {
       required this.text,
       this.onPressed,
       this.color,
-      this.width = double.infinity,
-      this.height = 48,
+      this.width ,
+      this.height ,
       this.fontSize = 16,
       this.fontColor,
       this.radius});
@@ -25,7 +25,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        minimumSize: Size(width.w, height.h),
+        minimumSize: Size(width?? double.infinity, height ?? 48),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radius ?? 100.r),
         ),

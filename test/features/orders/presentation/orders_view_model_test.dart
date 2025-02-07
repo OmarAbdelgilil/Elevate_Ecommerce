@@ -1,7 +1,7 @@
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/features/orders/domain/models/orders_model.dart';
 import 'package:elevate_ecommerce/features/orders/domain/usecases/get_orders_usecase.dart';
-import 'package:elevate_ecommerce/features/orders/presentation/orders_view_model.dart';
+import 'package:elevate_ecommerce/features/orders/presentation/view_model/orders_view_model.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

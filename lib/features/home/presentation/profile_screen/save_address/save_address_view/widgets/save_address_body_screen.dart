@@ -76,7 +76,7 @@ class SaveAddressBodyScreen extends StatelessWidget {
                         city: viewModel.getCityController.text,
                         street: viewModel.getStreetController.text,
                         phone: viewModel.getPhoneController.text,
-                        lang: viewModel.getUserLocation.longitude.toString(),
+                        long: viewModel.getUserLocation.longitude.toString(),
                         lat: viewModel.getUserLocation.latitude.toString(),
                         username: viewModel.getUserNameController.text,
                       );

@@ -3,6 +3,7 @@ import 'package:elevate_ecommerce/core/routes/route_not_found.dart';
 import 'package:elevate_ecommerce/features/auth/Register/presentation/Register_view/register_view.dart';
 import 'package:elevate_ecommerce/features/auth/forget_password/presentation/forget_password_screen.dart';
 import 'package:elevate_ecommerce/features/auth/update_password/presentation/update_password_view/update_password_view.dart';
+import 'package:elevate_ecommerce/features/chat/data/sl/sl.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/check_out_view.dart';
@@ -13,9 +14,9 @@ import 'package:elevate_ecommerce/features/home/presentation/product_details_scr
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/about_us/about_us_screen.dart';
 import 'package:elevate_ecommerce/features/home/presentation/profile_screen/terms_and_conditions.dart/terms_and_conditions_screen.dart';
 import 'package:elevate_ecommerce/features/notifications/presentation/view/notifications_screen.dart';
-import 'package:elevate_ecommerce/features/orders/presentation/orders_screen.dart';
-import 'package:elevate_ecommerce/features/track_order/presentation/trackMap_view/trackMap_screen.dart';
-import 'package:elevate_ecommerce/features/track_order/presentation/trackOrder_view/trackOrder_screen.dart';
+import 'package:elevate_ecommerce/features/orders/presentation/view/orders_screen.dart';
+// import 'package:elevate_ecommerce/features/track_order/presentation/trackMap_view/trackMap_screen.dart';
+// import 'package:elevate_ecommerce/features/track_order/presentation/trackOrder_view/trackOrder_screen.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_view/addressView.dart';
 import 'package:flutter/material.dart';
 
@@ -23,6 +24,8 @@ import '../../features/auth/login/presentation/views/login_view.dart';
 import '../../features/home/presentation/permission_screen/permission_view/permission_screen.dart';
 import '../../features/home/presentation/profile_edit_screen/profile_edit_view/profile_edit_screen.dart';
 import '../../features/home/presentation/profile_screen/save_address/save_address_view/save_address_view.dart';
+import '../../features/track_order/track_map_screen/view/track_map_screen_view.dart';
+import '../../features/track_order/track_order_screen/view/track_order_screen_view.dart';
 
 final dummyProduct = ProductsModel(
     id: '1',
@@ -85,15 +88,15 @@ Route manageRoutes(RouteSettings settings) {
         builder: (context) => CheckOutView(),
       );
     case AppRoutes.orders:
+
       return MaterialPageRoute(
-        builder: (context) => OrdersScreen(),
+        builder: (context) => const OrdersScreen(),
       );
-    case AppRoutes.trackOrder:
-      return MaterialPageRoute(builder: (context)=>const TrackOrderScreen());
+
     case AppRoutes.trackMap:
       return MaterialPageRoute(builder: (context)=> TrackmapScreen());
     case AppRoutes.notifications :
-      return MaterialPageRoute(  builder: (context) => NotificationsScreen());
+      return MaterialPageRoute(  builder: (context) => const NotificationsScreen());
     default:
       return MaterialPageRoute(builder: (context) => const RouteNotFound());
   }

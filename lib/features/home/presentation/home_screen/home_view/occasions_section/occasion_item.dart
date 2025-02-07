@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/occasion.dart';
 import 'package:elevate_ecommerce/features/home/presentation/occasions/occasions_screen.dart';
 import 'package:flutter/material.dart';
@@ -21,10 +22,13 @@ class OccasionItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
-              item.image!,
+            CachedNetworkImage(
+
+             imageUrl:  item.image!,
               width: 131.w,
               height: 151.h,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+              placeholder: (context, url) => const Center(child: CircularProgressIndicator(strokeWidth: 1,),),
               fit: BoxFit.fill,
             ),
             const SizedBox(

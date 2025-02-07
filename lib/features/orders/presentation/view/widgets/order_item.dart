@@ -1,17 +1,19 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
-import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/product.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class OrderItemWidget extends StatelessWidget {
   final String orderId;
-  final ProductModel product;
+  final String image;
+  final String orderNumber;
+  final String title;
+  final String price;
+  final void Function()? onPressed;
   const OrderItemWidget(
-      {super.key, required this.orderId, required this.product});
+      {super.key, required this.orderId,  required this.title, required this.price, required this.orderNumber, required this.image, this.onPressed,});
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +27,12 @@ class OrderItemWidget extends StatelessWidget {
         child: Row(
           children: [
             CachedNetworkImage(
-              imageUrl: product.imgCover!,
+              imageUrl: image,
               width: 127,
               height: 125,
               fit: BoxFit.fill,
             ),
-            SizedBox(
+            const SizedBox(
               width: 16,
             ),
             Expanded(
@@ -38,24 +40,25 @@ class OrderItemWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    product.title!,
-                    style: TextStyle(fontSize: 12),
+                    title,
+                    style: const TextStyle(fontSize: 12),
                   ),
                   Text(
-                    'EGP ${product.price}',
-                    style: TextStyle(fontWeight: FontWeight.w500),
+                    'EGP $price',
+                    style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
                   Text(
-                    '${StringsManager.orderNumber.tr()}123456',
-                    style: TextStyle(fontSize: 12, color: Colors.grey[600]),
+                    '${StringsManager.orderNumber.tr()} $orderNumber',
+                    style:const TextStyle(fontSize: 12, color: Colors.grey),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 8,
                   ),
                   CustomButton(
                     text: StringsManager.orderTrackButton.tr(),
                     fontSize: 13,
                     height: 35,
+                    onPressed: onPressed,
                   )
                 ],
               ),

@@ -1,5 +1,7 @@
 import 'package:elevate_ecommerce/features/home/domain/models/HomeModels/product.dart';
 
+import '../../data/models/response/Order_response.dart';
+
 class OrdersModel {
   String? id;
   String? user;
@@ -8,7 +10,6 @@ class OrdersModel {
   String? paymentType;
   bool? isPaid;
   bool? isDelivered;
-
   int? v;
 
   OrdersModel({
@@ -21,4 +22,6 @@ class OrdersModel {
     this.isDelivered,
     this.v,
   });
+
+
 }

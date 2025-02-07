@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:elevate_ecommerce/core/common/api_result.dart';
 import 'package:elevate_ecommerce/core/network/api/api_execution.dart';
 import 'package:elevate_ecommerce/core/network/api/api_manager.dart';
@@ -113,10 +114,34 @@ class RemoteDatasourceImpl implements RemoteDatasource {
   }
 
   @override
-  Future<Result<UserAddressResponse?>> saveAddress(AddressRequest request) {
-    return executeApi(() async {
+  Future<Result<UserAddressResponse?>> saveAddress(AddressRequest request)async {
+    try{
       var result = await apiManager.saveAddress(request);
-      return result;
-    });
+      return Success(result);
+    }catch (e) {
+      if (e is DioException) {
+        String errorMessage = _handleDioError(e);
+        return Fail(Exception(errorMessage), data: UserAddressResponse(error: errorMessage));
+      }
+      return Fail(Exception(e.toString()));
+    }
   }
+
+
+
+
+
+String _handleDioError(DioException e) {
+  if (e.response != null && e.response?.data != null) {
+    try {
+      final errorData = e.response?.data;
+      if (errorData is Map<String, dynamic> && errorData.containsKey("error")) {
+        return errorData["error"];
+      }
+    } catch (error) {
+      return "Error processing response.";
+    }
+  }
+  return e.message ?? "An unknown error occurred.";
+}
 }

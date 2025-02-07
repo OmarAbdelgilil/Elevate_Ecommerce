@@ -15,6 +15,7 @@ import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/present
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class CheckOutView extends StatelessWidget {
   const CheckOutView({super.key});
@@ -25,7 +26,7 @@ class CheckOutView extends StatelessWidget {
     final CartViewmodel cartViewModel = getIt<CartViewmodel>();
     final CheckoutViewmodelCubit checkoutViewmodelCubit =
         getIt<CheckoutViewmodelCubit>();
-
+final userData  = Provider.of<UserProvider>(context);
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -114,10 +115,18 @@ class CheckOutView extends StatelessWidget {
                                 ),
                               );
                             } else if (state is CashOnDeliverySuccessState) {
+
+                              print('-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+
+                              print(userData.userData?.location?.latitude??'');
+                              print(userData.userData?.location?.longitude??'');
+                              print(userData.userData?.address??'');
+                              print('-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 SnackBar(
                                   content: Text(
-                                      'Order created successfully with ID: ${state.createOrder}'),
+                                      'Order created successfully with : ${state.createOrder.order?.user??''}'),
                                   backgroundColor: Colors.green,
                                 ),
                               );
@@ -144,7 +153,7 @@ class CheckOutView extends StatelessWidget {
                                 );
                               } else {
                                 checkoutViewmodelCubit
-                                    .doIntent(PerformPayment(userPhone));
+                                    .doIntent(context,PerformPayment(userPhone));
                               }
                             },
                             text: StringsManager.placeOrder.tr(),

@@ -49,6 +49,7 @@ dependencies:
   shared_preferences:
   geolocator:
   another_stepper: ^1.2.2
+  cloud_firestore:
 
 
   dio:
@@ -84,6 +85,9 @@ dev_dependencies:
   json_serializable:
   smooth_page_indicator:
   hive_generator:
+  analyzer:
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -103,7 +107,7 @@ flutter:
     - assets/html/
     - assets/translations/
     - assets/map_style/
-    - assets/png/
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

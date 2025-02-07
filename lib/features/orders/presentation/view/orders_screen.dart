@@ -1,9 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
-import 'package:elevate_ecommerce/features/orders/presentation/active_orders.dart';
+import 'package:elevate_ecommerce/features/orders/presentation/view/widgets/active_orders.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
+
+import '../../../home/presentation/base/base_states.dart';
+import '../../../home/presentation/base/cubit_builder.dart';
+import '../view_model/orders_view_model.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
@@ -25,7 +31,7 @@ class OrdersScreen extends StatelessWidget {
                 tabs: [
                   Tab(
                     child: Text(StringsManager.ordersActive.tr(),
-                        style: TextStyle(fontSize: 16)),
+                        style: const TextStyle(fontSize: 16)),
                   ),
                   Tab(
                     child: Text(
@@ -38,8 +44,25 @@ class OrdersScreen extends StatelessWidget {
               Expanded(
                 child: TabBarView(
                   children: [
-                    ActiveOrders(),
-                    Center(child: Text('Completed Orders')),
+                    BlocProvider(
+                      create: (context) =>GetIt.I<OrdersViewModel>()..start(),
+                      child: BlocBuilder<OrdersViewModel, BaseState>(
+                        builder: (context, state) {
+                          return baseBuilder(context, state, ActiveOrders(viewModel: OrdersViewModel.get(context),));
+
+                        },
+                      ),
+                    ),
+
+                    BlocProvider(
+                      create: (context) =>GetIt.I<OrdersViewModel>()..getCompletedOrders(),
+                      child: BlocBuilder<OrdersViewModel, BaseState>(
+                        builder: (context, state) {
+                          return baseBuilder(context, state, ActiveOrders(viewModel: OrdersViewModel.get(context),));
+
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ),

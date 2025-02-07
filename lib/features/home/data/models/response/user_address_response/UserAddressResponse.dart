@@ -1,16 +1,15 @@
-import 'Address.dart';
-
-/// message : "success"
-/// address : [{"street":"Home","phone":"01010700700","city":"Gizaa","lat":"21.12414141","lang":"21.12414141","username":"daly","_id":"6760eb271d7443525c6f92ed"},{"street":"Home","phone":"01010700700","city":"Gizaa","lat":"21.12414141","lang":"21.12414141","username":"daly","_id":"6760eb651d7443525c6f92fe"}]
+import '../../../../../auth/logged_user_data/data/models/user_model.dart';
 
 class UserAddressResponse {
   UserAddressResponse({
     this.message,
     this.address,
+    this.error
   });
 
   UserAddressResponse.fromJson(dynamic json) {
     message = json['message'];
+    error = json['error'];
     if (json['address'] != null) {
       address = [];
       json['address'].forEach((v) {
@@ -18,8 +17,11 @@ class UserAddressResponse {
       });
     }
   }
+
   String? message;
+  String? error;
   List<Address>? address;
+
   UserAddressResponse copyWith({
     String? message,
     List<Address>? address,
@@ -28,9 +30,11 @@ class UserAddressResponse {
         message: message ?? this.message,
         address: address ?? this.address,
       );
+
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['message'] = message;
+    map['error'] = error;
     if (address != null) {
       map['address'] = address?.map((v) => v.toJson()).toList();
     }

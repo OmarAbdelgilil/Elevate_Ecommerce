@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/core/common/colors.dart';
+import 'package:elevate_ecommerce/core/providers/user_provider.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/cubit/checkout_viewmodel_cubit.dart';
 import 'package:elevate_ecommerce/features/home/presentation/check_out/widgets/checkout_card.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/presentation/address_viewModel/addressViewModel.dart';
@@ -7,6 +8,7 @@ import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 class AddressSection extends StatelessWidget {
   final AddressViewModel viewModel;
@@ -15,6 +17,7 @@ class AddressSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
     return BlocBuilder<AddressViewModel, AddressState>(
       builder: (context, state) {
         if (state is AddressLoadingState) {
@@ -61,6 +64,8 @@ class AddressSection extends StatelessWidget {
                       final address = addresses[index];
                       final isSelected =
                           checkoutCubit.selectedAddress?.id == address.id;
+                      userProvider.userData?.address =
+                          '${checkoutCubit.selectedAddress?.city ?? ''} ${checkoutCubit.selectedAddress?.street ?? ''} ';
 
                       return CheckoutCard(
                         viewModel: viewModel,

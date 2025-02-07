@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:elevate_ecommerce/features/home/data/models/request/address_request/address_request.dart';
 import 'package:elevate_ecommerce/features/home/data/models/response/user_address_response/UserAddressResponse.dart';
 import 'package:elevate_ecommerce/features/home/presentation/base/base_cubit.dart';
@@ -61,6 +62,8 @@ class SaveAddressViewModel extends BaseCubit
 
       await fetchAddressFromCoordinates(
           currentPosition.latitude, currentPosition.longitude);
+
+      userProvider.userData?.location = GeoPoint(currentPosition.latitude, currentPosition.longitude);
 
       Geolocator.getPositionStream().listen((position) {
         _userLocation = LatLng(position.latitude, position.longitude);
@@ -144,7 +147,7 @@ class SaveAddressViewModel extends BaseCubit
     if (result is Success<UserAddressResponse?>) {
       emit(SuccessState(result.data?.message ?? ''));
     } else if (result is Fail<UserAddressResponse?>) {
-      emit(ErrorState(result.exception.toString()));
+      emit(ErrorState(result.data?.error ?? 'unKnown error'));
     }
   }
 

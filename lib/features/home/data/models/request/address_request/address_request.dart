@@ -4,7 +4,7 @@ class AddressRequest {
     this.phone,
     this.city,
     this.lat,
-    this.lang,
+    this.long,
     this.username,
   });
 
@@ -13,14 +13,14 @@ class AddressRequest {
     phone = json['phone'];
     city = json['city'];
     lat = json['lat'];
-    lang = json['lang'];
+    long = json['long'];
     username = json['username'];
   }
   String? street;
   String? phone;
   String? city;
   String? lat;
-  String? lang;
+  String? long;
   String? username;
 
   Map<String, dynamic> toJson() {
@@ -29,7 +29,7 @@ class AddressRequest {
     map['phone'] = phone;
     map['city'] = city;
     map['lat'] = lat;
-    map['lang'] = lang;
+    map['long'] = long;
     map['username'] = username;
     return map;
   }

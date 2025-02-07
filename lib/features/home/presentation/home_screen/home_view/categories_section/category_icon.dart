@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/category.dart';
 import 'package:elevate_ecommerce/features/home/presentation/category_screen/category_view/widgets/category_view_body.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
@@ -33,8 +34,10 @@ class CategoryIcon extends StatelessWidget {
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: Padding(
               padding: const EdgeInsets.all(15.0),
-              child: Image.network(
-                category.image!,
+              child: CachedNetworkImage(
+               imageUrl:  category.image!,
+                errorWidget: (context, url, error) => const Icon(Icons.error),
+                placeholder: (context, url) => const Center(child: CircularProgressIndicator(strokeWidth: 1,),),
                 fit: BoxFit.contain,
               ),
             ),

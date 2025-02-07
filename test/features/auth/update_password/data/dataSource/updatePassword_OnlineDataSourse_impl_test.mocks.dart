@@ -64,7 +64,7 @@ import 'package:elevate_ecommerce/features/home/data/models/response/user_addres
     as _i29;
 import 'package:elevate_ecommerce/features/notifications/data/response/notificationResponse.dart'
     as _i32;
-import 'package:elevate_ecommerce/features/orders/data/models/response/order_response/order_response.dart'
+import 'package:elevate_ecommerce/features/orders/data/models/response/Order_response.dart'
     as _i33;
 import 'package:elevate_ecommerce/features/payment/data/models/create_order/create_order/create_order.dart'
     as _i36;

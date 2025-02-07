@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:elevate_ecommerce/features/home/domain/models/product_model.dart';
 import 'package:elevate_ecommerce/features/home/presentation/product_details_screen/product_details_view/product_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +27,15 @@ class BestSellerItem extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(
+            CachedNetworkImage(
+              imageUrl:
               item.imgCover!,
+
               width: 131.w,
               height: 151.h,
               fit: BoxFit.fill,
+              errorWidget: (context, url, error) => const Icon(Icons.error),
+              placeholder: (context, url) => const Center(child: CircularProgressIndicator(strokeWidth: 1,),),
             ),
             const SizedBox(
               height: 5,

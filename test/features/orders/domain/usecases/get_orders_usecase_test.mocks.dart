@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:elevate_ecommerce/core/common/api_result.dart' as _i4;
-import 'package:elevate_ecommerce/features/orders/domain/models/orders_model.dart'
+import 'package:elevate_ecommerce/features/orders/data/models/response/Order_response.dart'
     as _i5;
 import 'package:elevate_ecommerce/features/orders/domain/repos/orders_repository.dart'
     as _i2;
@@ -35,18 +35,18 @@ class MockOrdersRepository extends _i1.Mock implements _i2.OrdersRepository {
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.OrdersModel?>> getOrders() => (super.noSuchMethod(
+  _i3.Future<_i4.Result<_i5.OrderResponse?>> getOrders() => (super.noSuchMethod(
         Invocation.method(
           #getOrders,
           [],
         ),
-        returnValue: _i3.Future<_i4.Result<_i5.OrdersModel?>>.value(
-            _i6.dummyValue<_i4.Result<_i5.OrdersModel?>>(
+        returnValue: _i3.Future<_i4.Result<_i5.OrderResponse?>>.value(
+            _i6.dummyValue<_i4.Result<_i5.OrderResponse?>>(
           this,
           Invocation.method(
             #getOrders,
             [],
           ),
         )),
-      ) as _i3.Future<_i4.Result<_i5.OrdersModel?>>);
+      ) as _i3.Future<_i4.Result<_i5.OrderResponse?>>);
 }
