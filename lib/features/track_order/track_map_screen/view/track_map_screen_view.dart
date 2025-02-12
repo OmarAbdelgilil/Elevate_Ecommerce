@@ -20,7 +20,36 @@ class TrackMapScreenView extends StatelessWidget {
       child: Scaffold(
         body: Consumer<TrackMapViewModel>(
           builder: (context, orderViewModel, child) {
-            return GoogleMap();
+            return GoogleMap(
+              onMapCreated: (GoogleMapController controller) {
+                orderViewModel.mapController = controller;
+              },
+              initialCameraPosition: CameraPosition(
+                target: LatLng(30.482624410522394, 31.18704102631089),
+                zoom: 12,
+              ),
+              markers: {
+                if (orderViewModel.userLatLong != null)
+                  Marker(
+                    markerId: MarkerId("user"),
+                    position: orderViewModel.userLatLong!,
+                    infoWindow: InfoWindow(title: "User Location"),
+                  ),
+                if (orderViewModel.driverLatLong != null)
+                  Marker(
+                    markerId: MarkerId("driver"),
+                    position: orderViewModel.driverLatLong!,
+                    infoWindow: InfoWindow(title: "Driver Location"),
+                  ),
+                if (orderViewModel.storeLatLong != null)
+                  Marker(
+                    markerId: MarkerId("store"),
+                    position: orderViewModel.storeLatLong!,
+                    infoWindow: InfoWindow(title: "Store Location"),
+                  ),
+              },
+              polylines: Set<Polyline>.of(orderViewModel.polylines.values),
+            );
           },
         ),
       ),
