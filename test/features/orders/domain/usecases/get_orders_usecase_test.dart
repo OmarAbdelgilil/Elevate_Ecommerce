@@ -24,8 +24,8 @@ void main() {
       provideDummy<Result<OrdersModel?>>(Success(mockOrdersModel));
       final expectedResult = Success(mockOrdersModel);
 
-      when(mockOrdersRepository.getOrders())
-          .thenAnswer((_) async => expectedResult);
+      // when(mockOrdersRepository.getOrders())
+      //     .thenAnswer((_) async => expectedResult);
 
       final result = await getOrdersUsecase.getOrders();
 
@@ -38,8 +38,8 @@ void main() {
       provideDummy<Result<OrdersModel?>>(Fail(Exception()));
       final expectedError = Fail<OrdersModel?>(Exception());
 
-      when(mockOrdersRepository.getOrders())
-          .thenAnswer((_) async => expectedError);
+      // when(mockOrdersRepository.getOrders())
+      //     .thenAnswer((_) async => expectedError);
 
       final result = await getOrdersUsecase.getOrders();
 

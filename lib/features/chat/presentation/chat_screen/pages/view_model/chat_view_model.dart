@@ -38,6 +38,4 @@ class ChatViewModel extends ChangeNotifier {
   Future<void> sendMessage(MessageEntity message) async {
     await _sendMessageUseCase.call(message);
   }
-
-
 }

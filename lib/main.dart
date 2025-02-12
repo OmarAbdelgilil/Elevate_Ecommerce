@@ -26,7 +26,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:provider/provider.dart';
 
-import 'features/chat/domain/repo/chat_repo.dart';
 
 Future<void> main() async {
   runZonedGuarded(() async {

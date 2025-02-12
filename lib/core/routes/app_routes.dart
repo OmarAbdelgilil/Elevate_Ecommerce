@@ -20,7 +20,6 @@ class AppRoutes {
   static const aboutUs = "aboutUs";
   static const permissionScreen = "permissionScreenRoute";
   static const saveAddressScreen = "saveAddressScreenRoute";
-  static const trackMap ="trackMap";
 
   static const checkOut = "checkOut";
   static const orders = "orders";

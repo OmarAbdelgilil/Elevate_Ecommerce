@@ -93,8 +93,6 @@ Route manageRoutes(RouteSettings settings) {
         builder: (context) => const OrdersScreen(),
       );
 
-    case AppRoutes.trackMap:
-      return MaterialPageRoute(builder: (context)=> TrackmapScreen());
     case AppRoutes.notifications :
       return MaterialPageRoute(  builder: (context) => const NotificationsScreen());
     default:

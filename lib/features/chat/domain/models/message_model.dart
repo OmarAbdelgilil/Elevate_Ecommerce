@@ -3,11 +3,13 @@ class MessageEntity {
   final String receiverId;
   final String text;
   final DateTime timestamp;
+  final MessageEntity? replyTo;
 
   MessageEntity({
     required this.senderId,
     required this.receiverId,
     required this.text,
     required this.timestamp,
+    this.replyTo,
   });
 }

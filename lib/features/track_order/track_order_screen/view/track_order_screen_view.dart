@@ -4,6 +4,8 @@ import 'package:elevate_ecommerce/core/routes/app_routes.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_appbar.dart';
 import 'package:elevate_ecommerce/core/widgets/custom_button.dart';
 import 'package:elevate_ecommerce/features/data_intent/data_intent.dart';
+import 'package:elevate_ecommerce/features/track_order/track_map_screen/view/track_map_screen_view.dart';
+import 'package:elevate_ecommerce/features/track_order/track_map_screen/view_model/track_map_view_model.dart';
 import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:elevate_ecommerce/utils/string_manager.dart';
 import 'package:elevate_ecommerce/utils/text_style.dart';
@@ -24,6 +26,7 @@ class TrackOrderScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userProvider = Provider.of<UserProvider>(context);
 
+
     return ChangeNotifierProvider(
       create: (context) {
         final viewModel = OrderViewModel();
@@ -33,7 +36,9 @@ class TrackOrderScreen extends StatelessWidget {
       child: Scaffold(
         appBar: customAppBar(title: StringsManager.trackOrder.tr()),
         body: Consumer<OrderViewModel>(
+
           builder: (context, orderViewModel, child) {
+
             return SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16),
@@ -55,25 +60,29 @@ class TrackOrderScreen extends StatelessWidget {
                           color: ColorManager.black),
                     ),
                     const Divider(),
-                    ListTile(
-                      leading: SvgPicture.asset(SVGAssets.boy),
-                      title: Text(orderViewModel.driverName.isNotEmpty
-                          ? orderViewModel.driverName
-                          : "Fetching..."), // ✅ Display Driver's First Name
-                      subtitle: const Text('Is your delivery hero for today'),
-                      trailing: FittedBox(
-                        child: Row(
-                          children: [
-                            SvgPicture.asset(SVGAssets.call),
-                            const SizedBox(width: 10),
-                            GestureDetector(
-                              onTap: () {
-                                orderViewModel.navigateToChatPage(context, userProvider.userData?.id??'', DataIntent.getDriverId());
 
-                              },
-                              child: SvgPicture.asset(SVGAssets.whatsApp),
-                            ),
-                          ],
+                    Visibility(
+                      visible:orderViewModel.driverName.isNotEmpty  ?true:false ,
+                      child: ListTile(
+                        leading: SvgPicture.asset(SVGAssets.boy),
+                        title: Text(orderViewModel.driverName.isNotEmpty
+                            ? orderViewModel.driverName
+                            : "Fetching..."),
+                        subtitle: orderViewModel.driverName == 'Unknown'?null:const Text('Is your delivery hero for today'),
+                        trailing: FittedBox(
+                          child:orderViewModel.driverName == 'Unknown'?null: Row(
+                            children: [
+                              SvgPicture.asset(SVGAssets.call),
+                              const SizedBox(width: 10),
+                              GestureDetector(
+                                onTap: () {
+                                  orderViewModel.navigateToChatPage(context, userProvider.userData?.id??'', DataIntent.getDriverId());
+
+                                },
+                                child: SvgPicture.asset(SVGAssets.whatsApp),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
@@ -99,13 +108,11 @@ class TrackOrderScreen extends StatelessWidget {
                                 textStyle: AppTextStyles.title(
                                     fontWeight: FontWeight.w500),
                               ),
-                              subtitle: StepperText(
-                                step["timestamp"]!.isNotEmpty
-                                    ? step["timestamp"]!
-                                    : "Pending...",
-                                textStyle:
-                                AppTextStyles.subtitle(fontSize: 15.sp),
-                              ),
+                              // subtitle: StepperText(
+                              //   step["timestamp"]!,
+                              //   textStyle:
+                              //   AppTextStyles.subtitle(fontSize: 15.sp),
+                              // ),
                               iconWidget: Icon(
                                 Icons.radio_button_checked,
                                 color: index <= orderViewModel.currentStep
@@ -126,7 +133,9 @@ class TrackOrderScreen extends StatelessWidget {
                             child: CustomButton(
                               text: StringsManager.showMap,
                               onPressed: () {
-                                Navigator.pushNamed(context, AppRoutes.trackMap);
+                               Navigator.push(context, MaterialPageRoute(builder: (context) => ChangeNotifierProvider(
+                                   create: (context) => TrackMapViewModel(),
+                                   child: TrackMapScreenView(orderId: orderId,)),));
                               },
                             ),
                           ),

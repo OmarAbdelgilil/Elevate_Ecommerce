@@ -1,6 +1,6 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:elevate_ecommerce/features/data_intent/data_intent.dart';
 import 'package:elevate_ecommerce/utils/assets_manager.dart';
+import 'package:elevate_ecommerce/utils/color_manager.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_it/get_it.dart';
@@ -28,7 +28,7 @@ class ChatPage extends StatelessWidget {
         backgroundColor: Colors.white,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Colors.pinkAccent,
+          backgroundColor:  ColorManager.primary,
           leadingWidth: 40,
           title: Row(
             children: [
@@ -57,10 +57,10 @@ class ChatPage extends StatelessWidget {
 
   Widget _buildMessageList(ChatViewModel viewModel) {
     if (viewModel.isLoading) {
-      return const Center(child: CircularProgressIndicator(color: Colors.pinkAccent));
+      return const Center(child: CircularProgressIndicator(color: ColorManager.primary));
     }
     if (viewModel.messages.isEmpty) {
-      return const Center(child: Text("No messages yet.", style: TextStyle(color: Colors.pinkAccent)));
+      return const Center(child: Text("No messages yet.", style: TextStyle(color:  ColorManager.primary)));
     }
     return ListView.builder(
       reverse: true,
@@ -81,7 +81,7 @@ class ChatPage extends StatelessWidget {
         margin: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
-          color: isSentByMe ? Colors.pinkAccent.withOpacity(0.9) : Colors.pink[100],
+          color: isSentByMe ?  ColorManager.primary.withOpacity(0.9) : Colors.pink[100],
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
@@ -106,7 +106,7 @@ class ChatPage extends StatelessWidget {
   }
 
   String _formatTimestamp(DateTime timestamp) {
-    return DateFormat('hh:mm a').format(timestamp);
+    return "${timestamp.hour}:${timestamp.minute.toString().padLeft(2, '0')}";
   }
 
   Widget _buildMessageInput(BuildContext context) {
@@ -117,10 +117,12 @@ class ChatPage extends StatelessWidget {
         children: [
           Expanded(
             child: TextField(
+              cursorColor:  ColorManager.primary,
               controller: messageController,
               style: const TextStyle(color: Colors.black87),
               decoration: InputDecoration(
                 filled: true,
+
                 fillColor: Colors.pink[50],
                 hintText: "Send a chat...",
                 hintStyle: const TextStyle(color: Colors.black54),
@@ -132,7 +134,7 @@ class ChatPage extends StatelessWidget {
             ),
           ),
           IconButton(
-            icon: const Icon(Icons.send, color: Colors.pinkAccent),
+            icon: const Icon(Icons.send, color:  ColorManager.primary),
             onPressed: () {
               String text = messageController.text.trim();
               if (text.isNotEmpty) {

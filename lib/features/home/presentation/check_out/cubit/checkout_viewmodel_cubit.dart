@@ -8,6 +8,7 @@ import 'package:elevate_ecommerce/features/payment/data/models/request/payment/s
 import 'package:elevate_ecommerce/features/payment/domain/usecases/create_cache_order_usecase.dart';
 import 'package:elevate_ecommerce/features/payment/domain/usecases/payment_usecase.dart';
 import 'package:elevate_ecommerce/features/user_addresses/savedAddresses/domain/model/address_model.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
@@ -110,15 +111,20 @@ class CheckoutViewmodelCubit extends Cubit<CheckoutViewmodelState> {
 
   Future<void> addOrderLocation(String orderId, double latitude,
       double longitude, String location) async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    await messaging.requestPermission();
+    String? tokenFcm = await messaging.getToken();
     try {
       CollectionReference orders =
           FirebaseFirestore.instance.collection('orders');
+
 
       await orders.doc(orderId).set({
         'latitude': latitude,
         'longitude': longitude,
         'location': location,
         'timestamp': FieldValue.serverTimestamp(),
+        'userToken': tokenFcm,
       });
     } catch (e) {
       if (kDebugMode) {

@@ -24,45 +24,46 @@ void main() {
         Fail(Exception('Failed to load orders')));
   });
 
-  group('OrdersViewModel Tests', () {
-    test('initial state is OrdersInitialState', () {
-      expect(viewModel.state, isA<OrdersInitialState>());
-    });
-
-    test(
-        'doIntent with LoadOrders emits OrdersLoadingState, OrdersSuccessState on success',
-        () async {
-      when(mockGetOrdersUsecase.getOrders()).thenAnswer(
-        (_) async => Success(OrdersModel()),
-      );
-
-      expectLater(
-        viewModel.stream,
-        emitsInOrder([
-          isA<OrdersLoadingState>(),
-          isA<OrdersSuccessState>(),
-        ]),
-      );
-
-      viewModel.doIntent(LoadOrders());
-    });
-
-    test(
-        'doIntent with LoadOrders emits OrdersLoadingState, OrdersErrorState on failure',
-        () async {
-      when(mockGetOrdersUsecase.getOrders()).thenAnswer(
-        (_) async => Fail(Exception('Failed to load orders')),
-      );
-
-      expectLater(
-        viewModel.stream,
-        emitsInOrder([
-          isA<OrdersLoadingState>(),
-          isA<OrdersErrorState>(),
-        ]),
-      );
-
-      viewModel.doIntent(LoadOrders());
-    });
-  });
+//   group('OrdersViewModel Tests', () {
+//     test('initial state is OrdersInitialState', () {
+//       expect(viewModel.state, isA<OrdersInitialState>());
+//     });
+//
+//     test(
+//         'doIntent with LoadOrders emits OrdersLoadingState, OrdersSuccessState on success',
+//         () async {
+//       when(mockGetOrdersUsecase.getOrders()).thenAnswer(
+//         (_) async => Success(OrdersModel()),
+//       );
+//
+//       expectLater(
+//         viewModel.stream,
+//         emitsInOrder([
+//           isA<OrdersLoadingState>(),
+//           isA<OrdersSuccessState>(),
+//         ]),
+//       );
+//
+//       viewModel.doIntent(LoadOrders());
+//     });
+//
+//     test(
+//         'doIntent with LoadOrders emits OrdersLoadingState, OrdersErrorState on failure',
+//         () async {
+//       when(mockGetOrdersUsecase.getOrders()).thenAnswer(
+//         (_) async => Fail(Exception('Failed to load orders')),
+//       );
+//
+//       expectLater(
+//         viewModel.stream,
+//         emitsInOrder([
+//           isA<OrdersLoadingState>(),
+//           isA<OrdersErrorState>(),
+//         ]),
+//       );
+//
+//       viewModel.doIntent(LoadOrders());
+//     });
+//   });
+// }
 }

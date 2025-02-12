@@ -11,9 +11,10 @@ class OrderViewModel extends ChangeNotifier {
   String get driverName => _driverName;
 
   final List<Map<String, String>> _steps = [
-    {"title": "Pending", "timestamp": ""},
+    {"title": "Pending",  "timestamp": ""},
     {"title": "Accepted", "timestamp": ""},
     {"title": "Arrive Pickup Location", "timestamp": ""},
+    {"title": "Out for delivery", "timestamp": ""},
     {"title": "Arrive User Location", "timestamp": ""},
     {"title": "Completed", "timestamp": ""}
   ];
@@ -52,14 +53,16 @@ class OrderViewModel extends ChangeNotifier {
       case "Accepted":
         _currentStep = 1;
         break;
-      case "Arrive Pickup Location":
+      case "Picked":
         _currentStep = 2;
         break;
-      case "Arrive User Location":
+      case "Out for delivery":
         _currentStep = 3;
         break;
-      case "Completed":
+      case "Arrived":
         _currentStep = 4;
+      case "Delivered":
+        _currentStep = 5 ;
         break;
     }
     notifyListeners();
